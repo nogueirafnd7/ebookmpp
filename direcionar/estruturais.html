@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padrões Estruturais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #198754;
+            --primary-light: #d1e7dd;
+            --primary-dark: #146c43;
+            --header-color: #146c43;
+            --secondary-color: #6c757d;
+            --accent-color: #20c997;
+            --gradient-primary: linear-gradient(135deg, #198754 0%, #146c43 100%);
+            --gradient-light: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            background: var(--header-color);
+            box-shadow: var(--shadow-medium);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .hero-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 0 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pattern-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            height: 100%;
+            background: white;
+            box-shadow: var(--shadow-light);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .card-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pattern-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .pattern-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(25, 135, 84, 0.3);
+            color: white;
+        }
+
+        .badge-custom {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background: white;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s;
+        }
+
+        .back-to-home:hover {
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .footer {
+            background-color: rgb(13, 46, 23);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .pattern-icon svg {
+            width: 3rem;
+            height: 3rem;
+            fill: currentColor;
+        }
+
+        .hover-primary {
+            transition: color 0.3s ease;
+        }
+
+        .hover-primary:hover {
+            color: #198754 !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0 3rem;
+            }
+
+            .pattern-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-arrow-left me-2"></i>Voltar ao Início
+            </a>
+            <span class="navbar-text">
+                <i class="bi bi-puzzle-fill me-2"></i>Padrões Estruturais
+            </span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold mb-3">Padrões Estruturais</h1>
+                    <p class="lead mb-4">Padrões que se preocupam com a forma como classes e objetos são compostos para formar estruturas maiores.</p>
+                    <div>
+                        <span class="badge-custom">Design Patterns</span>
+                        <span class="badge-custom">Estrutura de Objetos</span>
+                        <span class="badge-custom">Composição</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="bi bi-diagram-3 display-1 opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Padrões Estruturais -->
+    <section class="container mb-5">
+        <h2 class="section-title">Principais Padrões</h2>
+
+        <div class="row">
+            <!-- Adapter -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">1</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-plug-fill"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Adapter</h4>
+                        <p class="card-text mb-4">Converte a interface de uma classe em outra interface esperada pelos clientes.</p>
+                        <a href="adapter.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bridge -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">2</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-bridge"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Bridge</h4>
+                        <p class="card-text mb-4">Desacopla uma abstração da sua implementação, permitindo que ambas variem independentemente.</p>
+                        <a href="bridge.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Composite -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">3</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-diagram-3"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Composite</h4>
+                        <p class="card-text mb-4">Compõe objetos em estruturas de árvore para representar hierarquias parte-todo.</p>
+                        <a href="composite.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorator -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">4</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Decorator</h4>
+                        <p class="card-text mb-4">Atribui responsabilidades adicionais a um objeto dinamicamente.</p>
+                        <a href="decorator.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facade -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">5</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-house-door-fill"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Facade</h4>
+                        <p class="card-text mb-4">Fornece uma interface unificada para um conjunto de interfaces em um subsistema.</p>
+                        <a href="facade.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flyweight -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">6</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-bricks"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Flyweight</h4>
+                        <p class="card-text mb-4">Usa compartilhamento para suportar grandes quantidades de objetos de granularidade fina.</p>
+                        <a href="flyweight.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proxy -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">7</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-shield-fill"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Proxy</h4>
+                        <p class="card-text mb-4">Fornece um objeto representante ou substituto para controlar o acesso a outro objeto.</p>
+                        <a href="proxy.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="../index.html" class="back-to-home">
+                <i class="bi bi-house me-2"></i>Voltar para a Página Inicial
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-light pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3 text-success">Padrões de Projeto</h5>
+                    <p class="text-light-emphasis lh-base">Explore diferentes categorias de padrões para melhorar a arquitetura do seu software.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3 text-success">Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../index.html" class="text-light text-decoration-none hover-primary">
+                                <i class="bi bi-house me-2"></i>Página Inicial
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="criacionais.html" class="text-light text-decoration-none hover-primary">
+                                <i class="bi bi-magic me-2"></i>Padrões Criacionais
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="comportamentais.html" class="text-light text-decoration-none hover-primary">
+                                <i class="bi bi-arrow-repeat me-2"></i>Padrões Comportamentais
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-opacity-25">
+            <div class="text-center pt-2">
+                <p class="mb-0 text-light-emphasis">
+                    <i class="bi bi-c-circle me-2"></i>2023 Padrões de Projeto. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

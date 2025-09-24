@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Padrões de Projeto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --criacional-color: #0d6efd;
+            --estrutural-color: #198754;
+            --comportamental-color: #6f42c1; /* Roxo */
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .category-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            height: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .category-card.criacional {
+            border-top: 5px solid var(--criacional-color);
+        }
+        
+        .category-card.estrutural {
+            border-top: 5px solid var(--estrutural-color);
+        }
+        
+        .category-card.comportamental {
+            border-top: 5px solid var(--comportamental-color);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-category {
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-criacional {
+            background-color: var(--criacional-color);
+            color: white;
+        }
+        
+        .btn-estrutural {
+            background-color: var(--estrutural-color);
+            color: white;
+        }
+        
+        .btn-comportamental {
+            background-color: var(--comportamental-color);
+            color: white;
+        }
+        
+        /* CORREÇÃO DO HOVER - Mantém a cor original */
+        .btn-criacional:hover {
+            background-color: var(--criacional-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            filter: brightness(0.9); /* Efeito sutil de escurecimento */
+        }
+        
+        .btn-estrutural:hover {
+            background-color: var(--estrutural-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            filter: brightness(0.9);
+        }
+        
+        .btn-comportamental:hover {
+            background-color: var(--comportamental-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            filter: brightness(0.9);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: #6c757d;
+        }
+        
+        .about-section {
+            background-color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+        
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .category-icon {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .text-comportamental {
+            color: var(--comportamental-color);
+        }
+        
+        .text-criacional {
+            color: var(--criacional-color);
+        }
+        
+        .text-estrutural {
+            color: var(--estrutural-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-gear-fill me-2"></i>Padrões de Projeto
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categorias">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Padrões de Projeto</h1>
+            <p class="lead mb-4">Aprenda os padrões de projeto mais importantes para criar software flexível, reutilizável e de fácil manutenção.</p>
+            <a href="#categorias" class="btn btn-light btn-lg">Explorar Categorias</a>
+        </div>
+    </section>
+
+    <!-- Categorias de Padrões -->
+    <section id="categorias" class="container mb-5">
+        <h2 class="section-title text-center mb-5">Categorias de Padrões</h2>
+        
+        <div class="row">
+            <!-- Padrões Criacionais -->
+            <div class="col-lg-4 mb-4">
+                <div class="card category-card criacional h-100">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Padrões Criacionais">
+                    <div class="card-body text-center d-flex flex-column">
+                        <div class="category-icon text-criacional">
+                            <i class="bi bi-plus-circle"></i>
+                        </div>
+                        <h3 class="card-title">Criacionais</h3>
+                        <p class="card-text flex-grow-1">Padrões criacionais abstraem o processo de instanciação de objetos. Eles ajudam a tornar um sistema independente de como seus objetos são criados, compostos e representados.</p>
+                        <p class="card-text"><strong>Exemplos:</strong> Singleton, Factory Method, Abstract Factory, Builder, Prototype</p>
+                        <a href="./direcionar/criacionais.html" class="btn btn-criacional btn-category mt-auto">Explorar Padrões Criacionais</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Padrões Estruturais -->
+            <div class="col-lg-4 mb-4">
+                <div class="card category-card estrutural h-100">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Padrões Estruturais">
+                    <div class="card-body text-center d-flex flex-column">
+                        <div class="category-icon text-estrutural">
+                            <i class="bi bi-puzzle"></i>
+                        </div>
+                        <h3 class="card-title">Estruturais</h3>
+                        <p class="card-text flex-grow-1">Padrões estruturais se preocupam com a forma como classes e objetos são compostos para formar estruturas maiores. Eles facilitam o design identificando maneiras simples de realizar relacionamentos entre entidades.</p>
+                        <p class="card-text"><strong>Exemplos:</strong> Adapter, Bridge, Composite, Decorator, Facade</p>
+                        <a href="./direcionar/estruturais.html" class="btn btn-estrutural btn-category mt-auto">Explorar Padrões Estruturais</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Padrões Comportamentais -->
+            <div class="col-lg-4 mb-4">
+                <div class="card category-card comportamental h-100">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Padrões Comportamentais">
+                    <div class="card-body text-center d-flex flex-column">
+                        <div class="category-icon text-comportamental">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </div>
+                        <h3 class="card-title">Comportamentais</h3>
+                        <p class="card-text flex-grow-1">Padrões comportamentais estão preocupados com algoritmos e a atribuição de responsabilidades entre objetos. Eles não descrevem apenas padrões de objetos ou classes, mas também os padrões de comunicação entre eles.</p>
+                        <p class="card-text"><strong>Exemplos:</strong> Observer, Strategy, Command, State, Template Method</p>
+                        <a href="./direcionar/comportamentais.html" class="btn btn-comportamental btn-category mt-auto">Explorar Padrões Comportamentais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre o Curso -->
+    <section id="sobre" class="about-section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Sobre o Curso</h2>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="img-fluid rounded shadow" alt="Sobre o Curso">
+                </div>
+                <div class="col-lg-6">
+                    <h3>O que você vai aprender</h3>
+                    <p>Este curso abrange os 23 padrões de projeto do catálogo GoF (Gang of Four), divididos em três categorias principais. Cada padrão será explicado com:</p>
+                    <ul>
+                        <li>Definição clara e objetivos</li>
+                        <li>Diagramas UML para visualização da estrutura</li>
+                        <li>Exemplos práticos em linguagens de programação</li>
+                        <li>Cenários de aplicação no mundo real</li>
+                        <li>Vantagens e desvantagens de cada padrão</li>
+                    </ul>
+                    <p>Ao final do curso, você será capaz de identificar quando aplicar cada padrão e implementá-los em seus próprios projetos.</p>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="category-icon text-criacional mb-3">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <h4>Conteúdo Abrangente</h4>
+                    <p>Cobertura completa dos 23 padrões GoF com exemplos detalhados e exercícios práticos.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="category-icon text-estrutural mb-3">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+                    <h4>Exemplos Práticos</h4>
+                    <p>Implementações em múltiplas linguagens de programação para facilitar o entendimento.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="category-icon text-comportamental mb-3">
+                        <i class="bi bi-pencil-square"></i>
+                    </div>
+                    <h4>Aplicação Real</h4>
+                    <p>Casos de uso do mundo real para cada padrão, mostrando sua aplicabilidade prática.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5>Curso de Padrões de Projeto</h5>
+                    <p>Aprenda os padrões essenciais para desenvolvimento de software de qualidade.</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Links Rápidos</h5>
+                    <div class="d-flex justify-content-center">
+                        <a href="./direcionar/criacionais.html" class="btn btn-outline-light btn-sm me-2">Criacionais</a>
+                        <a href="./direcionar/estruturais.html" class="btn btn-outline-light btn-sm me-2">Estruturais</a>
+                        <a href="./direcionar/comportamentais.html" class="btn btn-outline-light btn-sm">Comportamentais</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p>&copy; 2025 Curso de Padrões de Projeto. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

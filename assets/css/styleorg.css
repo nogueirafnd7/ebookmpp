@@ -36,10 +36,25 @@
             z-index: 1030;
         }
 
+           .btn-purple {
+            background-color: #6f42c1;
+            border-color: #6f42c1;
+            color: white;
+        }
+        
+        .btn-purple:hover {
+            background-color: #5a32a3;
+            border-color: #5a32a3;
+            color: white;
+        }
+
         .navbar-brand {
             color: var(--title-h1);
             font-weight: bold;
+            margin-left: 20px;
         }
+
+        
 
         /* Sidebar/Sumário */
         .sidebar {
@@ -212,6 +227,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        .img-placeholder-4,
+        .img-placeholder-9,
+        .img-placeholder-10{
+            scale: 1.2;
+            margin-bottom: 30px;
+        }
+
         .cover-page {
             text-align: center;
             padding: 40px 20px;
@@ -232,11 +254,11 @@
         }
 
         .cover-subtitle {
-            font-size: 1.3em;
-            margin-bottom: 30px;
+            font-size: 1.4em;
+            margin-bottom: 20px;
             font-style: italic;
-            margin-left: 10px;
-            margin-right: 10px;
+            justify-content: center;
+            align-self: center;
         }
 
         .cover-image {

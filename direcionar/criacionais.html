@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padrões Criacionais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --primary-light: #e3f2fd;
+            --primary-dark: #0a58ca;
+            --header-color: #0d2fc7;
+            --secondary-color: #6c757d;
+            --accent-color: #20c997;
+            --gradient-primary: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+            --gradient-light: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            background: var(--header-color);
+            box-shadow: var(--shadow-medium);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .hero-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 0 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pattern-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            height: 100%;
+            background: white;
+            box-shadow: var(--shadow-light);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .card-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pattern-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .pattern-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+            color: white;
+        }
+
+        .badge-custom {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background: white;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s;
+        }
+
+        .back-to-home:hover {
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .footer {
+            background-color:rgb(13, 22, 46);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .pattern-icon svg {
+            width: 3rem;
+            height: 3rem;
+            fill: currentColor;
+        }
+
+        .hover-primary {
+            transition: color 0.3s ease;
+        }
+
+        .hover-primary:hover {
+            color: #0d6efd !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0 3rem;
+            }
+
+            .pattern-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-arrow-left me-2"></i>Voltar ao Início
+            </a>
+            <span class="navbar-text">
+                <i class="bi bi-magic me-2"></i>Padrões Criacionais
+            </span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-5 fw-bold mb-3">Padrões Criacionais</h1>
+                    <p class="lead mb-4">Padrões que abstraem o processo de instanciação de objetos, tornando o sistema
+                        independente de como os objetos são criados.</p>
+                    <div>
+                        <span class="badge-custom">Design Patterns</span>
+                        <span class="badge-custom">Orientação a Objetos</span>
+                        <span class="badge-custom">Boas Práticas</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="bi bi-puzzle display-1 opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Padrões Criacionais -->
+    <section class="container mb-5">
+        <h2 class="section-title">Principais Padrões</h2>
+
+        <div class="row">
+            <!-- Singleton -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">1</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-lock-fill"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Singleton</h4>
+                        <p class="card-text mb-4">Garante que uma classe tenha apenas uma instância e fornece um ponto
+                            global de acesso a ela.</p>
+                        <a href="singleton.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Factory Method -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">2</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-gear-fill"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Factory Method</h4>
+                        <p class="card-text mb-4">Define uma interface para criar um objeto, mas permite que as
+                            subclasses decidam qual classe instanciar.</p>
+                        <a href="factory-method.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Abstract Factory -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">3</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-collection-fill"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Abstract Factory</h4>
+                        <p class="card-text mb-4">Fornece uma interface para criar famílias de objetos relacionados sem
+                            especificar suas classes concretas.</p>
+                        <a href="abstract-factory.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Builder -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">4</span>
+                        <div class="pattern-icon">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Builder</h4>
+                        <p class="card-text mb-4">Separa a construção de um objeto complexo de sua representação,
+                            permitindo a mesma construção criar diferentes representações.</p>
+                        <a href="builder.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prototype -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card pattern-card h-100">
+                    <div class="card-body text-center">
+                        <span class="pattern-number">5</span>
+                        <div class="pattern-icon">
+                            <div class="pattern-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-copy" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Prototype</h4>
+                        <p class="card-text mb-4">Especifica os tipos de objetos a serem criados usando uma instância
+                            prototípica e cria novos objetos copiando este protótipo.</p>
+                        <a href="prototype.html" class="btn btn-primary-custom">
+                            <i class="bi bi-arrow-right me-2"></i>Ver Detalhes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="../index.html" class="back-to-home">
+                <i class="bi bi-house me-2"></i>Voltar para a Página Inicial
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-light pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3 text-primary">Padrões de Projeto</h5>
+                    <p class="text-light-emphasis lh-base">Explore diferentes categorias de padrões para melhorar a
+                        arquitetura do seu software.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3 text-primary">Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../index.html" class="text-light text-decoration-none hover-primary">
+                                <i class="bi bi-house me-2"></i>Página Inicial
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-light text-decoration-none hover-primary">
+                                <i class="bi bi-diagram-3 me-2"></i>Padrões Estruturais
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-light text-decoration-none hover-primary">
+                                <i class="bi bi-arrow-repeat me-2"></i>Padrões Comportamentais
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-opacity-25">
+            <div class="text-center pt-2">
+                <p class="mb-0 text-light-emphasis">
+                    <i class="bi bi-c-circle me-2"></i>2023 Padrões de Projeto. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
