@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Strategy</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../direcionar/comportamentais.html" class="btn btn-purple">
+            <i class="bi bi-arrow-left me-2"></i>Voltar
+        </a>
+            <a class="navbar-brand" href="#">Padrões Comportamentais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Strategy?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama de Exemplo Genérico (UML)</a></li>
+            <li><a href="#page4">Exemplo Fictício (Com Britney Spears)</a></li>
+            <li><a href="#page5">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page6">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page7">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page8">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page9">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page10">Vantagens</a></li>
+            <li><a href="#page11">Desvantagens</a></li>
+            <li><a href="#page12">Conclusão</a></li>
+            <li><a href="#page13">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">STRATEGY</h1>
+            <p class="cover-subtitle">Escolhendo estratégias musicais</p>
+
+            <img src="../assets/img/comportamentais/strategy/1.jpeg" crossOrigin="anonymous" alt="Capa Strategy" class="cover-image"
+                id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Strategy?</h1>
+            <div class="img-placeholder-2">
+                <img src="../assets/img/comportamentais/strategy/2.jpg" crossOrigin="anonymous" alt="Strategy Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Strategy é um <strong>padrão de projeto comportamental</strong> que permite definir uma família de algoritmos, encapsular cada um deles e torná-los intercambiáveis. O Strategy permite que o algoritmo varie independentemente dos clientes que o utilizam [1].</p>
+            <p>Este padrão é particularmente útil quando você tem várias maneiras de executar uma operação e deseja poder alternar entre elas em tempo de execução. Em vez de implementar todos os algoritmos em uma única classe com múltiplas condições, o Strategy separa cada algoritmo em sua própria classe.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="../assets/img/comportamentais/strategy/3.jpg" crossOrigin="anonymous" alt="Strategy Pattern" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Strategy resolve é a <strong>rigidez de algoritmos</strong> em sistemas que precisam alternar entre diferentes formas de executar uma mesma tarefa. Sem este padrão, o código frequentemente se torna uma série de declarações if-else ou switch-case que selecionam qual algoritmo usar.</p>
+            <p>Isso leva a um código difícil de manter, estender e testar. Além disso, qualquer mudança nos algoritmos ou adição de novos algoritmos requer modificar a classe original, violando o princípio Open/Closed. O Strategy Pattern resolve isso encapsulando cada algoritmo em uma classe separada, permitindo que novos algoritmos sejam adicionados sem modificar o contexto existente [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../assets/img/comportamentais/strategy/4.png" crossOrigin="anonymous" alt="Strategy UML" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Strategy:</p>
+            <ul>
+                <li><strong>Context:</strong> Mantém uma referência para um objeto Strategy. Pode definir uma interface que permite ao Strategy acessar seus dados.</li>
+                <li><strong>Strategy (Interface):</strong> Declara uma interface comum a todos os algoritmos suportados. O Context usa esta interface para chamar o algoritmo definido por um ConcreteStrategy.</li>
+                <li><strong>ConcreteStrategy:</strong> Implementa o algoritmo usando a interface Strategy. Cada ConcreteStrategy fornece sua própria implementação do algoritmo.</li>
+            </ul>
+            <p>O Context configura-se com um objeto ConcreteStrategy e delega a ele a execução do algoritmo. Os clientes normalmente criam e passam um objeto ConcreteStrategy para o Context.</p>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Exemplo Fictício (Com Britney Spears)</h1>
+            <div class="img-placeholder-5">
+                <img src="../assets/img/comportamentais/strategy/5.jpg" crossOrigin="anonymous" alt="Britney Spears" class="cover-image">
+            </div>
+            <p>Vamos imaginar a Britney Spears, uma artista que precisa escolher diferentes estratégias de performance para diferentes tipos de shows:</p>
+            <ul>
+                <li><strong>Estratégia Pop:</strong> Para shows de música pop com coreografias elaboradas e hits como "Baby One More Time"</li>
+                <li><strong>Estratégia Acústica:</strong> Para performances intimistas com versões acústicas de suas músicas</li>
+                <li><strong>Estratégia Vegas:</strong> Para seu residência em Las Vegas com produções grandiosas e efeitos especiais</li>
+            </ul>
+            <p>Cada estratégia define uma maneira diferente de executar um show. O padrão Strategy permite que ela mude facilmente entre essas estratégias dependendo do contexto do evento.</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-6">
+                <img src="../assets/img/comportamentais/strategy/6.webp" crossOrigin="anonymous" alt="Complex Code" class="cover-image">
+            </div>
+            <p>Sem o Padrão Strategy, o código da Britney Spears teria que verificar constantemente qual estratégia usar para cada show:</p>
+            <pre><code>
+class BritneySpears:
+    def perform_show(self, show_type):
+        if show_type == "POP":
+            self._setup_pop_show()
+            self._execute_pop_choreography()
+            self._sing_pop_hits()
+        elif show_type == "ACOUSTIC":
+            self._setup_acoustic_stage()
+            self._play_guitar()
+            self._sing_acoustic_versions()
+        elif show_type == "VEGAS":
+            self._setup_vegas_stage()
+            self._execute_elaborate_choreography()
+            self._use_special_effects()
+    
+    def _setup_pop_show(self):
+        print("Preparando palco para show pop...")
+    
+    def _setup_acoustic_stage(self):
+        print("Preparando palco acústico...")
+    
+    def _setup_vegas_stage(self):
+        print("Preparando palco de Vegas...")
+    
+    # ... outros métodos específicos para cada tipo de show
+            </code></pre>
+            <p>Este código se torna difícil de manter à medida que novos tipos de shows são adicionados, violando o princípio Open/Closed.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-7">
+                <img src="../assets/img/comportamentais/strategy/7.webp" crossOrigin="anonymous" alt="Strategy Applied" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Strategy, encapsulamos cada estratégia em sua própria classe:</p>
+            <pre><code>
+// Interface Strategy
+interface PerformanceStrategy {
+    void setupStage();
+    void executePerformance();
+}
+
+// Estratégias Concretas
+class PopStrategy implements PerformanceStrategy {
+    public void setupStage() {
+        print("Preparando palco para show pop...");
+    }
+    
+    public void executePerformance() {
+        print("Executando coreografia elaborada e cantando hits pop!");
+    }
+}
+
+class AcousticStrategy implements PerformanceStrategy {
+    public void setupStage() {
+        print("Preparando palco acústico...");
+    }
+    
+    public void executePerformance() {
+        print("Tocando guitarra e cantando versões acústicas!");
+    }
+}
+
+class VegasStrategy implements PerformanceStrategy {
+    public void setupStage() {
+        print("Preparando palco de Vegas com efeitos especiais...");
+    }
+    
+    public void executePerformance() {
+        print("Executando coreografia elaborada com efeitos especiais!");
+    }
+}
+
+// Context
+class BritneySpears {
+    private PerformanceStrategy currentStrategy;
+    
+    public void setStrategy(PerformanceStrategy strategy) {
+        this.currentStrategy = strategy;
+    }
+    
+    public void performShow() {
+        currentStrategy.setupStage();
+        currentStrategy.executePerformance();
+    }
+}
+
+// Cliente
+public class Client {
+    public static void main(String[] args) {
+        BritneySpears britney = new BritneySpears();
+        
+        // Show pop
+        britney.setStrategy(new PopStrategy());
+        britney.performShow();
+        
+        // Show acústico
+        britney.setStrategy(new AcousticStrategy());
+        britney.performShow();
+    }
+}
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-8">
+                <img src="../assets/img/comportamentais/strategy/8.jpg" crossOrigin="anonymous" alt="Python Example" class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Strategy é um sistema de processamento de pagamentos que pode usar diferentes métodos (cartão de crédito, PayPal, transferência bancária):</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+
+class PaymentStrategy(ABC):
+    @abstractmethod
+    def process_payment(self, amount):
+        pass
+
+class CreditCardStrategy(PaymentStrategy):
+    def __init__(self, card_number, expiry_date, cvv):
+        self.card_number = card_number
+        self.expiry_date = expiry_date
+        self.cvv = cvv
+    
+    def process_payment(self, amount):
+        print(f"Processando pagamento de R${amount} via cartão de crédito {self.card_number[-4:]}")
+        # Lógica específica para cartão de crédito
+
+class PayPalStrategy(PaymentStrategy):
+    def __init__(self, email):
+        self.email = email
+    
+    def process_payment(self, amount):
+        print(f"Processando pagamento de R${amount} via PayPal ({self.email})")
+        # Lógica específica para PayPal
+
+class BankTransferStrategy(PaymentStrategy):
+    def __init__(self, account_number, bank_code):
+        self.account_number = account_number
+        self.bank_code = bank_code
+    
+    def process_payment(self, amount):
+        print(f"Processando pagamento de R${amount} via transferência bancária")
+        # Lógica específica para transferência bancária
+
+class PaymentProcessor:
+    def __init__(self):
+        self.strategy = None
+    
+    def set_payment_strategy(self, strategy):
+        self.strategy = strategy
+    
+    def process(self, amount):
+        if self.strategy:
+            self.strategy.process_payment(amount)
+        else:
+            print("Nenhuma estratégia de pagamento definida!")
+
+# Uso do sistema
+processor = PaymentProcessor()
+
+# Pagamento com cartão de crédito
+processor.set_payment_strategy(CreditCardStrategy("1234567890123456", "12/25", "123"))
+processor.process(150.00)
+
+# Pagamento com PayPal
+processor.set_payment_strategy(PayPalStrategy("britney@example.com"))
+processor.process(200.00)
+
+# Pagamento com transferência bancária
+processor.set_payment_strategy(BankTransferStrategy("987654", "001"))
+processor.process(300.00)
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-9">
+                <img src="../assets/img/comportamentais/strategy/9.png" crossOrigin="anonymous" alt="Britney Spears UML" class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Strategy no nosso exemplo fictício da Britney Spears:</p>
+            <ul>
+                <li>A classe <code>BritneySpears</code> é o Context, que mantém uma referência para a estratégia atual.</li>
+                <li>A interface <code>PerformanceStrategy</code> define os métodos que todas as estratégias devem implementar.</li>
+                <li>Classes concretas como <code>PopStrategy</code>, <code>AcousticStrategy</code> e <code>VegasStrategy</code> implementam o comportamento específico de cada tipo de performance.</li>
+            </ul>
+            <p>A seta tracejada com ponta de flecha aberta indica que as classes de estratégia concretas implementam a interface <code>PerformanceStrategy</code>. A seta sólida de <code>BritneySpears</code> para <code>PerformanceStrategy</code> mostra que o Context mantém uma referência para a estratégia atual.</p>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-10">
+                <img src="../assets/img/comportamentais/strategy/10.png" crossOrigin="anonymous" alt="Payment Processor UML" class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Strategy no exemplo prático do processador de pagamentos:</p>
+            <ul>
+                <li>A classe <code>PaymentProcessor</code> é o Context, que delega o processamento para a estratégia atual.</li>
+                <li>A interface <code>PaymentStrategy</code> define o método <code>process_payment()</code>.</li>
+                <li>As classes <code>CreditCardStrategy</code>, <code>PayPalStrategy</code> e <code>BankTransferStrategy</code> implementam o processamento específico para cada método de pagamento.</li>
+            </ul>
+            <p>Esta estrutura permite que o processador de pagamentos mude seu comportamento dinamicamente conforme o método de pagamento selecionado, sem a necessidade de verificações condicionais complexas.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-11">
+                <img src="../assets/img/comportamentais/strategy/11.jpg" crossOrigin="anonymous" alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Strategy oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Flexibilidade de Algoritmos:</strong> Permite trocar algoritmos em tempo de execução, oferecendo grande flexibilidade.</li>
+                <li><strong>Elimina Condições Complexas:</strong> Remove a necessidade de longas declarações if-else ou switch-case que selecionam algoritmos.</li>
+                <li><strong>Facilita a Adição de Novos Algoritmos:</strong> Novos algoritmos podem ser adicionados criando novas classes sem modificar o Context ou algoritmos existentes, seguindo o princípio Open/Closed.</li>
+                <li><strong>Separação de Responsabilidades:</strong> Separa a implementação do algoritmo do contexto que o utiliza, promovendo um código mais limpo e organizado.</li>
+                <li><strong>Reutilização de Algoritmos:</strong> Os algoritmos podem ser reutilizados em diferentes contextos, promovendo a reutilização de código.</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="../assets/img/comportamentais/strategy/12.webp" crossOrigin="anonymous" alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Strategy também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Sobrecarga de Classes:</strong> Pode resultar em um grande número de classes pequenas, especialmente se há muitos algoritmos, o que pode aumentar a complexidade do sistema.</li>
+                <li><strong>Complexidade para Algoritmos Simples:</strong> Para sistemas com poucos algoritmos ou algoritmos simples, o padrão pode ser excessivo e adicionar complexidade desnecessária.</li>
+                <li><strong>Cliente Precisa Conhecer as Estratégias:</strong> O cliente precisa estar ciente das diferentes estratégias disponíveis para selecionar a apropriada.</li>
+                <li><strong>Comunicação entre Strategy e Context:</strong> Pode haver overhead de comunicação se a Strategy precisa de muitos dados do Context.</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-13">
+                <img src="../assets/img/comportamentais/strategy/13.webp" crossOrigin="anonymous" alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Strategy é uma ferramenta poderosa para gerenciar famílias de algoritmos intercambiáveis. Ele é particularmente útil quando você precisa selecionar entre diferentes formas de executar uma operação em tempo de execução.</p>
+            <p>Ao encapsular cada algoritmo em uma classe separada, o padrão promove um código mais limpo, organizado e fácil de manter. Ele elimina a necessidade de condicionais complexas e facilita a adição de novos algoritmos no futuro.</p>
+            <p>No entanto, como todo padrão de projeto, é importante avaliar se o Strategy Pattern é a solução adequada para o problema em questão. Para sistemas com poucos algoritmos ou algoritmos simples, uma implementação mais direta pode ser mais apropriada.</p>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/strategy" target="_blank">Refactoring.Guru - Padrão de Projeto Strategy</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-strategy/18812" target="_blank">DevMedia - Padrão de Projeto Strategy</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/10/26/mao-na-massa-strategy/" target="_blank">Mão na Massa - Padrão Strategy</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Strategy" target="_blank">Wikipédia - Strategy (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/strategy-pattern-set-1/" target="_blank">GeeksforGeeks - Strategy Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/strategy" target="_blank">SourceMaking - Strategy Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
