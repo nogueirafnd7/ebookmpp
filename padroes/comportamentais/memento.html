@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Memento - Artistas Congelados</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Memento?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama de Exemplo Genérico (UML)</a></li>
+            <li><a href="#page4">Exemplo Fictício (Artistas Congelados)</a></li>
+            <li><a href="#page5">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page6">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page7">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page8">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page9">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page10">Vantagens</a></li>
+            <li><a href="#page11">Desvantagens</a></li>
+            <li><a href="#page12">Conclusão</a></li>
+            <li><a href="#page13">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">MEMENTO</h1>
+            <p class="cover-subtitle">Artistas Congelados no Tempo</p>
+
+            <img src="https://images.unsplash.com/photo-1542359642-92baf432d762?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                 alt="Capa Memento - Artistas Congelados" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Memento?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Memento Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Memento é um <strong>padrão de projeto comportamental</strong> que permite capturar e externalizar o estado interno de um objeto sem violar o encapsulamento, para que o objeto possa ser restaurado para esse estado mais tarde [1].</p>
+            <p>É como uma <strong>cápsula do tempo</strong> que preserva um estado específico para ser recuperado exatamente como estava.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://images.unsplash.com/photo-1574359411659-6196241fc6e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Problema do Congelamento" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Memento resolve é a necessidade de implementar mecanismos de <strong>desfazer/refazer (undo/redo)</strong> sem expor os detalhes internos de um objeto.</p>
+            <p>Sem este padrão, seria necessário expor os atributos privados do objeto para salvar seu estado, violando o princípio do encapsulamento. O Memento Pattern resolve isso criando um objeto especial que armazena o estado de forma segura [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="https://refactoring.guru/images/patterns/diagrams/memento/structure-indexed-2x.png" 
+                     alt="Memento UML" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Memento:</p>
+            <ul>
+                <li><strong>Originator:</strong> O objeto cujo estado precisa ser salvo</li>
+                <li><strong>Memento:</strong> O objeto que armazena o estado interno do Originator</li>
+                <li><strong>Caretaker:</strong> Responsável por guardar os mementos</li>
+            </ul>
+            <p>O Caretaker solicita um memento do Originator quando precisa salvar o estado, e passa o memento de volta quando precisa restaurar o estado.</p>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Exemplo Fictício (Artistas Congelados)</h1>
+            <div class="img-placeholder-5">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Artistas Congelados" class="cover-image">
+            </div>
+            <p>Imagine que <strong>Mariah Carey e Roberto Carlos</strong> têm um contrato especial: eles ficam "congelados" durante o ano todo e só "descongelam" no Natal para cantar suas músicas natalinas.</p>
+            
+            <h3>O Ciclo Anual:</h3>
+            <ul>
+                <li><strong>26 de Dezembro:</strong> São "congelados" - seu estado natalino é salvo em um Memento</li>
+                <li><strong>Janeiro a Novembro:</strong> Permanecem congelados no estado exato do último Natal</li>
+                <li><strong>1º de Dezembro:</strong> São "descongelados" - o estado natalino é restaurado do Memento</li>
+            </ul>
+
+            <p>O Memento garante que eles voltem exatamente ao estado em que estavam quando cantaram "All I Want for Christmas Is You" e "É Natal" pela última vez.</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-6">
+                <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Complex Code" class="cover-image">
+            </div>
+            <p>Sem o Padrão Memento, o sistema de congelamento seria caótico e inseguro:</p>
+            <pre><code>
+class MariahCarey:
+    def __init__(self):
+        self._voz_natalina = "Agudos perfeitos"
+        self._humor = "Alegre e festivo"
+        self._repertorio = ["All I Want for Christmas Is You"]
+        self._energia = 100
+    
+    # Para congelar, teríamos que expor tudo publicamente
+    def congelar(self):
+        # Violação do encapsulamento!
+        estado_congelado = {
+            'voz': self._voz_natalina,
+            'humor': self._humor,
+            'musicas': self._repertorio,
+            'energia': self._energia
+        }
+        return estado_congelado
+    
+    def descongelar(self, estado):
+        # Qualquer um pode modificar o estado!
+        self._voz_natalina = estado['voz']
+        self._humor = estado['humor']
+        self._repertorio = estado['musicas']
+        self._energia = estado['energia']
+            </code></pre>
+            <p>Qualquer pessoa poderia modificar o estado congelado ou acessar informações privadas!</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-7">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Memento Applied" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Memento, criamos um sistema seguro de congelamento:</p>
+            <pre><code>
+// Memento - A cápsula do tempo natalina
+class MementoNatalino {
+    private estado;
+    
+    constructor(estado) {
+        this.estado = estado;
+    }
+    
+    getEstado() {
+        return this.estado;
+    }
+}
+
+// Originator - O artista que será congelado
+class ArtistaNatalino {
+    private voz;
+    private humor;
+    private repertorio;
+    private energia;
+    
+    criarMemento() {
+        return new MementoNatalino({
+            voz: this.voz,
+            humor: this.humor,
+            repertorio: [...this.repertorio], // cópia
+            energia: this.energia
+        });
+    }
+    
+    restaurar(memento) {
+        const estado = memento.getEstado();
+        this.voz = estado.voz;
+        this.humor = estado.humor;
+        this.repertorio = [...estado.repertorio];
+        this.energia = estado.energia;
+    }
+}
+
+// Caretaker - O sistema de gerenciamento
+class SistemaCongelamento {
+    private mementos = {};
+    
+    congelarArtista(nome, artista) {
+        this.mementos[nome] = artista.criarMemento();
+        console.log(`${nome} congelado até o próximo Natal!`);
+    }
+    
+    descongelarArtista(nome, artista) {
+        if (this.mementos[nome]) {
+            artista.restaurar(this.mementos[nome]);
+            console.log(`${nome} descongelado! Pronto para o Natal!`);
+        }
+    }
+}
+
+// Uso do sistema
+const mariah = new ArtistaNatalino();
+const roberto = new ArtistaNatalino();
+const sistema = new SistemaCongelamento();
+
+// No dia 26/12
+sistema.congelarArtista("Mariah Carey", mariah);
+sistema.congelarArtista("Roberto Carlos", roberto);
+
+// No dia 1/12 do ano seguinte
+sistema.descongelarArtista("Mariah Carey", mariah);
+sistema.descongelarArtista("Roberto Carlos", roberto);
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://images.unsplash.com/photo-1526379879527-8559ecfcaec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Python Example" class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Memento em um editor de texto com funcionalidade de desfazer:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from datetime import datetime
+
+class Memento(ABC):
+    @abstractmethod
+    def get_name(self):
+        pass
+    
+    @abstractmethod
+    def get_date(self):
+        pass
+
+class TextMemento(Memento):
+    def __init__(self, state):
+        self._state = state
+        self._date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    def get_state(self):
+        return self._state
+    
+    def get_name(self):
+        return f"{self._date} / ({self._state[0:9]}...)"
+    
+    def get_date(self):
+        return self._date
+
+class TextEditor:
+    def __init__(self):
+        self._content = ""
+    
+    def write(self, text):
+        self._content += text
+    
+    def get_content(self):
+        return self._content
+    
+    def save(self):
+        return TextMemento(self._content)
+    
+    def restore(self, memento):
+        self._content = memento.get_state()
+
+class History:
+    def __init__(self):
+        self._mementos = []
+    
+    def push(self, memento):
+        self._mementos.append(memento)
+    
+    def pop(self):
+        if self._mementos:
+            return self._mementos.pop()
+        return None
+
+# Uso do sistema
+editor = TextEditor()
+history = History()
+
+editor.write("Primeira linha\n")
+history.push(editor.save())
+
+editor.write("Segunda linha\n")
+history.push(editor.save())
+
+editor.write("Terceira linha\n")
+print("Conteúdo atual:", editor.get_content())
+
+# Desfazer
+memento = history.pop()
+if memento:
+    editor.restore(memento)
+    print("Após desfazer:", editor.get_content())
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-9">
+                <img src="https://refactoring.guru/images/patterns/diagrams/memento/structure-pt-br-2x.png" 
+                     alt="Artistas Congelados UML" class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Memento no nosso exemplo dos artistas congelados:</p>
+            <ul>
+                <li>A classe <code>ArtistaNatalino</code> é o Originator, que pode criar e restaurar mementos</li>
+                <li>A classe <code>MementoNatalino</code> armazena o estado interno do artista</li>
+                <li>A classe <code>SistemaCongelamento</code> é o Caretaker, que gerencia quando congelar e descongelar</li>
+            </ul>
+            <p>O sistema garante que apenas o próprio artista possa acessar e modificar seu estado interno, preservando o encapsulamento.</p>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-10">
+                <img src="https://refactoring.guru/images/patterns/diagrams/memento/example-pt-br-2x.png" 
+                     alt="Editor de Texto UML" class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Memento no exemplo prático do editor de texto:</p>
+            <ul>
+                <li>A classe <code>TextEditor</code> é o Originator, responsável por criar e restaurar mementos</li>
+                <li>A classe <code>TextMemento</code> armazena o estado do texto</li>
+                <li>A classe <code>History</code> é o Caretaker, que mantém o histórico de mementos</li>
+            </ul>
+            <p>Esta estrutura permite que o usuário desfaça e refaça alterações de texto de forma segura e controlada.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-11">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Memento oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Preserva o Encapsulamento:</strong> O estado interno do Originator não é exposto para outras classes</li>
+                <li><strong>Facilita o Desfazer/Refazer:</strong> Implementa facilmente funcionalidades de undo/redo</li>
+                <li><strong>Snapshots do Estado:</strong> Permite capturar o estado do objeto em momentos específicos</li>
+                <li><strong>Separação de Responsabilidades:</strong> O Caretaker não precisa conhecer os detalhes internos do Originator</li>
+                <li><strong>Flexibilidade Temporal:</strong> Permite restaurar estados anteriores quando necessário</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Memento também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Consumo de Memória:</strong> Pode consumir muita memória se muitos mementos forem armazenados</li>
+                <li><strong>Complexidade Adicional:</strong> Adiciona mais classes e complexidade ao código</li>
+                <li><strong>Overhead de Performance:</strong> A criação e restauração de mementos pode ser custosa</li>
+                <li><strong>Gerenciamento de Mementos:</strong> O Caretaker precisa gerenciar adequadamente o ciclo de vida dos mementos</li>
+                <li><strong>Dificuldade com Objetos Grandes:</strong> Pode ser ineficiente para objetos muito grandes ou complexos</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-13">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
+                     alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Memento é uma ferramenta poderosa para gerenciar o estado de objetos ao longo do tempo. Ele é particularmente útil quando você precisa implementar funcionalidades de desfazer/refazer ou quando precisa capturar snapshots do estado de um objeto.</p>
+            <p>Na nossa analogia dos artistas congelados, o Memento funciona como uma <strong>cápsula do tempo</strong> que preserva perfeitamente o estado natalino de Mariah Carey e Roberto Carlos, permitindo que eles sejam "descongelados" exatamente como estavam no último Natal.</p>
+            <p>No entanto, como todo padrão de projeto, é importante avaliar se o Memento Pattern é a solução adequada para o problema em questão. Para sistemas que não precisam de funcionalidades de undo/redo ou onde o consumo de memória é crítico, outras abordagens podem ser mais apropriadas.</p>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/memento" target="_blank">Refactoring.Guru - Padrão de Projeto Memento</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-memento/16767" target="_blank">DevMedia - Padrão de Projeto Memento</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/10/26/mao-na-massa-memento/" target="_blank">Mão na Massa - Padrão Memento</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Memento" target="_blank">Wikipédia - Memento (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/memento-design-pattern/" target="_blank">GeeksforGeeks - Memento Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/memento" target="_blank">SourceMaking - Memento Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+</html>

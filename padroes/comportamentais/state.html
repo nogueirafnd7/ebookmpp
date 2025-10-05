@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/styleorg.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
 </head>
 
 <body>
@@ -19,10 +19,10 @@
             <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="../direcionar/comportamentais.html" class="btn btn-purple">
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
             <i class="bi bi-arrow-left me-2"></i>Voltar
         </a>
-            <a class="navbar-brand" href="#">Padrões Comportamentais</a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
             <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
                 <i class="bi bi-download"></i> Baixar PDF
             </button>
@@ -67,7 +67,7 @@
             <h1 class="cover-title">STATE</h1>
             <p class="cover-subtitle">Dominando as transformações</p>
 
-            <img src="../assets/img/comportamentais/state/1.jpg" crossOrigin="anonymous" alt="Capa State" class="cover-image"
+            <img src="../../assets/img/comportamentais/state/1.jpg" crossOrigin="anonymous" alt="Capa State" class="cover-image"
                 id="coverImage">
 
             <div class="mt-4">
@@ -81,7 +81,7 @@
         <div class="ebook-page" id="page1">
             <h1>O que é o Padrão State?</h1>
             <div class="img-placeholder-2">
-                <img src="../assets/img/comportamentais/state/2.PNG" crossOrigin="anonymous" alt="State Pattern" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/2.PNG" crossOrigin="anonymous" alt="State Pattern" class="cover-image">
             </div>
             <p>O Padrão State é um <strong>padrão de projeto comportamental</strong> que permite que um objeto altere seu comportamento quando seu estado interno muda. Parece que o objeto muda de classe [1]. O padrão encapsula estados em classes separadas e delega o comportamento específico do estado para essas classes, em vez de implementar comportamentos condicionais (if/else ou switch) no próprio objeto.</p>
             <p>Este padrão é particularmente útil quando um objeto precisa mudar seu comportamento em tempo de execução dependendo do seu estado, e quando você tem muitas condições que afetam o comportamento do objeto. Em vez de verificar o estado em cada operação, o objeto delega o comportamento para o objeto de estado atual.</p>
@@ -95,7 +95,7 @@
         <div class="ebook-page" id="page2">
             <h1>O que ele resolve?</h1>
             <div class="img-placeholder-3">
-                <img src="../assets/img/comportamentais/state/3.jpg" crossOrigin="anonymous" alt="State Pattern" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/3.jpg" crossOrigin="anonymous" alt="State Pattern" class="cover-image">
             </div>
             <p>O principal problema que o Padrão State resolve é a <strong>complexidade de código</strong> resultante de múltiplas condições que dependem do estado de um objeto. Sem este padrão, o código frequentemente se torna uma série interminável de declarações if-else ou switch-case que verificam o estado do objeto antes de executar qualquer comportamento.</p>
             <p>Isso leva a um código difícil de manter, estender e entender. Além disso, qualquer mudança nos estados ou comportamentos requer modificar a classe original, violando o princípio Open/Closed. O State Pattern resolve isso encapsulando cada estado em uma classe separada, permitindo que novos estados sejam adicionados sem modificar o contexto existente [2].</p>
@@ -109,7 +109,7 @@
         <div class="ebook-page" id="page3">
             <h1>Diagrama de Exemplo Genérico (UML)</h1>
             <div class="img-placeholder-4">
-                <img src="../assets/img/comportamentais/state/4.png" crossOrigin="anonymous" alt="State UML" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/4.png" crossOrigin="anonymous" alt="State UML" class="cover-image">
             </div>
             <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão State:</p>
             <ul>
@@ -128,7 +128,7 @@
         <div class="ebook-page" id="page4">
             <h1>Exemplo Fictício (Com Lady Gaga)</h1>
             <div class="img-placeholder-5">
-                <img src="../assets/img/comportamentais/state/5.png" crossOrigin="anonymous" alt="Lady Gaga" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/5.png" crossOrigin="anonymous" alt="Lady Gaga" class="cover-image">
             </div>
             <p>Vamos imaginar a Lady Gaga, uma artista conhecida por suas transformações musicais. Ela pode estar em diferentes estados artísticos:</p>
             <ul>
@@ -147,7 +147,7 @@
         <div class="ebook-page" id="page5">
             <h1>Sem o Padrão: O que Acontece?</h1>
             <div class="img-placeholder-6">
-                <img src="../assets/img/comportamentais/state/6.jpg" crossOrigin="anonymous" alt="Complex Code" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/6.jpg" crossOrigin="anonymous" alt="Complex Code" class="cover-image">
             </div>
             <p>Sem o Padrão State, o código da Lady Gaga teria que verificar constantemente em qual estado ela se encontra:</p>
             <pre><code>
@@ -185,7 +185,7 @@ class LadyGaga:
         <div class="ebook-page" id="page6">
             <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
             <div class="img-placeholder-7">
-                <img src="../assets/img/comportamentais/state/7.jpg" crossOrigin="anonymous" alt="State Applied" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/7.jpg" crossOrigin="anonymous" alt="State Applied" class="cover-image">
             </div>
             <p>Aplicando o Padrão State, encapsulamos cada estado em sua própria classe:</p>
             <pre><code>
@@ -257,7 +257,7 @@ class LadyGaga {
         <div class="ebook-page" id="page7">
             <h1>Exemplo Prático do Dia a Dia (Python)</h1>
             <div class="img-placeholder-8">
-                <img src="../assets/img/comportamentais/state/8.jpg" crossOrigin="anonymous" alt="Python Example" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/8.jpg" crossOrigin="anonymous" alt="Python Example" class="cover-image">
             </div>
             <p>Um exemplo prático do Padrão State é um sistema de reprodutor de música que muda de comportamento dependendo do seu estado (tocando, pausado, parado):</p>
             <pre><code>
@@ -341,7 +341,7 @@ player.stop()   # Parando a música...
         <div class="ebook-page" id="page8">
             <h1>Diagrama do Projeto Fictício</h1>
             <div class="img-placeholder-9">
-                <img src="../assets/img/comportamentais/state/9.png" crossOrigin="anonymous" alt="Lady Gaga UML" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/9.png" crossOrigin="anonymous" alt="Lady Gaga UML" class="cover-image">
             </div>
             <p>Este diagrama UML detalha a aplicação do Padrão State no nosso exemplo fictício da Lady Gaga:</p>
             <ul>
@@ -360,7 +360,7 @@ player.stop()   # Parando a música...
         <div class="ebook-page" id="page9">
             <h1>Diagrama do Projeto Prático</h1>
             <div class="img-placeholder-10">
-                <img src="../assets/img/comportamentais/state/10.png" crossOrigin="anonymous" alt="Music Player UML" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/10.png" crossOrigin="anonymous" alt="Music Player UML" class="cover-image">
             </div>
             <p>Este diagrama UML mostra a aplicação do Padrão State no exemplo prático do reprodutor de música:</p>
             <ul>
@@ -379,7 +379,7 @@ player.stop()   # Parando a música...
         <div class="ebook-page" id="page10">
             <h1>Vantagens</h1>
             <div class="img-placeholder-11">
-                <img src="../assets/img/comportamentais/state/11.png" crossOrigin="anonymous" alt="Advantages" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/11.png" crossOrigin="anonymous" alt="Advantages" class="cover-image">
             </div>
             <p>O Padrão State oferece várias vantagens significativas:</p>
             <ul>
@@ -399,7 +399,7 @@ player.stop()   # Parando a música...
         <div class="ebook-page" id="page11">
             <h1>Desvantagens</h1>
             <div class="img-placeholder-12">
-                <img src="../assets/img/comportamentais/state/12.jpg" crossOrigin="anonymous" alt="Disadvantages" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/12.jpg" crossOrigin="anonymous" alt="Disadvantages" class="cover-image">
             </div>
             <p>O Padrão State também apresenta algumas desvantagens:</p>
             <ul>
@@ -418,7 +418,7 @@ player.stop()   # Parando a música...
         <div class="ebook-page" id="page12">
             <h1>Conclusão</h1>
             <div class="img-placeholder-13">
-                <img src="../assets/img/comportamentais/state/13.png" crossOrigin="anonymous" alt="Conclusion" class="cover-image">
+                <img src="../../assets/img/comportamentais/state/13.png" crossOrigin="anonymous" alt="Conclusion" class="cover-image">
             </div>
             <p>O Padrão State é uma ferramenta poderosa para gerenciar o comportamento de objetos que mudam de estado. Ele é particularmente útil quando um objeto precisa alterar seu comportamento em tempo de execução e quando você tem múltiplos estados com comportamentos distintos.</p>
             <p>Ao encapsular cada estado em uma classe separada, o padrão promove um código mais limpo, organizado e fácil de manter. Ele elimina a necessidade de condicionais complexas e facilita a adição de novos estados no futuro.</p>

@@ -9,9 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/styleorg.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
 </head>
-
 
 <body>
     <!-- Navbar -->
@@ -20,10 +19,10 @@
             <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
                 <span class="navbar-toggler-icon"></span>
             </button>
-               <a href="../direcionar/comportamentais.html" class="btn btn-purple">
-            <i class="bi bi-arrow-left me-2"></i>Voltar
-        </a>
-            <a class="navbar-brand" href="#">Padrões Comportamentais</a>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
             <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
                 <i class="bi bi-download"></i> Baixar PDF
             </button>
@@ -45,7 +44,7 @@
             <li><a href="#page1">O que é o Padrão Observer?</a></li>
             <li><a href="#page2">O que ele resolve?</a></li>
             <li><a href="#page3">Diagrama de Exemplo Genérico (UML)</a></li>
-            <li><a href="#page4">Exemplo Fictício (Com Diva Pop)</a></li>
+            <li><a href="#page4">Exemplo Fictício (Com Beyoncé)</a></li>
             <li><a href="#page5">Sem o Padrão: O que Acontece?</a></li>
             <li><a href="#page6">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
             <li><a href="#page7">Exemplo Prático do Dia a Dia (Python)</a></li>
@@ -65,11 +64,11 @@
     <div class="main-content">
         <!-- Capa do E-book -->
         <div class="ebook-page cover-page" id="cover">
-            <h1 class="cover-title"> OBSERVER</h1>
+            <h1 class="cover-title">OBSERVER</h1>
             <p class="cover-subtitle">Desvendando a arte da notificação automática.</p>
 
-            <img src="../assets/img/comportamentais/observer/1.png" crossOrigin="anonymous" alt="Capa Observer" class="cover-image"
-                id="coverImage">
+            <img src="../../assets/img/comportamentais/observer/1.png" crossOrigin="anonymous" alt="Capa Observer"
+                class="cover-image" id="coverImage">
 
             <div class="mt-4">
                 <button class="btn btn-light" id="startReading">
@@ -82,8 +81,8 @@
         <div class="ebook-page" id="page1">
             <h1>O que é o Padrão Observer?</h1>
             <div class="img-placeholder-2">
-                <img src="../assets/img/comportamentais/observer/2.jpg" crossOrigin="anonymous" alt="Capa Observer" class="cover-image"
-                id="coverImage">
+                <img src="../../assets/img/comportamentais/observer/2.jpg" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image" id="coverImage">
             </div>
             <p>O Padrão Observer é um <strong>padrão de projeto comportamental</strong> que estabelece uma relação de
                 dependência "um-para-muitos" entre objetos. A ideia central é que, quando um objeto (chamado de
@@ -106,9 +105,8 @@
         <div class="ebook-page" id="page2">
             <h1>O que ele resolve?</h1>
             <div class="img-placeholder-3">
-         
-               <img src="../assets/img/comportamentais/observer/3.jpg" crossOrigin="anonymous" alt="Capa Observer" class="cover-image">
-            
+                <img src="../../assets/img/comportamentais/observer/3.jpg" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image">
             </div>
             <p>O principal problema que o Padrão Observer resolve é o <strong>alto acoplamento</strong> e a
                 <strong>comunicação ineficiente</strong> entre objetos. Em um cenário sem este padrão, um objeto que
@@ -132,7 +130,8 @@
         <div class="ebook-page" id="page3">
             <h1>Diagrama de Exemplo Genérico (UML)</h1>
             <div class="img-placeholder-4">
-                <img src="../assets/img/comportamentais/observer/4.png" crossOrigin="anonymous" alt="Capa Observer" class="cover-image">
+                <img src="../../assets/img/comportamentais/observer/4.png" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image">
             </div>
             <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Observer. Ele é composto por
                 duas hierarquias principais: o <strong>Subject</strong> (ou Publicador) e o <strong>Observer</strong>
@@ -154,7 +153,7 @@
                     ao <i>ConcreteSubject</i>. Ele é notificado das mudanças e reage a elas, geralmente consultando o
                     estado do <i>Subject</i> para se atualizar.</li>
             </ul>
-            <p>Esta estrutura garante que o <i>Subject</i> não precisa conhecer as classes concretas dos
+            <p>Esta estrutura garante que o <i>Subject</i> não precise conhecer as classes concretas dos
                 <i>Observers</i>, apenas a interface <i>Observer</i>, promovendo o baixo acoplamento.
             </p>
 
@@ -164,11 +163,225 @@
             </div>
         </div>
 
+        <!-- Página 4: Exemplo Fictício (Com Beyoncé) -->
+        <div class="ebook-page" id="page4">
+            <h1>Exemplo Fictício (Com Beyoncé)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/comportamentais/observer/beyonce.jpg" crossOrigin="anonymous" alt="Beyoncé"
+                    class="cover-image">
+            </div>
+            <p>Vamos imaginar uma situação com a diva pop <strong>Beyoncé</strong> para ilustrar o Padrão Observer de
+                forma divertida e memorável.</p>
+
+            <p><strong>Cenário:</strong> Beyoncé é uma superstar que constantemente tem novidades - novos singles,
+                turnês, álbuns e aparições públicas. Seus milhões de fãs querem ser os primeiros a saber de tudo.</p>
+
+            <p><strong>Problema:</strong> Sem o Padrão Observer, Beyoncé teria que:</p>
+            <ul>
+                <li>Ligar pessoalmente para cada fã</li>
+                <li>Enviar emails individuais para todos</li>
+                <li>Postar em cada rede social manualmente</li>
+                <li>Atualizar cada aplicativo de streaming separadamente</li>
+            </ul>
+
+            <p><strong>Solução com Observer:</strong> Beyoncé cria um sistema de notificação central onde:</p>
+            <ul>
+                <li><strong>Subject:</strong> Beyoncé Official App (o publicador)</li>
+                <li><strong>Observers:</strong> Fãs inscritos em diferentes categorias</li>
+            </ul>
+
+            <p>Quando Beyoncé tem uma novidade (lança um single, anuncia uma turnê), ela simplesmente atualiza seu app
+                oficial, que automaticamente notifica todos os fãs inscritos, cada um reagindo de acordo com seu
+                interesse específico.</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Página 5: Sem o Padrão: O que Acontece? -->
+        <div class="ebook-page" id="page5">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-5">
+                <img src="../../assets/img/comportamentais/observer/chaos.jpg" crossOrigin="anonymous"
+                    alt="Caos sem Observer" class="cover-image">
+            </div>
+            <p>Sem o Padrão Observer, o sistema de notificações da Beyoncé seria caótico e ineficiente. Vejamos como
+                seria:</p>
+
+            <pre><code>
+// CÓDIGO SEM O PADRÃO OBSERVER - NÃO FAÇA ISSO!
+
+class BeyonceNews {
+    constructor() {
+        this.instagramFans = [];
+        this.twitterFans = [];
+        this.spotifyListeners = [];
+        this.tourSubscribers = [];
+    }
+    
+    // Métodos para adicionar fãs manualmente em cada plataforma
+    addInstagramFan(fan) { this.instagramFans.push(fan); }
+    addTwitterFan(fan) { this.twitterFans.push(fan); }
+    addSpotifyListener(listener) { this.spotifyListeners.push(listener); }
+    addTourSubscriber(subscriber) { this.tourSubscribers.push(subscriber); }
+    
+    announceNewSingle(singleName) {
+        // Notificar Instagram
+        for (let fan of this.instagramFans) {
+            fan.postOnInstagram(`🎵 Novo single: ${singleName}!`);
+        }
+        
+        // Notificar Twitter
+        for (let fan of this.twitterFans) {
+            fan.tweet(`🔥 ${singleName} já disponível!`);
+        }
+        
+        // Notificar Spotify
+        for (let listener of this.spotifyListeners) {
+            listener.addToPlaylist(singleName);
+        }
+        
+        // PROBLEMAS:
+        // 1. Código duplicado para cada tipo de notificação
+        // 2. Se adicionarmos uma nova plataforma, temos que modificar esta classe
+        // 3. Alto acoplamento - BeyonceNews conhece todos os tipos de fãs
+        // 4. Dificuldade de manutenção
+    }
+}
+            </code></pre>
+
+            <p><strong>Problemas deste approach:</strong></p>
+            <ul>
+                <li>Alto acoplamento entre Beyoncé e seus fãs</li>
+                <li>Dificuldade para adicionar novos tipos de fãs</li>
+                <li>Código duplicado e difícil de manter</li>
+                <li>Beyoncé precisa saber exatamente como cada fã quer ser notificado</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Página 6: Com o Padrão Aplicado (Pseudo Linguagem) -->
+        <div class="ebook-page" id="page6">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-6">
+                <img src="../../assets/img/comportamentais/observer/organized.jpg" crossOrigin="anonymous"
+                    alt="Sistema Organizado" class="cover-image">
+            </div>
+            <p>Agora vejamos como o Padrão Observer transforma o sistema de notificações da Beyoncé:</p>
+
+            <pre><code>
+// INTERFACE OBSERVER
+interface FanObserver {
+    update(newsType, newsDetails);
+}
+
+// SUBJECT - BEYONCÉ OFFICIAL APP
+class BeyonceOfficialApp {
+    constructor() {
+        this.subscribers = [];
+        this.latestNews = null;
+    }
+    
+    subscribe(fan) {
+        this.subscribers.push(fan);
+    }
+    
+    unsubscribe(fan) {
+        this.subscribers = this.subscribers.filter(sub => sub !== fan);
+    }
+    
+    notifySubscribers(newsType, newsDetails) {
+        for (let fan of this.subscribers) {
+            fan.update(newsType, newsDetails);
+        }
+    }
+    
+    // Quando Beyoncé tem novidades
+    announceNews(newsType, newsDetails) {
+        this.latestNews = { type: newsType, details: newsDetails };
+        this.notifySubscribers(newsType, newsDetails);
+    }
+}
+
+// OBSERVERS CONCRETOS
+class InstagramFan implements FanObserver {
+    update(newsType, newsDetails) {
+        if (newsType === 'NEW_SINGLE') {
+            this.postStory(`🎶 ${newsDetails.singleName} já disponível! 👑`);
+        } else if (newsType === 'TOUR_ANNOUNCEMENT') {
+            this.postStory(`🚀 Turnê ${newsDetails.tourName} anunciada! ✨`);
+        }
+    }
+}
+
+class SpotifyListener implements FanObserver {
+    update(newsType, newsDetails) {
+        if (newsType === 'NEW_SINGLE') {
+            this.addToBeyoncePlaylist(newsDetails.singleName);
+            this.playOnRepeat();
+        }
+    }
+}
+
+class TourNewsFan implements FanObserver {
+    update(newsType, newsDetails) {
+        if (newsType === 'TOUR_ANNOUNCEMENT') {
+            this.buyTicketImmediately(newsDetails.tourName);
+            this.notifyFriends();
+        }
+    }
+}
+
+// USO DO SISTEMA
+const beyonceApp = new BeyonceOfficialApp();
+
+// Fãs se inscrevem
+const instagramFan = new InstagramFan();
+const spotifyListener = new SpotifyListener();
+const tourFan = new TourNewsFan();
+
+beyonceApp.subscribe(instagramFan);
+beyonceApp.subscribe(spotifyListener);
+beyonceApp.subscribe(tourFan);
+
+// Beyoncé anuncia novidades
+beyonceApp.announceNews('NEW_SINGLE', { 
+    singleName: 'TEXAS HOLD 'EM',
+    releaseDate: '2024-02-11'
+});
+
+beyonceApp.announceNews('TOUR_ANNOUNCEMENT', {
+    tourName: 'RENAISSANCE WORLD TOUR 2024',
+    cities: ['NY', 'LA', 'Miami']
+});
+            </code></pre>
+
+            <p><strong>Vantagens desta abordagem:</strong></p>
+            <ul>
+                <li>Baixo acoplamento - Beyoncé não conhece os tipos específicos de fãs</li>
+                <li>Fácil adição de novos tipos de fãs</li>
+                <li>Cada fã decide como reagir às notícias</li>
+                <li>Código limpo e fácil de manter</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
         <!-- Página 7: Exemplo Prático do Dia a Dia (Python) -->
         <div class="ebook-page" id="page7">
             <h1>Exemplo Prático do Dia a Dia (Python)</h1>
             <div class="img-placeholder-5">
-                <img src="../assets/img/comportamentais/observer/5.jpg" crossOrigin="anonymous" alt="Capa Observer" class="cover-image">
+                <img src="../../assets/img/comportamentais/observer/5.jpg" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image">
             </div>
             <p>Um exemplo prático e fácil de entender do Padrão Observer é um sistema de previsão do tempo. A
                 <strong>Estação Meteorológica</strong> atua como o <i>Subject</i>, e diferentes dispositivos de exibição
@@ -241,23 +454,23 @@ station.set_temperature(22)
         <div class="ebook-page" id="page8">
             <h1>Diagrama do Projeto Fictício</h1>
             <div class="img-placeholder-6">
-                <img src="../assets/img/comportamentais/observer/6.png" crossOrigin="anonymous" alt="Capa Observer" class="cover-image">
+                <img src="../../assets/img/comportamentais/observer/6.png" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image">
             </div>
-            <p>Este diagrama UML detalha a aplicação do Padrão Observer no nosso exemplo fictício da diva pop "Beyon-C".
-            </p>
+            <p>Este diagrama UML detalha a aplicação do Padrão Observer no nosso exemplo fictício da Beyoncé.</p>
             <ul>
-                <li>A classe <code>DivaPopSubject</code> é o publicador, responsável por gerenciar os fãs e
+                <li>A classe <code>BeyonceOfficialApp</code> é o publicador, responsável por gerenciar os fãs e
                     notificá-los.</li>
                 <li>A interface <code>FanObserver</code> define o contrato para os fãs que desejam receber atualizações.
                 </li>
-                <li>Classes concretas como <code>SocialMediaFan</code>, <code>StreamingFan</code> e
+                <li>Classes concretas como <code>InstagramFan</code>, <code>SpotifyListener</code> e
                     <code>TourNewsFan</code> são os observadores, cada um reagindo de uma maneira específica às notícias
-                    da Beyon-C.
+                    da Beyoncé.
                 </li>
             </ul>
             <p>A seta tracejada com ponta de flecha aberta (realização) indica que as classes concretas de fãs
                 implementam a interface <code>FanObserver</code>. A seta sólida com ponta de flecha aberta (associação)
-                de <code>DivaPopSubject</code> para <code>FanObserver</code> indica que o <i>Subject</i> mantém uma
+                de <code>BeyonceOfficialApp</code> para <code>FanObserver</code> indica que o <i>Subject</i> mantém uma
                 coleção de <i>Observers</i>.</p>
 
             <div class="page-navigation">
@@ -269,7 +482,8 @@ station.set_temperature(22)
         <div class="ebook-page" id="page9">
             <h1>Diagrama do Projeto Prático</h1>
             <div class="img-placeholder-7">
-                 <img src="../assets/img/comportamentais/observer/7.png" crossOrigin="anonymous" alt="Capa Observer" class="cover-image">
+                <img src="../../assets/img/comportamentais/observer/7.png" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image">
             </div>
             <p>Aqui está o diagrama UML para o exemplo prático da Estação Meteorológica, demonstrando a estrutura do
                 Padrão Observer em um contexto real.</p>
@@ -295,7 +509,8 @@ station.set_temperature(22)
         <div class="ebook-page" id="page10">
             <h1>Vantagens</h1>
             <div class="img-placeholder-8">
-                  <img src="../assets/img/comportamentais/observer/8.webp" crossOrigin="anonymous" alt="Capa Observer" class="cover-image">
+                <img src="../../assets/img/comportamentais/observer/8.webp" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image">
             </div>
             <p>O Padrão Observer oferece uma série de benefícios significativos para o design de software:</p>
             <ul>
@@ -327,7 +542,8 @@ station.set_temperature(22)
         <div class="ebook-page" id="page11">
             <h1>Desvantagens</h1>
             <div class="img-placeholder-9">
-                 <img src="../assets/img/comportamentais/observer/9.webp" crossOrigin="anonymous" alt="Capa Observer" class="cover-image">
+                <img src="../../assets/img/comportamentais/observer/9.webp" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image">
             </div>
             <p>Apesar de suas muitas vantagens, o Padrão Observer também apresenta algumas desvantagens que devem ser
                 consideradas:</p>
@@ -360,7 +576,8 @@ station.set_temperature(22)
         <div class="ebook-page" id="page12">
             <h1>Conclusão</h1>
             <div class="img-placeholder-10">
-                  <img src="../assets/img/comportamentais/observer/10.jpg" crossOrigin="anonymous" alt="Capa Observer" class="cover-image">
+                <img src="../../assets/img/comportamentais/observer/10.jpg" crossOrigin="anonymous" alt="Capa Observer"
+                    class="cover-image">
             </div>
             <p>O Padrão Observer é uma ferramenta poderosa e elegante para construir sistemas reativos e flexíveis, onde
                 a comunicação entre objetos precisa ser desacoplada. Ele é fundamental em uma vasta gama de aplicações,
