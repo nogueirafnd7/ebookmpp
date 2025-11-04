@@ -22,7 +22,7 @@
             <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
                 <i class="bi bi-arrow-left me-2"></i>Voltar
             </a>
-            <a class="navbar-brand" href="../../direcionar/comportamentais.html" >Padrões Comportamentais</a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
             <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
                 <i class="bi bi-download"></i> Baixar PDF
             </button>
@@ -81,8 +81,8 @@
         <div class="ebook-page" id="page1">
             <h1>O que é o Padrão Strategy?</h1>
             <div class="img-placeholder-2">
-                <img src="../../assets/img/comportamentais/strategy/2.jpg" crossOrigin="anonymous" alt="Strategy Pattern"
-                    class="cover-image">
+                <img src="../../assets/img/comportamentais/strategy/2.jpg" crossOrigin="anonymous"
+                    alt="Strategy Pattern" class="cover-image">
             </div>
             <p>O Padrão Strategy é um <strong>padrão de projeto comportamental</strong> que permite definir uma família
                 de algoritmos, encapsular cada um deles e torná-los intercambiáveis. O Strategy permite que o algoritmo
@@ -100,8 +100,8 @@
         <div class="ebook-page" id="page2">
             <h1>O que ele resolve?</h1>
             <div class="img-placeholder-3">
-                <img src="../../assets/img/comportamentais/strategy/3.jpg" crossOrigin="anonymous" alt="Strategy Pattern"
-                    class="cover-image">
+                <img src="../../assets/img/comportamentais/strategy/3.jpg" crossOrigin="anonymous"
+                    alt="Strategy Pattern" class="cover-image">
             </div>
             <p>O principal problema que o Padrão Strategy resolve é a <strong>rigidez de algoritmos</strong> em sistemas
                 que precisam alternar entre diferentes formas de executar uma mesma tarefa. Sem este padrão, o código
@@ -214,8 +214,8 @@ class BritneySpears:
         <div class="ebook-page" id="page6">
             <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
             <div class="img-placeholder-7">
-                <img src="../../assets/img/comportamentais/strategy/7.webp" crossOrigin="anonymous" alt="Strategy Applied"
-                    class="cover-image">
+                <img src="../../assets/img/comportamentais/strategy/7.webp" crossOrigin="anonymous"
+                    alt="Strategy Applied" class="cover-image">
             </div>
             <p>Aplicando o Padrão Strategy, encapsulamos cada estratégia em sua própria classe:</p>
             <pre><code>
@@ -373,8 +373,8 @@ processor.process(300.00)
         <div class="ebook-page" id="page8">
             <h1>Diagrama do Projeto Fictício</h1>
             <div class="img-placeholder-9">
-                <img src="../../assets/img/comportamentais/strategy/9.png" crossOrigin="anonymous" alt="Britney Spears UML"
-                    class="cover-image">
+                <img src="../../assets/img/comportamentais/strategy/9.png" crossOrigin="anonymous"
+                    alt="Britney Spears UML" class="cover-image">
             </div>
             <p>Este diagrama UML detalha a aplicação do Padrão Strategy no nosso exemplo fictício da Britney Spears:</p>
             <ul>
@@ -383,11 +383,13 @@ processor.process(300.00)
                 <li>A interface <code>PerformanceStrategy</code> define os métodos que todas as estratégias devem
                     implementar.</li>
                 <li>Classes concretas como <code>PopStrategy</code>, <code>AcousticStrategy</code> e
-                    <code>VegasStrategy</code> implementam o comportamento específico de cada tipo de performance.</li>
+                    <code>VegasStrategy</code> implementam o comportamento específico de cada tipo de performance.
+                </li>
             </ul>
             <p>A seta tracejada com ponta de flecha aberta indica que as classes de estratégia concretas implementam a
                 interface <code>PerformanceStrategy</code>. A seta sólida de <code>BritneySpears</code> para
-                <code>PerformanceStrategy</code> mostra que o Context mantém uma referência para a estratégia atual.</p>
+                <code>PerformanceStrategy</code> mostra que o Context mantém uma referência para a estratégia atual.
+            </p>
 
             <div class="page-navigation">
                 <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
@@ -409,7 +411,8 @@ processor.process(300.00)
                 <li>A interface <code>PaymentStrategy</code> define o método <code>process_payment()</code>.</li>
                 <li>As classes <code>CreditCardStrategy</code>, <code>PayPalStrategy</code> e
                     <code>BankTransferStrategy</code> implementam o processamento específico para cada método de
-                    pagamento.</li>
+                    pagamento.
+                </li>
             </ul>
             <p>Esta estrutura permite que o processador de pagamentos mude seu comportamento dinamicamente conforme o
                 método de pagamento selecionado, sem a necessidade de verificações condicionais complexas.</p>
@@ -524,6 +527,63 @@ processor.process(300.00)
         <i class="bi bi-arrow-up"></i>
     </a>
 
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
     <!-- Bootstrap JS e Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
