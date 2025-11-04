@@ -325,13 +325,28 @@
 
 /* Botão de voltar ao topo */
 .back-to-top {
+    position: fixed;
+    bottom: 30px; /* distância do fundo */
+    right: 30px; /* distância da lateral direita */
     background-color: var(--title-h1) !important;
     color: white !important;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 999; /* garante que fique acima dos outros elementos */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .back-to-top:hover {
     background-color: var(--title-h2-h3) !important;
     color: white !important;
+    transform: scale(1.1);
 }
 
         /* Botões de navegação entre páginas */

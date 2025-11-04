@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Singleton - A Eterna Cher</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylecri.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/criacionais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/criacionais.html">Padrões Criacionais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Singleton?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Exemplo Fictício (A Eterna Cher)</a></li>
+            <li><a href="#page5">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page6">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page7">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page8">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page9">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page10">Vantagens</a></li>
+            <li><a href="#page11">Desvantagens</a></li>
+            <li><a href="#page12">Conclusão</a></li>
+            <li><a href="#page13">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">SINGLETON</h1>
+            <p class="cover-subtitle">A Eterna Cher - Única e Incomparável</p>
+
+            <img src="https://parade.com/.image/w_3840,q_auto:good,c_limit/MTk5NTkxNzUxMDkzMDY4OTAz/cher-net-worth.jpg" 
+                 alt="Capa Singleton - Cher" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Singleton?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://rollingstone.com.br/wp-content/uploads/legacy/2012/img-1009771-cher.jpg" 
+                     alt="Singleton Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Singleton é um <strong>padrão de projeto criacional</strong> que garante que uma classe tenha apenas uma instância e fornece um ponto de acesso global a essa instância [1].</p>
+            <p>É como garantir que existe apenas <strong>uma Cher no mundo</strong> - única, icônica e inconfundível.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://images.bangpremier.com/articleimage/2024_10_16__bsalscplg_1729057041cropped2965x1927.webp" 
+                     alt="Problema da Duplicação" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Singleton resolve é a necessidade de ter <strong>apenas uma instância</strong> de uma classe em todo o sistema.</p>
+            <p>Sem este padrão, poderiam ser criadas múltiplas instâncias de objetos que deveriam ser únicos, como configurações globais, conexões de banco de dados, ou no nosso caso - a Cher! [2]</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/criacionais/singleton/generico.png" 
+                     alt="Singleton UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Singleton:</p>
+            <pre class="uml-code">
+@startuml
+class Singleton {
+    - static instance: Singleton
+    - Singleton()
+    + static getInstance(): Singleton
+    + someBusinessLogic(): void
+}
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Construtor Privado:</strong> Impede a criação de instâncias externas</li>
+                <li><strong>Método Estático getInstance():</strong> Fornece acesso global à única instância</li>
+                <li><strong>Instância Estática:</strong> Armazena a única instância da classe</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Exemplo Fictício (A Eterna Cher)</h1>
+            <div class="img-placeholder-5">
+                <img src="https://portalpepper.com.br/wp-content/uploads/2021/05/cher-1978-1024x640.jpg" 
+                     alt="Cher Eterna" class="cover-image">
+            </div>
+            <p>Imagine que <strong>Cher</strong> é uma entidade única no universo do entretenimento. Não pode haver duas Chers, assim como não pode haver dois sóis no nosso sistema solar.</p>
+            
+            <h3>O Princípio da Unicidade:</h3>
+            <ul>
+                <li><strong>Voz Inconfundível:</strong> Sua voz é única e reconhecível em qualquer lugar</li>
+                <li><strong>Estilo Único:</strong> Seu estilo fashion é imitado, mas nunca igualado</li>
+                <li><strong>Carreira Sem Paralelo:</strong> Única artista a ter hits #1 em 6 décadas diferentes</li>
+                <li><strong>Presença Global:</strong> Sua influência é sentida mundialmente</li>
+            </ul>
+
+            <p>O Singleton garante que, não importa quantas pessoas tentem "criar" uma Cher, sempre retornaremos a mesma e única instância.</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-6">
+                <img src="https://bordalo.observador.pt/v2/q:60/rs:fill:980/c:770:433:nowe:0:0/plain/https://s3.observador.pt/wp-content/uploads/2021/05/19140456/770-cher-performing-1.jpg" 
+                     alt="Cher Duplicada" class="cover-image">
+            </div>
+            <p>Sem o Padrão Singleton, o caos se instala no mundo da música:</p>
+            <pre><code>
+class Cher {
+    constructor() {
+        this.nome = "Cher";
+        this.voz = "Contralto Inconfundível";
+        this.hits = ["Believe", "If I Could Turn Back Time"];
+    }
+    
+    cantar() {
+        return "Do you believe in life after love?";
+    }
+}
+
+// PROBLEMA: Múltiplas instâncias!
+const cher1 = new Cher();
+const cher2 = new Cher();
+const cher3 = new Cher();
+
+console.log(cher1 === cher2); // false - Diferentes instâncias!
+console.log(cher2 === cher3); // false - Outra instância diferente!
+
+// Agora temos 3 Chers cantando ao mesmo tempo!
+            </code></pre>
+            <p>Múltiplas Chers destruiriam a singularidade da artista!</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-7">
+                <img src="https://s2-vogue.glbimg.com/zt_exCkMGeatqhxDrZFgcM8nZbA=/0x0:1600x900/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_5dfbcf92c1a84b20a5da5024d398ff2f/internal_photos/bs/2025/t/w/JWdTCzRL2Llg78LLJoJg/salto-de-tenis-access-time-22-.jpg" 
+                     alt="Singleton Cher" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Singleton, garantimos que exista apenas uma Cher:</p>
+            <pre><code>
+class CherSingleton {
+    // Instância única e estática
+    static #instancia = null;
+    
+    // Construtor privado - ninguém pode criar novas Chers!
+    constructor() {
+        if (CherSingleton.#instancia) {
+            throw new Error("Já existe uma Cher no universo!");
+        }
+        
+        this.nome = "Cher";
+        this.voz = "Contralto Inconfundível";
+        this.idade = "Eterna";
+        this.hits = [
+            "Believe", 
+            "If I Could Turn Back Time",
+            "Strong Enough",
+            "The Shoop Shoop Song"
+        ];
+        this.oscars = 1;
+        this.grammys = 1;
+        this.emmy = 1;
+        
+        CherSingleton.#instancia = this;
+    }
+    
+    // Único ponto de acesso global
+    static getInstancia() {
+        if (!CherSingleton.#instancia) {
+            CherSingleton.#instancia = new CherSingleton();
+        }
+        return CherSingleton.#instancia;
+    }
+    
+    cantar(musica = "Believe") {
+        return `🎵 ${musica} - com Auto-Tune característico 🎵`;
+    }
+    
+    receberPremio() {
+        this.grammys++;
+        return "Obrigada";
+    }
+    
+    renovarContratoLasVegas() {
+        return "Contrato renovado por mais 3 anos!";
+    }
+}
+
+// USO CORRETO - Apenas uma Cher!
+const cher1 = CherSingleton.getInstancia();
+const cher2 = CherSingleton.getInstancia();
+
+console.log(cher1 === cher2); // true - Mesma instância!
+console.log(cher1.cantar()); // 🎵 Believe - com Auto-Tune característico 🎵
+
+// TENTATIVA DE CRIAR NOVA INSTÂNCIA (FALHA!)
+try {
+    const cherFalsa = new CherSingleton(); // ERRO!
+} catch (e) {
+    console.log(e.message); // "Já existe uma Cher no universo!"
+}
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://1000logos.net/wp-content/uploads/2020/08/Python-Logo.jpg" 
+                     alt="Python Example" class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Singleton em um sistema de configurações de aplicativo:</p>
+            <pre><code>
+class ConfiguracaoApp:
+    _instancia = None
+    
+    def __new__(cls):
+        if cls._instancia is None:
+            print("Criando instância única de ConfiguracaoApp")
+            cls._instancia = super(ConfiguracaoApp, cls).__new__(cls)
+            # Inicialização das configurações
+            cls._instancia.tema = "escuro"
+            cls._instancia.idioma = "pt-BR"
+            cls._instancia.regiao = "Brasil"
+            cls._instancia.log_level = "INFO"
+        return cls._instancia
+    
+    def mostrar_configuracoes(self):
+        return f"Tema: {self.tema}, Idioma: {self.idioma}, Região: {self.regiao}"
+
+# Implementação Thread-Safe (para aplicações multi-thread)
+import threading
+
+class LoggerSingleton:
+    _instancia = None
+    _lock = threading.Lock()
+    
+    def __new__(cls):
+        with cls._lock:
+            if cls._instancia is None:
+                cls._instancia = super(LoggerSingleton, cls).__new__(cls)
+                cls._instancia.arquivo_log = "app.log"
+                cls._instancia.nivel = "DEBUG"
+        return cls._instancia
+    
+    def log(self, mensagem):
+        print(f"[LOG] {mensagem}")
+
+# Uso do sistema
+config1 = ConfiguracaoApp()
+config2 = ConfiguracaoApp()
+
+print(config1 is config2)  # True - Mesma instância!
+print(config1.mostrar_configuracoes())
+
+logger1 = LoggerSingleton()
+logger2 = LoggerSingleton()
+
+print(logger1 is logger2)  # True - Mesma instância!
+logger1.log("Aplicação iniciada")
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-9">
+                <img src="../../assets/img/criacionais/singleton/ficticio.png" 
+                     alt="Cher Singleton UML" class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Singleton no nosso exemplo da Cher:</p>
+            <pre class="uml-code">
+@startuml
+class CherSingleton {
+    - static instancia: CherSingleton
+    - nome: string
+    - voz: string
+    - hits: string[]
+    - grammys: int
+    - oscars: int
+    
+    - CherSingleton()
+    + static getInstancia(): CherSingleton
+    + cantar(musica: string): string
+    + receberPremio(): string
+    + renovarContratoLasVegas(): string
+}
+
+note right of CherSingleton::getInstancia
+    if (instancia == null) {
+        instancia = new CherSingleton();
+    }
+    return instancia;
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como o construtor privado e o método estático garantem a unicidade.</p>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/criacionais/singleton/pratico.png" 
+                     alt="Configuração App UML" class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Singleton no exemplo prático do sistema de configurações:</p>
+            <pre class="uml-code">
+@startuml
+class ConfiguracaoApp {
+    - static _instancia: ConfiguracaoApp
+    - tema: string
+    - idioma: string
+    - regiao: string
+    - log_level: string
+    
+    + __new__(): ConfiguracaoApp
+    + mostrar_configuracoes(): string
+}
+
+class LoggerSingleton {
+    - static _instancia: LoggerSingleton
+    - static _lock: threading.Lock
+    - arquivo_log: string
+    - nivel: string
+    
+    + __new__(): LoggerSingleton
+    + log(mensagem: string): void
+}
+
+ConfiguracaoApp --> LoggerSingleton : usa
+@enduml
+            </pre>
+            <p>Esta estrutura garante que as configurações e logs sejam consistentes em toda a aplicação.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-11">
+                <img src="https://ca-times.brightspotcdn.com/dims4/default/8da1788/2147483647/strip/true/crop/3811x2541+0+0/resize/1200x800!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fa9%2Fd4%2F06e222cb4998b1e5c86060c16133%2Fgettyimages-1342572428.jpg" 
+                     alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Singleton oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Instância Única Garantida:</strong> Controla o acesso à única instância</li>
+                <li><strong>Acesso Global:</strong> Fornece ponto de acesso bem definido</li>
+                <li><strong>Inicialização Preguiçosa:</strong> A instância é criada apenas quando necessário</li>
+                <li><strong>Controle de Recursos:</strong> Útil para recursos compartilhados como conexões de banco</li>
+                <li><strong>Consistência de Estado:</strong> Garante que o estado seja consistente em todo o sistema</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://people.com/thmb/FNttoGCThQ5grZyZpFuGiDLw-SI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/cher-02-2000-9fa09f9433624845855266ad617f3259.jpg" 
+                     alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Singleton também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Acoplamento Global:</strong> Cria dependências ocultas entre classes</li>
+                <li><strong>Dificuldade de Teste:</strong> Complexo para testes unitários e mocking</li>
+                <li><strong>Violação do SRP:</strong> Controla sua própria criação e ciclo de vida</li>
+                <li><strong>Problemas com Multithreading:</strong> Requer sincronização em ambientes concorrentes</li>
+                <li><strong>Máscara de Design Pobre:</strong> Pode esconder dependências inadequadas</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-13">
+                <img src="https://feministing.com/wp-content/uploads/2015/12/Cher.jpg" 
+                     alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Singleton é uma ferramenta poderosa para garantir que uma classe tenha apenas uma instância em todo o sistema. Ele é particularmente útil quando você precisa de um ponto de acesso global para recursos compartilhados.</p>
+            <p>Na nossa analogia da Cher, o Singleton funciona como o <strong>princípio da unicidade artística</strong> - garantindo que exista apenas uma Cher, com sua voz única, estilo inconfundível e carreira sem paralelos.</p>
+            <p>No entanto, como todo padrão de projeto, é importante usar o Singleton com moderação. Ele pode se tornar um anti-padrão quando usado indiscriminadamente, criando acoplamento excessivo e dificultando a manutenção do código.</p>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/singleton" target="_blank">Refactoring.Guru - Padrão de Projeto Singleton</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-singleton/16792" target="_blank">DevMedia - Padrão de Projeto Singleton</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/09/25/mao-na-massa-singleton/" target="_blank">Mão na Massa - Padrão Singleton</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Singleton" target="_blank">Wikipédia - Singleton (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/singleton-design-pattern/" target="_blank">GeeksforGeeks - Singleton Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/singleton" target="_blank">SourceMaking - Singleton Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+</html>
