@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Prototype - A Arte da Replicação de Charli XCX</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylecri.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/criacionais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/criacionais.html">Padrões Criacionais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Prototype?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Exemplo Fictício (A Arte de Charli XCX)</a></li>
+            <li><a href="#page5">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page6">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page7">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page8">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page9">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page10">Vantagens</a></li>
+            <li><a href="#page11">Desvantagens</a></li>
+            <li><a href="#page12">Conclusão</a></li>
+            <li><a href="#page13">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">PROTOTYPE</h1>
+            <p class="cover-subtitle">A Arte da Replicação de Charli XCX - Clonando o Futuro do Pop</p>
+
+            <img src="https://ucsdguardian.org/wp-content/uploads/2018/01/Pop-2-ALBUM-COVER-1200x900.jpg"
+                alt="Capa Prototype - Charli XCX Pop 2" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Prototype?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://i.guim.co.uk/img/media/953d6896334d1b7c910554fe5a36c9d296b2552b/0_536_2000_1200/master/2000.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=76343e5b5d65ae989071e1077fb15403"
+                    alt="Prototype Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Prototype é um <strong>padrão de projeto criacional</strong> que permite copiar objetos existentes sem tornar seu código dependente de suas classes [1].</p>
+            <p>É como a <strong>Charli XCX criando remixes e versões alternativas</strong> de suas músicas - cada versão mantém a essência original mas com variações únicas que se adaptam a diferentes contextos.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://www.vice.com/wp-content/uploads/sites/2/2018/06/1529501911236-Screen-Shot-2018-06-20-at-143246.png?resize=2000,1063"
+                    alt="Problema da Cópia de Objetos" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Prototype resolve é a criação de <strong>cópias de objetos complexos</strong> sem acoplar o código às suas classes específicas.</p>
+            <p>Sem este padrão, copiar objetos seria complexo e propenso a erros - como tentar recriar manualmente todas as camadas de produção de uma música do Pop 2 [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/criacionais/prototype/generico.png"
+                    alt="Prototype UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Prototype:</p>
+            <pre class="uml-code">
+@startuml
+interface Prototype {
+    + clone(): Prototype
+}
+
+class ConcretePrototype1 {
+    - field1: string
+    - field2: number
+    + clone(): ConcretePrototype1
+    + operation(): void
+}
+
+class ConcretePrototype2 {
+    - fieldA: string[]
+    - fieldB: object
+    + clone(): ConcretePrototype2
+    + operation(): void
+}
+
+class Client {
+    - prototype: Prototype
+    + operation(): void
+}
+
+Prototype <|-- ConcretePrototype1
+Prototype <|-- ConcretePrototype2
+Client --> Prototype
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Prototype:</strong> Interface que declara o método clone</li>
+                <li><strong>ConcretePrototype:</strong> Implementações que definem como clonar</li>
+                <li><strong>Client:</strong> Usa os protótipos para criar novos objetos</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Exemplo Fictício (A Arte de Charli XCX)</h1>
+            <div class="img-placeholder-5">
+                <img src="https://vinyl.com/cdn/shop/files/8446481498417_85quality_Charli-XCX-Pop2.webp?v=1734328253"
+                    alt="Charli XCX Pop 2" class="cover-image">
+            </div>
+            <p>Imagine que <strong>Charli XCX</strong> cria diferentes versões de suas músicas baseadas em protótipos:</p>
+
+            <h3>As Versões de Música no Estilo Pop 2:</h3>
+            <ul>
+                <li><strong>Versão Original:</strong> Produção completa com todos os elementos</li>
+                <li><strong>Versão Acústica:</strong> Mantém a melodia mas remove sintetizadores</li>
+                <li><strong>Versão Club:</strong> Aumenta BPM e adiciona drops eletrônicos</li>
+                <li><strong>Versão Colaborativa:</strong> Adiciona vocais de outros artistas</li>
+                <li><strong>Versão Experimental:</strong> Distorce e reorganiza elementos</li>
+            </ul>
+
+            <p>O Prototype permite criar essas variações eficientemente, clonando a base original e modificando apenas o necessário.</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-6">
+                <img src="https://www.billboard.com/wp-content/uploads/media/charli-xcx-el-rey-2018-billboard-1548.jpg"
+                    alt="Charli XCX Produção Complexa" class="cover-image">
+            </div>
+            <p>Sem o Padrão Prototype, criar versões de músicas seria ineficiente e propenso a erros:</p>
+            <pre><code>
+// PROBLEMA: Criação manual de cópias complexas!
+class MusicaPop2 {
+    constructor(titulo, bpm, sintetizadores, vocais, 
+                arranjo, efeitos, colaboradores, ...mais15Parametros) {
+        this.titulo = titulo;
+        this.bpm = bpm;
+        this.sintetizadores = [...sintetizadores]; // Cópia superficial!
+        this.vocais = [...vocais]; // Cópia superficial!
+        this.arranjo = {...arranjo}; // Cópia superficial!
+        // ... mais inicializações complexas
+    }
+}
+
+// Tentando criar uma versão acústica manualmente:
+const musicaOriginal = new MusicaPop2(
+    "Unlock It", 128, 
+    ["synth1", "synth2", "bass"], 
+    ["charli", "jaypark", "kimpetras"],
+    {intro: "complexo", verso: "denso", refrao: "explosivo"},
+    ["reverb", "delay", "distortion"],
+    ["jaypark", "kimpetras"]
+);
+
+// Cópia manual - propensa a erros!
+const versaoAcustica = new MusicaPop2(
+    musicaOriginal.titulo + " (Acoustic)",
+    musicaOriginal.bpm - 10,
+    [], // Remover sintetizadores
+    musicaOriginal.vocais, // PROBLEMA: Referência compartilhada!
+    musicaOriginal.arranjo, // PROBLEMA: Referência compartilhada!
+    ["reverb"], // Manter apenas alguns efeitos
+    musicaOriginal.colaboradores // PROBLEMA: Referência compartilhada!
+);
+
+// Alteração na versão acústica afeta a original!
+versaoAcustica.vocais.push("novoartista"); // Afeta ambas as versões!
+            </code></pre>
+            <p>Cópias manuais são complexas e propensas a efeitos colaterais!</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-7">
+                <img src="https://www.nme.com/wp-content/uploads/2018/06/GettyImages-978867348.jpg"
+                    alt="Prototype Pattern Charli XCX" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Prototype, criamos versões de músicas de forma eficiente e segura:</p>
+            <pre><code>
+// Prototype Interface
+interface MusicaPrototype {
+    clone(): MusicaPrototype
+    tocar(): string
+}
+
+// Concrete Prototypes
+class MusicaPop2 implements MusicaPrototype {
+    private titulo: string
+    private bpm: number
+    private sintetizadores: string[]
+    private vocais: string[]
+    private arranjo: object
+    private efeitos: string[]
+    private colaboradores: string[]
+    
+    constructor(titulo: string, bpm: number, sintetizadores: string[], 
+                vocais: string[], arranjo: object, efeitos: string[], 
+                colaboradores: string[]) {
+        this.titulo = titulo
+        this.bpm = bpm
+        this.sintetizadores = [...sintetizadores] // Cópia profunda
+        this.vocais = [...vocais] // Cópia profunda
+        this.arranjo = {...arranjo} // Cópia profunda
+        this.efeitos = [...efeitos] // Cópia profunda
+        this.colaboradores = [...colaboradores] // Cópia profunda
+    }
+    
+    // Implementação do método clone
+    clone(): MusicaPop2 {
+        return new MusicaPop2(
+            this.titulo,
+            this.bpm,
+            [...this.sintetizadores],
+            [...this.vocais],
+            {...this.arranjo},
+            [...this.efeitos],
+            [...this.colaboradores]
+        )
+    }
+    
+    tocar(): string {
+        return `Tocando: ${this.titulo} (${this.bpm} BPM)`
+    }
+    
+    // Métodos para modificar a música
+    setTitulo(novoTitulo: string): void {
+        this.titulo = novoTitulo
+    }
+    
+    setBpm(novoBpm: number): void {
+        this.bpm = novoBpm
+    }
+    
+    adicionarSintetizador(sintetizador: string): void {
+        this.sintetizadores.push(sintetizador)
+    }
+    
+    removerSintetizadores(): void {
+        this.sintetizadores = []
+    }
+    
+    adicionarColaborador(artista: string): void {
+        this.colaboradores.push(artista)
+    }
+    
+    // Método para descrição detalhada
+    descrever(): string {
+        return `
+Título: ${this.titulo}
+BPM: ${this.bpm}
+Sintetizadores: ${this.sintetizadores.join(', ')}
+Vocais: ${this.vocais.join(', ')}
+Efeitos: ${this.efeitos.join(', ')}
+Colaboradores: ${this.colaboradores.join(', ')}
+        `.trim()
+    }
+}
+
+// Registry para gerenciar protótipos
+class MusicaRegistry {
+    private prototipos: Map<string, MusicaPrototype> = new Map()
+    
+    adicionarPrototipo(chave: string, prototipo: MusicaPrototype): void {
+        this.prototipos.set(chave, prototipo)
+    }
+    
+    obterPrototipo(chave: string): MusicaPrototype | null {
+        const prototipo = this.prototipos.get(chave)
+        return prototipo ? prototipo.clone() : null
+    }
+}
+
+// Uso do sistema
+// Criando música original (protótipo)
+const unlockItOriginal = new MusicaPop2(
+    "Unlock It",
+    128,
+    ["Synth Bass", "Arpeggiator", "Pad Atmosférico"],
+    ["Charli XCX"],
+    {intro: "Build-up progressivo", verso: "Ritmado", refrao: "Explosivo"},
+    ["Auto-Tune", "Reverb", "Delay", "Sidechain"],
+    ["Jay Park", "Kim Petras"]
+)
+
+// Criando registry e registrando protótipo
+const registry = new MusicaRegistry()
+registry.adicionarPrototipo("unlock-it", unlockItOriginal)
+
+// Criando diferentes versões através de cloning
+const versaoAcustica = registry.obterPrototipo("unlock-it") as MusicaPop2
+versaoAcustica.setTitulo("Unlock It (Acoustic Version)")
+versaoAcustica.setBpm(118)
+versaoAcustica.removerSintetizadores()
+versaoAcustica.adicionarColaborador("Violão Acústico")
+
+const versaoClub = registry.obterPrototipo("unlock-it") as MusicaPop2
+versaoClub.setTitulo("Unlock It (Club Mix)")
+versaoClub.setBpm(135)
+versaoClub.adicionarSintetizador("Kick Pesado")
+versaoClub.adicionarSintetizador("Hi-Hats Rápidos")
+
+const versaoExperimental = registry.obterPrototipo("unlock-it") as MusicaPop2
+versaoExperimental.setTitulo("Unlock It (Experimental Deconstruction)")
+versaoExperimental.setBpm(95)
+versaoExperimental.removerSintetizadores()
+versaoExperimental.adicionarSintetizador("Glitch Effects")
+versaoExperimental.adicionarSintetizador("Reverse Sounds")
+
+// Exibindo resultados
+console.log("=== VERSÕES DE UNLOCK IT ===")
+console.log("\nOriginal:")
+console.log(unlockItOriginal.descrever())
+
+console.log("\nAcústica:")
+console.log(versaoAcustica.descrever())
+
+console.log("\nClub Mix:")
+console.log(versaoClub.descrever())
+
+console.log("\nExperimental:")
+console.log(versaoExperimental.descrever())
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://www.sketchappsources.com/resources/source-image/python-logo.png" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Prototype em um sistema de templates de documentos:</p>
+            <pre><code>
+import copy
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any
+from datetime import datetime
+
+# Prototype Interface
+class DocumentPrototype(ABC):
+    @abstractmethod
+    def clone(self):
+        pass
+    
+    @abstractmethod
+    def render(self):
+        pass
+
+# Concrete Prototypes
+class EmailTemplate(DocumentPrototype):
+    def __init__(self, subject: str, body: str, recipients: List[str], 
+                 sender: str, cc: List[str] = None, bcc: List[str] = None,
+                 attachments: List[str] = None, metadata: Dict[str, Any] = None):
+        self.subject = subject
+        self.body = body
+        self.recipients = recipients.copy() if recipients else []
+        self.sender = sender
+        self.cc = cc.copy() if cc else []
+        self.bcc = bcc.copy() if bcc else []
+        self.attachments = attachments.copy() if attachments else []
+        self.metadata = metadata.copy() if metadata else {}
+        self.created_at = datetime.now()
+    
+    def clone(self) -> 'EmailTemplate':
+        # Cópia profunda de todos os atributos
+        return EmailTemplate(
+            subject=self.subject,
+            body=self.body,
+            recipients=self.recipients,
+            sender=self.sender,
+            cc=self.cc,
+            bcc=self.bcc,
+            attachments=self.attachments,
+            metadata=self.metadata
+        )
+    
+    def render(self) -> str:
+        return f"""
+EMAIL TEMPLATE
+From: {self.sender}
+To: {', '.join(self.recipients)}
+CC: {', '.join(self.cc) if self.cc else 'None'}
+BCC: {', '.join(self.bcc) if self.bcc else 'None'}
+Subject: {self.subject}
+
+{self.body}
+
+Attachments: {', '.join(self.attachments) if self.attachments else 'None'}
+Metadata: {self.metadata}
+Created: {self.created_at}
+        """.strip()
+    
+    def personalize(self, recipient: str, personal_data: Dict[str, str] = None):
+        clone = self.clone()
+        clone.recipients = [recipient]
+        
+        if personal_data:
+            # Substitui placeholders no corpo do email
+            personalized_body = clone.body
+            for key, value in personal_data.items():
+                personalized_body = personalized_body.replace(f"{{{key}}}", value)
+            clone.body = personalized_body
+            
+            # Personaliza o assunto também
+            personalized_subject = clone.subject
+            for key, value in personal_data.items():
+                personalized_subject = personalized_subject.replace(f"{{{key}}}", value)
+            clone.subject = personalized_subject
+        
+        return clone
+
+class ReportTemplate(DocumentPrototype):
+    def __init__(self, title: str, sections: List[str], author: str,
+                 format_type: str = "PDF", headers: Dict[str, str] = None,
+                 footers: Dict[str, str] = None, styles: Dict[str, Any] = None):
+        self.title = title
+        self.sections = sections.copy() if sections else []
+        self.author = author
+        self.format_type = format_type
+        self.headers = headers.copy() if headers else {}
+        self.footers = footers.copy() if footers else {}
+        self.styles = styles.copy() if styles else {}
+        self.generated_at = datetime.now()
+    
+    def clone(self) -> 'ReportTemplate':
+        return ReportTemplate(
+            title=self.title,
+            sections=self.sections,
+            author=self.author,
+            format_type=self.format_type,
+            headers=self.headers,
+            footers=self.footers,
+            styles=self.styles
+        )
+    
+    def render(self) -> str:
+        return f"""
+REPORT TEMPLATE
+Title: {self.title}
+Author: {self.author}
+Format: {self.format_type}
+Generated: {self.generated_at}
+
+Sections:
+{chr(10).join(f'  - {section}' for section in self.sections)}
+
+Headers: {self.headers}
+Footers: {self.footers}
+Styles: {self.styles}
+        """.strip()
+    
+    def add_section(self, section: str):
+        self.sections.append(section)
+    
+    def set_author(self, author: str):
+        self.author = author
+
+class ContractTemplate(DocumentPrototype):
+    def __init__(self, contract_type: str, parties: List[str], 
+                 clauses: List[str], effective_date: datetime = None,
+                 expiration_date: datetime = None, terms: Dict[str, Any] = None):
+        self.contract_type = contract_type
+        self.parties = parties.copy() if parties else []
+        self.clauses = clauses.copy() if clauses else []
+        self.effective_date = effective_date or datetime.now()
+        self.expiration_date = expiration_date
+        self.terms = terms.copy() if terms else {}
+        self.version = "1.0"
+    
+    def clone(self) -> 'ContractTemplate':
+        return ContractTemplate(
+            contract_type=self.contract_type,
+            parties=self.parties,
+            clauses=self.clauses,
+            effective_date=self.effective_date,
+            expiration_date=self.expiration_date,
+            terms=self.terms
+        )
+    
+    def render(self) -> str:
+        expiration_info = f"Expires: {self.expiration_date}" if self.expiration_date else "No expiration"
+        return f"""
+CONTRACT TEMPLATE
+Type: {self.contract_type}
+Parties: {', '.join(self.parties)}
+Effective: {self.effective_date}
+{expiration_info}
+Version: {self.version}
+
+Clauses:
+{chr(10).join(f'  § {clause}' for clause in self.clauses)}
+
+Terms: {self.terms}
+        """.strip()
+    
+    def set_parties(self, parties: List[str]):
+        self.parties = parties.copy()
+    
+    def add_clause(self, clause: str):
+        self.clauses.append(clause)
+
+# Document Registry
+class DocumentRegistry:
+    def __init__(self):
+        self._templates = {}
+    
+    def register_template(self, key: str, template: DocumentPrototype):
+        self._templates[key] = template
+    
+    def unregister_template(self, key: str):
+        if key in self._templates:
+            del self._templates[key]
+    
+    def clone_template(self, key: str, **kwargs) -> DocumentPrototype:
+        if key not in self._templates:
+            raise ValueError(f"Template '{key}' not found in registry")
+        
+        template = self._templates[key].clone()
+        
+        # Aplica modificações específicas se fornecidas
+        for attr, value in kwargs.items():
+            if hasattr(template, attr):
+                setattr(template, attr, value)
+        
+        return template
+    
+    def list_templates(self):
+        return list(self._templates.keys())
+
+# Client code
+def main():
+    # Criando registry
+    registry = DocumentRegistry()
+    
+    # Registrando templates base
+    welcome_email = EmailTemplate(
+        subject="Welcome to Our Service, {name}!",
+        body="""Dear {name},
+
+Welcome to our platform! We're excited to have you on board.
+
+Your account details:
+- Username: {username}
+- Plan: {plan}
+
+Best regards,
+The Team""",
+        recipients=[],
+        sender="noreply@company.com",
+        cc=["support@company.com"],
+        attachments=["welcome_guide.pdf"],
+        metadata={"category": "onboarding", "priority": "high"}
+    )
+    
+    monthly_report = ReportTemplate(
+        title="Monthly Performance Report - {month} {year}",
+        sections=[
+            "Executive Summary",
+            "Key Metrics",
+            "Financial Overview",
+            "Challenges and Opportunities",
+            "Next Month Goals"
+        ],
+        author="Analytics Department",
+        format_type="PDF",
+        headers={"company": "Tech Corp", "confidential": "True"},
+        styles={"theme": "corporate", "charts": "interactive"}
+    )
+    
+    service_contract = ContractTemplate(
+        contract_type="Service Agreement",
+        parties=["Company Inc.", "Client Name"],
+        clauses=[
+            "Scope of Services",
+            "Payment Terms",
+            "Confidentiality",
+            "Term and Termination",
+            "Liability Limitations"
+        ],
+        expiration_date=datetime(2025, 12, 31),
+        terms={"payment_terms": "Net 30", "jurisdiction": "New York"}
+    )
+    
+    registry.register_template("welcome-email", welcome_email)
+    registry.register_template("monthly-report", monthly_report)
+    registry.register_template("service-contract", service_contract)
+    
+    # Usando os templates para criar documentos específicos
+    print("=== DOCUMENTOS PERSONALIZADOS ===\n")
+    
+    # Clonando e personalizando email
+    email_john = registry.clone_template("welcome-email")
+    email_john = email_john.personalize("john@example.com", {
+        "name": "John Doe",
+        "username": "johndoe123",
+        "plan": "Premium"
+    })
+    print("1. EMAIL PERSONALIZADO:")
+    print(email_john.render())
+    print("\n" + "="*50 + "\n")
+    
+    # Clonando e personalizando relatório
+    report_january = registry.clone_template(
+        "monthly-report",
+        title="Monthly Performance Report - January 2024",
+        author="Jane Smith"
+    )
+    report_january.add_section("Team Performance")
+    print("2. RELATÓRIO PERSONALIZADO:")
+    print(report_january.render())
+    print("\n" + "="*50 + "\n")
+    
+    # Clonando e personalizando contrato
+    contract_abc = registry.clone_template("service-contract")
+    contract_abc.set_parties(["Company Inc.", "ABC Corporation"])
+    contract_abc.add_clause("Intellectual Property Rights")
+    print("3. CONTRATO PERSONALIZADO:")
+    print(contract_abc.render())
+    print("\n" + "="*50 + "\n")
+    
+    # Demonstrando que os templates originais não foram modificados
+    print("4. TEMPLATES ORIGINAIS (INALTERADOS):")
+    print(f"Templates registrados: {registry.list_templates()}")
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-9">
+                <img src="../../assets/img/criacionais/prototype/ficticio.png" alt="Charli XCX Prototype UML"
+                    class="cover-image" style="scale:0.9;">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Prototype no nosso exemplo da Charli XCX:</p>
+            <pre class="uml-code">
+@startuml
+interface MusicaPrototype {
+    + clone(): MusicaPrototype
+    + tocar(): string
+}
+
+class MusicaPop2 {
+    - titulo: string
+    - bpm: number
+    - sintetizadores: string[]
+    - vocais: string[]
+    - arranjo: object
+    - efeitos: string[]
+    - colaboradores: string[]
+    + clone(): MusicaPop2
+    + tocar(): string
+    + setTitulo(titulo: string): void
+    + setBpm(bpm: number): void
+    + adicionarSintetizador(sintetizador: string): void
+    + removerSintetizadores(): void
+    + adicionarColaborador(artista: string): void
+    + descrever(): string
+}
+
+class MusicaRegistry {
+    - prototipos: Map<string, MusicaPrototype>
+    + adicionarPrototipo(chave: string, prototipo: MusicaPrototype): void
+    + obterPrototipo(chave: string): MusicaPrototype
+}
+
+MusicaPrototype <|-- MusicaPop2
+MusicaRegistry --> MusicaPrototype
+
+note right of MusicaPop2::clone
+    Retorna uma cópia profunda
+    do objeto, incluindo todos
+    os arrays e objetos aninhados
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como o Registry gerencia os protótipos e como as músicas implementam o método clone.</p>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/criacionais/prototype/pratico.png" alt="Document Prototype UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Prototype no exemplo prático do sistema de templates:</p>
+            <pre class="uml-code">
+@startuml
+interface DocumentPrototype {
+    + clone(): DocumentPrototype
+    + render(): string
+}
+
+class EmailTemplate {
+    - subject: string
+    - body: string
+    - recipients: List[string]
+    - sender: string
+    - cc: List[string]
+    - bcc: List[string]
+    - attachments: List[string]
+    - metadata: Dict[string, Any]
+    - created_at: datetime
+    + clone(): EmailTemplate
+    + render(): string
+    + personalize(recipient: string, personal_data: Dict[string, string]): EmailTemplate
+}
+
+class ReportTemplate {
+    - title: string
+    - sections: List[string]
+    - author: string
+    - format_type: string
+    - headers: Dict[string, string]
+    - footers: Dict[string, string]
+    - styles: Dict[string, Any]
+    - generated_at: datetime
+    + clone(): ReportTemplate
+    + render(): string
+    + add_section(section: string): void
+    + set_author(author: string): void
+}
+
+class ContractTemplate {
+    - contract_type: string
+    - parties: List[string]
+    - clauses: List[string]
+    - effective_date: datetime
+    - expiration_date: datetime
+    - terms: Dict[string, Any]
+    - version: string
+    + clone(): ContractTemplate
+    + render(): string
+    + set_parties(parties: List[string]): void
+    + add_clause(clause: string): void
+}
+
+class DocumentRegistry {
+    - _templates: Dict[string, DocumentPrototype]
+    + register_template(key: string, template: DocumentPrototype): void
+    + unregister_template(key: string): void
+    + clone_template(key: string, **kwargs): DocumentPrototype
+    + list_templates(): List[string]
+}
+
+DocumentPrototype <|-- EmailTemplate
+DocumentPrototype <|-- ReportTemplate
+DocumentPrototype <|-- ContractTemplate
+DocumentRegistry --> DocumentPrototype
+
+note right of EmailTemplate::clone
+    Implementa cópia profunda
+    para evitar compartilhamento
+    de referências
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite criar diferentes tipos de documentos a partir de templates predefinidos.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-11">
+                <img src="https://i.redd.it/vk1n9sot45ie1.jpeg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Prototype oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Performance:</strong> Clonar objetos é mais rápido que criá-los do zero</li>
+                <li><strong>Flexibilidade:</strong> Permite criar objetos com configurações complexas facilmente</li>
+                <li><strong>Redução de Subclasses:</strong> Elimina a necessidade de muitas subclasses</li>
+                <li><strong>Configuração Dinâmica:</strong> Objetos podem ser configurados em tempo de execução</li>
+                <li><strong>Isolamento:</strong> Cliente não precisa conhecer classes concretas</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4cBW-0EurcHaPQ-wI75GkEgYXhn7k---yzA&s"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Prototype também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade de Clonagem:</strong> Cópia profunda pode ser complexa para objetos com referências circulares</li>
+                <li><strong>Violação de Encapsulamento:</strong> Pode ser necessário acessar membros privados para clonagem</li>
+                <li><strong>Manutenção:</strong> Cada nova classe precisa implementar o método clone</li>
+                <li><strong>Dificuldade com Herança:</strong> Clone em hierarquias complexas pode ser desafiador</li>
+                <li><strong>Overhead de Memória:</strong> Manter registry de protótipos consome memória</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-13">
+                <img src="https://www.nme.com/wp-content/uploads/2017/12/charli-xcx-prank-call-manager-radio-1.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Prototype é uma ferramenta poderosa para criar cópias de objetos complexos de maneira eficiente e flexível, especialmente quando a criação do zero seria custosa ou complexa.</p>
+            <p>Na nossa analogia da Charli XCX, o Prototype funciona como o <strong>processo de criação de remixes e versões alternativas</strong> - permitindo que cada música do álbum Pop 2 sirva como base para inúmeras variações que mantêm a essência original mas exploram novas direções criativas.</p>
+            <p>Assim como Charli XCX reinventa constantemente sua música através de colaborações e experimentações, o padrão Prototype nos permite reinventar nossos objetos através de clonagem e personalização, mantendo a qualidade e consistência do original enquanto exploramos novas possibilidades.</p>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/prototype"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Prototype</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-prototype/26733"
+                        target="_blank">DevMedia - Padrão de Projeto Prototype</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/10/11/mao-na-massa-prototype/"
+                        target="_blank">Mão na Massa - Padrão Prototype</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Prototype" target="_blank">Wikipédia - Prototype (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/prototype-design-pattern/" target="_blank">GeeksforGeeks
+                        - Prototype Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/prototype" target="_blank">SourceMaking
+                        - Prototype Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html> 
