@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Builder - A Arte da Construção de Pink</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylecri.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/criacionais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/criacionais.html">Padrões Criacionais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Builder?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Exemplo Fictício (A Arte de Pink)</a></li>
+            <li><a href="#page5">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page6">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page7">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page8">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page9">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page10">Vantagens</a></li>
+            <li><a href="#page11">Desvantagens</a></li>
+            <li><a href="#page12">Conclusão</a></li>
+            <li><a href="#page13">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">BUILDER</h1>
+            <p class="cover-subtitle">A Arte da Construção de Pink - Criando Performances Complexas</p>
+
+            <img src="https://rollingstone.com.br/wp-content/uploads/pink_-_rock_in_rio_-_tine_-_ihf.jpg"
+                alt="Capa Builder - Pink" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Builder?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://www.rollingstone.com/wp-content/uploads/2023/02/Pink.jpg"
+                    alt="Builder Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Builder é um <strong>padrão de projeto criacional</strong> que permite construir objetos complexos passo a passo. O padrão permite produzir diferentes tipos e representações de um objeto usando o mesmo código de construção [1].</p>
+            <p>É como a <strong>Pink construindo suas performances complexas</strong> - cada show é uma combinação única de elementos que podem ser montados de diferentes maneiras para criar experiências distintas.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2019/10/Pnk-no-Rock-in-Rio-2019-7.jpg"
+                    alt="Problema da Construção Complexa" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Builder resolve é a criação de <strong>objetos complexos com muitos parâmetros</strong> ou configurações opcionais.</p>
+            <p>Sem este padrão, você teria construtores com muitos parâmetros ou múltiplos construtores sobrecarregados - como tentar planejar uma performance da Pink com todos os elementos de uma só vez [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/criacionais/builder/generico.png"
+                    alt="Builder UML Genérico" class="cover-image" style="scale:0.9;">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Builder:</p>
+            <pre class="uml-code">
+@startuml
+class Director {
+    - builder: Builder
+    + construct(): void
+}
+
+interface Builder {
+    + buildPartA(): void
+    + buildPartB(): void
+    + buildPartC(): void
+    + getResult(): Product
+}
+
+class ConcreteBuilder1 {
+    - product: Product1
+    + buildPartA(): void
+    + buildPartB(): void
+    + buildPartC(): void
+    + getResult(): Product1
+}
+
+class ConcreteBuilder2 {
+    - product: Product2
+    + buildPartA(): void
+    + buildPartB(): void
+    + buildPartC(): void
+    + getResult(): Product2
+}
+
+class Product1 {
+    + parts: List<String>
+    + listParts(): void
+}
+
+class Product2 {
+    + parts: List<String>
+    + listParts(): void
+}
+
+Director --> Builder
+Builder <|-- ConcreteBuilder1
+Builder <|-- ConcreteBuilder2
+ConcreteBuilder1 --> Product1
+ConcreteBuilder2 --> Product2
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Director:</strong> Orquestra a construção usando a interface Builder</li>
+                <li><strong>Builder:</strong> Interface para construir partes do produto</li>
+                <li><strong>ConcreteBuilder:</strong> Implementações específicas de construção</li>
+                <li><strong>Product:</strong> Objeto complexo sendo construído</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Exemplo Fictício (A Arte de Pink)</h1>
+            <div class="img-placeholder-5">
+                <img src="https://www.billboard.com/wp-content/uploads/media/Pink-2012-VMAs-billboard-1548.jpg"
+                    alt="Pink Performance" class="cover-image">
+            </div>
+            <p>Imagine que <strong>Pink</strong> constrói suas performances complexas com diferentes combinações de elementos:</p>
+
+            <h3>Os Elementos de uma Performance da Pink:</h3>
+            <ul>
+                <li><strong>Elementos Vocais:</strong> Power ballad, Rock anthem, Pop dance</li>
+                <li><strong>Elementos Visuais:</strong> Acrobacias aéreas, Coreografias, Pirotecnia</li>
+                <li><strong>Elementos Musicais:</strong> Banda ao vivo, Backing tracks, Orquestra</li>
+                <li><strong>Elementos Cênicos:</strong> Palco giratório, Telões, Efeitos especiais</li>
+            </ul>
+
+            <p>O Builder permite combinar esses elementos de diferentes maneiras para criar performances únicas sem repetir código.</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-6">
+                <img src="https://variety.com/wp-content/uploads/2021/05/Pink-All-I-Know-So-Far.jpg?w=1000&h=563&crop=1"
+                    alt="Pink Performance Complexa" class="cover-image">
+            </div>
+            <p>Sem o Padrão Builder, criar diferentes tipos de performances seria caótico:</p>
+            <pre><code>
+// PROBLEMA: Construtores complexos e inflexíveis!
+class Performance {
+    constructor(tipo, acrobacias, pirotecnia, orquestra, 
+                telaoGigante, palcoGiratorio, coreografiaComplexa, 
+                duracao, intensidade, tema, ...mais20Parametros) {
+        // Configuração extremamente complexa
+    }
+}
+
+// Tentando criar diferentes performances:
+const performanceAcrobatica = new Performance(
+    "acrobatica", true, false, false, true, true, true, 
+    120, "alta", "liberdade", ...mais20Parametros
+);
+
+const performanceIntima = new Performance(
+    "intima", false, false, true, false, false, false,
+    90, "media", "amor", ...mais20Parametros
+);
+
+const performanceEspecial = new Performance(
+    "especial", true, true, true, true, true, true,
+    180, "altissima", "anniversario", ...mais20Parametros
+);
+
+// Resultado: Código ilegível, difícil de manter e propenso a erros!
+// E se quisermos uma performance com apenas alguns elementos?
+            </code></pre>
+            <p>Construtores com muitos parâmetros são difíceis de usar e manter!</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-7">
+                <img src="https://www.rollingstone.com/wp-content/uploads/2024/02/pink-birth.jpg?w=1581&h=1054&crop=1"
+                    alt="Builder Pattern Pink" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Builder, criamos performances complexas passo a passo:</p>
+            <pre><code>
+// Product - O objeto complexo sendo construído
+class Performance {
+    constructor() {
+        this.elementos = {
+            vocais: [],
+            visuais: [],
+            musicais: [],
+            cenicos: []
+        };
+        this.duracao = 0;
+        this.intensidade = "media";
+        this.tema = "";
+    }
+    
+    adicionarElemento(tipo, elemento) {
+        this.elementos[tipo].push(elemento);
+    }
+    
+    descrever() {
+        return `Performance ${this.tema} (${this.duracao}min, ${this.intensidade})`;
+    }
+}
+
+// Builder Interface
+interface PerformanceBuilder {
+    reset(): void
+    definirTema(tema: string): void
+    construirElementosVocais(): void
+    construirElementosVisuais(): void
+    construirElementosMusicais(): void
+    construirElementosCenicos(): void
+    definirDuracao(duracao: number): void
+    definirIntensidade(intensidade: string): void
+    getPerformance(): Performance
+}
+
+// Concrete Builders
+class PerformanceAcrobaticaBuilder implements PerformanceBuilder {
+    private performance: Performance;
+    
+    constructor() {
+        this.reset();
+    }
+    
+    reset() {
+        this.performance = new Performance();
+    }
+    
+    definirTema(tema: string) {
+        this.performance.tema = tema;
+    }
+    
+    construirElementosVocais() {
+        this.performance.adicionarElemento("vocais", "Power Ballad");
+        this.performance.adicionarElemento("vocais", "Rock Anthem");
+    }
+    
+    construirElementosVisuais() {
+        this.performance.adicionarElemento("visuais", "Acrobacias Aéreas");
+        this.performance.adicionarElemento("visuais", "Coreografia Complexa");
+    }
+    
+    construirElementosMusicais() {
+        this.performance.adicionarElemento("musicais", "Banda Ao Vivo");
+    }
+    
+    construirElementosCenicos() {
+        this.performance.adicionarElemento("cenicos", "Cabos Aéreos");
+        this.performance.adicionarElemento("cenicos", "Palco Giratório");
+    }
+    
+    definirDuracao(duracao: number) {
+        this.performance.duracao = duracao;
+    }
+    
+    definirIntensidade(intensidade: string) {
+        this.performance.intensidade = intensidade;
+    }
+    
+    getPerformance(): Performance {
+        const resultado = this.performance;
+        this.reset();
+        return resultado;
+    }
+}
+
+class PerformanceIntimaBuilder implements PerformanceBuilder {
+    private performance: Performance;
+    
+    constructor() {
+        this.reset();
+    }
+    
+    reset() {
+        this.performance = new Performance();
+    }
+    
+    definirTema(tema: string) {
+        this.performance.tema = tema;
+    }
+    
+    construirElementosVocais() {
+        this.performance.adicionarElemento("vocais", "Balada Íntima");
+        this.performance.adicionarElemento("vocais", "Acústico");
+    }
+    
+    construirElementosVisuais() {
+        this.performance.adicionarElemento("visuais", "Iluminação Suave");
+    }
+    
+    construirElementosMusicais() {
+        this.performance.adicionarElemento("musicais", "Piano");
+        this.performance.adicionarElemento("musicais", "Violão");
+    }
+    
+    construirElementosCenicos() {
+        this.performance.adicionarElemento("cenicos", "Palco Pequeno");
+        this.performance.adicionarElemento("cenicos", "Projeções Artísticas");
+    }
+    
+    definirDuracao(duracao: number) {
+        this.performance.duracao = duracao;
+    }
+    
+    definirIntensidade(intensidade: string) {
+        this.performance.intensidade = intensidade;
+    }
+    
+    getPerformance(): Performance {
+        const resultado = this.performance;
+        this.reset();
+        return resultado;
+    }
+}
+
+// Director
+class DiretorDeShows {
+    private builder: PerformanceBuilder;
+    
+    setBuilder(builder: PerformanceBuilder) {
+        this.builder = builder;
+    }
+    
+    construirShowAcrobatico() {
+        this.builder.definirTema("Liberdade e Força");
+        this.builder.definirDuracao(120);
+        this.builder.definirIntensidade("alta");
+        this.builder.construirElementosVocais();
+        this.builder.construirElementosVisuais();
+        this.builder.construirElementosMusicais();
+        this.builder.construirElementosCenicos();
+    }
+    
+    construirShowIntimo() {
+        this.builder.definirTema("Amor e Vulnerabilidade");
+        this.builder.definirDuracao(90);
+        this.builder.definirIntensidade("media");
+        this.builder.construirElementosVocais();
+        this.builder.construirElementosVisuais();
+        this.builder.construirElementosMusicais();
+        this.builder.construirElementosCenicos();
+    }
+}
+
+// Uso do sistema
+const diretor = new DiretorDeShows();
+
+// Construindo performance acrobática
+const builderAcrobatico = new PerformanceAcrobaticaBuilder();
+diretor.setBuilder(builderAcrobatico);
+diretor.construirShowAcrobatico();
+const performanceAcrobatica = builderAcrobatico.getPerformance();
+
+// Construindo performance íntima
+const builderIntimo = new PerformanceIntimaBuilder();
+diretor.setBuilder(builderIntimo);
+diretor.construirShowIntimo();
+const performanceIntima = builderIntimo.getPerformance();
+
+console.log(performanceAcrobatica.descrever());
+console.log(performanceIntima.descrever());
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://www.sketchappsources.com/resources/source-image/python-logo.png" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Builder em um sistema de construção de relatórios:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import List
+
+# Product
+class Report:
+    def __init__(self):
+        self.parts = {
+            'header': '',
+            'body': [],
+            'footer': '',
+            'formatting': {},
+            'metadata': {}
+        }
+    
+    def add_body_part(self, part: str):
+        self.parts['body'].append(part)
+    
+    def set_header(self, header: str):
+        self.parts['header'] = header
+    
+    def set_footer(self, footer: str):
+        self.parts['footer'] = footer
+    
+    def set_formatting(self, key: str, value: str):
+        self.parts['formatting'][key] = value
+    
+    def set_metadata(self, key: str, value: str):
+        self.parts['metadata'][key] = value
+    
+    def display(self):
+        print("=" * 50)
+        print(f"HEADER: {self.parts['header']}")
+        print("-" * 50)
+        print("BODY:")
+        for part in self.parts['body']:
+            print(f"  • {part}")
+        print("-" * 50)
+        print(f"FOOTER: {self.parts['footer']}")
+        print(f"FORMATTING: {self.parts['formatting']}")
+        print(f"METADATA: {self.parts['metadata']}")
+        print("=" * 50)
+
+# Builder Interface
+class ReportBuilder(ABC):
+    @abstractmethod
+    def reset(self):
+        pass
+    
+    @abstractmethod
+    def build_header(self):
+        pass
+    
+    @abstractmethod
+    def build_body(self):
+        pass
+    
+    @abstractmethod
+    def build_footer(self):
+        pass
+    
+    @abstractmethod
+    def build_formatting(self):
+        pass
+    
+    @abstractmethod
+    def build_metadata(self):
+        pass
+    
+    @abstractmethod
+    def get_report(self) -> Report:
+        pass
+
+# Concrete Builders
+class SalesReportBuilder(ReportBuilder):
+    def __init__(self):
+        self.reset()
+    
+    def reset(self):
+        self._report = Report()
+    
+    def build_header(self):
+        self._report.set_header("RELATÓRIO DE VENDAS - TRIMESTRAL")
+    
+    def build_body(self):
+        self._report.add_body_part("Vendas totais: R$ 1.200.000,00")
+        self._report.add_body_part("Crescimento: 15% vs período anterior")
+        self._report.add_body_part("Produto mais vendido: Smartphone X")
+        self._report.add_body_part("Região com melhor desempenho: Sudeste")
+    
+    def build_footer(self):
+        self._report.set_footer("Relatório gerado automaticamente pelo sistema")
+    
+    def build_formatting(self):
+        self._report.set_formatting("font", "Arial")
+        self._report.set_formatting("color_scheme", "corporate")
+        self._report.set_formatting("charts", "enabled")
+    
+    def build_metadata(self):
+        self._report.set_metadata("author", "Sistema de Vendas")
+        self._report.set_metadata("version", "2.1")
+        self._report.set_metadata("confidential", "true")
+    
+    def get_report(self) -> Report:
+        report = self._report
+        self.reset()
+        return report
+
+class MarketingReportBuilder(ReportBuilder):
+    def __init__(self):
+        self.reset()
+    
+    def reset(self):
+        self._report = Report()
+    
+    def build_header(self):
+        self._report.set_header("RELATÓRIO DE MARKETING - CAMPANHA VERÃO")
+    
+    def build_body(self):
+        self._report.add_body_part("Alcance total: 2.5 milhões de pessoas")
+        self._report.add_body_part("Taxa de engajamento: 4.8%")
+        self._report.add_body_part("Custo por clique: R$ 0,45")
+        self._report.add_body_part("ROI: 320%")
+        self._report.add_body_part("Canal mais eficiente: Instagram")
+    
+    def build_footer(self):
+        self._report.set_footer("Dados coletados até 31/03/2024")
+    
+    def build_formatting(self):
+        self._report.set_formatting("font", "Verdana")
+        self._report.set_formatting("color_scheme", "creative")
+        self._report.set_formatting("charts", "interactive")
+    
+    def build_metadata(self):
+        self._report.set_metadata("author", "Time de Marketing")
+        self._report.set_metadata("version", "1.5")
+        self._report.set_metadata("confidential", "false")
+    
+    def get_report(self) -> Report:
+        report = self._report
+        self.reset()
+        return report
+
+class FinancialReportBuilder(ReportBuilder):
+    def __init__(self):
+        self.reset()
+    
+    def reset(self):
+        self._report = Report()
+    
+    def build_header(self):
+        self._report.set_header("RELATÓRIO FINANCEIRO - BALANÇO ANUAL")
+    
+    def build_body(self):
+        self._report.add_body_part("Receita líquida: R$ 8.500.000,00")
+        self._report.add_body_part("Lucro operacional: R$ 1.200.000,00")
+        self._report.add_body_part("Margem líquida: 14.1%")
+        self._report.add_body_part("Despesas operacionais: R$ 2.300.000,00")
+        self._report.add_body_part("Investimentos: R$ 850.000,00")
+    
+    def build_footer(self):
+        self._report.set_footer("Auditado por Contabilidade ABC Ltda.")
+    
+    def build_formatting(self):
+        self._report.set_formatting("font", "Times New Roman")
+        self._report.set_formatting("color_scheme", "professional")
+        self._report.set_formatting("charts", "detailed")
+    
+    def build_metadata(self):
+        self._report.set_metadata("author", "Departamento Financeiro")
+        self._report.set_metadata("version", "3.0")
+        self._report.set_metadata("confidential", "true")
+    
+    def get_report(self) -> Report:
+        report = self._report
+        self.reset()
+        return report
+
+# Director
+class ReportDirector:
+    def __init__(self):
+        self._builder = None
+    
+    @property
+    def builder(self) -> ReportBuilder:
+        return self._builder
+    
+    @builder.setter
+    def builder(self, builder: ReportBuilder):
+        self._builder = builder
+    
+    def build_minimal_report(self):
+        self.builder.build_header()
+        self.builder.build_body()
+    
+    def build_standard_report(self):
+        self.builder.build_header()
+        self.builder.build_body()
+        self.builder.build_footer()
+        self.builder.build_formatting()
+    
+    def build_complete_report(self):
+        self.builder.build_header()
+        self.builder.build_body()
+        self.builder.build_footer()
+        self.builder.build_formatting()
+        self.builder.build_metadata()
+
+# Client code
+def main():
+    director = ReportDirector()
+    
+    # Construindo relatório de vendas completo
+    print("=== RELATÓRIO DE VENDAS COMPLETO ===")
+    sales_builder = SalesReportBuilder()
+    director.builder = sales_builder
+    director.build_complete_report()
+    sales_report = sales_builder.get_report()
+    sales_report.display()
+    
+    # Construindo relatório de marketing padrão
+    print("\n=== RELATÓRIO DE MARKETING PADRÃO ===")
+    marketing_builder = MarketingReportBuilder()
+    director.builder = marketing_builder
+    director.build_standard_report()
+    marketing_report = marketing_builder.get_report()
+    marketing_report.display()
+    
+    # Construindo relatório financeiro mínimo
+    print("\n=== RELATÓRIO FINANCEIRO MÍNIMO ===")
+    financial_builder = FinancialReportBuilder()
+    director.builder = financial_builder
+    director.build_minimal_report()
+    financial_report = financial_builder.get_report()
+    financial_report.display()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-9">
+                <img src="../../assets/img/criacionais/builder/ficticio.png" alt="Pink Builder UML"
+                    class="cover-image" style="scale:0.9;">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Builder no nosso exemplo da Pink:</p>
+            <pre class="uml-code">
+@startuml
+class DiretorDeShows {
+    - builder: PerformanceBuilder
+    + setBuilder(builder: PerformanceBuilder): void
+    + construirShowAcrobatico(): void
+    + construirShowIntimo(): void
+}
+
+interface PerformanceBuilder {
+    + reset(): void
+    + definirTema(tema: string): void
+    + construirElementosVocais(): void
+    + construirElementosVisuais(): void
+    + construirElementosMusicais(): void
+    + construirElementosCenicos(): void
+    + definirDuracao(duracao: number): void
+    + definirIntensidade(intensidade: string): void
+    + getPerformance(): Performance
+}
+
+class PerformanceAcrobaticaBuilder {
+    - performance: Performance
+    + reset(): void
+    + definirTema(tema: string): void
+    + construirElementosVocais(): void
+    + construirElementosVisuais(): void
+    + construirElementosMusicais(): void
+    + construirElementosCenicos(): void
+    + definirDuracao(duracao: number): void
+    + definirIntensidade(intensidade: string): void
+    + getPerformance(): Performance
+}
+
+class PerformanceIntimaBuilder {
+    - performance: Performance
+    + reset(): void
+    + definirTema(tema: string): void
+    + construirElementosVocais(): void
+    + construirElementosVisuais(): void
+    + construirElementosMusicais(): void
+    + construirElementosCenicos(): void
+    + definirDuracao(duracao: number): void
+    + definirIntensidade(intensidade: string): void
+    + getPerformance(): Performance
+}
+
+class Performance {
+    - elementos: Map<string, string[]>
+    - duracao: number
+    - intensidade: string
+    - tema: string
+    + adicionarElemento(tipo: string, elemento: string): void
+    + descrever(): string
+}
+
+DiretorDeShows --> PerformanceBuilder
+PerformanceBuilder <|-- PerformanceAcrobaticaBuilder
+PerformanceBuilder <|-- PerformanceIntimaBuilder
+PerformanceAcrobaticaBuilder --> Performance
+PerformanceIntimaBuilder --> Performance
+@enduml
+            </pre>
+            <p>O diagrama mostra como o Director orquestra a construção através da interface Builder.</p>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/criacionais/builder/pratico.png" alt="Report Builder UML"
+                    class="cover-image" style="scale:0.9;">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Builder no exemplo prático do sistema de relatórios:</p>
+            <pre class="uml-code">
+@startuml
+class ReportDirector {
+    - builder: ReportBuilder
+    + builder: ReportBuilder
+    + build_minimal_report(): void
+    + build_standard_report(): void
+    + build_complete_report(): void
+}
+
+interface ReportBuilder {
+    + reset(): void
+    + build_header(): void
+    + build_body(): void
+    + build_footer(): void
+    + build_formatting(): void
+    + build_metadata(): void
+    + get_report(): Report
+}
+
+class SalesReportBuilder {
+    - report: Report
+    + reset(): void
+    + build_header(): void
+    + build_body(): void
+    + build_footer(): void
+    + build_formatting(): void
+    + build_metadata(): void
+    + get_report(): Report
+}
+
+class MarketingReportBuilder {
+    - report: Report
+    + reset(): void
+    + build_header(): void
+    + build_body(): void
+    + build_footer(): void
+    + build_formatting(): void
+    + build_metadata(): void
+    + get_report(): Report
+}
+
+class FinancialReportBuilder {
+    - report: Report
+    + reset(): void
+    + build_header(): void
+    + build_body(): void
+    + build_footer(): void
+    + build_formatting(): void
+    + build_metadata(): void
+    + get_report(): Report
+}
+
+class Report {
+    - parts: dict
+    + add_body_part(part: str): void
+    + set_header(header: str): void
+    + set_footer(footer: str): void
+    + set_formatting(key: str, value: str): void
+    + set_metadata(key: str, value: str): void
+    + display(): void
+}
+
+ReportDirector --> ReportBuilder
+ReportBuilder <|-- SalesReportBuilder
+ReportBuilder <|-- MarketingReportBuilder
+ReportBuilder <|-- FinancialReportBuilder
+SalesReportBuilder --> Report
+MarketingReportBuilder --> Report
+FinancialReportBuilder --> Report
+@enduml
+            </pre>
+            <p>Esta estrutura permite criar diferentes tipos de relatórios com o mesmo processo de construção.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-11">
+                <img src="https://cdn.apollo.audio/one/media/64c7/d1e2/5ec7/7905/a040/5397/pink-singer-most-popular-songs.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Builder oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Construção Passo a Passo:</strong> Permite construir objetos complexos gradualmente</li>
+                <li><strong>Reutilização de Código:</strong> O mesmo código de construção pode criar diferentes representações</li>
+                <li><strong>Separação de Responsabilidades:</strong> Isola o código de construção da lógica de negócio</li>
+                <li><strong>Controle sobre o Processo:</strong> Oferece mais controle sobre o processo de construção</li>
+                <li><strong>Flexibilidade:</strong> Permite criar diferentes variações de um objeto</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://i.ytimg.com/vi/NJWIbIe0N90/maxresdefault.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Builder também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Aumenta o número de classes no código</li>
+                <li><strong>Overhead:</strong> Pode ser complexo demais para objetos simples</li>
+                <li><strong>Manutenção:</strong> Requer manutenção de múltiplas classes</li>
+                <li><strong>Acoplamento:</strong> Produtos e builders podem ficar acoplados</li>
+                <li><strong>Performance:</strong> Processo de construção pode ser mais lento</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-13">
+                <img src="https://content.api.news/v3/images/bin/3060f29e35d1ce2e18008aeb3c98ff19"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Builder é uma ferramenta poderosa para construir objetos complexos passo a passo, especialmente quando esses objetos têm muitas partes configuráveis ou quando o processo de construção envolve múltiplas etapas.</p>
+            <p>Na nossa analogia da Pink, o Builder funciona como o <strong>processo de criação de performances</strong> - permitindo combinar diferentes elementos (vocais, visuais, musicais, cênicos) de maneira flexível para criar shows únicos e memoráveis.</p>
+            <p>Assim como a Pink constrói suas performances icônicas elemento por elemento, o padrão Builder nos permite construir objetos complexos de maneira controlada e organizada, garantindo que cada "performance" do nosso código seja perfeita.</p>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/builder"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Builder</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-builder/11544"
+                        target="_blank">DevMedia - Padrão de Projeto Builder</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/09/25/mao-na-massa-builder/"
+                        target="_blank">Mão na Massa - Padrão Builder</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Builder" target="_blank">Wikipédia - Builder (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/builder-design-pattern/" target="_blank">GeeksforGeeks
+                        - Builder Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/builder" target="_blank">SourceMaking
+                        - Builder Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
