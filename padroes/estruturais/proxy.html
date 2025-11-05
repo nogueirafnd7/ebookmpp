@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Proxy - A Segurança de Rihanna</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylestr.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/estruturais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/estruturais.html">Padrões Estruturais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Proxy?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Tipos de Proxy</a></li>
+            <li><a href="#page5">Exemplo Fictício (A Segurança de Rihanna)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">PROXY</h1>
+            <p class="cover-subtitle">A Segurança de Rihanna - Controlando Acesso com Elegância</p>
+
+            <img src="https://akamai.sscdn.co/tb/letras-blog/wp-content/uploads/2023/05/7ba8807-rihanna-superbowl-1024x683.jpg"
+                alt="Capa Proxy - Rihanna Security" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Proxy?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/06/rihanna-1.jpg?w=1200&h=900&crop=1"
+                    alt="Proxy Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Proxy é um <strong>padrão de projeto estrutural</strong> que permite fornecer um substituto ou espaço reservado para outro objeto. Um proxy controla o acesso ao objeto original, permitindo fazer algo antes ou depois do pedido chegar ao objeto original [1].</p>
+            <p>É como os <strong>seguranças e assessores de Rihanna</strong> - eles controlam quem pode se aproximar da artista, filtrando solicitações e protegendo-a de acessos indesejados, enquanto ela se concentra no que faz de melhor: sua arte.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://noticiasdatv.uol.com.br/media/_versions/artigos_2024/rihanna-reproducao-instagram_fixed_large.jpg"
+                    alt="Problema do Acesso Direto" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Proxy resolve é o <strong>acesso direto e descontrolado a objetos sensíveis ou complexos</strong>.</p>
+            <p>Sem este padrão, objetos importantes ficariam expostos a operações potencialmente perigosas ou ineficientes - como permitir que qualquer pessoa acesse diretamente a Rihanna sem filtros de segurança [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/estruturais/proxy/generico.png"
+                    alt="Proxy UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Proxy:</p>
+            <pre class="uml-code">
+@startuml
+interface Subject {
+    + request(): void
+}
+
+class RealSubject {
+    + request(): void
+}
+
+class Proxy {
+    - realSubject: RealSubject
+    + request(): void
+    - checkAccess(): boolean
+    - logAccess(): void
+}
+
+Subject <|-- RealSubject
+Subject <|-- Proxy
+Proxy --> RealSubject
+
+note right of Proxy::request
+    O Proxy controla o acesso
+    ao RealSubject, podendo
+    adicionar funcionalidades
+    extras antes/depois da
+    chamada real
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Subject:</strong> Interface comum para RealSubject e Proxy</li>
+                <li><strong>RealSubject:</strong> O objeto real que contém a lógica de negócio</li>
+                <li><strong>Proxy:</strong> Controla o acesso ao RealSubject e adiciona funcionalidades extras</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Tipos de Proxy</h1>
+            <div class="img-placeholder-5">
+                <img src="https://www.estrelando.com.br/uploads/2019/10/22/rihanna-ok-1571749192.jpg"
+                    alt="Tipos de Proxy" class="cover-image">
+            </div>
+            
+            <h3>1. Proxy de Proteção (Protection Proxy)</h3>
+            <p><strong>Função:</strong> Controla acesso a recursos sensíveis baseado em permissões</p>
+            <p><strong>Exemplo Rihanna:</strong> Seguranças que verificam credenciais antes de permitir acesso</p>
+
+            <h3>2. Proxy Virtual (Virtual Proxy)</h3>
+            <p><strong>Função:</strong> Adia a criação de objetos pesados até que sejam realmente necessários</p>
+            <p><strong>Exemplo Rihanna:</strong> Assessor que agenda reuniões, mas só aciona a artista quando necessário</p>
+
+            <h3>3. Proxy de Cache (Cache Proxy)</h3>
+            <p><strong>Função:</strong> Armazena resultados de operações custosas para reutilização</p>
+            <p><strong>Exemplo Rihanna:</strong> Assistente que lembra respostas para perguntas frequentes</p>
+
+            <h3>4. Proxy Remoto (Remote Proxy)</h3>
+            <p><strong>Função:</strong> Representa um objeto em outro espaço de endereçamento (rede)</p>
+            <p><strong>Exemplo Rihanna:</strong> Representante legal que atua em nome da artista em outros países</p>
+
+            <h3>5. Proxy de Logging (Logging Proxy)</h3>
+            <p><strong>Função:</strong> Registra todas as chamadas ao objeto real para auditoria</p>
+            <p><strong>Exemplo Rihanna:</strong> Equipe que registra todas as solicitações e interações</p>
+
+            <h3>6. Proxy de Sincronização (Synchronization Proxy)</h3>
+            <p><strong>Função:</strong> Controla acesso concorrente a recursos compartilhados</p>
+            <p><strong>Exemplo Rihanna:</strong> Coordenador que gerencia múltiplas solicitações simultâneas</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (A Segurança de Rihanna)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://portalpopline.com.br/wp-content/uploads/2014/01/angra.jpg"
+                    alt="Rihanna Security" class="cover-image">
+            </div>
+            <p>Imagine o <strong>sistema de segurança e assessoria de Rihanna</strong> usando diferentes tipos de proxy:</p>
+
+            <h3>Cenários de Proteção:</h3>
+            <ul>
+                <li><strong>Fãs:</strong> Acesso limitado - apenas através de canais oficiais</li>
+                <li><strong>Imprensa:</strong> Acesso mediado - entrevistas agendadas e supervisionadas</li>
+                <li><strong>Parceiros Comerciais:</strong> Acesso negociado - reuniões com agenda prévia</li>
+                <li><strong>Equipe Interna:</strong> Acesso direto - mas com logging e monitoramento</li>
+                <li><strong>Desconhecidos:</strong> Acesso bloqueado - segurança total</li>
+            </ul>
+
+            <p>Os proxies atuam como camadas de proteção, permitindo que Rihanna foque na criatividade enquanto está segura.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://ogimg.infoglobo.com.br/in/25467817-ae6-ddb/FT1086A/97702693.jpg"
+                    alt="Rihanna Sem Segurança" class="cover-image">
+            </div>
+            <p>Sem o Padrão Proxy, o acesso à Rihanna seria caótico e perigoso:</p>
+            <pre><code>
+// PROBLEMA: Acesso direto e descontrolado!
+class RihannaDireta {
+    concederEntrevista(jornalista: string): void {
+        // Qualquer jornalista tem acesso direto!
+        console.log(`Rihanna concedendo entrevista para ${jornalista}`)
+    }
+    
+    assinarContrato(empresa: string): void {
+        // Qualquer empresa pode abordar diretamente!
+        console.log(`Rihanna assinando contrato com ${empresa}`)
+    }
+    
+    atenderFa(fa: string): void {
+        // Qualquer fã pode se aproximar!
+        console.log(`Rihanna atendendo fã ${fa}`)
+    }
+}
+
+// Cenário problemático:
+const rihanna = new RihannaDireta()
+
+// Acesso perigoso - sem verificação!
+rihanna.concederEntrevista("Jornalista Suspeito")
+rihanna.assinarContrato("Empresa Não Confiável") 
+rihanna.atenderFa("Fã Obsessivo")
+
+// PROBLEMAS:
+// 1. Sem controle de acesso
+// 2. Sem verificação de credenciais  
+// 3. Sem logging de atividades
+// 4. Sem cache de respostas
+// 5. Sobrecarga direta na artista
+// 6. Risco de segurança
+            </code></pre>
+            <p>Acesso direto expõe a objetos sensíveis a riscos e sobrecarga desnecessária!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://portalpopline.com.br/wp-content/uploads/2025/10/rihanna-rosa.jpg"
+                    alt="Proxy Pattern Rihanna" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Proxy, criamos camadas de proteção e controle:</p>
+            <pre><code>
+// Subject Interface
+interface AcessoRihanna {
+    concederEntrevista(jornalista: string): string
+    assinarContrato(empresa: string, contrato: any): string
+    atenderFa(fa: string): string
+    realizarShow(local: string): string
+}
+
+// Real Subject - A Própria Rihanna
+class RihannaReal implements AcessoRihanna {
+    private energia: number = 100
+    
+    concederEntrevista(jornalista: string): string {
+        this.consumirEnergia(10)
+        return `🎤 Rihanna: "Obrigada pela entrevista, ${jornalista}!"`
+    }
+    
+    assinarContrato(empresa: string, contrato: any): string {
+        this.consumirEnergia(5)
+        return `✍️ Rihanna assinou contrato com ${empresa}`
+    }
+    
+    atenderFa(fa: string): string {
+        this.consumirEnergia(2)
+        return `❤️ Rihanna: "Obrigada pelo apoio, ${fa}!"`
+    }
+    
+    realizarShow(local: string): string {
+        this.consumirEnergia(30)
+        return `🎤 Rihanna performando no ${local} - SHOW ESPETACULAR!`
+    }
+    
+    private consumirEnergia(pontos: number): void {
+        this.energia -= pontos
+        console.log(`⚡ Energia de Rihanna: ${this.energia}%`)
+    }
+    
+    getEnergia(): number {
+        return this.energia
+    }
+}
+
+// PROXY DE PROTEÇÃO
+class ProxyProtecao implements AcessoRihanna {
+    private rihanna: RihannaReal
+    private acessosPermitidos: Set<string>
+    private contratosAutorizados: Set<string>
+    
+    constructor() {
+        this.rihanna = new RihannaReal()
+        this.acessosPermitidos = new Set(["Vogue", "Rolling Stone", "BBC"])
+        this.contratosAutorizados = new Set(["Fenty", "Savage", "LVMH"])
+    }
+    
+    concederEntrevista(jornalista: string): string {
+        if (!this.acessosPermitidos.has(jornalista)) {
+            return `🚫 PROXY: Entrevista com ${jornalista} NÃO AUTORIZADA`
+        }
+        
+        console.log(`🔒 PROXY: Verificando credenciais de ${jornalista}...`)
+        console.log(`✅ PROXY: Acesso concedido para ${jornalista}`)
+        return this.rihanna.concederEntrevista(jornalista)
+    }
+    
+    assinarContrato(empresa: string, contrato: any): string {
+        if (!this.contratosAutorizados.has(empresa)) {
+            return `🚫 PROXY: Contrato com ${empresa} NÃO AUTORIZADO`
+        }
+        
+        console.log(`📋 PROXY: Analisando contrato com ${empresa}...`)
+        console.log(`✅ PROXY: Contrato aprovado para ${empresa}`)
+        return this.rihanna.assinarContrato(empresa, contrato)
+    }
+    
+    atenderFa(fa: string): string {
+        // Fãs só podem ser atendidos em eventos oficiais
+        return `🎫 PROXY: ${fa}, encontre Rihanna em nossos eventos oficiais!`
+    }
+    
+    realizarShow(local: string): string {
+        console.log(`🎪 PROXY: Preparando show no ${local}...`)
+        console.log(`🛡️ PROXY: Ativando segurança máxima`)
+        return this.rihanna.realizarShow(local)
+    }
+}
+
+// PROXY VIRTUAL - Só cria Rihanna quando necessário
+class ProxyVirtual implements AcessoRihanna {
+    private rihanna: RihannaReal | null = null
+    private cache: Map<string, string> = new Map()
+    
+    private criarRihanna(): RihannaReal {
+        if (!this.rihanna) {
+            console.log("🌟 PROXY VIRTUAL: Inicializando Rihanna...")
+            this.rihanna = new RihannaReal()
+        }
+        return this.rihanna
+    }
+    
+    concederEntrevista(jornalista: string): string {
+        const chave = `entrevista_${jornalista}`
+        
+        if (this.cache.has(chave)) {
+            console.log("💾 PROXY VIRTUAL: Retornando do cache")
+            return this.cache.get(chave)!
+        }
+        
+        const resultado = this.criarRihanna().concederEntrevista(jornalista)
+        this.cache.set(chave, resultado)
+        return resultado
+    }
+    
+    assinarContrato(empresa: string, contrato: any): string {
+        // Contratos sempre exigem a Rihanna real
+        return this.criarRihanna().assinarContrato(empresa, contrato)
+    }
+    
+    atenderFa(fa: string): string {
+        const chave = `fa_${fa}`
+        
+        if (this.cache.has(chave)) {
+            console.log("💾 PROXY VIRTUAL: Retornando resposta padrão do cache")
+            return this.cache.get(chave)!
+        }
+        
+        const resposta = `❤️ PROXY: Rihanna agradece seu apoio, ${fa}!`
+        this.cache.set(chave, resposta)
+        return resposta
+    }
+    
+    realizarShow(local: string): string {
+        // Shows sempre exigem a Rihanna real
+        return this.criarRihanna().realizarShow(local)
+    }
+}
+
+// PROXY DE LOGGING
+class ProxyLogging implements AcessoRihanna {
+    private rihanna: AcessoRihanna
+    private log: string[] = []
+    
+    constructor(rihanna: AcessoRihanna) {
+        this.rihanna = rihanna
+    }
+    
+    concederEntrevista(jornalista: string): string {
+        this.registrar(`ENTREVISTA solicitada por: ${jornalista}`)
+        const resultado = this.rihanna.concederEntrevista(jornalista)
+        this.registrar(`ENTREVISTA realizada com: ${jornalista}`)
+        return resultado
+    }
+    
+    assinarContrato(empresa: string, contrato: any): string {
+        this.registrar(`CONTRATO solicitado por: ${empresa}`)
+        const resultado = this.rihanna.assinarContrato(empresa, contrato)
+        this.registrar(`CONTRATO assinado com: ${empresa}`)
+        return resultado
+    }
+    
+    atenderFa(fa: string): string {
+        this.registrar(`FÃ atendido: ${fa}`)
+        return this.rihanna.atenderFa(fa)
+    }
+    
+    realizarShow(local: string): string {
+        this.registrar(`SHOW agendado em: ${local}`)
+        const resultado = this.rihanna.realizarShow(local)
+        this.registrar(`SHOW realizado em: ${local}`)
+        return resultado
+    }
+    
+    private registrar(mensagem: string): void {
+        const timestamp = new Date().toISOString()
+        this.log.push(`[${timestamp}] ${mensagem}`)
+        console.log(`📝 LOG: ${mensagem}`)
+    }
+    
+    getLog(): string[] {
+        return [...this.log]
+    }
+}
+
+// PROXY REMOTO - Simula acesso através de rede
+class ProxyRemoto implements AcessoRihanna {
+    private enderecoBase: string = "https://api.rihanna-management.com/v1"
+    
+    concederEntrevista(jornalista: string): string {
+        console.log(`🌐 PROXY REMOTO: Conectando com servidor...`)
+        console.log(`📡 Enviando requisição para: ${this.enderecoBase}/entrevistas`)
+        // Simulando latência de rede
+        this.simularLatencia()
+        return `🎤 Rihanna (via proxy remoto): "Prazer, ${jornalista}!"`
+    }
+    
+    assinarContrato(empresa: string, contrato: any): string {
+        console.log(`🌐 PROXY REMOTO: Transmitindo contrato...`)
+        console.log(`📡 Enviando para: ${this.enderecoBase}/contratos`)
+        this.simularLatencia()
+        return `✍️ Contrato com ${empresa} assinado remotamente`
+    }
+    
+    atenderFa(fa: string): string {
+        console.log(`🌐 PROXY REMOTO: Processando solicitação de fã...`)
+        this.simularLatencia()
+        return `❤️ Rihanna (remoto): "Obrigada, ${fa}!"`
+    }
+    
+    realizarShow(local: string): string {
+        console.log(`🌐 PROXY REMOTO: Coordenando show...`)
+        console.log(`📡 Sincronizando com: ${this.enderecoBase}/shows`)
+        this.simularLatencia()
+        return `🎤 Show no ${local} coordenado remotamente`
+    }
+    
+    private simularLatencia(): void {
+        // Simula latência de rede
+        console.log("⏳ PROXY REMOTO: Processando...")
+    }
+}
+
+// Sistema de Gerenciamento
+class SistemaRihanna {
+    static executarDemonstracao(): void {
+        console.log("🎵 SISTEMA DE SEGURANÇA RIHANNA 🎵")
+        console.log("=====================================")
+        
+        // Demonstração do Proxy de Proteção
+        console.log("\n1. 🔒 PROXY DE PROTEÇÃO")
+        const proxyProtecao = new ProxyProtecao()
+        
+        console.log("\n--- Acesso Autorizado ---")
+        console.log(proxyProtecao.concederEntrevista("Vogue"))
+        console.log(proxyProtecao.assinarContrato("Fenty", {}))
+        
+        console.log("\n--- Acesso Negado ---")
+        console.log(proxyProtecao.concederEntrevista("Revista Suspeita"))
+        console.log(proxyProtecao.assinarContrato("Empresa Não Confiável", {}))
+        console.log(proxyProtecao.atenderFa("Fã Qualquer"))
+        
+        // Demonstração do Proxy Virtual
+        console.log("\n2. 💾 PROXY VIRTUAL")
+        const proxyVirtual = new ProxyVirtual()
+        
+        console.log("\n--- Primeira Chamada (Cria Objeto) ---")
+        console.log(proxyVirtual.concederEntrevista("Rolling Stone"))
+        
+        console.log("\n--- Segunda Chamada (Usa Cache) ---")
+        console.log(proxyVirtual.concederEntrevista("Rolling Stone"))
+        console.log(proxyVirtual.atenderFa("Maria"))
+        console.log(proxyVirtual.atenderFa("Maria")) // Usa cache
+        
+        // Demonstração do Proxy de Logging
+        console.log("\n3. 📝 PROXY DE LOGGING")
+        const proxyLogging = new ProxyLogging(proxyProtecao)
+        
+        console.log(proxyLogging.concederEntrevista("BBC"))
+        console.log(proxyLogging.assinarContrato("Savage", {}))
+        
+        // Demonstração do Proxy Remoto
+        console.log("\n4. 🌐 PROXY REMOTO")
+        const proxyRemoto = new ProxyRemoto()
+        
+        console.log(proxyRemoto.concederEntrevista("Forbes"))
+        console.log(proxyRemoto.realizarShow("Super Bowl"))
+        
+        console.log("\n=== STATUS FINAL DO SISTEMA ===")
+        console.log("✅ Todos os proxies funcionando corretamente")
+        console.log("🛡️ Rihanna protegida e focada na criatividade")
+    }
+}
+
+// Executando o sistema
+SistemaRihanna.executarDemonstracao()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Proxy em um sistema de acesso a banco de dados:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from datetime import datetime, timedelta
+import time
+import hashlib
+from typing import Dict, Any, List, Optional
+import json
+
+# Subject Interface
+class DatabaseOperations(ABC):
+    @abstractmethod
+    def query(self, sql: str, params: tuple = None) -> List[Dict[str, Any]]:
+        pass
+    
+    @abstractmethod
+    def execute(self, sql: str, params: tuple = None) -> int:
+        pass
+    
+    @abstractmethod
+    def get_user_data(self, user_id: int) -> Dict[str, Any]:
+        pass
+    
+    @abstractmethod
+    def update_user_data(self, user_id: int, data: Dict[str, Any]) -> bool:
+        pass
+
+# Real Subject - Banco de Dados Real
+class RealDatabase(DatabaseOperations):
+    def __init__(self):
+        print("🔌 Conectando ao banco de dados real...")
+        time.sleep(2)  # Simula tempo de conexão
+        self.connection_active = True
+        # Dados simulados
+        self.users = {
+            1: {"id": 1, "name": "Rihanna", "role": "artist", "email": "rihanna@fenty.com"},
+            2: {"id": 2, "name": "Manager", "role": "manager", "email": "manager@fenty.com"},
+            3: {"id": 3, "name": "Fan Club", "role": "fan", "email": "fan@rihanna.com"}
+        }
+        print("✅ Conexão com banco de dados estabelecida")
+    
+    def query(self, sql: str, params: tuple = None) -> List[Dict[str, Any]]:
+        print(f"📊 EXECUTANDO QUERY: {sql}")
+        time.sleep(0.5)  # Simula tempo de processamento
+        
+        if "SELECT" in sql.upper():
+            if "users" in sql.lower():
+                return [user for user in self.users.values()]
+            elif "user_id" in sql.lower() and params:
+                user_id = params[0]
+                return [self.users.get(user_id, {})]
+        return []
+    
+    def execute(self, sql: str, params: tuple = None) -> int:
+        print(f"⚡ EXECUTANDO COMANDO: {sql}")
+        time.sleep(0.3)
+        
+        if "UPDATE" in sql.upper() and params:
+            user_id = params[0]
+            if user_id in self.users:
+                return 1  # Simula 1 linha afetada
+        return 0
+    
+    def get_user_data(self, user_id: int) -> Dict[str, Any]:
+        print(f"👤 ACESSANDO dados do usuário {user_id}")
+        time.sleep(0.2)
+        return self.users.get(user_id, {})
+    
+    def update_user_data(self, user_id: int, data: Dict[str, Any]) -> bool:
+        print(f"✏️ ATUALIZANDO dados do usuário {user_id}")
+        time.sleep(0.4)
+        if user_id in self.users:
+            self.users[user_id].update(data)
+            return True
+        return False
+    
+    def close_connection(self):
+        print("🔌 Fechando conexão com banco de dados...")
+        self.connection_active = False
+
+# PROXY DE PROTEÇÃO
+class ProtectionProxy(DatabaseOperations):
+    def __init__(self, real_database: RealDatabase):
+        self._real_database = real_database
+        self._allowed_roles = {"admin", "manager", "artist"}
+        self._sensitive_tables = {"users", "payments", "contracts"}
+    
+    def _check_permission(self, user_role: str, operation: str, table: str = None) -> bool:
+        if user_role not in self._allowed_roles:
+            print(f"🚫 ACESSO NEGADO: Role '{user_role}' não tem permissão")
+            return False
+        
+        if table in self._sensitive_tables and user_role != "admin":
+            print(f"🚫 ACESSO NEGADO: Tabela '{table}' requer permissão de admin")
+            return False
+        
+        if operation == "UPDATE" and user_role == "fan":
+            print(f"🚫 ACESSO NEGADO: Operação '{operation}' não permitida para fans")
+            return False
+        
+        return True
+    
+    def query(self, sql: str, params: tuple = None, user_role: str = "user") -> List[Dict[str, Any]]:
+        table = self._extract_table_from_sql(sql)
+        
+        if not self._check_permission(user_role, "SELECT", table):
+            return []
+        
+        print(f"🔒 PROXY: Verificando permissões para query...")
+        return self._real_database.query(sql, params)
+    
+    def execute(self, sql: str, params: tuple = None, user_role: str = "user") -> int:
+        table = self._extract_table_from_sql(sql)
+        operation = self._extract_operation_from_sql(sql)
+        
+        if not self._check_permission(user_role, operation, table):
+            return 0
+        
+        print(f"🔒 PROXY: Verificando permissões para execução...")
+        return self._real_database.execute(sql, params)
+    
+    def get_user_data(self, user_id: int, requesting_user_role: str = "user") -> Dict[str, Any]:
+        if not self._check_permission(requesting_user_role, "SELECT", "users"):
+            return {}
+        
+        # Usuários comuns só podem ver seus próprios dados
+        if requesting_user_role == "fan" and user_id != 3:  # ID do fan club
+            print("🚫 ACESSO NEGADO: Fans só podem ver seus próprios dados")
+            return {}
+        
+        return self._real_database.get_user_data(user_id)
+    
+    def update_user_data(self, user_id: int, data: Dict[str, Any], requesting_user_role: str = "user") -> bool:
+        if not self._check_permission(requesting_user_role, "UPDATE", "users"):
+            return False
+        
+        # Apenas admin pode atualizar dados de outros usuários
+        if user_id != 1 and requesting_user_role != "admin":  # ID da Rihanna
+            print("🚫 ACESSO NEGADO: Apenas admin pode atualizar dados de outros usuários")
+            return False
+        
+        return self._real_database.update_user_data(user_id, data)
+    
+    def _extract_table_from_sql(self, sql: str) -> Optional[str]:
+        sql_lower = sql.lower()
+        for table in self._sensitive_tables:
+            if table in sql_lower:
+                return table
+        return None
+    
+    def _extract_operation_from_sql(self, sql: str) -> str:
+        sql_upper = sql.upper()
+        if "SELECT" in sql_upper:
+            return "SELECT"
+        elif "UPDATE" in sql_upper:
+            return "UPDATE"
+        elif "INSERT" in sql_upper:
+            return "INSERT"
+        elif "DELETE" in sql_upper:
+            return "DELETE"
+        return "UNKNOWN"
+
+# PROXY DE CACHE
+class CacheProxy(DatabaseOperations):
+    def __init__(self, real_database: DatabaseOperations):
+        self._real_database = real_database
+        self._query_cache: Dict[str, tuple] = {}  # sql_hash -> (result, timestamp)
+        self._user_cache: Dict[int, tuple] = {}   # user_id -> (data, timestamp)
+        self._cache_duration = 300  # 5 minutos em segundos
+    
+    def _is_cache_valid(self, timestamp: float) -> bool:
+        return (datetime.now().timestamp() - timestamp) < self._cache_duration
+    
+    def _get_cache_key(self, sql: str, params: tuple = None) -> str:
+        key_data = sql + str(params)
+        return hashlib.md5(key_data.encode()).hexdigest()
+    
+    def query(self, sql: str, params: tuple = None) -> List[Dict[str, Any]]:
+        cache_key = self._get_cache_key(sql, params)
+        
+        if cache_key in self._query_cache:
+            result, timestamp = self._query_cache[cache_key]
+            if self._is_cache_valid(timestamp):
+                print("💾 CACHE: Retornando resultado do cache")
+                return result
+        
+        print("💾 CACHE: Cache miss, executando query real")
+        result = self._real_database.query(sql, params)
+        self._query_cache[cache_key] = (result, datetime.now().timestamp())
+        return result
+    
+    def execute(self, sql: str, params: tuple = None) -> int:
+        # Operações de escrita invalidam cache
+        if "UPDATE" in sql.upper() or "INSERT" in sql.upper() or "DELETE" in sql.upper():
+            print("💾 CACHE: Invalidando cache devido a operação de escrita")
+            self._query_cache.clear()
+            self._user_cache.clear()
+        
+        return self._real_database.execute(sql, params)
+    
+    def get_user_data(self, user_id: int) -> Dict[str, Any]:
+        if user_id in self._user_cache:
+            data, timestamp = self._user_cache[user_id]
+            if self._is_cache_valid(timestamp):
+                print("💾 CACHE: Retornando dados do usuário do cache")
+                return data
+        
+        print("💾 CACHE: Cache miss, buscando dados do usuário")
+        data = self._real_database.get_user_data(user_id)
+        self._user_cache[user_id] = (data, datetime.now().timestamp())
+        return data
+    
+    def update_user_data(self, user_id: int, data: Dict[str, Any]) -> bool:
+        # Atualização invalida cache do usuário
+        if user_id in self._user_cache:
+            del self._user_cache[user_id]
+        
+        result = self._real_database.update_user_data(user_id, data)
+        
+        if result:
+            # Atualiza cache com novos dados
+            self._user_cache[user_id] = (data, datetime.now().timestamp())
+        
+        return result
+
+# PROXY DE LOGGING
+class LoggingProxy(DatabaseOperations):
+    def __init__(self, real_database: DatabaseOperations, log_file: str = "database_operations.log"):
+        self._real_database = real_database
+        self._log_file = log_file
+        self._log_operations = []
+    
+    def _log_operation(self, operation: str, details: str, success: bool = True):
+        timestamp = datetime.now().isoformat()
+        log_entry = {
+            "timestamp": timestamp,
+            "operation": operation,
+            "details": details,
+            "success": success
+        }
+        self._log_operations.append(log_entry)
+        
+        print(f"📝 LOG: {operation} - {details} - {'SUCESSO' if success else 'FALHA'}")
+        
+        # Também escreve em arquivo (em produção)
+        try:
+            with open(self._log_file, 'a') as f:
+                f.write(json.dumps(log_entry) + '\n')
+        except:
+            pass  # Em caso de erro de arquivo, apenas ignora
+    
+    def query(self, sql: str, params: tuple = None) -> List[Dict[str, Any]]:
+        self._log_operation("QUERY", f"SQL: {sql}, Params: {params}")
+        
+        try:
+            result = self._real_database.query(sql, params)
+            self._log_operation("QUERY", f"Resultados: {len(result)} linhas")
+            return result
+        except Exception as e:
+            self._log_operation("QUERY", f"Erro: {str(e)}", False)
+            raise
+    
+    def execute(self, sql: str, params: tuple = None) -> int:
+        self._log_operation("EXECUTE", f"SQL: {sql}, Params: {params}")
+        
+        try:
+            result = self._real_database.execute(sql, params)
+            self._log_operation("EXECUTE", f"Linhas afetadas: {result}")
+            return result
+        except Exception as e:
+            self._log_operation("EXECUTE", f"Erro: {str(e)}", False)
+            raise
+    
+    def get_user_data(self, user_id: int) -> Dict[str, Any]:
+        self._log_operation("GET_USER_DATA", f"User ID: {user_id}")
+        
+        try:
+            result = self._real_database.get_user_data(user_id)
+            self._log_operation("GET_USER_DATA", f"Dados recuperados: {bool(result)}")
+            return result
+        except Exception as e:
+            self._log_operation("GET_USER_DATA", f"Erro: {str(e)}", False)
+            raise
+    
+    def update_user_data(self, user_id: int, data: Dict[str, Any]) -> bool:
+        self._log_operation("UPDATE_USER_DATA", f"User ID: {user_id}, Data: {data}")
+        
+        try:
+            result = self._real_database.update_user_data(user_id, data)
+            self._log_operation("UPDATE_USER_DATA", f"Sucesso: {result}")
+            return result
+        except Exception as e:
+            self._log_operation("UPDATE_USER_DATA", f"Erro: {str(e)}", False)
+            raise
+    
+    def get_audit_log(self) -> List[Dict[str, Any]]:
+        return self._log_operations.copy()
+
+# PROXY VIRTUAL - Lazy Initialization
+class VirtualProxy(DatabaseOperations):
+    def __init__(self):
+        self._real_database: Optional[RealDatabase] = None
+        self._initialized = False
+    
+    def _initialize(self):
+        if not self._initialized:
+            print("🌟 PROXY VIRTUAL: Inicializando banco de dados...")
+            self._real_database = RealDatabase()
+            self._initialized = True
+    
+    def query(self, sql: str, params: tuple = None) -> List[Dict[str, Any]]:
+        self._initialize()
+        return self._real_database.query(sql, params)
+    
+    def execute(self, sql: str, params: tuple = None) -> int:
+        self._initialize()
+        return self._real_database.execute(sql, params)
+    
+    def get_user_data(self, user_id: int) -> Dict[str, Any]:
+        self._initialize()
+        return self._real_database.get_user_data(user_id)
+    
+    def update_user_data(self, user_id: int, data: Dict[str, Any]) -> bool:
+        self._initialize()
+        return self._real_database.update_user_data(user_id, data)
+    
+    def close(self):
+        if self._initialized and self._real_database:
+            self._real_database.close_connection()
+
+# Sistema de Demonstração
+class DatabaseSystem:
+    def demonstrate_proxies(self):
+        print("🗄️ SISTEMA DE BANCO DE DADOS COM PROXY")
+        print("=======================================")
+        
+        # Demonstração do Proxy Virtual
+        print("\n1. 🌟 PROXY VIRTUAL (Lazy Initialization)")
+        virtual_proxy = VirtualProxy()
+        
+        print("   Antes da primeira operação...")
+        print("   Executando primeira query...")
+        results = virtual_proxy.query("SELECT * FROM users WHERE user_id = ?", (1,))
+        print(f"   Resultado: {results}")
+        
+        # Demonstração do Proxy de Proteção
+        print("\n2. 🔒 PROXY DE PROTEÇÃO")
+        real_db = RealDatabase()
+        protection_proxy = ProtectionProxy(real_db)
+        
+        print("\n   --- Acesso como Manager ---")
+        user_data = protection_proxy.get_user_data(1, "manager")
+        print(f"   Dados do usuário: {user_data}")
+        
+        print("\n   --- Acesso como Fan (Restrito) ---")
+        user_data = protection_proxy.get_user_data(1, "fan")
+        print(f"   Dados do usuário: {user_data}")
+        
+        print("\n   --- Tentativa de Update como Fan ---")
+        success = protection_proxy.update_user_data(1, {"name": "Rihanna Updated"}, "fan")
+        print(f"   Update realizado: {success}")
+        
+        # Demonstração do Proxy de Cache
+        print("\n3. 💾 PROXY DE CACHE")
+        cache_proxy = CacheProxy(protection_proxy)
+        
+        print("\n   --- Primeira Consulta ---")
+        start_time = time.time()
+        results1 = cache_proxy.query("SELECT * FROM users")
+        time1 = time.time() - start_time
+        print(f"   Tempo: {time1:.3f}s")
+        
+        print("\n   --- Segunda Consulta (Cache) ---")
+        start_time = time.time()
+        results2 = cache_proxy.query("SELECT * FROM users")
+        time2 = time.time() - start_time
+        print(f"   Tempo: {time2:.3f}s")
+        print(f"   Melhoria: {time1/time2:.1f}x mais rápido")
+        
+        # Demonstração do Proxy de Logging
+        print("\n4. 📝 PROXY DE LOGGING")
+        logging_proxy = LoggingProxy(cache_proxy)
+        
+        print("\n   --- Operações com Log ---")
+        logging_proxy.query("SELECT name FROM users WHERE role = ?", ("artist",))
+        logging_proxy.get_user_data(1)
+        logging_proxy.update_user_data(1, {"status": "active"})
+        
+        # Mostrar log de auditoria
+        audit_log = logging_proxy.get_audit_log()
+        print(f"\n   --- Log de Auditoria ({len(audit_log)} entradas) ---")
+        for entry in audit_log[-3:]:  # Mostrar últimas 3 entradas
+            print(f"   {entry['timestamp']} - {entry['operation']}: {entry['details']}")
+        
+        # Fechar conexões
+        virtual_proxy.close()
+        real_db.close_connection()
+        
+        print("\n✅ Demonstração concluída!")
+
+# Execução do exemplo
+if __name__ == "__main__":
+    system = DatabaseSystem()
+    system.demonstrate_proxies()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/estruturais/proxy/ficticio.png" alt="Rihanna Proxy UML"
+                    class="cover-image" style=" height: 200px; scale: 1.1;">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Proxy no nosso exemplo da Rihanna:</p>
+            <pre class="uml-code">
+@startuml
+interface AcessoRihanna {
+    + concederEntrevista(jornalista: string): string
+    + assinarContrato(empresa: string, contrato: any): string
+    + atenderFa(fa: string): string
+    + realizarShow(local: string): string
+}
+
+class RihannaReal {
+    - energia: number
+    + concederEntrevista(jornalista: string): string
+    + assinarContrato(empresa: string, contrato: any): string
+    + atenderFa(fa: string): string
+    + realizarShow(local: string): string
+    - consumirEnergia(pontos: number): void
+    + getEnergia(): number
+}
+
+class ProxyProtecao {
+    - rihanna: RihannaReal
+    - acessosPermitidos: Set<string>
+    - contratosAutorizados: Set<string>
+    + concederEntrevista(jornalista: string): string
+    + assinarContrato(empresa: string, contrato: any): string
+    + atenderFa(fa: string): string
+    + realizarShow(local: string): string
+}
+
+class ProxyVirtual {
+    - rihanna: RihannaReal | null
+    - cache: Map<string, string>
+    + concederEntrevista(jornalista: string): string
+    + assinarContrato(empresa: string, contrato: any): string
+    + atenderFa(fa: string): string
+    + realizarShow(local: string): string
+    - criarRihanna(): RihannaReal
+}
+
+class ProxyLogging {
+    - rihanna: AcessoRihanna
+    - log: string[]
+    + concederEntrevista(jornalista: string): string
+    + assinarContrato(empresa: string, contrato: any): string
+    + atenderFa(fa: string): string
+    + realizarShow(local: string): string
+    - registrar(mensagem: string): void
+    + getLog(): string[]
+}
+
+class ProxyRemoto {
+    - enderecoBase: string
+    + concederEntrevista(jornalista: string): string
+    + assinarContrato(empresa: string, contrato: any): string
+    + atenderFa(fa: string): string
+    + realizarShow(local: string): string
+    - simularLatencia(): void
+}
+
+AcessoRihanna <|-- RihannaReal
+AcessoRihanna <|-- ProxyProtecao
+AcessoRihanna <|-- ProxyVirtual
+AcessoRihanna <|-- ProxyLogging
+AcessoRihanna <|-- ProxyRemoto
+
+ProxyProtecao --> RihannaReal
+ProxyVirtual --> RihannaReal
+ProxyLogging --> AcessoRihanna
+
+note right of ProxyProtecao
+    Controla acesso baseado em
+    credenciais e permissões
+    pré-definidas
+end note
+
+note right of ProxyVirtual
+    Adia criação do objeto real
+    e implementa cache para
+    otimização de performance
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como diferentes tipos de proxy controlam o acesso à Rihanna de maneiras específicas.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/estruturais/proxy/pratico.png" style="height: 200px; scale: 1.1;" alt="Database Proxy UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Proxy no exemplo prático do sistema de banco de dados:</p>
+            <pre class="uml-code">
+@startuml
+interface DatabaseOperations {
+    + query(sql: str, params: tuple): List[Dict[str, Any]]
+    + execute(sql: str, params: tuple): int
+    + get_user_data(user_id: int): Dict[str, Any]
+    + update_user_data(user_id: int, data: Dict[str, Any]): bool
+}
+
+class RealDatabase {
+    - connection_active: bool
+    - users: Dict[int, Dict]
+    + query(sql: str, params: tuple): List[Dict[str, Any]]
+    + execute(sql: str, params: tuple): int
+    + get_user_data(user_id: int): Dict[str, Any]
+    + update_user_data(user_id: int, data: Dict[str, Any]): bool
+    + close_connection(): void
+}
+
+class ProtectionProxy {
+    - _real_database: RealDatabase
+    - _allowed_roles: Set[str]
+    - _sensitive_tables: Set[str]
+    + query(sql: str, params: tuple, user_role: str): List[Dict[str, Any]]
+    + execute(sql: str, params: tuple, user_role: str): int
+    + get_user_data(user_id: int, requesting_user_role: str): Dict[str, Any]
+    + update_user_data(user_id: int, data: Dict[str, Any], requesting_user_role: str): bool
+    - _check_permission(user_role: str, operation: str, table: str): bool
+    - _extract_table_from_sql(sql: str): str
+    - _extract_operation_from_sql(sql: str): str
+}
+
+class CacheProxy {
+    - _real_database: DatabaseOperations
+    - _query_cache: Dict[str, tuple]
+    - _user_cache: Dict[int, tuple]
+    - _cache_duration: int
+    + query(sql: str, params: tuple): List[Dict[str, Any]]
+    + execute(sql: str, params: tuple): int
+    + get_user_data(user_id: int): Dict[str, Any]
+    + update_user_data(user_id: int, data: Dict[str, Any]): bool
+    - _is_cache_valid(timestamp: float): bool
+    - _get_cache_key(sql: str, params: tuple): str
+}
+
+class LoggingProxy {
+    - _real_database: DatabaseOperations
+    - _log_file: str
+    - _log_operations: List[Dict]
+    + query(sql: str, params: tuple): List[Dict[str, Any]]
+    + execute(sql: str, params: tuple): int
+    + get_user_data(user_id: int): Dict[str, Any]
+    + update_user_data(user_id: int, data: Dict[str, Any]): bool
+    + get_audit_log(): List[Dict[str, Any]]
+    - _log_operation(operation: str, details: str, success: bool): void
+}
+
+class VirtualProxy {
+    - _real_database: RealDatabase | None
+    - _initialized: bool
+    + query(sql: str, params: tuple): List[Dict[str, Any]]
+    + execute(sql: str, params: tuple): int
+    + get_user_data(user_id: int): Dict[str, Any]
+    + update_user_data(user_id: int, data: Dict[str, Any]): bool
+    + close(): void
+    - _initialize(): void
+}
+
+DatabaseOperations <|-- RealDatabase
+DatabaseOperations <|-- ProtectionProxy
+DatabaseOperations <|-- CacheProxy
+DatabaseOperations <|-- LoggingProxy
+DatabaseOperations <|-- VirtualProxy
+
+ProtectionProxy --> RealDatabase
+CacheProxy --> DatabaseOperations
+LoggingProxy --> DatabaseOperations
+VirtualProxy --> RealDatabase
+
+note right of ProtectionProxy
+    Implementa controle de acesso
+    baseado em roles e permissões
+    para operações sensíveis
+end note
+
+note right of CacheProxy
+    Armazena resultados de queries
+    para melhorar performance e
+    reduzir carga no banco real
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite combinar diferentes tipos de proxy para criar um sistema de banco de dados seguro e eficiente.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://s2.glbimg.com/mk82Vch10hreR-3FQF-FOiTQ0_NI54Dk7iq7dzxA_nJIoz-HdGixxa_8qOZvMp3w/e.glbimg.com/og/ed/f/original/2013/08/08/rihanna.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Proxy oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Controle de Acesso:</strong> Permite controlar quem pode acessar o objeto real</li>
+                <li><strong>Otimização de Performance:</strong> Cache e lazy loading melhoram eficiência</li>
+                <strong>Segurança:</strong> Adiciona camadas de proteção ao objeto real</li>
+                <li><strong>Transparência:</strong> Cliente não precisa saber se está usando proxy ou objeto real</li>
+                <li><strong>Flexibilidade:</strong> Diferentes tipos de proxy para diferentes necessidades</li>
+                <li><strong>Auditoria:</strong> Logging e monitoramento de todas as operações</li>
+                <li><strong>Separação de Responsabilidades:</strong> Cada proxy tem uma função específica</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://media.lacapital.com.ar/p/0b6c375b28239ae5da0a8eeb365da73d/adjuntos/204/imagenes/008/607/0008607710/1200x675/smart/-_rihanna_tristejpg.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Proxy também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Aumenta o número de classes no sistema</li>
+                <li><strong>Overhead:</strong> Chamadas indiretas podem ter impacto na performance</li>
+                <li><strong>Manutenção:</strong> Cada novo proxy requer implementação completa da interface</li>
+                <li><strong>Dificuldade de Debug:</strong> Pode ser difícil rastrear problemas através de múltiplos proxies</li>
+                <li><strong>Over-engineering:</strong> Pode ser complexo demais para casos simples</li>
+                <li><strong>Acoplamento:</strong> Proxies ficam acoplados à interface do objeto real</li>
+                <li><strong>Configuração:</strong> Pode requerer configuração complexa para múltiplos proxies</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://bestradiobrasil.com/br/wp-content/uploads/2015/03/RIHANNA-DIOR.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Proxy é uma ferramenta poderosa para controlar e otimizar o acesso a objetos, adicionando funcionalidades extras sem modificar o objeto original.</p>
+            <p>Na nossa analogia da Rihanna, o Proxy funciona como o <strong>sistema completo de segurança e assessoria</strong> - permitindo que a artista se concentre em sua criatividade enquanto diferentes tipos de proxies (seguranças, assessores, representantes) gerenciam o acesso, a segurança, o cache e o logging de todas as interações.</p>
+            <p>Assim como Rihanna precisa de uma equipe dedicada para proteger sua privacidade e otimizar seu trabalho, nossos sistemas de software precisam de proxies para proteger recursos sensíveis, otimizar performance e garantir a segurança das operações.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/proxy"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Proxy</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-proxy/26745"
+                        target="_blank">DevMedia - Padrão de Projeto Proxy</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/09/mao-na-massa-proxy/"
+                        target="_blank">Mão na Massa - Padrão Proxy</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Proxy" target="_blank">Wikipédia - Proxy (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/proxy-design-pattern/" target="_blank">GeeksforGeeks
+                        - Proxy Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/proxy" target="_blank">SourceMaking
+                        - Proxy Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
