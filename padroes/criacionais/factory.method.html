@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Factory Method - A Composição Íntima de Fiona Apple</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylecri.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/criacionais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/criacionais.html">Padrões Criacionais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Factory Method?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Exemplo Fictício (A Música de Fiona Apple)</a></li>
+            <li><a href="#page5">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page6">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page7">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page8">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page9">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page10">Vantagens</a></li>
+            <li><a href="#page11">Desvantagens</a></li>
+            <li><a href="#page12">Conclusão</a></li>
+            <li><a href="#page13">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">FACTORY METHOD</h1>
+            <p class="cover-subtitle">A Composição Íntima de Fiona Apple - Criando Emoções Musicais</p>
+
+            <img src="https://media.pitchfork.com/photos/592c6461eb335119a49f19de/16:9/w_1280,c_limit/e6d2a9cb.jpg"
+                alt="Capa Factory Method - Fiona Apple" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Factory Method?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://media.gq.com/photos/5e9621e63eac2600085a7e42/4:3/w_3067,h_2300,c_limit/gq-april-2020-how-to-get-into-fiona-apple.jpg"
+                    alt="Factory Method Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Factory Method é um <strong>padrão de projeto criacional</strong> que fornece uma interface para criar objetos em uma superclasse, mas permite que as subclasses alterem o tipo de objetos que serão criados [1].</p>
+            <p>É como a <strong>Fiona Apple compondo diferentes tipos de músicas</strong> - cada álbum tem seu próprio processo criativo, mas todos seguem a essência única da artista, adaptando-se às diferentes fases emocionais e artísticas.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://i.redd.it/attempted-to-upscale-some-of-my-favorite-old-fiona-photos-v0-5rwcg1s1vfob1.jpg?width=2608&format=pjpg&auto=webp&s=ede079de2b0be9c6f29e5777d139763262887173"
+                    alt="Problema da Criação de Objetos" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Factory Method resolve é o <strong>acoplamento direto entre o código cliente e classes concretas</strong> específicas.</p>
+            <p>Sem este padrão, o código ficaria dependente de implementações específicas - como ter que conhecer todos os detalhes de produção de cada música da Fiona Apple [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/criacionais/factory-method/generico.png"
+                    alt="Factory Method UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Factory Method:</p>
+            <pre class="uml-code">
+@startuml
+class Creator {
+    + someOperation(): void
+    + createProduct(): Product
+}
+
+class ConcreteCreatorA {
+    + createProduct(): ProductA
+}
+
+class ConcreteCreatorB {
+    + createProduct(): ProductB
+}
+
+interface Product {
+    + operation(): string
+}
+
+class ProductA {
+    + operation(): string
+}
+
+class ProductB {
+    + operation(): string
+}
+
+Creator <|-- ConcreteCreatorA
+Creator <|-- ConcreteCreatorB
+Product <|-- ProductA
+Product <|-- ProductB
+ConcreteCreatorA --> ProductA
+ConcreteCreatorB --> ProductB
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Creator:</strong> Classe abstrata que declara o factory method</li>
+                <li><strong>ConcreteCreator:</strong> Implementações que criam produtos específicos</li>
+                <li><strong>Product:</strong> Interface comum para todos os produtos</li>
+                <li><strong>ConcreteProduct:</strong> Implementações específicas dos produtos</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Exemplo Fictício (A Música de Fiona Apple)</h1>
+            <div class="img-placeholder-5">
+                <img src="../../assets/img/criacionais/factory-method/fiona.png"
+                    alt="Fiona Apple Albums" class="cover-image">
+            </div>
+            <p>Imagine que <strong>Fiona Apple</strong> cria diferentes tipos de composições musicais baseadas em suas fases artísticas:</p>
+
+            <h3>As Fases Composicionais de Fiona Apple:</h3>
+            <ul>
+                <li><strong>Fase "Tidal" (1996):</strong> Piano-driven, jazz influences, letras confessionais</li>
+                <li><strong>Fase "When the Pawn..." (1999):</strong> Orquestral complexo, arranjos elaborados</li>
+                <li><strong>Fase "Extraordinary Machine" (2005):</strong> Experimental, percussivo único</li>
+                <li><strong>Fase "The Idler Wheel..." (2012):</strong> Minimalista, sons orgânicos</li>
+                <li><strong>Fase "Fetch the Bolt Cutters" (2020):</strong> Percussão caseira, produção DIY</li>
+            </ul>
+
+            <p>O Factory Method permite que cada fase tenha seu próprio processo criativo, mantendo a essência da artista.</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-6">
+                <img src="https://imgix.bustle.com/nylon/18444463/origin.png?w=414&h=259&fit=crop&crop=faces&dpr=2"
+                    alt="Fiona Apple Performance" class="cover-image">
+            </div>
+            <p>Sem o Padrão Factory Method, criar composições específicas seria rígido e acoplado:</p>
+            <pre><code>
+// PROBLEMA: Acoplamento direto com classes concretas!
+class SistemaDeComposicao {
+    criarComposicao(tipo: string): Composicao {
+        if (tipo === "tidal") {
+            return new ComposicaoTidal(); // Acoplamento direto
+        } else if (tipo === "idlerwheel") {
+            return new ComposicaoIdlerWheel(); // Acoplamento direto
+        } else if (tipo === "bolcutters") {
+            return new ComposicaoBoltCutters(); // Acoplamento direto
+        }
+        throw new Error("Tipo não suportado");
+    }
+}
+
+// Uso problemático:
+const sistema = new SistemaDeComposicao();
+
+// Cliente precisa conhecer todas as classes concretas
+const musica1 = sistema.criarComposicao("tidal");
+const musica2 = sistema.criarComposicao("idlerwheel");
+const musica3 = sistema.criarComposicao("bolcutters");
+
+// PROBLEMAS:
+// 1. Acoplamento forte com classes concretas
+// 2. Dificuldade para adicionar novos tipos
+// 3. Código cliente precisa conhecer detalhes de implementação
+// 4. Violação do princípio aberto/fechado
+            </code></pre>
+            <p>Acoplamento direto dificulta a manutenção e extensão do código!</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-7">
+                <img src="https://conteudo.imguol.com.br/c/entretenimento/b1/2020/06/15/fiona-apple-lancou-fetch-the-bolt-cutters-em-abril-deste-ano-1592261247231_v2_900x506.jpg"
+                    alt="Factory Method Fiona Apple" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Factory Method, criamos composições de forma flexível e desacoplada:</p>
+            <pre><code>
+// Product Interface
+interface ComposicaoMusical {
+    compor(): string
+    produzir(): string
+    getEstilo(): string
+}
+
+// Concrete Products
+class ComposicaoTidal implements ComposicaoMusical {
+    compor(): string {
+        return "Compondo música com influências de jazz e piano melancólico"
+    }
+    
+    produzir(): string {
+        return "Produção limpa com ênfase em piano e vocais crus"
+    }
+    
+    getEstilo(): string {
+        return "Jazz-influenced piano pop confessional"
+    }
+}
+
+class ComposicaoWhenThePawn implements ComposicaoMusical {
+    compor(): string {
+        return "Criando arranjos orquestrais complexos e letras poéticas"
+    }
+    
+    produzir(): string {
+        return "Produção elaborada com múltiplas camadas instrumentais"
+    }
+    
+    getEstilo(): string {
+        return "Orquestral complexo com letras elaboradas"
+    }
+}
+
+class ComposicaoIdlerWheel implements ComposicaoMusical {
+    compor(): string {
+        return "Compondo com sons orgânicos e minimalismo instrumental"
+    }
+    
+    produzir(): string {
+        return "Produção crua com ênfase em percussão orgânica"
+    }
+    
+    getEstilo(): string {
+        return "Minimalista com sons orgânicos e percussão única"
+    }
+}
+
+class ComposicaoBoltCutters implements ComposicaoMusical {
+    compor(): string {
+        return "Criando com percussão caseira e produção DIY"
+    }
+    
+    produzir(): string {
+        return "Produção caseira com gravações ambientais e percussão improvisada"
+    }
+    
+    getEstilo(): string {
+        return "Percussão caseira DIY com letras autobiográficas"
+    }
+}
+
+// Creator Abstract Class
+abstract class CriadorDeComposicao {
+    // Factory Method abstrato
+    abstract criarComposicao(): ComposicaoMusical
+    
+    // Operação comum que usa o factory method
+    criarObraMusical(): string {
+        const composicao = this.criarComposicao()
+        return `
+Processo de Criação:
+1. Composição: ${composicao.compor()}
+2. Produção: ${composicao.produzir()}
+3. Estilo: ${composicao.getEstilo()}
+        `.trim()
+    }
+}
+
+// Concrete Creators
+class CriadorTidal extends CriadorDeComposicao {
+    criarComposicao(): ComposicaoMusical {
+        return new ComposicaoTidal()
+    }
+}
+
+class CriadorWhenThePawn extends CriadorDeComposicao {
+    criarComposicao(): ComposicaoMusical {
+        return new ComposicaoWhenThePawn()
+    }
+}
+
+class CriadorIdlerWheel extends CriadorDeComposicao {
+    criarComposicao(): ComposicaoMusical {
+        return new ComposicaoIdlerWheel()
+    }
+}
+
+class CriadorBoltCutters extends CriadorDeComposicao {
+    criarComposicao(): ComposicaoMusical {
+        return new ComposicaoBoltCutters()
+    }
+}
+
+// Client Code
+class EstudioGravacao {
+    static produzirAlbum(criador: CriadorDeComposicao): string {
+        console.log("🎵 Iniciando produção de álbum...")
+        return criador.criarObraMusical()
+    }
+    
+    static produzirDiscografia(): string[] {
+        const discografia: string[] = []
+        
+        const criadores = [
+            new CriadorTidal(),
+            new CriadorWhenThePawn(),
+            new CriadorIdlerWheel(),
+            new CriadorBoltCutters()
+        ]
+        
+        criadores.forEach((criador, index) => {
+            console.log(`\n=== ÁLBUM ${index + 1} ===`)
+            const album = this.produzirAlbum(criador)
+            discografia.push(album)
+        })
+        
+        return discografia
+    }
+}
+
+// Uso do sistema
+console.log("=== DISCOGRAFIA FIONA APPLE ===")
+const discografia = EstudioGravacao.produzirDiscografia()
+
+// Demonstração de uso individual
+console.log("\n=== DEMONSTRAÇÃO INDIVIDUAL ===")
+const criadorBoltCutters = new CriadorBoltCutters()
+const musicaBoltCutters = criadorBoltCutters.criarComposicao()
+console.log("Música Bolt Cutters:", musicaBoltCutters.compor())
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://4kwallpapers.com/images/wallpapers/python-logo-dark-3440x1440-16094.png" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Factory Method em um sistema de processamento de documentos:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from datetime import datetime
+from typing import List, Dict, Any
+import json
+
+# Product Interface
+class DocumentProcessor(ABC):
+    @abstractmethod
+    def process(self, content: str) -> Dict[str, Any]:
+        pass
+    
+    @abstractmethod
+    def validate(self, content: str) -> bool:
+        pass
+    
+    @abstractmethod
+    def get_metadata(self) -> Dict[str, Any]:
+        pass
+
+# Concrete Products
+class JSONProcessor(DocumentProcessor):
+    def process(self, content: str) -> Dict[str, Any]:
+        try:
+            data = json.loads(content)
+            return {
+                "type": "JSON",
+                "data": data,
+                "size": len(content),
+                "processed_at": datetime.now().isoformat(),
+                "structure": self._analyze_structure(data)
+            }
+        except json.JSONDecodeError as e:
+            return {
+                "type": "JSON",
+                "error": str(e),
+                "processed_at": datetime.now().isoformat()
+            }
+    
+    def validate(self, content: str) -> bool:
+        try:
+            json.loads(content)
+            return True
+        except json.JSONDecodeError:
+            return False
+    
+    def get_metadata(self) -> Dict[str, Any]:
+        return {
+            "format": "JSON",
+            "mime_type": "application/json",
+            "extensions": [".json", ".jsonl"],
+            "supports_nesting": True
+        }
+    
+    def _analyze_structure(self, data: Any) -> Dict[str, Any]:
+        if isinstance(data, dict):
+            return {
+                "type": "object",
+                "keys": list(data.keys()),
+                "key_count": len(data),
+                "sample_values": {k: type(v).__name__ for k, v in list(data.items())[:3]}
+            }
+        elif isinstance(data, list):
+            return {
+                "type": "array",
+                "length": len(data),
+                "sample_types": [type(item).__name__ for item in data[:3]] if data else []
+            }
+        else:
+            return {"type": type(data).__name__}
+
+class XMLProcessor(DocumentProcessor):
+    def process(self, content: str) -> Dict[str, Any]:
+        # Simulação de processamento XML
+        return {
+            "type": "XML",
+            "size": len(content),
+            "processed_at": datetime.now().isoformat(),
+            "root_element": self._extract_root_element(content),
+            "encoding": "UTF-8",
+            "elements_count": content.count('<') // 2
+        }
+    
+    def validate(self, content: str) -> bool:
+        # Validação básica de XML
+        return content.strip().startswith('<?xml') and content.count('<') > 0
+    
+    def get_metadata(self) -> Dict[str, Any]:
+        return {
+            "format": "XML",
+            "mime_type": "application/xml",
+            "extensions": [".xml", ".xsd", ".xsl"],
+            "supports_attributes": True
+        }
+    
+    def _extract_root_element(self, content: str) -> str:
+        lines = content.strip().split('\n')
+        for line in lines:
+            if line.startswith('<?xml'):
+                continue
+            if line.startswith('<') and not line.startswith('</'):
+                return line.split(' ')[0].replace('<', '')
+        return "unknown"
+
+class CSVProcessor(DocumentProcessor):
+    def process(self, content: str) -> Dict[str, Any]:
+        lines = content.strip().split('\n')
+        headers = lines[0].split(',') if lines else []
+        
+        return {
+            "type": "CSV",
+            "size": len(content),
+            "processed_at": datetime.now().isoformat(),
+            "headers": headers,
+            "row_count": len(lines) - 1 if len(lines) > 1 else 0,
+            "column_count": len(headers),
+            "sample_data": lines[:3] if lines else []
+        }
+    
+    def validate(self, content: str) -> bool:
+        lines = content.strip().split('\n')
+        if not lines:
+            return False
+        
+        # Verifica se há pelo menos um header e uma linha de dados
+        return len(lines) >= 1 and ',' in lines[0]
+    
+    def get_metadata(self) -> Dict[str, Any]:
+        return {
+            "format": "CSV",
+            "mime_type": "text/csv",
+            "extensions": [".csv", ".tsv"],
+            "delimiter": ","
+        }
+
+class TextProcessor(DocumentProcessor):
+    def process(self, content: str) -> Dict[str, Any]:
+        words = content.split()
+        sentences = content.split('.')
+        
+        return {
+            "type": "Text",
+            "size": len(content),
+            "processed_at": datetime.now().isoformat(),
+            "word_count": len(words),
+            "sentence_count": len([s for s in sentences if s.strip()]),
+            "character_count": len(content),
+            "average_word_length": sum(len(word) for word in words) / len(words) if words else 0,
+            "language_analysis": self._analyze_language(content)
+        }
+    
+    def validate(self, content: str) -> bool:
+        return bool(content.strip())
+    
+    def get_metadata(self) -> Dict[str, Any]:
+        return {
+            "format": "Plain Text",
+            "mime_type": "text/plain",
+            "extensions": [".txt", ".md", ".rst"],
+            "encoding": "UTF-8"
+        }
+    
+    def _analyze_language(self, content: str) -> Dict[str, Any]:
+        # Análise básica de linguagem
+        words = content.lower().split()
+        common_words = {'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i'}
+        found_common = [word for word in words if word in common_words]
+        
+        return {
+            "common_words_found": len(found_common),
+            "unique_words": len(set(words)),
+            "readability_score": min(100, max(0, len(words) // 10))
+        }
+
+# Creator Abstract Class
+class DocumentProcessorFactory(ABC):
+    @abstractmethod
+    def create_processor(self) -> DocumentProcessor:
+        pass
+    
+    def process_document(self, content: str) -> Dict[str, Any]:
+        processor = self.create_processor()
+        
+        if not processor.validate(content):
+            return {
+                "error": "Document validation failed",
+                "processor": processor.get_metadata()["format"],
+                "processed_at": datetime.now().isoformat()
+            }
+        
+        result = processor.process(content)
+        result["metadata"] = processor.get_metadata()
+        return result
+
+# Concrete Creators
+class JSONProcessorFactory(DocumentProcessorFactory):
+    def create_processor(self) -> DocumentProcessor:
+        return JSONProcessor()
+
+class XMLProcessorFactory(DocumentProcessorFactory):
+    def create_processor(self) -> DocumentProcessor:
+        return XMLProcessor()
+
+class CSVProcessorFactory(DocumentProcessorFactory):
+    def create_processor(self) -> DocumentProcessor:
+        return CSVProcessor()
+
+class TextProcessorFactory(DocumentProcessorFactory):
+    def create_processor(self) -> DocumentProcessor:
+        return TextProcessor()
+
+# Client Code
+class DocumentProcessingService:
+    def __init__(self):
+        self._factories = {
+            'json': JSONProcessorFactory(),
+            'xml': XMLProcessorFactory(),
+            'csv': CSVProcessorFactory(),
+            'text': TextProcessorFactory()
+        }
+    
+    def process_document(self, doc_type: str, content: str) -> Dict[str, Any]:
+        if doc_type not in self._factories:
+            return {
+                "error": f"Unsupported document type: {doc_type}",
+                "supported_types": list(self._factories.keys()),
+                "processed_at": datetime.now().isoformat()
+            }
+        
+        factory = self._factories[doc_type]
+        return factory.process_document(content)
+    
+    def batch_process(self, documents: List[Dict[str, str]]) -> List[Dict[str, Any]]:
+        results = []
+        
+        for doc in documents:
+            print(f"Processing {doc.get('type', 'unknown')} document...")
+            result = self.process_document(doc['type'], doc['content'])
+            results.append(result)
+        
+        return results
+    
+    def get_supported_formats(self) -> List[Dict[str, Any]]:
+        formats = []
+        for factory in self._factories.values():
+            processor = factory.create_processor()
+            formats.append(processor.get_metadata())
+        return formats
+
+# Example usage
+def main():
+    service = DocumentProcessingService()
+    
+    # Documentos de exemplo
+    sample_documents = [
+        {
+            "type": "json",
+            "content": '{"name": "Fiona Apple", "albums": ["Tidal", "When the Pawn"], "year": 1996}'
+        },
+        {
+            "type": "xml",
+            "content": '<?xml version="1.0"?><artist><name>Fiona Apple</name><album>Tidal</album></artist>'
+        },
+        {
+            "type": "csv",
+            "content": "name,album,year\nFiona Apple,Tidal,1996\nFiona Apple,When the Pawn,1999"
+        },
+        {
+            "type": "text",
+            "content": "Fiona Apple is an American singer-songwriter and pianist. Her music incorporates elements of alternative rock, jazz, and art pop."
+        }
+    ]
+    
+    print("=== DOCUMENT PROCESSING SERVICE ===")
+    print("\nSupported Formats:")
+    formats = service.get_supported_formats()
+    for fmt in formats:
+        print(f"- {fmt['format']} ({', '.join(fmt['extensions'])})")
+    
+    print("\n=== PROCESSING DOCUMENTS ===")
+    results = service.batch_process(sample_documents)
+    
+    for i, result in enumerate(results):
+        print(f"\n--- Document {i+1} Result ---")
+        if 'error' in result:
+            print(f"Error: {result['error']}")
+        else:
+            print(f"Type: {result['type']}")
+            print(f"Size: {result['size']} bytes")
+            print(f"Processed: {result['processed_at']}")
+            if 'metadata' in result:
+                print(f"Format: {result['metadata']['format']}")
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-9">
+                <img src="../../assets/img/criacionais/factory-method/ficticio.png" alt="Fiona Apple Factory Method UML"
+                    class="cover-image" style="scale:1.1;">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Factory Method no nosso exemplo da Fiona Apple:</p>
+            <pre class="uml-code">
+@startuml
+interface ComposicaoMusical {
+    + compor(): string
+    + produzir(): string
+    + getEstilo(): string
+}
+
+class ComposicaoTidal {
+    + compor(): string
+    + produzir(): string
+    + getEstilo(): string
+}
+
+class ComposicaoWhenThePawn {
+    + compor(): string
+    + produzir(): string
+    + getEstilo(): string
+}
+
+class ComposicaoIdlerWheel {
+    + compor(): string
+    + produzir(): string
+    + getEstilo(): string
+}
+
+class ComposicaoBoltCutters {
+    + compor(): string
+    + produzir(): string
+    + getEstilo(): string
+}
+
+abstract class CriadorDeComposicao {
+    + criarObraMusical(): string
+    + {abstract} criarComposicao(): ComposicaoMusical
+}
+
+class CriadorTidal {
+    + criarComposicao(): ComposicaoMusical
+}
+
+class CriadorWhenThePawn {
+    + criarComposicao(): ComposicaoMusical
+}
+
+class CriadorIdlerWheel {
+    + criarComposicao(): ComposicaoMusical
+}
+
+class CriadorBoltCutters {
+    + criarComposicao(): ComposicaoMusical
+}
+
+class EstudioGravacao {
+    + produzirAlbum(criador: CriadorDeComposicao): string
+    + produzirDiscografia(): string[]
+}
+
+ComposicaoMusical <|-- ComposicaoTidal
+ComposicaoMusical <|-- ComposicaoWhenThePawn
+ComposicaoMusical <|-- ComposicaoIdlerWheel
+ComposicaoMusical <|-- ComposicaoBoltCutters
+
+CriadorDeComposicao <|-- CriadorTidal
+CriadorDeComposicao <|-- CriadorWhenThePawn
+CriadorDeComposicao <|-- CriadorIdlerWheel
+CriadorDeComposicao <|-- CriadorBoltCutters
+
+CriadorTidal --> ComposicaoTidal
+CriadorWhenThePawn --> ComposicaoWhenThePawn
+CriadorIdlerWheel --> ComposicaoIdlerWheel
+CriadorBoltCutters --> ComposicaoBoltCutters
+
+EstudioGravacao --> CriadorDeComposicao
+
+note right of CriadorDeComposicao::criarComposicao
+    Factory Method abstrato que
+    as subclasses devem implementar
+    para criar produtos específicos
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como cada criador concreto implementa o factory method para criar composições específicas.</p>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/criacionais/factory-method/pratico.png" alt="Document Processor UML"
+                    class="cover-image" style="scale:1.1">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Factory Method no exemplo prático do sistema de processamento de documentos:</p>
+            <pre class="uml-code">
+@startuml
+interface DocumentProcessor {
+    + process(content: str): Dict[str, Any]
+    + validate(content: str): bool
+    + get_metadata(): Dict[str, Any]
+}
+
+class JSONProcessor {
+    + process(content: str): Dict[str, Any]
+    + validate(content: str): bool
+    + get_metadata(): Dict[str, Any]
+    - _analyze_structure(data: Any): Dict[str, Any]
+}
+
+class XMLProcessor {
+    + process(content: str): Dict[str, Any]
+    + validate(content: str): bool
+    + get_metadata(): Dict[str, Any]
+    - _extract_root_element(content: str): str
+}
+
+class CSVProcessor {
+    + process(content: str): Dict[str, Any]
+    + validate(content: str): bool
+    + get_metadata(): Dict[str, Any]
+}
+
+class TextProcessor {
+    + process(content: str): Dict[str, Any]
+    + validate(content: str): bool
+    + get_metadata(): Dict[str, Any]
+    - _analyze_language(content: str): Dict[str, Any]
+}
+
+abstract class DocumentProcessorFactory {
+    + {abstract} create_processor(): DocumentProcessor
+    + process_document(content: str): Dict[str, Any]
+}
+
+class JSONProcessorFactory {
+    + create_processor(): DocumentProcessor
+}
+
+class XMLProcessorFactory {
+    + create_processor(): DocumentProcessor
+}
+
+class CSVProcessorFactory {
+    + create_processor(): DocumentProcessor
+}
+
+class TextProcessorFactory {
+    + create_processor(): DocumentProcessor
+}
+
+class DocumentProcessingService {
+    - _factories: Dict[str, DocumentProcessorFactory]
+    + process_document(doc_type: str, content: str): Dict[str, Any]
+    + batch_process(documents: List[Dict[str, str]]): List[Dict[str, Any]]
+    + get_supported_formats(): List[Dict[str, Any]]
+}
+
+DocumentProcessor <|-- JSONProcessor
+DocumentProcessor <|-- XMLProcessor
+DocumentProcessor <|-- CSVProcessor
+DocumentProcessor <|-- TextProcessor
+
+DocumentProcessorFactory <|-- JSONProcessorFactory
+DocumentProcessorFactory <|-- XMLProcessorFactory
+DocumentProcessorFactory <|-- CSVProcessorFactory
+DocumentProcessorFactory <|-- TextProcessorFactory
+
+JSONProcessorFactory --> JSONProcessor
+XMLProcessorFactory --> XMLProcessor
+CSVProcessorFactory --> CSVProcessor
+TextProcessorFactory --> TextProcessor
+
+DocumentProcessingService --> DocumentProcessorFactory
+
+note right of DocumentProcessorFactory::create_processor
+    Factory Method que delega
+    a criação específica para
+    as subclasses concretas
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite adicionar novos tipos de processadores sem modificar o código existente.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-11">
+                <img src="https://preview.redd.it/happy-25th-anniversary-to-when-the-pawn-whats-your-favorite-v0-7jygce1zyuzd1.jpg?width=640&crop=smart&auto=webp&s=7fafcddd152bb6ddbc091746b16321b0f155926c"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Factory Method oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Baixo Acoplamento:</strong> Cliente não conhece classes concretas específicas</li>
+                <li><strong>Princípio Aberto/Fechado:</strong> Fácil adicionar novos tipos de produtos</li>
+                <li><strong>Single Responsibility:</strong> Criação concentrada em um único lugar</li>
+                <li><strong>Flexibilidade:</strong> Subclasses decidem quais objetos criar</li>
+                <li><strong>Reusabilidade:</strong> Código cliente funciona com qualquer criador concreto</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://media.newyorker.com/photos/5e6c2f090d121d00087dbc91/master/pass/200323_r36038.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Factory Method também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Pode introduzir muitas classes no código</li>
+                <li><strong>Over-engineering:</strong> Pode ser complexo demais para casos simples</li>
+                <li><strong>Herança Obrigatória:</strong> Requer criar subclasses para novos produtos</li>
+                <li><strong>Dificuldade de Teste:</strong> Testar classes abstratas pode ser complexo</li>
+                <li><strong>Acoplamento de Hierarquia:</strong> Produtos e criadores ficam acoplados</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-13">
+                <img src="https://e.snmc.io/i/1200/s/61215478e6403ba775c1088647b6476b/9883516"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Factory Method é uma ferramenta elegante para delegar a criação de objetos para subclasses, promovendo baixo acoplamento e alta coesão no código.</p>
+            <p>Na nossa analogia da Fiona Apple, o Factory Method funciona como o <strong>processo evolutivo de composição musical</strong> - permitindo que cada fase artística tenha seu próprio método criativo único, enquanto mantém a essência e autenticidade que definem a artista.</p>
+            <p>Assim como Fiona Apple evoluiu do piano jazz de "Tidal" para a percussão experimental de "Fetch the Bolt Cutters", o padrão Factory Method nos permite evoluir nosso código, adaptando-se a novos requisitos sem quebrar o que já funciona.</p>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/factory-method"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Factory Method</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-factory-method/26348"
+                        target="_blank">DevMedia - Padrão de Projeto Factory Method</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/09/18/mao-na-massa-factory-method/"
+                        target="_blank">Mão na Massa - Padrão Factory Method</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Factory_Method" target="_blank">Wikipédia - Factory Method (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/factory-method-design-pattern/" target="_blank">GeeksforGeeks
+                        - Factory Method Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/factory_method" target="_blank">SourceMaking
+                        - Factory Method Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
