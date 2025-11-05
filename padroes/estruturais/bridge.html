@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Bridge - A Ponte Musical de Fergie</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylestr.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/estruturais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/estruturais.html">Padrões Estruturais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Bridge?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Exemplo Fictício (A Música de Fergie)</a></li>
+            <li><a href="#page5">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page6">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page7">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page8">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page9">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page10">Vantagens</a></li>
+            <li><a href="#page11">Desvantagens</a></li>
+            <li><a href="#page12">Conclusão</a></li>
+            <li><a href="#page13">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">BRIDGE</h1>
+            <p class="cover-subtitle">A Ponte Musical de Fergie - Conectando Abstrações e Implementações</p>
+
+            <img src="https://akcdn.detik.net.id/visual/2024/08/05/lirik-lagu-london-bridge-fergie_43.jpeg?w=480&q=90"
+                alt="Capa Bridge - Fergie London Bridge" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Bridge?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://people.com/thmb/-snBSjFxwppadcdwWIRosAlfJJU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(711x447:713x449)/Fergie-Reimagines-London-Bridge-Video-070825-tout-487a4bc0a2cd44b2bff4536480470399.jpg"
+                    alt="Bridge Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Bridge é um <strong>padrão de projeto estrutural</strong> que permite dividir uma classe grande ou um conjunto de classes intimamente ligadas em duas hierarquias separadas — abstração e implementação — que podem ser desenvolvidas independentemente [1].</p>
+            <p>É como a <strong>Fergie conectando diferentes estilos musicais</strong> em "London Bridge" - a ponte une duas margens (abstração e implementação) permitindo que o tráfego (funcionalidade) flua livremente entre elas.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://i.ytimg.com/vi/drDIaBCuiS0/maxresdefault.jpg"
+                    alt="Problema da Herança" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Bridge resolve é a <strong>explosão de classes devido à herança</strong> quando você precisa combinar múltiplas dimensões de variação.</p>
+            <p>Sem este padrão, você teria uma hierarquia de classes complexa - como tentar criar todas as combinações possíveis de estilos musicais e plataformas de lançamento para a Fergie [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/estruturais/bridge/generico.png"
+                    alt="Bridge UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Bridge:</p>
+            <pre class="uml-code">
+@startuml
+class Abstraction {
+    - implementation: Implementation
+    + feature(): void
+}
+
+class RefinedAbstraction {
+    + feature(): void
+}
+
+interface Implementation {
+    + method1(): void
+    + method2(): void
+}
+
+class ConcreteImplementationA {
+    + method1(): void
+    + method2(): void
+}
+
+class ConcreteImplementationB {
+    + method1(): void
+    + method2(): void
+}
+
+Abstraction --> Implementation
+Abstraction <|-- RefinedAbstraction
+Implementation <|-- ConcreteImplementationA
+Implementation <|-- ConcreteImplementationB
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Abstraction:</strong> Define a interface de alto nível</li>
+                <li><strong>RefinedAbstraction:</strong> Extende a interface básica</li>
+                <li><strong>Implementation:</strong> Interface para todas as implementações concretas</li>
+                <li><strong>ConcreteImplementation:</strong> Implementações específicas da interface</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Exemplo Fictício (A Música de Fergie)</h1>
+            <div class="img-placeholder-5">
+                <img src="https://akamai.sscdn.co/uploadfile/letras/albuns/9/c/1/a/875161683825101.jpg"
+                    alt="Fergie Performance" class="cover-image">
+            </div>
+            <p>Imagine que <strong>Fergie</strong> precisa lançar suas músicas em diferentes formatos e plataformas:</p>
+
+            <h3>As Dimensões Musicais de Fergie:</h3>
+            <ul>
+                <li><strong>Abstrações (Tipos de Conteúdo):</strong>
+                    <ul>
+                        <li>Single (Música única)</li>
+                        <li>Álbum (Coleção de músicas)</li>
+                        <li>Remix (Versão alternativa)</li>
+                        <li>Live (Performance ao vivo)</li>
+                    </ul>
+                </li>
+                <li><strong>Implementações (Plataformas):</strong>
+                    <ul>
+                        <li>Streaming (Spotify, Apple Music)</li>
+                        <li>Rádio (FM, Online)</li>
+                        <li>Físico (CD, Vinil)</li>
+                        <li>Video (YouTube, Vevo)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>O Bridge permite combinar qualquer abstração com qualquer implementação sem criar uma explosão de classes.</p>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-6">
+                <img src="https://i.dailymail.co.uk/1s/2025/06/04/13/99031537-14779465-Fergie_pictured_in_her_original_London_Bridge_music_video_in_200-a-47_1749039445284.jpg"
+                    alt="Fergie Complexidade" class="cover-image">
+            </div>
+            <p>Sem o Padrão Bridge, a hierarquia de classes ficaria extremamente complexa:</p>
+            <pre><code>
+// PROBLEMA: Explosão de classes por herança!
+class MusicaFergieStreaming { }
+class MusicaFergieRadio { }
+class MusicaFergieFisico { }
+class MusicaFergieVideo { }
+
+class AlbumFergieStreaming { }
+class AlbumFergieRadio { }
+class AlbumFergieFisico { }
+class AlbumFergieVideo { }
+
+class RemixFergieStreaming { }
+class RemixFergieRadio { }
+class RemixFergieFisico { }
+class RemixFergieVideo { }
+
+class LiveFergieStreaming { }
+class LiveFergieRadio { }
+class LiveFergieFisico { }
+class LiveFergieVideo { }
+
+// E se precisarmos adicionar uma nova plataforma?
+class MusicaFergiePodcast { }
+class AlbumFergiePodcast { }
+class RemixFergiePodcast { }
+class LiveFergiePodcast { }
+
+// E uma nova abstração?
+class DocumentaryFergieStreaming { }
+class DocumentaryFergieRadio { }
+// ... e assim por diante!
+
+// RESULTADO: n × m classes!
+// 4 abstrações × 4 implementações = 16 classes
+// Adicionando 1 plataforma + 1 abstração = 25 classes!
+            </code></pre>
+            <p>Herança múltipla leva a uma explosão combinatória de classes!</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-7">
+                <img src="https://pbs.twimg.com/media/D_yxilLUYAIg6gN.jpg"
+                    alt="Bridge Pattern Fergie" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Bridge, criamos um sistema flexível e extensível:</p>
+            <pre><code>
+// Implementation Interface - A "Ponte"
+interface PlataformaLancamento {
+    lancar(titulo: string, conteudo: any): void
+    distribuir(regiao: string): void
+    getEstatisticas(): object
+}
+
+// Concrete Implementations
+class PlataformaStreaming implements PlataformaLancamento {
+    lancar(titulo: string, conteudo: any): void {
+        console.log(`🎵 Lançando "${titulo}" em plataformas de streaming`)
+        console.log(`   Disponível em: Spotify, Apple Music, Deezer`)
+    }
+    
+    distribuir(regiao: string): void {
+        console.log(`   Distribuição global com foco em ${regiao}`)
+    }
+    
+    getEstatisticas(): object {
+        return {
+            tipo: "streaming",
+            metricas: ["plays", "ouvintes_mensais", "playlists"],
+            monetizacao: "royalties"
+        }
+    }
+}
+
+class PlataformaRadio implements PlataformaLancamento {
+    lancar(titulo: string, conteudo: any): void {
+        console.log(`📻 Lançando "${titulo}" em estações de rádio`)
+        console.log(`   Rotação: Heavy, Medium, Light`)
+    }
+    
+    distribuir(regiao: string): void {
+        console.log(`   Distribuição regional: ${regiao}`)
+    }
+    
+    getEstatisticas(): object {
+        return {
+            tipo: "radio",
+            metricas: ["audiencia", "rotacao", "shazams"],
+            monetizacao: "licenciamento"
+        }
+    }
+}
+
+class PlataformaFisica implements PlataformaLancamento {
+    lancar(titulo: string, conteudo: any): void {
+        console.log(`💿 Lançando "${titulo}" em formato físico`)
+        console.log(`   Formatos: CD, Vinil, Cassete`)
+    }
+    
+    distribuir(regiao: string): void {
+        console.log(`   Distribuição física em lojas de ${regiao}`)
+    }
+    
+    getEstatisticas(): object {
+        return {
+            tipo: "fisico",
+            metricas: ["vendas", "estoque", "retornos"],
+            monetizacao: "venda_direta"
+        }
+    }
+}
+
+class PlataformaVideo implements PlataformaLancamento {
+    lancar(titulo: string, conteudo: any): void {
+        console.log(`🎬 Lançando "${titulo}" em plataformas de vídeo`)
+        console.log(`   Plataformas: YouTube, Vevo, TikTok`)
+    }
+    
+    distribuir(regiao: string): void {
+        console.log(`   Distribuição digital com viralização em ${regiao}`)
+    }
+    
+    getEstatisticas(): object {
+        return {
+            tipo: "video",
+            metricas: ["visualizacoes", "likes", "compartilhamentos"],
+            monetizacao: "ads"
+        }
+    }
+}
+
+// Abstraction
+abstract class ConteudoMusical {
+    protected plataforma: PlataformaLancamento
+    
+    constructor(plataforma: PlataformaLancamento) {
+        this.plataforma = plataforma
+    }
+    
+    setPlataforma(plataforma: PlataformaLancamento): void {
+        this.plataforma = plataforma
+    }
+    
+    abstract lancar(): void
+    abstract getDetalhes(): string
+}
+
+// Refined Abstractions
+class Single extends ConteudoMusical {
+    private titulo: string
+    private duracao: number
+    private colaboradores: string[]
+    
+    constructor(plataforma: PlataformaLancamento, titulo: string, duracao: number, colaboradores: string[] = []) {
+        super(plataforma)
+        this.titulo = titulo
+        this.duracao = duracao
+        this.colaboradores = colaboradores
+    }
+    
+    lancar(): void {
+        console.log(`\n=== LANÇAMENTO DE SINGLE ===`)
+        console.log(`Título: ${this.titulo}`)
+        console.log(`Duração: ${this.duracao}min`)
+        console.log(`Colaboradores: ${this.colaboradores.join(', ') || 'Nenhum'}`)
+        this.plataforma.lancar(this.titulo, this.getDetalhes())
+        this.plataforma.distribuir("EUA e Europa")
+    }
+    
+    getDetalhes(): string {
+        return `Single: ${this.titulo} (${this.duracao}min)`
+    }
+}
+
+class Album extends ConteudoMusical {
+    private titulo: string
+    private musicas: string[]
+    private ano: number
+    
+    constructor(plataforma: PlataformaLancamento, titulo: string, musicas: string[], ano: number) {
+        super(plataforma)
+        this.titulo = titulo
+        this.musicas = musicas
+        this.ano = ano
+    }
+    
+    lancar(): void {
+        console.log(`\n=== LANÇAMENTO DE ÁLBUM ===`)
+        console.log(`Álbum: ${this.titulo} (${this.ano})`)
+        console.log(`Faixas: ${this.musicas.length} músicas`)
+        console.log(`Destaques: ${this.musicas.slice(0, 3).join(', ')}`)
+        this.plataforma.lancar(this.titulo, this.getDetalhes())
+        this.plataforma.distribuir("Mundial")
+    }
+    
+    getDetalhes(): string {
+        return `Álbum: ${this.titulo} - ${this.musicas.length} faixas`
+    }
+}
+
+class Remix extends ConteudoMusical {
+    private musicaOriginal: string
+    private dj: string
+    private estilo: string
+    
+    constructor(plataforma: PlataformaLancamento, musicaOriginal: string, dj: string, estilo: string) {
+        super(plataforma)
+        this.musicaOriginal = musicaOriginal
+        this.dj = dj
+        this.estilo = estilo
+    }
+    
+    lancar(): void {
+        console.log(`\n=== LANÇAMENTO DE REMIX ===`)
+        console.log(`Original: ${this.musicaOriginal}`)
+        console.log(`DJ: ${this.dj}`)
+        console.log(`Estilo: ${this.estilo}`)
+        this.plataforma.lancar(`${this.musicaOriginal} (${this.dj} Remix)`, this.getDetalhes())
+        this.plataforma.distribuir("Clubes e Festivais")
+    }
+    
+    getDetalhes(): string {
+        return `Remix: ${this.musicaOriginal} por ${this.dj}`
+    }
+}
+
+class Live extends ConteudoMusical {
+    private local: string
+    private data: string
+    private setlist: string[]
+    
+    constructor(plataforma: PlataformaLancamento, local: string, data: string, setlist: string[]) {
+        super(plataforma)
+        this.local = local
+        this.data = data
+        this.setlist = setlist
+    }
+    
+    lancar(): void {
+        console.log(`\n=== LANÇAMENTO DE LIVE ===`)
+        console.log(`Local: ${this.local}`)
+        console.log(`Data: ${this.data}`)
+        console.log(`Setlist: ${this.setlist.slice(0, 3).join(', ')}...`)
+        this.plataforma.lancar(`Live at ${this.local}`, this.getDetalhes())
+        this.plataforma.distribuir("Fãs e Colecionadores")
+    }
+    
+    getDetalhes(): string {
+        return `Live: ${this.local} - ${this.setlist.length} músicas`
+    }
+}
+
+// Client Code - A Ponte em Ação!
+class Gravadora {
+    static executarLancamentos(): void {
+        console.log("🎶 FERGIE - CAMPANHA DE LANÇAMENTOS 🎶")
+        console.log("=========================================")
+        
+        // Criando plataformas (implementações)
+        const streaming = new PlataformaStreaming()
+        const radio = new PlataformaRadio()
+        const fisico = new PlataformaFisica()
+        const video = new PlataformaVideo()
+        
+        // London Bridge em diferentes plataformas
+        const londonBridgeSingle = new Single(streaming, "London Bridge", 3.24, [])
+        londonBridgeSingle.lancar()
+        
+        const londonBridgeRadio = new Single(radio, "London Bridge", 3.24, [])
+        londonBridgeRadio.lancar()
+        
+        // The Dutchess em diferentes formatos
+        const dutchessAlbum = new Album(fisico, "The Dutchess", [
+            "London Bridge", "Fergalicious", "Glamorous", "Big Girls Don't Cry",
+            "Clumsy", "Here I Come", "Velvet", "Finally"
+        ], 2006)
+        dutchessAlbum.lancar()
+        
+        // Remix em plataforma de vídeo
+        const londonBridgeRemix = new Remix(video, "London Bridge", "DJ A-Trak", "Hip-Hop")
+        londonBridgeRemix.lancar()
+        
+        // Performance ao vivo
+        const liveVMAs = new Live(streaming, "MTV VMAs 2006", "2006-08-31", [
+            "London Bridge", "Fergalicious", "Glamorous"
+        ])
+        liveVMAs.lancar()
+        
+        // Demonstração da flexibilidade da ponte
+        console.log("\n=== FLEXIBILIDADE DA PONTE ===")
+        const musicaFlexivel = new Single(streaming, "Flex Track", 3.0)
+        musicaFlexivel.lancar()
+        
+        // Mudando a plataforma dinamicamente
+        musicaFlexivel.setPlataforma(radio)
+        musicaFlexivel.lancar()
+    }
+}
+
+// Executando o sistema
+Gravadora.executarLancamentos()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Bridge em um sistema de notificações multi-canal:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from datetime import datetime
+from typing import List, Dict, Any
+import smtplib
+import requests
+import json
+
+# Implementation Interface
+class MessageSender(ABC):
+    @abstractmethod
+    def send(self, message: str, recipient: str, subject: str = None) -> bool:
+        pass
+    
+    @abstractmethod
+    def get_delivery_status(self, message_id: str) -> Dict[str, Any]:
+        pass
+    
+    @abstractmethod
+    def get_platform_info(self) -> Dict[str, Any]:
+        pass
+
+# Concrete Implementations
+class EmailSender(MessageSender):
+    def __init__(self, smtp_server: str, port: int, username: str, password: str):
+        self.smtp_server = smtp_server
+        self.port = port
+        self.username = username
+        self.password = password
+        self.sent_messages = {}
+    
+    def send(self, message: str, recipient: str, subject: str = None) -> bool:
+        message_id = f"email_{datetime.now().timestamp()}"
+        
+        try:
+            # Simulação de envio de email
+            print(f"📧 Enviando email para: {recipient}")
+            print(f"   Assunto: {subject or 'Sem assunto'}")
+            print(f"   Mensagem: {message[:50]}...")
+            
+            # Em produção, usaria smtplib para enviar realmente
+            # server = smtplib.SMTP(self.smtp_server, self.port)
+            # server.starttls()
+            # server.login(self.username, self.password)
+            # server.sendmail(self.username, recipient, f"Subject: {subject}\n\n{message}")
+            # server.quit()
+            
+            self.sent_messages[message_id] = {
+                "status": "delivered",
+                "timestamp": datetime.now(),
+                "recipient": recipient
+            }
+            
+            return True
+            
+        except Exception as e:
+            print(f"❌ Erro no envio de email: {e}")
+            self.sent_messages[message_id] = {
+                "status": "failed",
+                "error": str(e),
+                "timestamp": datetime.now()
+            }
+            return False
+    
+    def get_delivery_status(self, message_id: str) -> Dict[str, Any]:
+        return self.sent_messages.get(message_id, {"status": "unknown"})
+    
+    def get_platform_info(self) -> Dict[str, Any]:
+        return {
+            "platform": "Email",
+            "protocol": "SMTP",
+            "max_message_size": "25MB",
+            "supports_attachments": True,
+            "delivery_speed": "seconds to minutes"
+        }
+
+class SMSSender(MessageSender):
+    def __init__(self, api_key: str, api_secret: str, from_number: str):
+        self.api_key = api_key
+        self.api_secret = api_secret
+        self.from_number = from_number
+        self.sent_messages = {}
+    
+    def send(self, message: str, recipient: str, subject: str = None) -> bool:
+        message_id = f"sms_{datetime.now().timestamp()}"
+        
+        try:
+            # Simulação de envio de SMS
+            print(f"📱 Enviando SMS para: {recipient}")
+            print(f"   De: {self.from_number}")
+            print(f"   Mensagem: {message[:160]}...")
+            
+            # Em produção, usaria API como Twilio
+            # from twilio.rest import Client
+            # client = Client(self.api_key, self.api_secret)
+            # message = client.messages.create(
+            #     body=message,
+            #     from_=self.from_number,
+            #     to=recipient
+            # )
+            
+            self.sent_messages[message_id] = {
+                "status": "delivered",
+                "timestamp": datetime.now(),
+                "recipient": recipient
+            }
+            
+            return True
+            
+        except Exception as e:
+            print(f"❌ Erro no envio de SMS: {e}")
+            self.sent_messages[message_id] = {
+                "status": "failed",
+                "error": str(e),
+                "timestamp": datetime.now()
+            }
+            return False
+    
+    def get_delivery_status(self, message_id: str) -> Dict[str, Any]:
+        return self.sent_messages.get(message_id, {"status": "unknown"})
+    
+    def get_platform_info(self) -> Dict[str, Any]:
+        return {
+            "platform": "SMS",
+            "protocol": "HTTP/REST",
+            "max_message_size": "160 characters",
+            "supports_attachments": False,
+            "delivery_speed": "seconds"
+        }
+
+class PushNotificationSender(MessageSender):
+    def __init__(self, server_key: str, app_id: str):
+        self.server_key = server_key
+        self.app_id = app_id
+        self.sent_messages = {}
+    
+    def send(self, message: str, recipient: str, subject: str = None) -> bool:
+        message_id = f"push_{datetime.now().timestamp()}"
+        
+        try:
+            # Simulação de envio de push notification
+            print(f"📲 Enviando Push para: {recipient}")
+            print(f"   App: {self.app_id}")
+            print(f"   Título: {subject or 'Notificação'}")
+            print(f"   Mensagem: {message}")
+            
+            # Em produção, usaria FCM (Firebase Cloud Messaging)
+            # headers = {
+            #     'Authorization': f'key={self.server_key}',
+            #     'Content-Type': 'application/json'
+            # }
+            # data = {
+            #     'to': recipient,
+            #     'notification': {
+            #         'title': subject,
+            #         'body': message
+            #     }
+            # }
+            # response = requests.post(
+            #     'https://fcm.googleapis.com/fcm/send',
+            #     headers=headers,
+            #     data=json.dumps(data)
+            # )
+            
+            self.sent_messages[message_id] = {
+                "status": "delivered",
+                "timestamp": datetime.now(),
+                "recipient": recipient
+            }
+            
+            return True
+            
+        except Exception as e:
+            print(f"❌ Erro no envio de Push: {e}")
+            self.sent_messages[message_id] = {
+                "status": "failed",
+                "error": str(e),
+                "timestamp": datetime.now()
+            }
+            return False
+    
+    def get_delivery_status(self, message_id: str) -> Dict[str, Any]:
+        return self.sent_messages.get(message_id, {"status": "unknown"})
+    
+    def get_platform_info(self) -> Dict[str, Any]:
+        return {
+            "platform": "Push Notification",
+            "protocol": "HTTP/REST",
+            "max_message_size": "4KB",
+            "supports_attachments": True,
+            "delivery_speed": "seconds"
+        }
+
+class SlackSender(MessageSender):
+    def __init__(self, bot_token: str, default_channel: str):
+        self.bot_token = bot_token
+        self.default_channel = default_channel
+        self.sent_messages = {}
+    
+    def send(self, message: str, recipient: str, subject: str = None) -> bool:
+        message_id = f"slack_{datetime.now().timestamp()}"
+        channel = recipient if recipient.startswith('#') else self.default_channel
+        
+        try:
+            # Simulação de envio para Slack
+            print(f"💬 Enviando para Slack: {channel}")
+            print(f"   Assunto: {subject or 'Mensagem'}")
+            print(f"   Conteúdo: {message}")
+            
+            # Em produção, usaria Slack SDK
+            # from slack_sdk import WebClient
+            # client = WebClient(token=self.bot_token)
+            # response = client.chat_postMessage(
+            #     channel=channel,
+            #     text=f"*{subject}*\n{message}" if subject else message
+            # )
+            
+            self.sent_messages[message_id] = {
+                "status": "delivered",
+                "timestamp": datetime.now(),
+                "channel": channel
+            }
+            
+            return True
+            
+        except Exception as e:
+            print(f"❌ Erro no envio para Slack: {e}")
+            self.sent_messages[message_id] = {
+                "status": "failed",
+                "error": str(e),
+                "timestamp": datetime.now()
+            }
+            return False
+    
+    def get_delivery_status(self, message_id: str) -> Dict[str, Any]:
+        return self.sent_messages.get(message_id, {"status": "unknown"})
+    
+    def get_platform_info(self) -> Dict[str, Any]:
+        return {
+            "platform": "Slack",
+            "protocol": "HTTP/REST",
+            "max_message_size": "Unlimited",
+            "supports_attachments": True,
+            "delivery_speed": "seconds"
+        }
+
+# Abstraction
+class Notification(ABC):
+    def __init__(self, sender: MessageSender):
+        self._sender = sender
+    
+    def set_sender(self, sender: MessageSender):
+        self._sender = sender
+    
+    @abstractmethod
+    def send(self, recipient: str) -> bool:
+        pass
+    
+    @abstractmethod
+    def get_notification_type(self) -> str:
+        pass
+
+# Refined Abstractions
+class SystemAlert(Notification):
+    def __init__(self, sender: MessageSender, alert_type: str, message: str, severity: str = "info"):
+        super().__init__(sender)
+        self.alert_type = alert_type
+        self.message = message
+        self.severity = severity
+    
+    def send(self, recipient: str) -> bool:
+        subject = f"🚨 {self.severity.upper()} Alert: {self.alert_type}"
+        formatted_message = f"""
+Severity: {self.severity}
+Type: {self.alert_type}
+Message: {self.message}
+Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+        """.strip()
+        
+        return self._sender.send(formatted_message, recipient, subject)
+    
+    def get_notification_type(self) -> str:
+        return f"SystemAlert[{self.severity}]"
+
+class UserNotification(Notification):
+    def __init__(self, sender: MessageSender, user_name: str, action: str, details: str):
+        super().__init__(sender)
+        self.user_name = user_name
+        self.action = action
+        self.details = details
+    
+    def send(self, recipient: str) -> bool:
+        subject = f"👋 Notification for {self.user_name}"
+        formatted_message = f"""
+Hello {self.user_name},
+
+{self.action}
+
+Details: {self.details}
+
+Thank you,
+The Team
+        """.strip()
+        
+        return self._sender.send(formatted_message, recipient, subject)
+    
+    def get_notification_type(self) -> str:
+        return "UserNotification"
+
+class MarketingMessage(Notification):
+    def __init__(self, sender: MessageSender, campaign: str, offer: str, cta: str):
+        super().__init__(sender)
+        self.campaign = campaign
+        self.offer = offer
+        self.cta = cta
+    
+    def send(self, recipient: str) -> bool:
+        subject = f"🎁 {self.campaign}"
+        formatted_message = f"""
+Special Offer: {self.offer}
+
+{self.cta}
+
+Don't miss out!
+        """.strip()
+        
+        return self._sender.send(formatted_message, recipient, subject)
+    
+    def get_notification_type(self) -> str:
+        return f"Marketing[{self.campaign}]"
+
+class StatusReport(Notification):
+    def __init__(self, sender: MessageSender, report_type: str, data: Dict[str, Any]):
+        super().__init__(sender)
+        self.report_type = report_type
+        self.data = data
+    
+    def send(self, recipient: str) -> bool:
+        subject = f"📊 {self.report_type} Report"
+        
+        # Formatar dados para mensagem
+        formatted_data = "\n".join([f"{k}: {v}" for k, v in self.data.items()])
+        formatted_message = f"""
+{self.report_type} Status Report
+Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+
+{formatted_data}
+        """.strip()
+        
+        return self._sender.send(formatted_message, recipient, subject)
+    
+    def get_notification_type(self) -> str:
+        return f"StatusReport[{self.report_type}]"
+
+# Client Code
+class NotificationService:
+    def __init__(self):
+        # Inicializar diferentes implementações (senders)
+        self.email_sender = EmailSender("smtp.company.com", 587, "noreply@company.com", "password")
+        self.sms_sender = SMSSender("twilio_key", "twilio_secret", "+1234567890")
+        self.push_sender = PushNotificationSender("fcm_key", "company_app")
+        self.slack_sender = SlackSender("slack_token", "#alerts")
+    
+    def send_urgent_alert(self, message: str):
+        """Envia alerta urgente por múltiplos canais"""
+        alert = SystemAlert(self.email_sender, "Urgent", message, "critical")
+        alert.send("admin@company.com")
+        
+        alert.set_sender(self.sms_sender)
+        alert.send("+1234567890")
+        
+        alert.set_sender(self.slack_sender)
+        alert.send("#urgent-alerts")
+    
+    def send_user_welcome(self, user_email: str, user_name: str):
+        """Envia notificação de boas-vindas"""
+        welcome = UserNotification(self.email_sender, user_name, "Welcome to our platform!", "Your account has been successfully created.")
+        welcome.send(user_email)
+        
+        # Também enviar por push se for usuário mobile
+        welcome.set_sender(self.push_sender)
+        welcome.send("user_device_token")
+    
+    def send_marketing_campaign(self, campaign_data: Dict[str, Any]):
+        """Envia campanha de marketing"""
+        marketing = MarketingMessage(
+            self.email_sender,
+            campaign_data["name"],
+            campaign_data["offer"],
+            campaign_data["cta"]
+        )
+        
+        for recipient in campaign_data["recipients"]:
+            marketing.send(recipient)
+    
+    def send_daily_report(self):
+        """Envia relatório diário"""
+        report_data = {
+            "Users Active": "1,234",
+            "Revenue": "$5,678",
+            "Errors": "12",
+            "Uptime": "99.8%"
+        }
+        
+        report = StatusReport(self.email_sender, "Daily", report_data)
+        report.send("managers@company.com")
+        
+        # Versão resumida por Slack
+        report.set_sender(self.slack_sender)
+        report.send("#reports")
+
+# Example usage
+def main():
+    service = NotificationService()
+    
+    print("=== SISTEMA DE NOTIFICAÇÕES MULTI-CANAL ===")
+    print("\n1. Enviando Alerta Urgente:")
+    service.send_urgent_alert("Database connection failed!")
+    
+    print("\n2. Enviando Boas-vindas:")
+    service.send_user_welcome("john@example.com", "John Doe")
+    
+    print("\n3. Enviando Campanha de Marketing:")
+    campaign = {
+        "name": "Summer Sale",
+        "offer": "50% off all products",
+        "cta": "Visit our website now!",
+        "recipients": ["customer1@example.com", "customer2@example.com"]
+    }
+    service.send_marketing_campaign(campaign)
+    
+    print("\n4. Enviando Relatório Diário:")
+    service.send_daily_report()
+    
+    print("\n=== DEMONSTRAÇÃO DA FLEXIBILIDADE DA PONTE ===")
+    
+    # Mesma notificação, diferentes implementações
+    test_alert = SystemAlert(service.email_sender, "Test", "Bridge pattern demonstration")
+    
+    print("\n📧 Via Email:")
+    test_alert.send("test@example.com")
+    
+    print("\n📱 Via SMS:")
+    test_alert.set_sender(service.sms_sender)
+    test_alert.send("+1234567890")
+    
+    print("\n💬 Via Slack:")
+    test_alert.set_sender(service.slack_sender)
+    test_alert.send("#testing")
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+              <div class="ebook-page" id="page8">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-9">
+                <img src="../../assets/img/estruturais/bridge/ficticio.png" alt="Fergie Bridge UML"
+                    class="cover-image" style="scale:0.9;">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Bridge no nosso exemplo da Fergie:</p>
+            <pre class="uml-code">
+@startuml
+interface PlataformaLancamento {
+    + lancar(titulo: string, conteudo: any): void
+    + distribuir(regiao: string): void
+    + getEstatisticas(): object
+}
+
+class PlataformaStreaming {
+    + lancar(titulo: string, conteudo: any): void
+    + distribuir(regiao: string): void
+    + getEstatisticas(): object
+}
+
+class PlataformaRadio {
+    + lancar(titulo: string, conteudo: any): void
+    + distribuir(regiao: string): void
+    + getEstatisticas(): object
+}
+
+class PlataformaFisica {
+    + lancar(titulo: string, conteudo: any): void
+    + distribuir(regiao: string): void
+    + getEstatisticas(): object
+}
+
+class PlataformaVideo {
+    + lancar(titulo: string, conteudo: any): void
+    + distribuir(regiao: string): void
+    + getEstatisticas(): object
+}
+
+abstract class ConteudoMusical {
+    - plataforma: PlataformaLancamento
+    + setPlataforma(plataforma: PlataformaLancamento): void
+    + {abstract} lancar(): void
+    + {abstract} getDetalhes(): string
+}
+
+class Single {
+    - titulo: string
+    - duracao: number
+    - colaboradores: string[]
+    + lancar(): void
+    + getDetalhes(): string
+}
+
+class Album {
+    - titulo: string
+    - musicas: string[]
+    - ano: number
+    + lancar(): void
+    + getDetalhes(): string
+}
+
+class Remix {
+    - musicaOriginal: string
+    - dj: string
+    - estilo: string
+    + lancar(): void
+    + getDetalhes(): string
+}
+
+class Live {
+    - local: string
+    - data: string
+    - setlist: string[]
+    + lancar(): void
+    + getDetalhes(): string
+}
+
+PlataformaLancamento <|-- PlataformaStreaming
+PlataformaLancamento <|-- PlataformaRadio
+PlataformaLancamento <|-- PlataformaFisica
+PlataformaLancamento <|-- PlataformaVideo
+
+ConteudoMusical --> PlataformaLancamento
+ConteudoMusical <|-- Single
+ConteudoMusical <|-- Album
+ConteudoMusical <|-- Remix
+ConteudoMusical <|-- Live
+
+note right of ConteudoMusical
+    A "Ponte" que conecta
+    abstrações com implementações
+    permitindo combinações flexíveis
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como cada tipo de conteúdo musical pode usar qualquer plataforma de lançamento através da ponte.</p>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/estruturais/bridge/pratico.png" style="scale:1.2" alt="Notification Bridge UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Bridge no exemplo prático do sistema de notificações:</p>
+            <pre class="uml-code">
+@startuml
+interface MessageSender {
+    + send(message: str, recipient: str, subject: str): bool
+    + get_delivery_status(message_id: str): Dict[str, Any]
+    + get_platform_info(): Dict[str, Any]
+}
+
+class EmailSender {
+    - smtp_server: str
+    - port: int
+    - username: str
+    - password: str
+    + send(message: str, recipient: str, subject: str): bool
+    + get_delivery_status(message_id: str): Dict[str, Any]
+    + get_platform_info(): Dict[str, Any]
+}
+
+class SMSSender {
+    - api_key: str
+    - api_secret: str
+    - from_number: str
+    + send(message: str, recipient: str, subject: str): bool
+    + get_delivery_status(message_id: str): Dict[str, Any]
+    + get_platform_info(): Dict[str, Any]
+}
+
+class PushNotificationSender {
+    - server_key: str
+    - app_id: str
+    + send(message: str, recipient: str, subject: str): bool
+    + get_delivery_status(message_id: str): Dict[str, Any]
+    + get_platform_info(): Dict[str, Any]
+}
+
+class SlackSender {
+    - bot_token: str
+    - default_channel: str
+    + send(message: str, recipient: str, subject: str): bool
+    + get_delivery_status(message_id: str): Dict[str, Any]
+    + get_platform_info(): Dict[str, Any]
+}
+
+abstract class Notification {
+    - _sender: MessageSender
+    + set_sender(sender: MessageSender): void
+    + {abstract} send(recipient: str): bool
+    + {abstract} get_notification_type(): str
+}
+
+class SystemAlert {
+    - alert_type: str
+    - message: str
+    - severity: str
+    + send(recipient: str): bool
+    + get_notification_type(): str
+}
+
+class UserNotification {
+    - user_name: str
+    - action: str
+    - details: str
+    + send(recipient: str): bool
+    + get_notification_type(): str
+}
+
+class MarketingMessage {
+    - campaign: str
+    - offer: str
+    - cta: str
+    + send(recipient: str): bool
+    + get_notification_type(): str
+}
+
+class StatusReport {
+    - report_type: str
+    - data: Dict[str, Any]
+    + send(recipient: str): bool
+    + get_notification_type(): str
+}
+
+MessageSender <|-- EmailSender
+MessageSender <|-- SMSSender
+MessageSender <|-- PushNotificationSender
+MessageSender <|-- SlackSender
+
+Notification --> MessageSender
+Notification <|-- SystemAlert
+Notification <|-- UserNotification
+Notification <|-- MarketingMessage
+Notification <|-- StatusReport
+
+note right of Notification
+    A ponte permite que qualquer
+    notificação use qualquer
+    canal de envio dinamicamente
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite que qualquer tipo de notificação seja enviada por qualquer canal de comunicação.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-11">
+                <img src="https://kiss951.com/uploads/2023/09/GettyImages-1445856857.jpg?format=auto&optimize=high&width=1440"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Bridge oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Separação de Responsabilidades:</strong> Abstração e implementação evoluem independentemente</li>
+                <li><strong>Extensibilidade:</strong> Fácil adicionar novas abstrações e implementações</li>
+                <li><strong>Princípio Aberto/Fechado:</strong> Pode estender sem modificar código existente</li>
+                <li><strong>Evita Explosão de Classes:</strong> Substitui herança múltipla por composição</li>
+                <li><strong>Flexibilidade Runtime:</strong> Pode mudar implementações dinamicamente</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://img.buzzfeed.com/buzzfeed-static/static/2021-12/5/22/enhanced/3e32ad20ab73/original-11679-1638743268-13.jpg?crop=1243:829;0,0&resize=1250:830"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Bridge também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Aumenta o número de classes no sistema</li>
+                <li><strong>Over-engineering:</strong> Pode ser complexo demais para casos simples</li>
+                <li><strong>Dificuldade de Entendimento:</strong> Pode ser confuso para desenvolvedores juniores</li>
+                <li><strong>Acoplamento Indireto:</strong> Abstração e implementação ainda estão acopladas</li>
+                <li><strong>Performance:</strong> Chamadas indiretas podem ter overhead</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-13">
+                <img src="https://akcdn.detik.net.id/visual/2024/08/05/lirik-lagu-london-bridge-fergie_43.jpeg?w=480&q=90"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Bridge é uma ferramenta poderosa para desacoplar abstrações de suas implementações, permitindo que ambas evoluam independentemente.</p>
+            <p>Na nossa analogia da Fergie, o Bridge funciona como a <strong>ponte de Londres conectando margens distintas</strong> - permitindo que diferentes tipos de conteúdo musical (singles, álbuns, remixes) fluam livremente através de diversas plataformas (streaming, rádio, físico, vídeo) sem criar uma complexa hierarquia de classes.</p>
+            <p>Assim como a música "London Bridge" conecta diferentes estilos e influências musicais, o padrão Bridge conecta diferentes dimensões de variação em nosso código, criando um sistema flexível, extensível e fácil de manter.</p>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/bridge"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Bridge</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-bridge/16787"
+                        target="_blank">DevMedia - Padrão de Projeto Bridge</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/02/mao-na-massa-bridge/"
+                        target="_blank">Mão na Massa - Padrão Bridge</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Bridge" target="_blank">Wikipédia - Bridge (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/bridge-design-pattern/" target="_blank">GeeksforGeeks
+                        - Bridge Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/bridge" target="_blank">SourceMaking
+                        - Bridge Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
