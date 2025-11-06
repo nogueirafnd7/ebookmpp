@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Composite - A Estrutura Hierárquica de Lana Del Rey</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylestr.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/estruturais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/estruturais.html">Padrões Estruturais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Composite?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Leaf vs Composite</a></li>
+            <li><a href="#page5">Exemplo Fictício (O Universo de Lana Del Rey)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">COMPOSITE</h1>
+            <p class="cover-subtitle">A Estrutura Hierárquica de Lana Del Rey - Tratando Objetos e Composições de Forma Uniforme</p>
+
+            <img src="https://radiocidade.fm/uploads/2021/12/Lana-Del-Rey-4.png"
+                alt="Capa Composite - Lana Del Rey" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Composite?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://www.rollingstone.it/wp-content/uploads/2023/03/LDR-2-1.jpg"
+                    alt="Composite Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Composite é um <strong>padrão de projeto estrutural</strong> que permite compor objetos em estruturas de árvore para representar hierarquias parte-todo. Composite permite que os clientes tratem objetos individuais e composições de objetos de maneira uniforme [1].</p>
+            <p>É como a <strong>discografia e o universo artístico de Lana Del Rey</strong> - onde álbuns, músicas, videoclipes e elementos visuais formam uma estrutura hierárquica complexa, mas podem ser tratados de forma consistente através de uma interface comum.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://abertura.art.br/wp-content/uploads/2021/04/0_Brch6az5Jew8OYci.jpg"
+                    alt="Problema das Hierarquias Complexas" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Composite resolve é a <strong>dificuldade de trabalhar com estruturas hierárquicas complexas</strong> onde você precisa tratar objetos individuais e composições de forma diferente.</p>
+            <p>Sem este padrão, o código ficaria cheio de verificações de tipo e condições - como ter que tratar álbuns, músicas e playlists de maneira completamente diferente no universo musical de Lana Del Rey [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/estruturais/composite/generico.png"
+                    alt="Composite UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Composite:</p>
+            <pre class="uml-code">
+@startuml
+interface Component {
+    + operation(): void
+    + add(component: Component): void
+    + remove(component: Component): void
+    + getChild(index: number): Component
+}
+
+class Leaf {
+    + operation(): void
+    + add(component: Component): void
+    + remove(component: Component): void
+    + getChild(index: number): Component
+}
+
+class Composite {
+    - children: Component[]
+    + operation(): void
+    + add(component: Component): void
+    + remove(component: Component): void
+    + getChild(index: number): Component
+}
+
+class Client {
+    + operation(): void
+}
+
+Component <|-- Leaf
+Component <|-- Composite
+Composite --> Component
+Client --> Component
+
+note right of Component
+    Interface comum para todos
+    os objetos na composição,
+    tanto folhas quanto composites
+end note
+
+note right of Composite
+    Armazena componentes filhos
+    e implementa operações
+    relacionadas aos filhos
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Component:</strong> Interface comum para todos os objetos na composição</li>
+                <li><strong>Leaf:</strong> Objeto folha que não tem filhos</li>
+                <li><strong>Composite:</strong> Objeto container que pode ter filhos</li>
+                <li><strong>Client:</strong> Manipula objetos através da interface Component</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Leaf vs Composite</h1>
+            <div class="img-placeholder-5">
+                <img src="https://miro.medium.com/v2/resize:fit:1066/1*4D85WrUperndouN4FMD-kQ.png"
+                    alt="Leaf vs Composite" class="cover-image">
+            </div>
+            
+            <h3>Leaf (Folha)</h3>
+            <p><strong>Características:</strong> Objetos básicos que não contêm outros objetos</p>
+            <p><strong>Exemplo Lana Del Rey:</strong></p>
+            <ul>
+                <li>Música individual ("Video Games")</li>
+                <li>Videoclipe específico</li>
+                <li>Letra de música</li>
+                <li>Foto de capa</li>
+                <li>Instrumento musical</li>
+            </ul>
+
+            <h3>Composite (Composição)</h3>
+            <p><strong>Características:</strong> Objetos container que podem conter outros componentes</p>
+            <p><strong>Exemplo Lana Del Rey:</strong></p>
+            <ul>
+                <li>Álbum (contém músicas)</li>
+                <li>Playlist (contém músicas de diferentes álbuns)</li>
+                <li>Era artística (contém álbuns, videoclipes, fotos)</li>
+                <li>Turnê (contém setlists, datas, locais)</li>
+                <li>Discografia completa</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Princípio da Transparência:</strong> Tanto Leaf quanto Composite implementam a mesma interface, permitindo que o cliente trate ambos uniformemente.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (O Universo de Lana Del Rey)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://hollywoodforevertv.com.br/wp-content/uploads/lana-del-rey-melhores-piores-albuns-metacritc.jpg"
+                    alt="Lana Del Rey Universe" class="cover-image">
+            </div>
+            <p>Imagine a <strong>estrutura hierárquica completa do universo artístico de Lana Del Rey</strong> usando o padrão Composite:</p>
+
+            <h3>Hierarquia da Discografia:</h3>
+            <ul>
+                <li><strong>Discografia Completa</strong> (Composite)
+                    <ul>
+                        <li><strong>Álbum "Born to Die"</strong> (Composite)
+                            <ul>
+                                <li>"Born to Die" (Leaf)</li>
+                                <li>"Video Games" (Leaf)</li>
+                                <li>"Blue Jeans" (Leaf)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Álbum "Ultraviolence"</strong> (Composite)
+                            <ul>
+                                <li>"Ultraviolence" (Leaf)</li>
+                                <li>"Shades of Cool" (Leaf)</li>
+                                <li>"West Coast" (Leaf)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Playlist "Melancolia"</strong> (Composite)
+                            <ul>
+                                <li>"Video Games" (de Born to Die)</li>
+                                <li>"Young and Beautiful" (de The Great Gatsby)</li>
+                                <li>"Summertime Sadness" (de Born to Die)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>O Composite permite navegar e manipular toda essa estrutura de forma consistente e elegante.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://i0.wp.com/br.nacaodamusica.com/wp-content/uploads/2017/07/lana-del-rey.jpg"
+                    alt="Problema sem Composite" class="cover-image">
+            </div>
+            <p>Sem o Padrão Composite, trabalhar com a hierarquia musical seria caótico:</p>
+            <pre><code>
+// PROBLEMA: Tratamento diferente para cada tipo!
+class MusicaIndividual {
+    constructor(public titulo: string, public duracao: number) {}
+    
+    tocar(): void {
+        console.log(`🎵 Tocando: ${this.titulo} (${this.duracao}s)`)
+    }
+}
+
+class Album {
+    constructor(public titulo: string, public musicas: MusicaIndividual[]) {}
+    
+    tocarAlbum(): void {  // Método DIFERENTE!
+        console.log(`💿 Tocando álbum: ${this.titulo}`)
+        for (const musica of this.musicas) {
+            musica.tocar()  // Precisa acessar internamente
+        }
+    }
+    
+    getDuracaoTotal(): number {
+        return this.musicas.reduce((total, musica) => total + musica.duracao, 0)
+    }
+}
+
+class Playlist {
+    constructor(public nome: string, public itens: any[]) {}  // Tipo ANY!
+    
+    tocarPlaylist(): void {  // Método DIFERENTE!
+        console.log(`🎧 Tocando playlist: ${this.nome}`)
+        for (const item of this.itens) {
+            // VERIFICAÇÃO DE TIPO CONSTANTE!
+            if (item instanceof MusicaIndividual) {
+                item.tocar()
+            } else if (item instanceof Album) {
+                item.tocarAlbum()  // Chamada DIFERENTE!
+            }
+            // E se tivermos mais tipos??
+        }
+    }
+}
+
+// CENÁRIO PROBLEMÁTICO:
+const videoGames = new MusicaIndividual("Video Games", 282)
+const bornToDie = new MusicaIndividual("Born to Die", 285)
+const ultraviolence = new MusicaIndividual("Ultraviolence", 243)
+
+const albumBornToDie = new Album("Born to Die", [videoGames, bornToDie])
+const albumUltraviolence = new Album("Ultraviolence", [ultraviolence])
+
+const playlist = new Playlist("Lana Essentials", [videoGames, albumBornToDie])
+
+// PROBLEMAS:
+// 1. Métodos diferentes para cada tipo (tocar vs tocarAlbum vs tocarPlaylist)
+// 2. Verificações de tipo constantes
+// 3. Dificuldade de adicionar novos tipos
+// 4. Código cliente precisa conhecer todos os tipos
+// 5. Hierarquia complexa se torna ingerenciável
+// 6. Violação do princípio aberto/fechado
+
+// Uso inconsistente:
+videoGames.tocar()           // ✅
+albumBornToDie.tocarAlbum()  // ✅ Mas método diferente!
+playlist.tocarPlaylist()     // ✅ Mas método diferente!
+            </code></pre>
+            <p>Sem Composite, cada tipo precisa ser tratado de maneira diferente!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://monkeybuzz.com.br/wp-content/uploads/2017/04/lana-del-rey-58ed13922ecda.jpg"
+                    alt="Composite Lana Del Rey" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Composite, criamos uma hierarquia uniforme e elegante:</p>
+            <pre><code>
+// Component Interface
+interface ComponenteMusical {
+    getTitulo(): string
+    tocar(): void
+    getDuracao(): number
+    // Métodos de composição (para composites)
+    adicionar(componente: ComponenteMusical): void
+    remover(componente: ComponenteMusical): void
+    getFilho(index: number): ComponenteMusical | null
+}
+
+// Leaf - Música Individual
+class Musica implements ComponenteMusical {
+    constructor(
+        private titulo: string,
+        private duracao: number,
+        private letra: string = "",
+        private ano: number = 0
+    ) {}
+    
+    getTitulo(): string {
+        return this.titulo
+    }
+    
+    tocar(): void {
+        console.log(`🎵 Tocando: "${this.titulo}" (${this.duracao}s)`)
+        if (this.letra) {
+            console.log(`   📝 "${this.letra.substring(0, 50)}..."`)
+        }
+    }
+    
+    getDuracao(): number {
+        return this.duracao
+    }
+    
+    // Métodos de composição - não aplicáveis para Leaf
+    adicionar(componente: ComponenteMusical): void {
+        throw new Error("Música individual não pode conter outros componentes")
+    }
+    
+    remover(componente: ComponenteMusical): void {
+        throw new Error("Música individual não pode remover componentes")
+    }
+    
+    getFilho(index: number): ComponenteMusical | null {
+        return null
+    }
+    
+    // Métodos específicos da Leaf
+    getLetra(): string {
+        return this.letra
+    }
+    
+    getAno(): number {
+        return this.ano
+    }
+}
+
+// Composite - Álbum
+class Album implements ComponenteMusical {
+    private musicas: ComponenteMusical[] = []
+    
+    constructor(
+        private titulo: string,
+        private artista: string,
+        private anoLancamento: number,
+        private capa: string = ""
+    ) {}
+    
+    getTitulo(): string {
+        return this.titulo
+    }
+    
+    tocar(): void {
+        console.log(`\n💿 ALBUM: ${this.titulo} (${this.artista}, ${this.anoLancamento})`)
+        console.log(`🕒 Duração total: ${this.formatarDuracao(this.getDuracao())}`)
+        console.log("=" .repeat(50))
+        
+        for (const musica of this.musicas) {
+            musica.tocar()
+        }
+        
+        console.log(`⭐ Álbum concluído: ${this.titulo}`)
+    }
+    
+    getDuracao(): number {
+        return this.musicas.reduce((total, musica) => total + musica.getDuracao(), 0)
+    }
+    
+    // Métodos de composição
+    adicionar(componente: ComponenteMusical): void {
+        this.musicas.push(componente)
+    }
+    
+    remover(componente: ComponenteMusical): void {
+        const index = this.musicas.indexOf(componente)
+        if (index > -1) {
+            this.musicas.splice(index, 1)
+        }
+    }
+    
+    getFilho(index: number): ComponenteMusical | null {
+        return this.musicas[index] || null
+    }
+    
+    // Métodos específicos do Composite
+    getQuantidadeMusicas(): number {
+        return this.musicas.length
+    }
+    
+    getMusicas(): ComponenteMusical[] {
+        return [...this.musicas]
+    }
+    
+    private formatarDuracao(segundos: number): string {
+        const minutos = Math.floor(segundos / 60)
+        const segs = segundos % 60
+        return `${minutos}:${segs.toString().padStart(2, '0')}`
+    }
+}
+
+// Composite - Playlist
+class Playlist implements ComponenteMusical {
+    private componentes: ComponenteMusical[] = []
+    
+    constructor(
+        private nome: string,
+        private descricao: string = "",
+        private criador: string = "Sistema"
+    ) {}
+    
+    getTitulo(): string {
+        return this.nome
+    }
+    
+    tocar(): void {
+        console.log(`\n🎧 PLAYLIST: ${this.nome}`)
+        console.log(`📝 ${this.descricao}`)
+        console.log(`👤 Criada por: ${this.criador}`)
+        console.log(`🕒 Duração total: ${this.formatarDuracao(this.getDuracao())}`)
+        console.log("=" .repeat(50))
+        
+        for (const componente of this.componentes) {
+            componente.tocar()
+        }
+        
+        console.log(`🎉 Playlist "${this.nome}" concluída!`)
+    }
+    
+    getDuracao(): number {
+        return this.componentes.reduce((total, componente) => total + componente.getDuracao(), 0)
+    }
+    
+    // Métodos de composição
+    adicionar(componente: ComponenteMusical): void {
+        this.componentes.push(componente)
+    }
+    
+    remover(componente: ComponenteMusical): void {
+        const index = this.componentes.indexOf(componente)
+        if (index > -1) {
+            this.componentes.splice(index, 1)
+        }
+    }
+    
+    getFilho(index: number): ComponenteMusical | null {
+        return this.componentes[index] || null
+    }
+    
+    // Métodos específicos da Playlist
+    getQuantidadeItens(): number {
+        return this.componentes.length
+    }
+    
+    getComponentes(): ComponenteMusical[] {
+        return [...this.componentes]
+    }
+    
+    private formatarDuracao(segundos: number): string {
+        const horas = Math.floor(segundos / 3600)
+        const minutos = Math.floor((segundos % 3600) / 60)
+        const segs = segundos % 60
+        
+        if (horas > 0) {
+            return `${horas}h ${minutos}m ${segs}s`
+        }
+        return `${minutos}m ${segs}s`
+    }
+}
+
+// Composite - Discografia (Composite de alto nível)
+class Discografia implements ComponenteMusical {
+    private albuns: ComponenteMusical[] = []
+    private playlists: ComponenteMusical[] = []
+    
+    constructor(private artista: string) {}
+    
+    getTitulo(): string {
+        return `Discografia Completa - ${this.artista}`
+    }
+    
+    tocar(): void {
+        console.log(`\n🎶 ${this.getTitulo().toUpperCase()} 🎶`)
+        console.log("=" .repeat(60))
+        
+        console.log("\n📀 ÁLBUNS:")
+        console.log("-".repeat(30))
+        for (const album of this.albuns) {
+            album.tocar()
+        }
+        
+        console.log("\n🎧 PLAYLISTS:")
+        console.log("-".repeat(30))
+        for (const playlist of this.playlists) {
+            playlist.tocar()
+        }
+    }
+    
+    getDuracao(): number {
+        const duracaoAlbuns = this.albuns.reduce((total, album) => total + album.getDuracao(), 0)
+        const duracaoPlaylists = this.playlists.reduce((total, playlist) => total + playlist.getDuracao(), 0)
+        return duracaoAlbuns + duracaoPlaylists
+    }
+    
+    // Métodos de composição
+    adicionar(componente: ComponenteMusical): void {
+        if (componente instanceof Album) {
+            this.albuns.push(componente)
+        } else if (componente instanceof Playlist) {
+            this.playlists.push(componente)
+        } else {
+            throw new Error("Tipo de componente não suportado na discografia")
+        }
+    }
+    
+    remover(componente: ComponenteMusical): void {
+        if (componente instanceof Album) {
+            const index = this.albuns.indexOf(componente)
+            if (index > -1) this.albuns.splice(index, 1)
+        } else if (componente instanceof Playlist) {
+            const index = this.playlists.indexOf(componente)
+            if (index > -1) this.playlists.splice(index, 1)
+        }
+    }
+    
+    getFilho(index: number): ComponenteMusical | null {
+        // Combina álbuns e playlists para acesso sequencial
+        const todos = [...this.albuns, ...this.playlists]
+        return todos[index] || null
+    }
+    
+    // Métodos específicos da Discografia
+    adicionarAlbum(album: Album): void {
+        this.albuns.push(album)
+    }
+    
+    adicionarPlaylist(playlist: Playlist): void {
+        this.playlists.push(playlist)
+    }
+    
+    getEstatisticas(): any {
+        return {
+            totalAlbuns: this.albuns.length,
+            totalPlaylists: this.playlists.length,
+            duracaoTotal: this.getDuracao(),
+            duracaoFormatada: this.formatarDuracao(this.getDuracao())
+        }
+    }
+    
+    private formatarDuracao(segundos: number): string {
+        const horas = Math.floor(segundos / 3600)
+        const minutos = Math.floor((segundos % 3600) / 60)
+        return `${horas}h ${minutos}m`
+    }
+}
+
+// Sistema de Gerenciamento Musical
+class SistemaLanaDelRey {
+    static criarUniversoMusical(): void {
+        console.log("🌹 SISTEMA LANA DEL REY - PADRÃO COMPOSITE 🌹")
+        console.log("==============================================")
+        
+        // Criando músicas individuais (Leaf)
+        const bornToDie = new Musica("Born to Die", 285, "Feet don't fail me now...", 2012)
+        const videoGames = new Musica("Video Games", 282, "Swinging in the backyard...", 2011)
+        const blueJeans = new Musica("Blue Jeans", 224, "Blue jeans, white shirt...", 2012)
+        const summertimeSadness = new Musica("Summertime Sadness", 265, "Kiss me hard before you go...", 2012)
+        
+        const ultraviolence = new Musica("Ultraviolence", 243, "He used to call me DN...", 2014)
+        const shadesOfCool = new Musica("Shades of Cool", 235, "Your head is spinning...", 2014)
+        const westCoast = new Musica("West Coast", 264, "Down on the West Coast...", 2014)
+        
+        const youngAndBeautiful = new Musica("Young and Beautiful", 232, "I've seen the world...", 2013)
+        const love = new Musica("Love", 274, "Look at you kids with your vintage music...", 2017)
+        
+        // Criando álbuns (Composite)
+        const albumBornToDie = new Album("Born to Die", "Lana Del Rey", 2012)
+        albumBornToDie.adicionar(bornToDie)
+        albumBornToDie.adicionar(videoGames)
+        albumBornToDie.adicionar(blueJeans)
+        albumBornToDie.adicionar(summertimeSadness)
+        
+        const albumUltraviolence = new Album("Ultraviolence", "Lana Del Rey", 2014)
+        albumUltraviolence.adicionar(ultraviolence)
+        albumUltraviolence.adicionar(shadesOfCool)
+        albumUltraviolence.adicionar(westCoast)
+        
+        // Criando playlists (Composite)
+        const playlistMelancolia = new Playlist("Melancolia Lana", "As músicas mais nostálgicas e melancólicas")
+        playlistMelancolia.adicionar(videoGames)
+        playlistMelancolia.adicionar(youngAndBeautiful)
+        playlistMelancolia.adicionar(summertimeSadness)
+        playlistMelancolia.adicionar(ultraviolence)
+        
+        const playlistEssenciais = new Playlist("Lana Essenciais", "As músicas que definem Lana Del Rey")
+        playlistEssenciais.adicionar(bornToDie)
+        playlistEssenciais.adicionar(videoGames)
+        playlistEssenciais.adicionar(westCoast)
+        playlistEssenciais.adicionar(love)
+        
+        // Criando discografia completa (Composite de alto nível)
+        const discografiaLana = new Discografia("Lana Del Rey")
+        discografiaLana.adicionarAlbum(albumBornToDie)
+        discografiaLana.adicionarAlbum(albumUltraviolence)
+        discografiaLana.adicionarPlaylist(playlistMelancolia)
+        discografiaLana.adicionarPlaylist(playlistEssenciais)
+        
+        // DEMONSTRAÇÃO DO COMPOSITE EM AÇÃO
+        console.log("\n🎯 DEMONSTRAÇÃO DO PADRÃO COMPOSITE")
+        console.log("=" .repeat(40))
+        
+        // Tratamento uniforme - mesma interface para todos!
+        console.log("\n1. 🎵 MÚSICA INDIVIDUAL (Leaf):")
+        videoGames.tocar()
+        
+        console.log("\n2. 💿 ÁLBUM (Composite):")
+        albumBornToDie.tocar()
+        
+        console.log("\n3. 🎧 PLAYLIST (Composite):")
+        playlistMelancolia.tocar()
+        
+        console.log("\n4. 🎶 DISCOGRAFIA COMPLETA (Composite):")
+        discografiaLana.tocar()
+        
+        // Operações comuns através da interface
+        console.log("\n5. 🔄 OPERAÇÕES UNIFORMES:")
+        console.log("-".repeat(30))
+        
+        const componentes: ComponenteMusical[] = [videoGames, albumBornToDie, playlistMelancolia]
+        
+        componentes.forEach((componente, index) => {
+            console.log(`\nComponente ${index + 1}: ${componente.getTitulo()}`)
+            console.log(`Duração: ${componente.getDuracao()} segundos`)
+            // Todos respondem à mesma interface!
+        })
+        
+        // Estatísticas finais
+        console.log("\n" + "=" .repeat(50))
+        console.log("📊 ESTATÍSTICAS DA DISCOGRAFIA")
+        console.log("=" .repeat(50))
+        
+        const stats = discografiaLana.getEstatisticas()
+        console.log(`Álbuns: ${stats.totalAlbuns}`)
+        console.log(`Playlists: ${stats.totalPlaylists}`)
+        console.log(`Duração total: ${stats.duracaoFormatada}`)
+        
+        console.log("\n🌹 Universo musical de Lana Del Rey organizado com sucesso!")
+    }
+}
+
+// Executando o sistema
+SistemaLanaDelRey.criarUniversoMusical()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Composite em um sistema de gerenciamento de arquivos:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import List, Optional
+from datetime import datetime
+import os
+
+# Component Interface
+class FileSystemComponent(ABC):
+    @abstractmethod
+    def get_name(self) -> str:
+        pass
+    
+    @abstractmethod
+    def get_size(self) -> int:
+        pass
+    
+    @abstractmethod
+    def display(self, indent: int = 0) -> str:
+        pass
+    
+    @abstractmethod
+    def find(self, name: str) -> Optional['FileSystemComponent']:
+        pass
+    
+    # Métodos de composição (para composites)
+    @abstractmethod
+    def add(self, component: 'FileSystemComponent') -> None:
+        pass
+    
+    @abstractmethod
+    def remove(self, component: 'FileSystemComponent') -> None:
+        pass
+    
+    @abstractmethod
+    def get_children(self) -> List['FileSystemComponent']:
+        pass
+
+# Leaf - Arquivo
+class File(FileSystemComponent):
+    def __init__(self, name: str, size: int, extension: str = "", content: str = ""):
+        self.name = name
+        self.size = size
+        self.extension = extension
+        self.content = content
+        self.created_at = datetime.now()
+        self.modified_at = datetime.now()
+    
+    def get_name(self) -> str:
+        return self.name
+    
+    def get_size(self) -> int:
+        return self.size
+    
+    def display(self, indent: int = 0) -> str:
+        spaces = "  " * indent
+        return f"{spaces}📄 {self.name} ({self.size} bytes)"
+    
+    def find(self, name: str) -> Optional['FileSystemComponent']:
+        return self if self.name == name else None
+    
+    # Métodos de composição - não aplicáveis para Leaf
+    def add(self, component: 'FileSystemComponent') -> None:
+        raise NotImplementedError("Arquivo não pode conter outros componentes")
+    
+    def remove(self, component: 'FileSystemComponent') -> None:
+        raise NotImplementedError("Arquivo não pode remover componentes")
+    
+    def get_children(self) -> List['FileSystemComponent']:
+        return []
+    
+    # Métodos específicos do File
+    def get_extension(self) -> str:
+        return self.extension
+    
+    def get_content(self) -> str:
+        return self.content
+    
+    def get_info(self) -> str:
+        return f"Arquivo: {self.name} | Tamanho: {self.size} bytes | Extensão: {self.extension}"
+
+# Composite - Diretório
+class Directory(FileSystemComponent):
+    def __init__(self, name: str):
+        self.name = name
+        self.children: List[FileSystemComponent] = []
+        self.created_at = datetime.now()
+    
+    def get_name(self) -> str:
+        return self.name
+    
+    def get_size(self) -> int:
+        return sum(child.get_size() for child in self.children)
+    
+    def display(self, indent: int = 0) -> str:
+        spaces = "  " * indent
+        result = [f"{spaces}📁 {self.name}/ (total: {self.get_size()} bytes)"]
+        
+        for child in self.children:
+            result.append(child.display(indent + 1))
+        
+        return "\n".join(result)
+    
+    def find(self, name: str) -> Optional['FileSystemComponent']:
+        if self.name == name:
+            return self
+        
+        for child in self.children:
+            found = child.find(name)
+            if found:
+                return found
+        
+        return None
+    
+    # Métodos de composição
+    def add(self, component: 'FileSystemComponent') -> None:
+        self.children.append(component)
+    
+    def remove(self, component: 'FileSystemComponent') -> None:
+        if component in self.children:
+            self.children.remove(component)
+    
+    def get_children(self) -> List['FileSystemComponent']:
+        return self.children.copy()
+    
+    # Métodos específicos do Directory
+    def get_file_count(self) -> int:
+        count = 0
+        for child in self.children:
+            if isinstance(child, File):
+                count += 1
+            elif isinstance(child, Directory):
+                count += child.get_file_count()
+        return count
+    
+    def get_directory_count(self) -> int:
+        count = 0
+        for child in self.children:
+            if isinstance(child, Directory):
+                count += 1 + child.get_directory_count()
+        return count
+    
+    def get_files_by_extension(self, extension: str) -> List[File]:
+        files = []
+        for child in self.children:
+            if isinstance(child, File) and child.get_extension() == extension:
+                files.append(child)
+            elif isinstance(child, Directory):
+                files.extend(child.get_files_by_extension(extension))
+        return files
+
+# Composite Especial - Drive (Composite de alto nível)
+class Drive(Directory):
+    def __init__(self, name: str, drive_letter: str, total_space: int):
+        super().__init__(name)
+        self.drive_letter = drive_letter
+        self.total_space = total_space
+        self.used_space = 0
+    
+    def display(self, indent: int = 0) -> str:
+        spaces = "  " * indent
+        free_space = self.total_space - self.get_size()
+        usage_percent = (self.get_size() / self.total_space) * 100
+        
+        result = [
+            f"{spaces}💾 {self.drive_letter}:\\\\ {self.name}",
+            f"{spaces}   📊 Uso: {self.get_size():,} / {self.total_space:,} bytes ({usage_percent:.1f}%)",
+            f"{spaces}   💰 Livre: {free_space:,} bytes"
+        ]
+        
+        for child in self.children:
+            result.append(child.display(indent + 1))
+        
+        return "\n".join(result)
+    
+    def get_drive_info(self) -> str:
+        free_space = self.total_space - self.get_size()
+        usage_percent = (self.get_size() / self.total_space) * 100
+        return (f"Drive {self.drive_letter}: {self.name} | "
+                f"Usado: {self.get_size():,} bytes | "
+                f"Livre: {free_space:,} bytes | "
+                f"Uso: {usage_percent:.1f}%")
+
+# Sistema de Gerenciamento de Arquivos
+class FileSystemManager:
+    def __init__(self):
+        self.root = Drive("Sistema", "C", 500_000_000)  # 500MB
+        self._create_sample_structure()
+    
+    def _create_sample_structure(self):
+        """Cria uma estrutura de exemplo inspirada em Lana Del Rey"""
+        
+        # Diretório de Músicas
+        music_dir = Directory("Músicas")
+        
+        # Álbum Born to Die
+        born_to_die_dir = Directory("Born to Die")
+        born_to_die_dir.add(File("Born to Die.mp3", 4_500_000, "mp3", "Lana Del Rey - Born to Die"))
+        born_to_die_dir.add(File("Video Games.mp3", 4_200_000, "mp3", "Lana Del Rey - Video Games"))
+        born_to_die_dir.add(File("Blue Jeans.mp3", 3_800_000, "mp3", "Lana Del Rey - Blue Jeans"))
+        
+        # Álbum Ultraviolence
+        ultraviolence_dir = Directory("Ultraviolence")
+        ultraviolence_dir.add(File("Ultraviolence.mp3", 4_100_000, "mp3", "Lana Del Rey - Ultraviolence"))
+        ultraviolence_dir.add(File("Shades of Cool.mp3", 3_900_000, "mp3", "Lana Del Rey - Shades of Cool"))
+        ultraviolence_dir.add(File("West Coast.mp3", 4_300_000, "mp3", "Lana Del Rey - West Coast"))
+        
+        # Playlists
+        playlists_dir = Directory("Playlists")
+        melancholy_playlist = Directory("Melancolia")
+        melancholy_playlist.add(File("Video Games.mp3", 4_200_000, "mp3"))
+        melancholy_playlist.add(File("Summertime Sadness.mp3", 4_400_000, "mp3"))
+        
+        essentials_playlist = Directory("Essenciais")
+        essentials_playlist.add(File("Born to Die.mp3", 4_500_000, "mp3"))
+        essentials_playlist.add(File("Video Games.mp3", 4_200_000, "mp3"))
+        essentials_playlist.add(File("West Coast.mp3", 4_300_000, "mp3"))
+        
+        playlists_dir.add(melancholy_playlist)
+        playlists_dir.add(essentials_playlist)
+        
+        # Adicionando tudo ao diretório de músicas
+        music_dir.add(born_to_die_dir)
+        music_dir.add(ultraviolence_dir)
+        music_dir.add(playlists_dir)
+        
+        # Documentos
+        docs_dir = Directory("Documentos")
+        docs_dir.add(File("Letras.txt", 15_000, "txt", "Letras completas de Lana Del Rey"))
+        docs_dir.add(File("Biografia.pdf", 2_500_000, "pdf", "Biografia oficial"))
+        
+        # Imagens
+        images_dir = Directory("Imagens")
+        images_dir.add(File("capa_born_to_die.jpg", 1_200_000, "jpg"))
+        images_dir.add(File("capa_ultraviolence.jpg", 1_500_000, "jpg"))
+        images_dir.add(File("lana_concert.jpg", 2_100_000, "jpg"))
+        
+        # Adicionando tudo ao drive raiz
+        self.root.add(music_dir)
+        self.root.add(docs_dir)
+        self.root.add(images_dir)
+    
+    def display_file_system(self):
+        """Exibe toda a estrutura do sistema de arquivos"""
+        print("🗂️  SISTEMA DE ARQUIVOS - PADRÃO COMPOSITE")
+        print("=" * 50)
+        print(self.root.display())
+    
+    def demonstrate_composite_operations(self):
+        """Demonstra operações do padrão Composite"""
+        print("\n🎯 DEMONSTRAÇÃO DAS OPERAÇÕES COMPOSITE")
+        print("=" * 40)
+        
+        # 1. Operações uniformes em diferentes componentes
+        print("\n1. 🔄 OPERAÇÕES UNIFORMES:")
+        components = [
+            self.root.find("Video Games.mp3"),  # File (Leaf)
+            self.root.find("Born to Die"),      # Directory (Composite)
+            self.root.find("Playlists")         # Directory (Composite)
+        ]
+        
+        for component in components:
+            if component:
+                print(f"\nComponente: {component.get_name()}")
+                print(f"Tipo: {type(component).__name__}")
+                print(f"Tamanho: {component.get_size():,} bytes")
+                # Todos respondem à mesma interface!
+        
+        # 2. Busca recursiva
+        print("\n2. 🔍 BUSCA RECURSIVA:")
+        found = self.root.find("West Coast.mp3")
+        if found:
+            print(f"Encontrado: {found.display()}")
+        
+        # 3. Estatísticas
+        print("\n3. 📊 ESTATÍSTICAS DO SISTEMA:")
+        print(f"Total de arquivos: {self.root.get_file_count()}")
+        print(f"Total de diretórios: {self.root.get_directory_count()}")
+        print(f"Tamanho total usado: {self.root.get_size():,} bytes")
+        
+        # 4. Arquivos por extensão
+        print("\n4. 🎵 ARQUIVOS DE MÚSICA:")
+        mp3_files = self.root.get_files_by_extension("mp3")
+        for mp3_file in mp3_files:
+            print(f"  • {mp3_file.get_name()}")
+    
+    def search_and_display(self, name: str):
+        """Busca um componente pelo nome e exibe suas informações"""
+        print(f"\n🔎 BUSCANDO: '{name}'")
+        found = self.root.find(name)
+        if found:
+            print("✅ Encontrado!")
+            print(found.display())
+        else:
+            print("❌ Não encontrado")
+    
+    def get_system_summary(self):
+        """Retorna um resumo do sistema"""
+        total_files = self.root.get_file_count()
+        total_dirs = self.root.get_directory_count()
+        total_size = self.root.get_size()
+        
+        return {
+            "total_files": total_files,
+            "total_directories": total_dirs,
+            "total_size": total_size,
+            "drive_info": self.root.get_drive_info()
+        }
+
+# Exemplo de uso
+def main():
+    # Criar o gerenciador de arquivos
+    fs_manager = FileSystemManager()
+    
+    # Demonstrar o sistema
+    fs_manager.display_file_system()
+    
+    # Demonstrar operações composite
+    fs_manager.demonstrate_composite_operations()
+    
+    # Buscas específicas
+    fs_manager.search_and_display("Video Games.mp3")
+    fs_manager.search_and_display("Playlists")
+    fs_manager.search_and_display("arquivo_inexistente.txt")
+    
+    # Resumo do sistema
+    print("\n" + "=" * 50)
+    print("📈 RESUMO DO SISTEMA")
+    print("=" * 50)
+    
+    summary = fs_manager.get_system_summary()
+    for key, value in summary.items():
+        if key != "drive_info":
+            print(f"{key.replace('_', ' ').title()}: {value}")
+    
+    print(f"\n{summary['drive_info']}")
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/estruturais/composite/ficticio.png" alt="Lana Del Rey Composite UML"
+                    class="cover-image" style="scale:1.1;">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Composite no nosso exemplo do universo Lana Del Rey:</p>
+            <pre class="uml-code">
+@startuml
+interface ComponenteMusical {
+    + getTitulo(): string
+    + tocar(): void
+    + getDuracao(): number
+    + adicionar(componente: ComponenteMusical): void
+    + remover(componente: ComponenteMusical): void
+    + getFilho(index: number): ComponenteMusical
+}
+
+class Musica {
+    - titulo: string
+    - duracao: number
+    - letra: string
+    - ano: number
+    + getTitulo(): string
+    + tocar(): void
+    + getDuracao(): number
+    + adicionar(componente: ComponenteMusical): void
+    + remover(componente: ComponenteMusical): void
+    + getFilho(index: number): ComponenteMusical
+    + getLetra(): string
+    + getAno(): number
+}
+
+class Album {
+    - titulo: string
+    - artista: string
+    - anoLancamento: number
+    - capa: string
+    - musicas: ComponenteMusical[]
+    + getTitulo(): string
+    + tocar(): void
+    + getDuracao(): number
+    + adicionar(componente: ComponenteMusical): void
+    + remover(componente: ComponenteMusical): void
+    + getFilho(index: number): ComponenteMusical
+    + getQuantidadeMusicas(): number
+    + getMusicas(): ComponenteMusical[]
+}
+
+class Playlist {
+    - nome: string
+    - descricao: string
+    - criador: string
+    - componentes: ComponenteMusical[]
+    + getTitulo(): string
+    + tocar(): void
+    + getDuracao(): number
+    + adicionar(componente: ComponenteMusical): void
+    + remover(componente: ComponenteMusical): void
+    + getFilho(index: number): ComponenteMusical
+    + getQuantidadeItens(): number
+    + getComponentes(): ComponenteMusical[]
+}
+
+class Discografia {
+    - artista: string
+    - albuns: ComponenteMusical[]
+    - playlists: ComponenteMusical[]
+    + getTitulo(): string
+    + tocar(): void
+    + getDuracao(): number
+    + adicionar(componente: ComponenteMusical): void
+    + remover(componente: ComponenteMusical): void
+    + getFilho(index: number): ComponenteMusical
+    + adicionarAlbum(album: Album): void
+    + adicionarPlaylist(playlist: Playlist): void
+    + getEstatisticas(): any
+}
+
+ComponenteMusical <|-- Musica
+ComponenteMusical <|-- Album
+ComponenteMusical <|-- Playlist
+ComponenteMusical <|-- Discografia
+
+Album --> ComponenteMusical
+Playlist --> ComponenteMusical
+Discografia --> ComponenteMusical
+
+note right of Musica
+    Leaf - objeto básico
+    que não contém outros
+    componentes
+end note
+
+note right of Album
+    Composite - pode conter
+    músicas e outros álbuns,
+    formando uma hierarquia
+end note
+
+note right of Discografia
+    Composite de alto nível -
+    gerencia toda a estrutura
+    hierárquica musical
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como diferentes níveis da hierarquia musical implementam a mesma interface.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/estruturais/composite/pratico.png" alt="File System Composite UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Composite no exemplo prático do sistema de arquivos:</p>
+            <pre class="uml-code">
+@startuml
+interface FileSystemComponent {
+    + get_name(): str
+    + get_size(): int
+    + display(indent: int): str
+    + find(name: str): FileSystemComponent
+    + add(component: FileSystemComponent): void
+    + remove(component: FileSystemComponent): void
+    + get_children(): List[FileSystemComponent]
+}
+
+class File {
+    - name: str
+    - size: int
+    - extension: str
+    - content: str
+    - created_at: datetime
+    - modified_at: datetime
+    + get_name(): str
+    + get_size(): int
+    + display(indent: int): str
+    + find(name: str): FileSystemComponent
+    + add(component: FileSystemComponent): void
+    + remove(component: FileSystemComponent): void
+    + get_children(): List[FileSystemComponent]
+    + get_extension(): str
+    + get_content(): str
+    + get_info(): str
+}
+
+class Directory {
+    - name: str
+    - children: List[FileSystemComponent]
+    - created_at: datetime
+    + get_name(): str
+    + get_size(): int
+    + display(indent: int): str
+    + find(name: str): FileSystemComponent
+    + add(component: FileSystemComponent): void
+    + remove(component: FileSystemComponent): void
+    + get_children(): List[FileSystemComponent]
+    + get_file_count(): int
+    + get_directory_count(): int
+    + get_files_by_extension(extension: str): List[File]
+}
+
+class Drive {
+    - drive_letter: str
+    - total_space: int
+    - used_space: int
+    + get_name(): str
+    + get_size(): int
+    + display(indent: int): str
+    + find(name: str): FileSystemComponent
+    + add(component: FileSystemComponent): void
+    + remove(component: FileSystemComponent): void
+    + get_children(): List[FileSystemComponent]
+    + get_drive_info(): str
+}
+
+FileSystemComponent <|-- File
+FileSystemComponent <|-- Directory
+FileSystemComponent <|-- Drive
+
+Directory --> FileSystemComponent
+Drive --> FileSystemComponent
+
+note right of File
+    Leaf - representa um arquivo
+    individual no sistema de
+    arquivos
+end note
+
+note right of Directory
+    Composite - pode conter
+    arquivos e outros diretórios,
+    formando uma árvore
+end note
+
+note right of Drive
+    Composite especial - gerencia
+    todo o sistema de arquivos
+    com informações específicas
+    de drive
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite navegar e manipular todo o sistema de arquivos de forma consistente.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/07/19/09/lust-for-life-lana-del-rey.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Composite oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Tratamento Uniforme:</strong> Clientes tratam objetos individuais e composições da mesma forma</li>
+                <li><strong>Simplicidade:</strong> Código cliente fica mais simples sem verificações de tipo constantes</li>
+                <li><strong>Flexibilidade:</strong> Fácil adicionar novos tipos de componentes</li>
+                <li><strong>Escalabilidade:</strong> Lida naturalmente com estruturas hierárquicas complexas</li>
+                <li><strong>Recursividade Nativa:</strong> Operações recursivas são implementadas naturalmente</li>
+                <li><strong>Princípio Aberto/Fechado:</strong> Pode estender a hierarquia sem modificar código existente</li>
+                <li><strong>Reusabilidade:</strong> Componentes podem ser reutilizados em diferentes contextos</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://georgetownvoice.com/wp-content/uploads/2023/04/feature-lana-del-rey-women-in-music-billboard-2023-bb2-lia-clay-miller-7-1548.webp"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Composite também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Interface Sobrecarregada:</strong> Leafs precisam implementar métodos que não usam</li>
+                <li><strong>Dificuldade de Restrição:</strong> Difícil impedir que certos componentes tenham filhos</li>
+                <li><strong>Complexidade:</strong> Pode introduzir muitas classes pequenas</li>
+                <li><strong>Performance:</strong> Operações recursivas podem ser custosas em hierarquias muito grandes</li>
+                <li><strong>Dificuldade de Debug:</strong> Pode ser complicado rastrear problemas em estruturas complexas</li>
+                <li><strong>Over-engineering:</strong> Pode ser complexo demais para hierarquias simples</li>
+                <li><strong>Acoplamento:</strong> Clientes dependem da interface Component, não de implementações específicas</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://s3.amazonaws.com/mcdbookimages/news_items/images/000/000/190/medium/unnamed-1.jpg?1575503499"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Composite é uma solução elegante para trabalhar com estruturas hierárquicas complexas, permitindo que objetos individuais e composições sejam tratados de maneira uniforme através de uma interface comum.</p>
+            <p>Na nossa analogia de Lana Del Rey, o Composite funciona como a <strong>estrutura organizacional do universo musical</strong> - permitindo que músicas individuais, álbuns, playlists e até a discografia completa sejam manipulados de forma consistente, criando uma experiência coesa e poética que reflete a própria arte da artista.</p>
+            <p>Assim como a música de Lana Del Rey cria camadas de significado através de referências e temas recorrentes, o padrão Composite nos permite construir sistemas complexos onde cada componente, seja ele simples ou composto, contribui harmoniosamente para o todo, mantendo a elegância e simplicidade no tratamento.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/composite"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Composite</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-composite/16791"
+                        target="_blank">DevMedia - Padrão de Projeto Composite</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/23/mao-na-massa-composite/"
+                        target="_blank">Mão na Massa - Padrão Composite</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Composite" target="_blank">Wikipédia - Composite (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/composite-design-pattern/" target="_blank">GeeksforGeeks
+                        - Composite Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/composite" target="_blank">SourceMaking
+                        - Composite Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
