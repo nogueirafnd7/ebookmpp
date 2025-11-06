@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Facade - O Império Madonna</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylestr.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/estruturais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/estruturais.html">Padrões Estruturais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Facade?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Complexidade vs Simplicidade</a></li>
+            <li><a href="#page5">Exemplo Fictício (O Império Madonna)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">FACADE</h1>
+            <p class="cover-subtitle">O Império Madonna - Simplificando Sistemas Complexos</p>
+
+            <img src="https://s.yimg.com/ny/api/res/1.2/laLCx0G6VTgqlVxfDaXQiA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY0MDtjZj13ZWJw/https://media.zenfs.com/en/people_218/691df162ee9554c70db1d823aa22b878"
+                alt="Capa Facade - Madonna" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Facade?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/11/madonna.jpg?w=1200&h=1200&crop=1"
+                    alt="Facade Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Facade é um <strong>padrão de projeto estrutural</strong> que fornece uma interface simplificada para um sistema complexo, biblioteca ou framework [1].</p>
+            <p>É como o <strong>império empresarial de Madonna</strong> - onde por trás de uma marca icônica e unificada existe uma complexa rede de negócios, equipes e processos que são simplificados para o público e parceiros.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://portalpopline.com.br/wp-content/uploads/2020/04/madonna-2.jpeg"
+                    alt="Problema da Complexidade" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Facade resolve é a <strong>complexidade de integrar sistemas complicados</strong> onde múltiplos subsistemas precisam ser coordenados.</p>
+            <p>Sem este padrão, os clientes precisariam entender e interagir diretamente com todos os subsistemas complexos - como ter que negociar separadamente com cada departamento do império Madonna [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/estruturais/facade/generico.png"
+                    alt="Facade UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Facade:</p>
+            <pre class="uml-code">
+@startuml
+class Facade {
+    - subsystemA: SubsystemA
+    - subsystemB: SubsystemB
+    - subsystemC: SubsystemC
+    + operation1(): void
+    + operation2(): void
+}
+
+class SubsystemA {
+    + operationA1(): void
+    + operationA2(): void
+}
+
+class SubsystemB {
+    + operationB1(): void
+    + operationB2(): void
+}
+
+class SubsystemC {
+    + operationC1(): void
+    + operationC2(): void
+}
+
+class Client {
+    + doSomething(): void
+}
+
+Client --> Facade
+Facade --> SubsystemA
+Facade --> SubsystemB
+Facade --> SubsystemC
+
+note right of Facade
+    Fornece uma interface
+    simplificada para o
+    sistema complexo
+end note
+
+note right of SubsystemA
+    Subsistema complexo que
+    o cliente não precisa
+    conhecer diretamente
+end note
+
+note right of Client
+    Interage apenas com
+    a Facade, não com os
+    subsistemas complexos
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Facade:</strong> Fornece interface simplificada para o sistema complexo</li>
+                <li><strong>Subsystem:</strong> Componentes complexos do sistema</li>
+                <li><strong>Client:</strong> Interage apenas com a Facade, não com os subsistemas</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Complexidade vs Simplicidade</h1>
+            <div class="img-placeholder-5">
+                <img src="https://cinepop.com.br/wp-content/uploads/2024/05/madonna-cinepop.jpg"
+                    alt="Complexidade vs Simplicidade" class="cover-image">
+            </div>
+            
+            <h3>Complexidade (Subsistemas)</h3>
+            <p><strong>Características:</strong> Múltiplos componentes com interfaces complexas</p>
+            <p><strong>Exemplo Madonna:</strong></p>
+            <ul>
+                <li>Gestão de contratos de gravadora</li>
+                <li>Produção de videoclipes</li>
+                <li>Planejamento de turnês mundiais</li>
+                <li>Gestão de marca e licenciamento</li>
+                <li>Relações públicas e mídia</li>
+            </ul>
+
+            <h3>Simplicidade (Facade)</h3>
+            <p><strong>Características:</strong> Interface unificada e simplificada</p>
+            <p><strong>Exemplo Madonna:</strong></p>
+            <ul>
+                <li>Agente principal/representante</li>
+                <li>Escritório central de produção</li>
+                <li>Interface de parcerias comerciais</li>
+                <li>Sistema unificado de contratações</li>
+                <li>Portal de gerenciamento de carreira</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Princípio da Ocultação:</strong> A Facade esconde a complexidade dos subsistemas, expondo apenas o necessário para os clientes.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (O Império Madonna)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://i.ytimg.com/vi/EUUBtFrAOuY/maxresdefault.jpg"
+                    alt="Madonna Empire" class="cover-image">
+            </div>
+            <p>Imagine a <strong>complexa estrutura empresarial por trás da carreira de Madonna</strong> usando o padrão Facade:</p>
+
+            <h3>Estrutura do Império:</h3>
+            <ul>
+                <li><strong>Madonna Business Facade</strong> (Interface Simplificada)
+                    <ul>
+                        <li><strong>Subsistema de Produção Musical</strong>
+                            <ul>
+                                <li>Estúdios de gravação</li>
+                                <li>Produtores e compositores</li>
+                                <li>Engenheiros de som</li>
+                            </ul>
+                        </li>
+                        <li><strong>Subsistema de Turnês e Shows</strong>
+                            <ul>
+                                <li>Agentes de booking</li>
+                                <li>Produção de palco</li>
+                                <li>Logística de transportes</li>
+                            </ul>
+                        </li>
+                        <li><strong>Subsistema de Negócios</strong>
+                            <ul>
+                                <li>Contratos e direitos</li>
+                                <li>Gestão financeira</li>
+                                <li>Parcerias comerciais</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>O Facade permite que parceiros e clientes interajam com todo o império através de uma interface simples.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://www.rollingstone.com/wp-content/uploads/2018/06/rs-4200-rectangle.jpg?w=624&h=420&crop=1"
+                    alt="Problema sem Facade" class="cover-image">
+            </div>
+            <p>Sem o Padrão Facade, gerenciar o império Madonna seria caótico:</p>
+            <pre><code>
+// PROBLEMA: Cliente precisa interagir com todos os subsistemas!
+class GravadoraSubsystem {
+    negociarContrato(artista: string, album: string): void {
+        console.log(`📝 Negociando contrato para ${album}...`)
+        // Complexa negociação de direitos autorais, royalties, etc.
+    }
+    
+    produzirAlbum(album: string): void {
+        console.log(`🎵 Produzindo álbum ${album}...`)
+        // Processo complexo de produção musical
+    }
+}
+
+class TurnesSubsystem {
+    planejarTurnê(cidades: string[], datas: string[]): void {
+        console.log(`✈️ Planejando turnê para ${cidades.length} cidades...`)
+        // Logística complexa de transporte, hospedagem, etc.
+    }
+    
+    contratarEquipe(equipe: string[]): void {
+        console.log(`👥 Contratando equipe de ${equipe.length} pessoas...`)
+        // Processos complexos de RH e contratação
+    }
+}
+
+class NegociosSubsystem {
+    gerenciarMarca(contratos: any[]): void {
+        console.log(`🏢 Gerenciando ${contratos.length} contratos de marca...`)
+        // Gestão complexa de licenças e parcerias
+    }
+    
+    processarFinancas(valor: number): void {
+        console.log(`💰 Processando transação de $${valor}...`)
+        // Sistema financeiro complexo
+    }
+}
+
+// CLIENTE PRECISA INTERAGIR COM TODOS OS SUBSISTEMAS DIRETAMENTE!
+class ParceiroComercial {
+    organizarEventoMadonna(): void {
+        const gravadora = new GravadoraSubsystem()
+        const turnes = new TurnesSubsystem()
+        const negocios = new NegociosSubsystem()
+        
+        // PROBLEMA: Cliente precisa conhecer TODOS os subsistemas
+        gravadora.negociarContrato("Madonna", "Like a Prayer")
+        turnes.planejarTurnê(["NY", "LA", "Londres"], ["2024-06-01", "2024-06-15"])
+        negocios.gerenciarMarca([{tipo: "perfume", valor: 1000000}])
+        gravadora.produzirAlbum("Like a Prayer")
+        turnes.contratarEquipe(["coreógrafos", "músicos", "técnicos"])
+        negocios.processarFinancas(5000000)
+        
+        // PROBLEMAS:
+        // 1. Cliente precisa conhecer todos os subsistemas
+        // 2. Ordem complexa de operações
+        // 3. Acoplamento forte com implementações
+        // 4. Dificuldade de manutenção
+        // 5. Código cliente fica complexo
+        // 6. Violação do princípio de responsabilidade única
+    }
+}
+
+// USO COMPLEXO E FRAGMENTADO:
+const parceiro = new ParceiroComercial()
+parceiro.organizarEventoMadonna() // Processo extremamente complexo!
+            </code></pre>
+            <p>Sem Facade, o cliente precisa ser especialista em todos os subsistemas!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://m.media-amazon.com/images/M/MV5BMzVjODlmOTktZjhlMy00OGYwLThkZDQtYWFkNzk1ZDZhMDk0XkEyXkFqcGc@._V1_.jpg"
+                    alt="Facade Madonna" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Facade, criamos uma interface simplificada para todo o império:</p>
+            <pre><code>
+// SUBSISTEMAS COMPLEXOS
+class GravadoraSubsystem {
+    negociarContrato(artista: string, album: string, termos: any): string {
+        console.log(`📝 Subsistema Gravadora: Negociando contrato complexo...`)
+        // Lógica complexa de negociação
+        return `CONTRATO-${album}-${Date.now()}`
+    }
+    
+    produzirAlbum(album: string, orcamento: number): void {
+        console.log(`🎵 Subsistema Gravadora: Produzindo ${album} com orçamento de $${orcamento}`)
+        // Processo complexo de produção
+    }
+    
+    mixarMasterizar(faixas: string[]): void {
+        console.log(`🎛️ Subsistema Gravadora: Processando ${faixas.length} faixas...`)
+        // Processamento complexo de áudio
+    }
+}
+
+class TurnesSubsystem {
+    planejarTurnê(nome: string, cidades: string[], periodo: string): any {
+        console.log(`✈️ Subsistema Turnês: Planejando "${nome}" para ${cidades.length} cidades`)
+        // Planejamento logístico complexo
+        return {
+            id: `TOUR-${Date.now()}`,
+            nome: nome,
+            cidades: cidades,
+            status: "planejada"
+        }
+    }
+    
+    contratarEquipe(departamentos: string[]): string[] {
+        console.log(`👥 Subsistema Turnês: Contratando equipe para ${departamentos.join(", ")}`)
+        // Processo complexo de contratação
+        return departamentos.map(dept => `${dept}-team`)
+    }
+    
+    reservarLocais(locais: string[]): void {
+        console.log(`🏟️ Subsistema Turnês: Reservando ${locais.length} locais...`)
+        // Negociação complexa com arenas
+    }
+}
+
+class NegociosSubsystem {
+    gerenciarContratosMarca(contratos: any[]): number {
+        console.log(`🏢 Subsistema Negócios: Processando ${contratos.length} contratos de marca`)
+        // Gestão complexa de direitos
+        return contratos.reduce((total, contrato) => total + contrato.valor, 0)
+    }
+    
+    processarTransacao(descricao: string, valor: number): string {
+        console.log(`💰 Subsistema Negócios: Processando ${descricao} - $${valor}`)
+        // Sistema financeiro complexo
+        return `TRX-${Date.now()}`
+    }
+    
+    analisarMercado(segmento: string): any {
+        console.log(`📊 Subsistema Negócios: Analisando mercado ${segmento}`)
+        // Análise complexa de mercado
+        return { potencial: "alto", concorrentes: 3 }
+    }
+}
+
+class MarketingSubsystem {
+    criarCampanha(nome: string, midias: string[]): void {
+        console.log(`📢 Subsistema Marketing: Criando campanha "${nome}" para ${midias.join(", ")}`)
+        // Estratégia complexa de marketing
+    }
+    
+    gerenciarMidiasSociais(plataformas: string[]): void {
+        console.log(`📱 Subsistema Marketing: Gerenciando ${plataformas.length} plataformas sociais`)
+        // Gestão complexa de redes sociais
+    }
+    
+    produzirMaterialPromocional(tipo: string): void {
+        console.log(`🎬 Subsistema Marketing: Produzindo material ${tipo}`)
+        // Produção complexa de conteúdo
+    }
+}
+
+// FACADE - INTERFACE SIMPLIFICADA
+class MadonnaBusinessFacade {
+    private gravadora: GravadoraSubsystem
+    private turnes: TurnesSubsystem
+    private negocios: NegociosSubsystem
+    private marketing: MarketingSubsystem
+    
+    constructor() {
+        this.gravadora = new GravadoraSubsystem()
+        this.turnes = new TurnesSubsystem()
+        this.negocios = new NegociosSubsystem()
+        this.marketing = new MarketingSubsystem()
+    }
+    
+    // OPERAÇÕES SIMPLIFICADAS PARA CLIENTES
+    
+    lancarNovoAlbum(albumInfo: any): string {
+        console.log(`\n🎤 FACADE: Iniciando lançamento do álbum "${albumInfo.nome}"`)
+        console.log("=" .repeat(50))
+        
+        // Coordena todos os subsistemas complexos
+        const contratoId = this.gravadora.negociarContrato("Madonna", albumInfo.nome, albumInfo.termos)
+        this.gravadora.produzirAlbum(albumInfo.nome, albumInfo.orcamento)
+        this.gravadora.mixarMasterizar(albumInfo.faixas)
+        
+        this.marketing.criarCampanha(`Lançamento ${albumInfo.nome}`, ["TV", "Redes Sociais", "Rádio"])
+        this.marketing.produzirMaterialPromocional("videoclipe")
+        
+        const valorContratos = this.negocios.gerenciarContratosMarca(albumInfo.contratosMarca)
+        this.negocios.processarTransacao(`Produção ${albumInfo.nome}`, albumInfo.orcamento)
+        
+        console.log(`✅ FACADE: Álbum "${albumInfo.nome}" lançado com sucesso!`)
+        console.log(`📊 Contrato: ${contratoId} | Valor Marcas: $${valorContratos}`)
+        
+        return contratoId
+    }
+    
+    organizarWorldTour(tourInfo: any): any {
+        console.log(`\n🌍 FACADE: Organizando World Tour "${tourInfo.nome}"`)
+        console.log("=" .repeat(50))
+        
+        // Coordenação complexa simplificada
+        const tour = this.turnes.planejarTurnê(tourInfo.nome, tourInfo.cidades, tourInfo.periodo)
+        const equipes = this.turnes.contratarEquipe(["produção", "coreografia", "música", "logística"])
+        this.turnes.reservarLocais(tourInfo.cidades)
+        
+        this.marketing.criarCampanha(tour.nome, ["ingressos", "mídia", "patrocínio"])
+        this.marketing.gerenciarMidiasSociais(["Instagram", "Twitter", "Facebook"])
+        
+        const analiseMercado = this.negocios.analisarMercado("turnês")
+        const transacao = this.negocios.processarTransacao(`Produção ${tour.nome}`, tourInfo.orcamento)
+        
+        console.log(`✅ FACADE: World Tour "${tour.nome}" organizado!`)
+        console.log(`📊 Equipes: ${equipes.length} | Potencial: ${analiseMercado.potencial}`)
+        
+        return {
+            ...tour,
+            equipes: equipes,
+            transacao: transacao
+        }
+    }
+    
+    estabelecerParceriaComercial(parceriaInfo: any): any {
+        console.log(`\n🤝 FACADE: Estabelecendo parceria comercial`)
+        console.log("=" .repeat(50))
+        
+        // Simplifica processo complexo de parcerias
+        const valorTotal = this.negocios.gerenciarContratosMarca([parceriaInfo])
+        const transacao = this.negocios.processarTransacao(`Parceria ${parceriaInfo.marca}`, parceriaInfo.valor)
+        
+        this.marketing.criarCampanha(`Parceria ${parceriaInfo.marca}`, parceriaInfo.canais)
+        this.marketing.produzirMaterialPromocional("fotos e vídeos")
+        
+        const analise = this.negocios.analisarMercado(parceriaInfo.segmento)
+        
+        console.log(`✅ FACADE: Parceria com ${parceriaInfo.marca} estabelecida!`)
+        console.log(`📊 Valor: $${valorTotal} | Transação: ${transacao}`)
+        
+        return {
+            parceriaId: `PART-${Date.now()}`,
+            marca: parceriaInfo.marca,
+            valor: valorTotal,
+            potencial: analise.potencial
+        }
+    }
+    
+    // OPERAÇÃO COMPOSTA - REINVENTAR CARREIRA (Like a Virgin -> Confessions)
+    reinvencaoDeCarreira(eraInfo: any): any {
+        console.log(`\n🔄 FACADE: Iniciando reinvenção de carreira - Era "${eraInfo.nome}"`)
+        console.log("=" .repeat(50))
+        
+        // Coordena MÚLTIPLOS subsistemas para uma reinvenção completa
+        const resultados = {
+            album: null as any,
+            tour: null as any,
+            parcerias: [] as any[]
+        }
+        
+        // Fase 1: Novo Álbum
+        if (eraInfo.novoAlbum) {
+            resultados.album = this.lancarNovoAlbum(eraInfo.novoAlbum)
+        }
+        
+        // Fase 2: Nova Turnê
+        if (eraInfo.novaTour) {
+            resultados.tour = this.organizarWorldTour(eraInfo.novaTour)
+        }
+        
+        // Fase 3: Novas Parcerias
+        if (eraInfo.novasParcerias) {
+            for (const parceria of eraInfo.novasParcerias) {
+                const resultadoParceria = this.estabelecerParceriaComercial(parceria)
+                resultados.parcerias.push(resultadoParceria)
+            }
+        }
+        
+        // Fase 4: Reposicionamento de Marca
+        this.marketing.criarCampanha(`Nova Era ${eraInfo.nome}`, ["global", "multimídia"])
+        this.marketing.gerenciarMidiasSociais(["TikTok", "YouTube", "Instagram"])
+        
+        console.log(`🎉 FACADE: Reinvenção "${eraInfo.nome}" concluída com sucesso!`)
+        console.log(`📈 Resultados: ${resultados.parcerias.length} parcerias | Tour: ${resultados.tour?.nome}`)
+        
+        return resultados
+    }
+}
+
+// SISTEMA CLIENTE - USA APENAS A FACADE
+class SistemaParceirosMadonna {
+    static gerenciarImperio(): void {
+        console.log("👑 SISTEMA MADONNA - PADRÃO FACADE 👑")
+        console.log("======================================")
+        
+        const facade = new MadonnaBusinessFacade()
+        
+        // DEMONSTRAÇÃO: Cliente usa apenas interface simples
+        
+        // 1. Lançamento de Álbum (Like a Prayer)
+        console.log("\n1. 🎵 LANÇAMENTO DE ÁLBUM (Like a Prayer)")
+        const albumInfo = {
+            nome: "Like a Prayer",
+            orcamento: 2000000,
+            faixas: ["Like a Prayer", "Express Yourself", "Cherish"],
+            termos: { direitos: "mundial", duracao: "5 anos" },
+            contratosMarca: [
+                { tipo: "perfume", marca: "Pepsi", valor: 5000000 },
+                { tipo: "vestuário", marca: "Versace", valor: 2000000 }
+            ]
+        }
+        
+        const contratoAlbum = facade.lancarNovoAlbum(albumInfo)
+        
+        // 2. Organização de World Tour (Blond Ambition)
+        console.log("\n2. 🌍 WORLD TOUR (Blond Ambition World Tour)")
+        const tourInfo = {
+            nome: "Blond Ambition World Tour",
+            cidades: ["Tóquio", "Los Angeles", "Paris", "Milão", "Londres"],
+            periodo: "1990",
+            orcamento: 15000000
+        }
+        
+        const tour = facade.organizarWorldTour(tourInfo)
+        
+        // 3. Parceria Comercial (Material Girl - Versace)
+        console.log("\n3. 🤝 PARCERIA COMERCIAL (Material Girl Collection)")
+        const parceriaInfo = {
+            marca: "Versace",
+            valor: 3000000,
+            segmento: "moda luxo",
+            canais: ["revistas", "TV", "eventos"]
+        }
+        
+        const parceria = facade.estabelecerParceriaComercial(parceriaInfo)
+        
+        // 4. REINVENÇÃO COMPLETA (Confessions Era)
+        console.log("\n4. 🔄 REINVENÇÃO DE CARREIRA (Confessions Era)")
+        const reinvencaoInfo = {
+            nome: "Confessions",
+            novoAlbum: {
+                nome: "Confessions on a Dance Floor",
+                orcamento: 3000000,
+                faixas: ["Hung Up", "Sorry", "Get Together"],
+                termos: { direitos: "global", duracao: "7 anos" },
+                contratosMarca: [
+                    { tipo: "perfume", marca: "H&M", valor: 8000000 },
+                    { tipo: "acessórios", marca: "Louis Vuitton", valor: 4000000 }
+                ]
+            },
+            novaTour: {
+                nome: "Confessions Tour",
+                cidades: ["Nova York", "Las Vegas", "Londres", "Paris", "Berlim"],
+                periodo: "2006",
+                orcamento: 20000000
+            },
+            novasParcerias: [
+                {
+                    marca: "H&M",
+                    valor: 8000000,
+                    segmento: "fast fashion",
+                    canais: ["lojas", "online", "mídia"]
+                },
+                {
+                    marca: "Louis Vuitton",
+                    valor: 4000000,
+                    segmento: "luxo",
+                    canais: ["campanhas", "desfiles", "revistas"]
+                }
+            ]
+        }
+        
+        const resultadosReinvencao = facade.reinvencaoDeCarreira(reinvencaoInfo)
+        
+        // RESUMO FINAL
+        console.log("\n" + "=" .repeat(60))
+        console.log("📊 RESUMO DO IMPÉRIO MADONNA")
+        console.log("=" .repeat(60))
+        console.log(`🎵 Álbum lançado: ${albumInfo.nome}`)
+        console.log(`🌍 Tour organizado: ${tour.nome} (${tour.cidades.length} cidades)`)
+        console.log(`🤝 Parcerias estabelecidas: ${parceria.marca}`)
+        console.log(`🔄 Reinvenção concluída: ${reinvencaoInfo.nome}`)
+        console.log(`💼 Total parcerias reinvenção: ${resultadosReinvencao.parcerias.length}`)
+        
+        console.log("\n👑 O império Madonna funciona perfeitamente através de uma interface simples!")
+    }
+}
+
+// CLIENTE SIMPLES - USA APENAS A FACADE
+class ParceiroSimples {
+    private facade: MadonnaBusinessFacade
+    
+    constructor() {
+        this.facade = new MadonnaBusinessFacade()
+    }
+    
+    contratarShowMadonna(cidade: string, data: string): void {
+        console.log(`\n🎪 Parceiro: Contratando show em ${cidade} para ${data}`)
+        
+        // USO SIMPLES - Cliente não conhece os subsistemas complexos!
+        const tour = this.facade.organizarWorldTour({
+            nome: `Show Especial ${cidade}`,
+            cidades: [cidade],
+            periodo: data,
+            orcamento: 1000000
+        })
+        
+        console.log(`✅ Show contratado: ${tour.nome}`)
+    }
+    
+    proporParceria(marca: string, valor: number): void {
+        console.log(`\n💼 Parceiro: Propondo parceria com ${marca}`)
+        
+        // INTERAÇÃO SIMPLES com sistema complexo
+        const parceria = this.facade.estabelecerParceriaComercial({
+            marca: marca,
+            valor: valor,
+            segmento: "entretenimento",
+            canais: ["mídia social", "eventos"]
+        })
+        
+        console.log(`✅ Parceria estabelecida: ${parceria.parceriaId}`)
+    }
+}
+
+// Executando o sistema
+SistemaParceirosMadonna.gerenciarImperio()
+
+// Demonstração de uso simples
+console.log("\n" + "=" .repeat(50))
+console.log("👥 DEMONSTRAÇÃO DE USO SIMPLES (Parceiro)")
+console.log("=" .repeat(50))
+
+const parceiro = new ParceiroSimples()
+parceiro.contratarShowMadonna("Rio de Janeiro", "2024-12-31")
+parceiro.proporParceria("Coca-Cola", 5000000)
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Facade em um sistema de home theater:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any
+from datetime import datetime
+import time
+
+# SUBSISTEMAS COMPLEXOS
+class AmplifierSubsystem:
+    def __init__(self):
+        self.power = False
+        self.volume = 50
+        self.source = None
+    
+    def power_on(self):
+        print("🔊 Amplifier: Ligando sistema de áudio...")
+        self.power = True
+        time.sleep(1)
+        print("🔊 Amplifier: Sistema de áudio ligado")
+    
+    def power_off(self):
+        print("🔊 Amplifier: Desligando sistema de áudio...")
+        self.power = False
+        time.sleep(1)
+        print("🔊 Amplifier: Sistema de áudio desligado")
+    
+    def set_volume(self, level: int):
+        print(f"🔊 Amplifier: Ajustando volume para {level}")
+        self.volume = level
+        time.sleep(0.5)
+    
+    def set_source(self, source: str):
+        print(f"🔊 Amplifier: Configurando fonte para {source}")
+        self.source = source
+        time.sleep(0.5)
+
+class DvdPlayerSubsystem:
+    def __init__(self):
+        self.power = False
+        self.playing = False
+        self.current_movie = None
+    
+    def power_on(self):
+        print("📀 DVD Player: Inicializando leitor...")
+        self.power = True
+        time.sleep(2)
+        print("📀 DVD Player: Leitor pronto")
+    
+    def power_off(self):
+        print("📀 DVD Player: Ejetando mídia e desligando...")
+        self.power = False
+        self.playing = False
+        time.sleep(1)
+        print("📀 DVD Player: Desligado")
+    
+    def play_movie(self, movie: str):
+        print(f"📀 DVD Player: Carregando filme '{movie}'...")
+        self.current_movie = movie
+        self.playing = True
+        time.sleep(2)
+        print(f"📀 DVD Player: Reproduzindo '{movie}'")
+    
+    def stop_movie(self):
+        print("📀 DVD Player: Parando reprodução...")
+        self.playing = False
+        time.sleep(1)
+        print("📀 DVD Player: Filme parado")
+
+class ProjectorSubsystem:
+    def __init__(self):
+        self.power = False
+        self.input_mode = None
+        self.brightness = 80
+    
+    def power_on(self):
+        print("📽️ Projector: Aquecendo lâmpada...")
+        self.power = True
+        time.sleep(3)
+        print("📽️ Projector: Projetor pronto")
+    
+    def power_off(self):
+        print("📽️ Projector: Resfriando lâmpada...")
+        self.power = False
+        time.sleep(2)
+        print("📽️ Projector: Desligado")
+    
+    def set_input(self, input_type: str):
+        print(f"📽️ Projector: Configurando entrada para {input_type}")
+        self.input_mode = input_type
+        time.sleep(1)
+    
+    def set_brightness(self, level: int):
+        print(f"📽️ Projector: Ajustando brilho para {level}%")
+        self.brightness = level
+        time.sleep(0.5)
+
+class LightsSubsystem:
+    def __init__(self):
+        self.brightness = 100
+    
+    def dim_lights(self, level: int):
+        print(f"💡 Lights: Escurecendo luzes para {level}%")
+        self.brightness = level
+        time.sleep(1)
+    
+    def brighten_lights(self):
+        print("💡 Lights: Restaurando iluminação normal")
+        self.brightness = 100
+        time.sleep(1)
+
+class ScreenSubsystem:
+    def __init__(self):
+        self.position = "up"
+    
+    def lower_screen(self):
+        print("🖥️ Screen: Baixando tela de projeção...")
+        self.position = "down"
+        time.sleep(2)
+        print("🖥️ Screen: Tela baixada")
+    
+    def raise_screen(self):
+        print("🖥️ Screen: Retraindo tela de projeção...")
+        self.position = "up"
+        time.sleep(2)
+        print("🖥️ Screen: Tela retraída")
+
+class PopcornMachineSubsystem:
+    def __init__(self):
+        self.power = False
+    
+    def power_on(self):
+        print("🍿 Popcorn Machine: Aquecendo máquina...")
+        self.power = True
+        time.sleep(3)
+        print("🍿 Popcorn Machine: Pronta para fazer pipoca")
+    
+    def power_off(self):
+        print("🍿 Popcorn Machine: Desligando...")
+        self.power = False
+        time.sleep(1)
+        print("🍿 Popcorn Machine: Desligada")
+    
+    def make_popcorn(self):
+        print("🍿 Popcorn Machine: Fazendo pipoca...")
+        time.sleep(5)
+        print("🍿 Popcorn Machine: Pipoca pronta! 🍿")
+
+# FACADE - INTERFACE SIMPLIFICADA
+class HomeTheaterFacade:
+    def __init__(self):
+        self.amplifier = AmplifierSubsystem()
+        self.dvd_player = DvdPlayerSubsystem()
+        self.projector = ProjectorSubsystem()
+        self.lights = LightsSubsystem()
+        self.screen = ScreenSubsystem()
+        self.popcorn_machine = PopcornMachineSubsystem()
+    
+    # OPERAÇÕES SIMPLIFICADAS
+    
+    def watch_movie(self, movie: str):
+        print(f"\n🎬 HOME THEATER FACADE: Preparando para assistir '{movie}'")
+        print("=" * 50)
+        
+        # Coordena todos os subsistemas complexos
+        self.popcorn_machine.power_on()
+        self.popcorn_machine.make_popcorn()
+        
+        self.lights.dim_lights(10)
+        self.screen.lower_screen()
+        
+        self.projector.power_on()
+        self.projector.set_input("DVD")
+        
+        self.amplifier.power_on()
+        self.amplifier.set_source("DVD")
+        self.amplifier.set_volume(70)
+        
+        self.dvd_player.power_on()
+        self.dvd_player.play_movie(movie)
+        
+        print(f"\n✅ FACADE: '{movie}' pronto para assistir! Aproveite! 🍿")
+    
+    def end_movie(self):
+        print(f"\n🛑 HOME THEATER FACADE: Finalizando sessão de cinema")
+        print("=" * 50)
+        
+        # Desliga tudo na ordem correta
+        self.dvd_player.stop_movie()
+        self.dvd_player.power_off()
+        
+        self.amplifier.set_volume(0)
+        self.amplifier.power_off()
+        
+        self.projector.power_off()
+        self.screen.raise_screen()
+        
+        self.lights.brighten_lights()
+        self.popcorn_machine.power_off()
+        
+        print("\n✅ FACADE: Sessão de cinema finalizada!")
+    
+    def listen_to_music(self, source: str):
+        print(f"\n🎵 HOME THEATER FACADE: Configurando sistema de áudio para {source}")
+        print("=" * 50)
+        
+        self.amplifier.power_on()
+        self.amplifier.set_source(source)
+        self.amplifier.set_volume(60)
+        
+        self.lights.dim_lights(30)
+        
+        print(f"\n✅ FACADE: Sistema de áudio pronto para {source}!")
+    
+    def party_mode(self):
+        print(f"\n🎉 HOME THEATER FACADE: Ativando Modo Festa!")
+        print("=" * 50)
+        
+        self.amplifier.power_on()
+        self.amplifier.set_source("BLUETOOTH")
+        self.amplifier.set_volume(85)
+        
+        self.lights.dim_lights(50)
+        
+        self.popcorn_machine.power_on()
+        self.popcorn_machine.make_popcorn()
+        
+        print("\n✅ FACADE: Modo Festa ativado! 🎊")
+    
+    def turn_off_all(self):
+        print(f"\n🔌 HOME THEATER FACADE: Desligando todo o sistema")
+        print("=" * 50)
+        
+        self.end_movie()  # Reusa a lógica existente
+        self.popcorn_machine.power_off()
+        
+        print("\n✅ FACADE: Todo o sistema desligado!")
+
+# SISTEMA DE DEMONSTRAÇÃO
+class HomeTheaterDemo:
+    def __init__(self):
+        self.theater = HomeTheaterFacade()
+    
+    def run_demo(self):
+        print("🏠 SISTEMA HOME THEATER - PADRÃO FACADE")
+        print("=" * 40)
+        
+        # Demonstração 1: Assistir filme
+        print("\n1. 🎬 ASSISTINDO UM FILME")
+        self.theater.watch_movie("Madonna: Truth or Dare")
+        
+        input("\n⏸️  Pressione Enter para finalizar o filme...")
+        self.theater.end_movie()
+        
+        # Demonstração 2: Ouvir música
+        print("\n2. 🎵 OUVINDO MÚSICA")
+        self.theater.listen_to_music("SPOTIFY")
+        
+        input("\n⏸️  Pressione Enter para mudar para modo festa...")
+        
+        # Demonstração 3: Modo festa
+        print("\n3. 🎉 MODO FESTA")
+        self.theater.party_mode()
+        
+        input("\n⏸️  Pressione Enter para desligar tudo...")
+        
+        # Demonstração 4: Desligar tudo
+        print("\n4. 🔌 DESLIGANDO TUDO")
+        self.theater.turn_off_all()
+        
+        # Status final
+        print("\n" + "=" * 40)
+        print("📊 STATUS FINAL DO SISTEMA")
+        print("=" * 40)
+        print("✅ Todas as operações concluídas com sucesso!")
+        print("🎯 Facade simplificou a complexidade de 6 subsistemas")
+
+# CLIENTE SIMPLES
+class User:
+    def __init__(self, name: str):
+        self.name = name
+        self.theater = HomeTheaterFacade()
+    
+    def watch_movie_night(self, movie: str):
+        print(f"\n👤 {self.name}: Quero assistir '{movie}'")
+        
+        # USO SIMPLES - Cliente não conhece os subsistemas!
+        self.theater.watch_movie(movie)
+        
+        print(f"👤 {self.name}: Obrigado, sistema! Foi muito fácil! 👍")
+    
+    def have_party(self):
+        print(f"\n👤 {self.name}: Vamos fazer uma festa!")
+        
+        self.theater.party_mode()
+        
+        print(f"👤 {self.name}: A festa está incrível! 🎊")
+
+# Exemplo de uso
+def main():
+    # Demonstração do sistema
+    demo = HomeTheaterDemo()
+    demo.run_demo()
+    
+    # Demonstração de uso por cliente simples
+    print("\n" + "=" * 50)
+    print("👥 DEMONSTRAÇÃO DE USO SIMPLES (Usuário)")
+    print("=" * 50)
+    
+    user = User("Maria")
+    user.watch_movie_night("Madonna: The MDNA Tour")
+    
+    user2 = User("João")
+    user2.have_party()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/estruturais/facade/ficticio.png" alt="Madonna Facade UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Facade no nosso exemplo do império Madonna:</p>
+            <pre class="uml-code">
+@startuml
+class MadonnaBusinessFacade {
+    - gravadora: GravadoraSubsystem
+    - turnes: TurnesSubsystem
+    - negocios: NegociosSubsystem
+    - marketing: MarketingSubsystem
+    + lancarNovoAlbum(albumInfo: any): string
+    + organizarWorldTour(tourInfo: any): any
+    + estabelecerParceriaComercial(parceriaInfo: any): any
+    + reinvencaoDeCarreira(eraInfo: any): any
+}
+
+class GravadoraSubsystem {
+    + negociarContrato(artista: string, album: string, termos: any): string
+    + produzirAlbum(album: string, orcamento: number): void
+    + mixarMasterizar(faixas: string[]): void
+}
+
+class TurnesSubsystem {
+    + planejarTurnê(nome: string, cidades: string[], periodo: string): any
+    + contratarEquipe(departamentos: string[]): string[]
+    + reservarLocais(locais: string[]): void
+}
+
+class NegociosSubsystem {
+    + gerenciarContratosMarca(contratos: any[]): number
+    + processarTransacao(descricao: string, valor: number): string
+    + analisarMercado(segmento: string): any
+}
+
+class MarketingSubsystem {
+    + criarCampanha(nome: string, midias: string[]): void
+    + gerenciarMidiasSociais(plataformas: string[]): void
+    + produzirMaterialPromocional(tipo: string): void
+}
+
+class ParceiroSimples {
+    - facade: MadonnaBusinessFacade
+    + contratarShowMadonna(cidade: string, data: string): void
+    + proporParceria(marca: string, valor: number): void
+}
+
+ParceiroSimples --> MadonnaBusinessFacade
+MadonnaBusinessFacade --> GravadoraSubsystem
+MadonnaBusinessFacade --> TurnesSubsystem
+MadonnaBusinessFacade --> NegociosSubsystem
+MadonnaBusinessFacade --> MarketingSubsystem
+
+note right of MadonnaBusinessFacade
+    Fornece interface simplificada
+    para todo o complexo império
+    empresarial de Madonna
+end note
+
+note right of GravadoraSubsystem
+    Subsistema complexo de
+    produção musical e
+    gestão de gravadora
+end note
+
+note right of ParceiroSimples
+    Cliente que interage apenas
+    com a Facade, sem conhecer
+    a complexidade interna
+end note
+
+note right of TurnesSubsystem
+    Subsistema complexo de
+    planejamento e execução
+    de turnês mundiais
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como a Facade simplifica a interação com múltiplos subsistemas complexos.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/estruturais/facade/pratico.png" alt="Home Theater Facade UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Facade no exemplo prático do sistema de home theater:</p>
+            <pre class="uml-code">
+@startuml
+class HomeTheaterFacade {
+    - amplifier: AmplifierSubsystem
+    - dvd_player: DvdPlayerSubsystem
+    - projector: ProjectorSubsystem
+    - lights: LightsSubsystem
+    - screen: ScreenSubsystem
+    - popcorn_machine: PopcornMachineSubsystem
+    + watch_movie(movie: str): void
+    + end_movie(): void
+    + listen_to_music(source: str): void
+    + party_mode(): void
+    + turn_off_all(): void
+}
+
+class AmplifierSubsystem {
+    - power: bool
+    - volume: int
+    - source: str
+    + power_on(): void
+    + power_off(): void
+    + set_volume(level: int): void
+    + set_source(source: str): void
+}
+
+class DvdPlayerSubsystem {
+    - power: bool
+    - playing: bool
+    - current_movie: str
+    + power_on(): void
+    + power_off(): void
+    + play_movie(movie: str): void
+    + stop_movie(): void
+}
+
+class ProjectorSubsystem {
+    - power: bool
+    - input_mode: str
+    - brightness: int
+    + power_on(): void
+    + power_off(): void
+    + set_input(input_type: str): void
+    + set_brightness(level: int): void
+}
+
+class LightsSubsystem {
+    - brightness: int
+    + dim_lights(level: int): void
+    + brighten_lights(): void
+}
+
+class ScreenSubsystem {
+    - position: str
+    + lower_screen(): void
+    + raise_screen(): void
+}
+
+class PopcornMachineSubsystem {
+    - power: bool
+    + power_on(): void
+    + power_off(): void
+    + make_popcorn(): void
+}
+
+class User {
+    - name: str
+    - theater: HomeTheaterFacade
+    + watch_movie_night(movie: str): void
+    + have_party(): void
+}
+
+User --> HomeTheaterFacade
+HomeTheaterFacade --> AmplifierSubsystem
+HomeTheaterFacade --> DvdPlayerSubsystem
+HomeTheaterFacade --> ProjectorSubsystem
+HomeTheaterFacade --> LightsSubsystem
+HomeTheaterFacade --> ScreenSubsystem
+HomeTheaterFacade --> PopcornMachineSubsystem
+
+note right of HomeTheaterFacade
+    Facade que simplifica o controle
+    de 6 subsistemas complexos
+    do home theater
+end note
+
+note right of AmplifierSubsystem
+    Subsistema complexo de
+    áudio com múltiplas
+    configurações
+end note
+
+note right of User
+    Cliente que usa apenas
+    a interface simplificada
+    da Facade
+end note
+
+note right of ProjectorSubsystem
+    Subsistema complexo com
+    tempos de aquecimento
+    e configurações técnicas
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite que usuários controlem todo o sistema complexo através de operações simples.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://www.1065thearch.com/wp-content/uploads/2021/08/Getty_Madonna_082421.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Facade oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Simplificação:</strong> Oculta a complexidade dos subsistemas</li>
+                <li><strong>Facilidade de Uso:</strong> Interface simples e intuitiva</li>
+                <li><strong>Desacoplamento:</strong> Separa clientes da complexidade interna</li>
+                <li><strong>Manutenibilidade:</strong> Mudanças internas não afetam clientes</li>
+                <li><strong>Reusabilidade:</strong> Facade pode ser reutilizada por múltiplos clientes</li>
+                <li><strong>Organização:</strong> Estrutura código de forma mais limpa</li>
+                <li><strong>Performance:</strong> Pode otimizar chamadas entre subsistemas</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://lovelace-media.imgix.net/getty/185189580.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Facade também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Ponto Único de Falha:</strong> Problemas na Facade afetam todo o sistema</li>
+                <li><strong>Limitação de Funcionalidades:</strong> Pode não expor todas as features dos subsistemas</li>
+                <li><strong>Complexidade Adicional:</strong> Adiciona mais uma camada ao sistema</li>
+                <li><strong>Overhead:</strong> Pode introduzir pequena perda de performance</li>
+                <li><strong>Dificuldade de Customização:</strong> Clientes avançados podem querer acesso direto</li>
+                <li><strong>Manutenção da Facade:</strong> Precisa ser atualizada quando subsistemas mudam</li>
+                <li><strong>Over-engineering:</strong> Pode ser desnecessário para sistemas simples</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://people.com/thmb/4kJIoaSleXZmcEqMNyH4oSw_OI8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(878x496:880x498)/Madonna-birthday-Pompei-081724-10-2612d5c2bfce42ccb9e671840cf6b3a6.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Facade é uma solução elegante para simplificar sistemas complexos, fornecendo uma interface unificada e fácil de usar que esconde a complexidade interna.</p>
+            <p>Na nossa analogia de Madonna, o Facade funciona como o <strong>escritório central de gerenciamento</strong> - permitindo que parceiros e clientes interajam com todo o complexo império empresarial através de uma interface simples, enquanto por trás uma sofisticada rede de subsistemas especializados trabalha em harmonia.</p>
+            <p>Assim como Madonna construiu um império que vai muito além da música, envolvendo moda, cinema, negócios e cultura, o padrão Facade nos permite construir sistemas robustos onde a complexidade é organizada e apresentada de forma acessível, mantendo o poder e a sofisticação dos subsistemas enquanto oferece simplicidade e usabilidade para os clientes.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/facade"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Facade</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-facade/16933"
+                        target="_blank">DevMedia - Padrão de Projeto Facade</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/10/26/mao-na-massa-facade/"
+                        target="_blank">Mão na Massa - Padrão Facade</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Facade" target="_blank">Wikipédia - Facade (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/facade-design-pattern-introduction/" target="_blank">GeeksforGeeks
+                        - Facade Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/facade" target="_blank">SourceMaking
+                        - Facade Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
