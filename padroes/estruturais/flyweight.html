@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Flyweight - A Eficiência da The Eras Tour</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylestr.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/estruturais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/estruturais.html">Padrões Estruturais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Flyweight?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Estado Intrínseco vs Extrínseco</a></li>
+            <li><a href="#page5">Exemplo Fictício (The Eras Tour)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">FLYWEIGHT</h1>
+            <p class="cover-subtitle">A Eficiência da The Eras Tour - Compartilhando Recursos com Inteligência</p>
+
+            <img src="https://taylorswift.com.br/wp-content/uploads/2024/12/taylor-swift.png"
+                alt="Capa Flyweight - Taylor Swift Eras Tour" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Flyweight?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://rollingstone.com.br/wp-content/uploads/2025/10/Taylor-Swift-The-Eras-Tour-Reproducao-GettyImages-2181107453-.jpg"
+                    alt="Flyweight Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Flyweight é um <strong>padrão de projeto estrutural</strong> que permite que você acomode mais objetos dentro da quantidade de RAM disponível compartilhando partes comuns de estado entre múltiplos objetos, em vez de manter todos os dados em cada objeto [1].</p>
+            <p>É como a <strong>The Eras Tour da Taylor Swift</strong> - onde elementos de palco, coreografias e figurinos são reutilizados inteligentemente entre diferentes shows, permitindo que a turnê seja eficiente e espetacular ao mesmo tempo.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://rollingstone.com.br/wp-content/uploads/2023/12/taylor-swift-the-eras-tour-e-a-celebracao-de-uma-contadora-de-historias-leia-a-critica-foto-divulgacao-2.jpg"
+                    alt="Problema do Uso de Memória" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Flyweight resolve é o <strong>consumo excessivo de memória RAM</strong> quando o sistema precisa criar um número muito grande de objetos similares.</p>
+            <p>Sem este padrão, aplicações com muitos objetos idênticos consumiriam recursos desnecessários - como criar um objeto separado para cada fã na The Eras Tour, em vez de compartilhar características comuns [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/estruturais/flyweight/generico.png"
+                    alt="Flyweight UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Flyweight:</p>
+            <pre class="uml-code">
+@startuml
+class FlyweightFactory {
+    - flyweights: Map<string, Flyweight>
+    + getFlyweight(key: string): Flyweight
+    + getFlyweightCount(): int
+}
+
+interface Flyweight {
+    + operation(extrinsicState: any): void
+}
+
+class ConcreteFlyweight {
+    - intrinsicState: string
+    + operation(extrinsicState: any): void
+}
+
+class UnsharedConcreteFlyweight {
+    - allState: any
+    + operation(extrinsicState: any): void
+}
+
+class Client {
+    - flyweightFactory: FlyweightFactory
+    + doOperation(): void
+}
+
+FlyweightFactory --> Flyweight
+Flyweight <|-- ConcreteFlyweight
+Flyweight <|-- UnsharedConcreteFlyweight
+Client --> FlyweightFactory
+
+note right of FlyweightFactory
+    Gerencia o pool de flyweights
+    e garante que objetos similares
+    sejam compartilhados
+end note
+
+note right of ConcreteFlyweight
+    Armazena estado intrínseco
+    (compartilhado) e opera com
+    estado extrínseco (único)
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>FlyweightFactory:</strong> Cria e gerencia objetos flyweight</li>
+                <li><strong>Flyweight:</strong> Interface para objetos flyweight</li>
+                <li><strong>ConcreteFlyweight:</strong> Implementa a interface e armazena estado intrínseco</li>
+                <li><strong>UnsharedConcreteFlyweight:</strong> Não compartilha estado (opcional)</li>
+                <li><strong>Client:</strong> Mantém referências para estado extrínseco</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Estado Intrínseco vs Extrínseco</h1>
+            <div class="img-placeholder-5">
+                <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/05/taylor-swift-novos-shows-the-eras-tour.png?w=740"
+                    alt="Estado Intrínseco vs Extrínseco" class="cover-image">
+            </div>
+            
+            <h3>Estado Intrínseco (Compartilhado)</h3>
+            <p><strong>Características:</strong> Dados que são imutáveis e podem ser compartilhados entre múltiplos objetos</p>
+            <p><strong>Exemplo The Eras Tour:</strong></p>
+            <ul>
+                <li>Design dos figurinos de cada era</li>
+                <li>Coreografias das músicas</li>
+                <li>Elementos de palco fixos</li>
+                <li>Arranjos musicais</li>
+                <li>Iluminação padrão dos shows</li>
+            </ul>
+
+            <h3>Estado Extrínseco (Único)</h3>
+            <p><strong>Características:</strong> Dados que variam entre objetos e não podem ser compartilhados</p>
+            <p><strong>Exemplo The Eras Tour:</strong></p>
+            <ul>
+                <li>Localização específica de cada show</li>
+                <li>Data e hora da apresentação</li>
+                <li>Público presente</li>
+                <li>Condições climáticas</li>
+                <li>Interações únicas com a plateia</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> O Flyweight compartilha o estado intrínseco e recebe o estado extrínseco como parâmetro nas operações.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (The Eras Tour)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://www.soldierfield.com/assets/img/Taylor-Swift-Twitter-FINAL-f1dd97e2ee.png"
+                    alt="The Eras Tour Production" class="cover-image">
+            </div>
+            <p>Imagine a <strong>produção massiva da The Eras Tour</strong> usando o padrão Flyweight para otimizar recursos:</p>
+
+            <h3>Elementos Compartilháveis (Intrínsecos):</h3>
+            <ul>
+                <li><strong>Figurinos das Eras:</strong> Design, cores, materiais (compartilhados entre shows)</li>
+                <li><strong>Coreografias:</strong> Movimentos, formações, timing (reutilizados)</li>
+                <li><strong>Elementos de Palco:</strong> Estruturas, telões, pirotecnia (padrão)</li>
+                <li><strong>Arranjos Musicais:</strong> Instrumentação, backing tracks (fixos)</li>
+            </ul>
+
+            <h3>Elementos Únicos (Extrínsecos):</h3>
+            <ul>
+                <li><strong>Show Específico:</strong> Data, cidade, estádio (únicos por show)</li>
+                <li><strong>Performance:</strong> Energia da artista, interações (únicas)</li>
+                <li><strong>Plateia:</strong> Reação do público, surpresas (variáveis)</li>
+            </ul>
+
+            <p>O Flyweight permite que a turnê seja eficiente sem perder a magia única de cada apresentação.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://portalpopline.com.br/wp-content/uploads/2023/06/Taylor-Swift-The-Eras-Tour.jpg"
+                    alt="Problema de Memória" class="cover-image">
+            </div>
+            <p>Sem o Padrão Flyweight, a The Eras Tour consumiria recursos desnecessários:</p>
+            <pre><code>
+// PROBLEMA: Objetos duplicados consumindo memória!
+class ShowCompleto {
+    private designFigurino: any
+    private coreografia: any  
+    private elementosPalco: any
+    private arranjoMusical: any
+    private data: string
+    private local: string
+    private publico: number
+    
+    constructor(era: string, data: string, local: string) {
+        // CADA show cria TODOS os elementos do zero!
+        this.designFigurino = this.carregarDesignFigurino(era)
+        this.coreografia = this.carregarCoreografia(era)
+        this.elementosPalco = this.carregarElementosPalco(era)
+        this.arranjoMusical = this.carregarArranjoMusical(era)
+        this.data = data
+        this.local = local
+        this.publico = this.estimarPublico(local)
+    }
+    
+    private carregarDesignFigurino(era: string): any {
+        // Processamento pesado para carregar design
+        console.log(`Carregando design do figurino da era ${era}...`)
+        return { /* dados complexos do figurino */ }
+    }
+    
+    private carregarCoreografia(era: string): any {
+        // Processamento pesado para carregar coreografia
+        console.log(`Carregando coreografia da era ${era}...`)
+        return { /* dados complexos da coreografia */ }
+    }
+    
+    // ... métodos similares para outros elementos
+    
+    executarShow(): void {
+        console.log(`🎤 Show em ${this.local} na data ${this.data}`)
+    }
+}
+
+// CENÁRIO PROBLEMÁTICO:
+const shows: ShowCompleto[] = []
+
+// Criando 50 shows da The Eras Tour
+for (let i = 0; i < 50; i++) {
+    const show = new ShowCompleto("Lover", `2023-03-${i+1}`, `Cidade ${i+1}`)
+    shows.push(show)
+}
+
+// PROBLEMAS:
+// 1. Memória: 50 cópias dos mesmos designs de figurino
+// 2. Memória: 50 cópias das mesmas coreografias  
+// 3. Memória: 50 cópias dos mesmos arranjos musicais
+// 4. Performance: Processamento repetido para elementos idênticos
+// 5. Escalabilidade: Consumo de memória cresce linearmente
+
+// ESTIMATIVA: 
+// Cada ShowCompleto ≈ 10MB × 50 shows = 500MB!
+// Com Flyweight: ≈ 2MB (compartilhado) + 50 × 0.1MB = 7MB!
+            </code></pre>
+            <p>Duplicação desnecessária de objetos consome memória e processamento!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://rollingstone.com.br/wp-content/uploads/2023/06/taylor-swift-the-eras-tour-foto-john-shearer-getty-images.jpg"
+                    alt="Flyweight The Eras Tour" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Flyweight, otimizamos drasticamente o uso de recursos:</p>
+            <pre><code>
+// Flyweight Interface
+interface ElementoShow {
+    executar(estadoExtrinseco: EstadoExtrinseco): string
+}
+
+// Estado Extrínseco (único por show)
+class EstadoExtrinseco {
+    constructor(
+        public data: string,
+        public local: string,
+        public publico: number,
+        public clima: string,
+        public energiaArtista: number
+    ) {}
+}
+
+// Concrete Flyweights (Estado Intrínseco Compartilhado)
+
+class FigurinoEra implements ElementoShow {
+    constructor(
+        private era: string,
+        private design: string,
+        private cores: string[],
+        private materiais: string[]
+    ) {
+        console.log(`🎭 CRIANDO Figurino compartilhado para era: ${era}`)
+    }
+    
+    executar(estado: EstadoExtrinseco): string {
+        return `👗 Figurino ${this.era} em ${estado.local} - Design: ${this.design}`
+    }
+    
+    getDetalhes(): string {
+        return `Era: ${this.era}, Cores: ${this.cores.join(', ')}, Materiais: ${this.materiais.join(', ')}`
+    }
+}
+
+class CoreografiaMusica implements ElementoShow {
+    constructor(
+        private musica: string,
+        private passos: string[],
+        private formacao: string,
+        private duracao: number
+    ) {
+        console.log(`💃 CRIANDO Coreografia compartilhada para: ${musica}`)
+    }
+    
+    executar(estado: EstadoExtrinseco): string {
+        const energia = estado.energiaArtista > 80 ? "alta" : "moderada"
+        return `🎵 "${this.musica}" - Coreografia com ${this.passos.length} passos (energia: ${energia})`
+    }
+}
+
+class ElementoPalco implements ElementoShow {
+    constructor(
+        private nome: string,
+        private tipo: string,
+        private configuracao: any,
+        private custo: number
+    ) {
+        console.log(`🎪 CRIANDO Elemento de palco compartilhado: ${nome}`)
+    }
+    
+    executar(estado: EstadoExtrinseco): string {
+        return `🏟️ ${this.nome} ativado em ${estado.local} - Tipo: ${this.tipo}`
+    }
+}
+
+class ArranjoMusical implements ElementoShow {
+    constructor(
+        private musica: string,
+        private instrumentos: string[],
+        private bpm: number,
+        private key: string
+    ) {
+        console.log(`🎼 CRIANDO Arranjo musical compartilhado para: ${musica}`)
+    }
+    
+    executar(estado: EstadoExtrinseco): string {
+        return `🎶 "${this.musica}" - ${this.instrumentos.length} instrumentos, ${this.bpm} BPM`
+    }
+}
+
+// Flyweight Factory
+class FabricaElementosShow {
+    private flyweights: Map<string, ElementoShow> = new Map()
+    
+    getFigurino(era: string): FigurinoEra {
+        const chave = `figurino_${era}`
+        
+        if (!this.flyweights.has(chave)) {
+            // Dados intrínsecos (compartilhados) para cada era
+            const dadosEra = this.getDadosFigurinoEra(era)
+            const figurino = new FigurinoEra(era, dadosEra.design, dadosEra.cores, dadosEra.materiais)
+            this.flyweights.set(chave, figurino)
+        }
+        
+        return this.flyweights.get(chave) as FigurinoEra
+    }
+    
+    getCoreografia(musica: string): CoreografiaMusica {
+        const chave = `coreografia_${musica}`
+        
+        if (!this.flyweights.has(chave)) {
+            const dadosCoreo = this.getDadosCoreografia(musica)
+            const coreografia = new CoreografiaMusica(musica, dadosCoreo.passos, dadosCoreo.formacao, dadosCoreo.duracao)
+            this.flyweights.set(chave, coreografia)
+        }
+        
+        return this.flyweights.get(chave) as CoreografiaMusica
+    }
+    
+    getElementoPalco(nome: string): ElementoPalco {
+        const chave = `elemento_${nome}`
+        
+        if (!this.flyweights.has(chave)) {
+            const dadosElemento = this.getDadosElementoPalco(nome)
+            const elemento = new ElementoPalco(nome, dadosElemento.tipo, dadosElemento.configuracao, dadosElemento.custo)
+            this.flyweights.set(chave, elemento)
+        }
+        
+        return this.flyweights.get(chave) as ElementoPalco
+    }
+    
+    getArranjo(musica: string): ArranjoMusical {
+        const chave = `arranjo_${musica}`
+        
+        if (!this.flyweights.has(chave)) {
+            const dadosArranjo = this.getDadosArranjo(musica)
+            const arranjo = new ArranjoMusical(musica, dadosArranjo.instrumentos, dadosArranjo.bpm, dadosArranjo.key)
+            this.flyweights.set(chave, arranjo)
+        }
+        
+        return this.flyweights.get(chave) as ArranjoMusical
+    }
+    
+    getQuantidadeFlyweights(): number {
+        return this.flyweights.size
+    }
+    
+    // Métodos auxiliares para dados intrínsecos
+    private getDadosFigurinoEra(era: string): any {
+        const dados: {[key: string]: any} = {
+            "Lover": {
+                design: "Romântico Pastel",
+                cores: ["rosa", "azul-claro", "dourado"],
+                materiais: ["seda", "tule", "lantejoulas"]
+            },
+            "Fearless": {
+                design: "Country Glam",
+                cores: ["dourado", "preto", "branco"],
+                materiais: ["couro", "franja", "strass"]
+            },
+            "Red": {
+                design: "Vermelho Dramático", 
+                cores: ["vermelho", "preto", "branco"],
+                materiais: ["veludo", "seda", "cetim"]
+            }
+        }
+        return dados[era] || { design: "Padrão", cores: [], materiais: [] }
+    }
+    
+    private getDadosCoreografia(musica: string): any {
+        const dados: {[key: string]: any} = {
+            "Shake It Off": {
+                passos: ["head shake", "hip swing", "finger point"],
+                formacao: "Triângulo",
+                duracao: 240
+            },
+            "Blank Space": {
+                passos: ["slow walk", "hair flip", "microphone stand"],
+                formacao: "Solo",
+                duracao: 180
+            },
+            "Bad Blood": {
+                passos: ["power pose", "group formation", "synchronized moves"],
+                formacao: "Grupo",
+                duracao: 210
+            }
+        }
+        return dados[musica] || { passos: [], formacao: "Padrão", duracao: 0 }
+    }
+    
+    private getDadosElementoPalco(nome: string): any {
+        const dados: {[key: string]: any} = {
+            "Main Stage": {
+                tipo: "Palco Principal",
+                configuracao: { largura: 30, altura: 5, profundidade: 15 },
+                custo: 500000
+            },
+            "B Stage": {
+                tipo: "Palco Secundário", 
+                configuracao: { largura: 10, altura: 2, profundidade: 8 },
+                custo: 150000
+            },
+            "LED Wall": {
+                tipo: "Tela LED",
+                configuracao: { resolucao: "4K", tamanho: "20x10m" },
+                custo: 200000
+            }
+        }
+        return dados[nome] || { tipo: "Genérico", configuracao: {}, custo: 0 }
+    }
+    
+    private getDadosArranjo(musica: string): any {
+        const dados: {[key: string]: any} = {
+            "Love Story": {
+                instrumentos: ["violão", "piano", "strings", "bateria"],
+                bpm: 120,
+                key: "C Major"
+            },
+            "Anti-Hero": {
+                instrumentos: ["sintetizador", "baixo", "bateria eletrônica"],
+                bpm: 95,
+                key: "D Minor" 
+            },
+            "You Belong With Me": {
+                instrumentos: ["guitarra", "baixo", "bateria", "teclado"],
+                bpm: 130,
+                key: "G Major"
+            }
+        }
+        return dados[musica] || { instrumentos: [], bpm: 0, key: "C Major" }
+    }
+}
+
+// Context (usa flyweights + estado extrínseco)
+class ShowErasTour {
+    constructor(
+        private fabrica: FabricaElementosShow,
+        private estadoExtrinseco: EstadoExtrinseco,
+        private setlist: string[],
+        private eras: string[]
+    ) {}
+    
+    executarShow(): void {
+        console.log(`\n🎪 THE ERAS TOUR - ${this.estadoExtrinseco.local}`)
+        console.log(`📅 ${this.estadoExtrinseco.data}`)
+        console.log(`👥 Público: ${this.estadoExtrinseco.publico.toLocaleString()} pessoas`)
+        console.log("=" .repeat(50))
+        
+        // Usando flyweights compartilhados com estado extrínseco único
+        for (const era of this.eras) {
+            console.log(`\n--- ERA ${era.toUpperCase()} ---`)
+            const figurino = this.fabrica.getFigurino(era)
+            console.log(figurino.executar(this.estadoExtrinseco))
+        }
+        
+        console.log(`\n--- SETLIST ---`)
+        for (const musica of this.setlist) {
+            const coreografia = this.fabrica.getCoreografia(musica)
+            const arranjo = this.fabrica.getArranjo(musica)
+            
+            console.log(coreografia.executar(this.estadoExtrinseco))
+            console.log(arranjo.executar(this.estadoExtrinseco))
+        }
+        
+        // Elementos de palco compartilhados
+        const palcoPrincipal = this.fabrica.getElementoPalco("Main Stage")
+        const telaLED = this.fabrica.getElementoPalco("LED Wall")
+        
+        console.log(`\n--- PRODUÇÃO ---`)
+        console.log(palcoPrincipal.executar(this.estadoExtrinseco))
+        console.log(telaLED.executar(this.estadoExtrinseco))
+        
+        console.log(`\n⭐ Show concluído com sucesso!`)
+    }
+}
+
+// Sistema de Gerenciamento da Turnê
+class SistemaErasTour {
+    static executarTurnê(): void {
+        console.log("🎵 SISTEMA THE ERAS TOUR - PADRÃO FLYWEIGHT 🎵")
+        console.log("===============================================")
+        
+        const fabrica = new FabricaElementosShow()
+        
+        // Criando múltiplos shows com elementos compartilhados
+        const shows: ShowErasTour[] = []
+        const cidades = ["Los Angeles", "Nova York", "Chicago", "Miami", "Las Vegas"]
+        const setlist = ["Love Story", "Shake It Off", "Blank Space", "Anti-Hero", "Bad Blood"]
+        const eras = ["Lover", "Fearless", "Red"]
+        
+        for (let i = 0; i < 5; i++) {
+            const estadoExtrinseco = new EstadoExtrinseco(
+                `2023-03-${i+15}`,
+                cidades[i],
+                50000 + (i * 10000),
+                i % 2 === 0 ? "Ensolarado" : "Nublado",
+                85 + (i * 3)
+            )
+            
+            const show = new ShowErasTour(fabrica, estadoExtrinseco, setlist, eras)
+            shows.push(show)
+        }
+        
+        // Executando todos os shows
+        for (const show of shows) {
+            show.executarShow()
+        }
+        
+        // Demonstrando eficiência do Flyweight
+        console.log("\n" + "=" .repeat(50))
+        console.log("📊 ESTATÍSTICAS DE EFICIÊNCIA")
+        console.log("=" .repeat(50))
+        console.log(`🏭 Flyweights criados: ${fabrica.getQuantidadeFlyweights()}`)
+        console.log(`🎪 Shows executados: ${shows.length}`)
+        console.log(`💾 Economia de memória: ≈ ${this.calcularEconomiaMemoria(fabrica, shows.length)}`)
+        
+        // Mostrando flyweights compartilhados
+        console.log(`\n🔍 FLYWEIGHTS COMPARTILHADOS:`)
+        console.log(`   - Figurinos: ${eras.length} eras × 1 instância cada`)
+        console.log(`   - Coreografias: ${setlist.length} músicas × 1 instância cada`) 
+        console.log(`   - Elementos de palco: 2 tipos × 1 instância cada`)
+        console.log(`   - Arranjos: ${setlist.length} músicas × 1 instância cada`)
+    }
+    
+    static calcularEconomiaMemoria(fabrica: FabricaElementosShow, numShows: number): string {
+        const flyweights = fabrica.getQuantidadeFlyweights()
+        const memoriaSemFlyweight = numShows * 10 // MB estimado por show
+        const memoriaComFlyweight = 2 + (numShows * 0.1) // MB compartilhado + único
+        
+        const economia = ((memoriaSemFlyweight - memoriaComFlyweight) / memoriaSemFlyweight) * 100
+        return `${economia.toFixed(1)}% (de ${memoriaSemFlyweight}MB para ${memoriaComFlyweight.toFixed(1)}MB)`
+    }
+}
+
+// Executando o sistema
+SistemaErasTour.executarTurnê()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Flyweight em um sistema de renderização de texto:</p>
+            <pre><code>
+from typing import Dict, List, Tuple
+import weakref
+from dataclasses import dataclass
+from enum import Enum
+
+# Estado Extrínseco
+@dataclass
+class PosicaoRenderizacao:
+    x: int
+    y: int
+    pagina: int
+
+# Flyweight Interface
+class CaractereFlyweight:
+    def renderizar(self, posicao: PosicaoRenderizacao) -> str:
+        pass
+
+# Concrete Flyweight - Caractere com estado intrínseco
+class Caractere(CaractereFlyweight):
+    def __init__(self, simbolo: str, fonte: str, tamanho: int, cor: str, estilo: str):
+        self.simbolo = simbolo
+        self.fonte = fonte
+        self.tamanho = tamanho
+        self.cor = cor
+        self.estilo = estilo
+        # Estado intrínseco (compartilhado) - custoso de criar
+        self._bitmap = self._gerar_bitmap()
+        self._metrics = self._calcular_metrics()
+    
+    def _gerar_bitmap(self) -> List[List[bool]]:
+        """Simula geração custosa de bitmap do caractere"""
+        print(f"🔄 Gerando bitmap para '{self.simbolo}' ({self.fonte} {self.tamanho}pt)...")
+        # Simula processamento pesado
+        return [[True for _ in range(8)] for _ in range(8)]
+    
+    def _calcular_metrics(self) -> Dict[str, float]:
+        """Simula cálculo custoso de métricas tipográficas"""
+        print(f"📏 Calculando métricas para '{self.simbolo}'...")
+        return {
+            "largura": len(self.simbolo) * self.tamanho * 0.5,
+            "altura": self.tamanho * 1.2,
+            "ascendente": self.tamanho * 0.8,
+            "descendente": self.tamanho * 0.2
+        }
+    
+    def renderizar(self, posicao: PosicaoRenderizacao) -> str:
+        return f"'{self.simbolo}' em {self.fonte} {self.tamanho}pt {self.cor} em ({posicao.x}, {posicao.y})"
+    
+    def get_info(self) -> str:
+        return f"Caractere: '{self.simbolo}' | Fonte: {self.fonte} {self.tamanho}pt | Cor: {self.cor} | Estilo: {self.estilo}"
+
+# Flyweight Factory
+class FabricaCaracteres:
+    _instancia = None
+    _flyweights: Dict[str, Caractere] = {}
+    
+    def __new__(cls):
+        if cls._instancia is None:
+            cls._instancia = super().__new__(cls)
+        return cls._instancia
+    
+    def get_caractere(self, simbolo: str, fonte: str = "Arial", tamanho: int = 12, 
+                     cor: str = "black", estilo: str = "normal") -> Caractere:
+        chave = f"{simbolo}_{fonte}_{tamanho}_{cor}_{estilo}"
+        
+        if chave not in self._flyweights:
+            print(f"🏭 Criando NOVO flyweight: {chave}")
+            self._flyweights[chave] = Caractere(simbolo, fonte, tamanho, cor, estilo)
+        else:
+            print(f"♻️  Reutilizando flyweight: {chave}")
+        
+        return self._flyweights[chave]
+    
+    def get_quantidade_flyweights(self) -> int:
+        return len(self._flyweights)
+    
+    def listar_flyweights(self) -> List[str]:
+        return list(self._flyweights.keys())
+
+# Context - Representa o texto com caracteres e posições
+class Documento:
+    def __init__(self, titulo: str):
+        self.titulo = titulo
+        self.fabrica = FabricaCaracteres()
+        self.conteudo: List[Tuple[Caractere, PosicaoRenderizacao]] = []
+    
+    def adicionar_texto(self, texto: str, x: int, y: int, pagina: int = 1, 
+                       fonte: str = "Arial", tamanho: int = 12, cor: str = "black", estilo: str = "normal"):
+        posicao_x = x
+        
+        for simbolo in texto:
+            if simbolo.strip():  # Ignora espaços em branco
+                caractere = self.fabrica.get_caractere(simbolo, fonte, tamanho, cor, estilo)
+                posicao = PosicaoRenderizacao(posicao_x, y, pagina)
+                self.conteudo.append((caractere, posicao))
+            
+            posicao_x += 8  # Avança a posição X
+    
+    def renderizar(self) -> List[str]:
+        resultado = []
+        resultado.append(f"📄 DOCUMENTO: {self.titulo}")
+        resultado.append("=" * 50)
+        
+        pagina_atual = 0
+        for caractere, posicao in self.conteudo:
+            if posicao.pagina != pagina_atual:
+                resultado.append(f"\n--- Página {posicao.pagina} ---")
+                pagina_atual = posicao.pagina
+            
+            resultado.append(caractere.renderizar(posicao))
+        
+        return resultado
+    
+    def get_estatisticas(self) -> Dict[str, any]:
+        caracteres_unicos = len(set(caractere for caractere, _ in self.conteudo))
+        return {
+            "total_caracteres": len(self.conteudo),
+            "caracteres_unicos": caracteres_unicos,
+            "flyweights_criados": self.fabrica.get_quantidade_flyweights(),
+            "economia_memoria": self._calcular_economia_memoria()
+        }
+    
+    def _calcular_economia_memoria(self) -> str:
+        total_caracteres = len(self.conteudo)
+        flyweights_criados = self.fabrica.get_quantidade_flyweights()
+        
+        # Estimativa: cada caractere custa ~1KB, flyweight compartilhado custa ~2KB total
+        memoria_sem_flyweight = total_caracteres * 1  # KB
+        memoria_com_flyweight = 2 + (flyweights_criados * 1)  # KB
+        
+        if memoria_sem_flyweight > 0:
+            economia = ((memoria_sem_flyweight - memoria_com_flyweight) / memoria_sem_flyweight) * 100
+            return f"{economia:.1f}%"
+        return "0%"
+
+# Sistema de Renderização Avançada
+class SistemaRenderizacao:
+    def __init__(self):
+        self.fabrica = FabricaCaracteres()
+        self.documentos: List[Documento] = []
+    
+    def criar_documento_livro(self) -> Documento:
+        """Cria um documento de exemplo com muito texto repetitivo"""
+        livro = Documento("O Grande Livro - Padrão Flyweight")
+        
+        # Capítulo 1 - Muitas repetições de caracteres
+        print("\n📖 Adicionando Capítulo 1...")
+        livro.adicionar_texto("CAPÍTULO 1: INTRODUÇÃO AO FLYWEIGHT", 50, 100, 1, "Times New Roman", 16, "darkblue", "bold")
+        livro.adicionar_texto("O padrão Flyweight é um padrão estrutural que permite", 50, 130, 1)
+        livro.adicionar_texto("que você acomode mais objetos na RAM disponível", 50, 150, 1)
+        livro.adicionar_texto("compartilhando partes comuns de estado entre múltiplos", 50, 170, 1)
+        livro.adicionar_texto("objetos, em vez de manter todos os dados em cada objeto.", 50, 190, 1)
+        
+        # Capítulo 2 - Com formatação diferente
+        print("\n📖 Adicionando Capítulo 2...")
+        livro.adicionar_texto("CAPÍTULO 2: ESTADO INTRÍNSECO E EXTRÍNSECO", 50, 250, 1, "Arial", 14, "darkred", "bold")
+        livro.adicionar_texto("Estado intrínseco: dados imutáveis compartilhados.", 50, 280, 1, "Courier New", 12, "green")
+        livro.adicionar_texto("Estado extrínseco: dados únicos passados como parâmetro.", 50, 300, 1, "Courier New", 12, "green")
+        
+        # Página 2 - Mais conteúdo
+        print("\n📖 Adicionando Página 2...")
+        livro.adicionar_texto("EXEMPLOS PRÁTICOS DO PADRÃO FLYWEIGHT", 50, 100, 2, "Verdana", 14, "purple", "bold")
+        livro.adicionar_texto("1. Editores de texto e processadores de palavra", 50, 130, 2)
+        livro.adicionar_texto("2. Jogos com muitos objetos similares", 50, 150, 2)
+        livro.adicionar_texto("3. Aplicações de renderização gráfica", 50, 170, 2)
+        livro.adicionar_texto("4. Sistemas de cache de objetos", 50, 190, 2)
+        
+        return livro
+    
+    def criar_documento_tabela(self) -> Documento:
+        """Cria uma tabela com muitos números repetidos"""
+        tabela = Documento("Relatório Financeiro - Dados Repetitivos")
+        
+        print("\n📊 Criando tabela numérica...")
+        # Cabeçalho
+        tabela.adicionar_texto("RELATÓRIO FINANCEIRO TRIMESTRAL", 50, 100, 1, "Arial", 14, "darkblue", "bold")
+        
+        # Dados da tabela - muitos números repetidos
+        dados = [
+            ["Produto A", "1000", "1500", "1200", "3700"],
+            ["Produto B", "800", "900", "850", "2550"], 
+            ["Produto C", "1200", "1100", "1150", "3450"],
+            ["Produto D", "950", "1000", "980", "2930"],
+            ["Total", "3950", "4500", "4180", "12630"]
+        ]
+        
+        y = 150
+        for linha in dados:
+            x = 50
+            for i, celula in enumerate(linha):
+                # Usa formatação diferente para cabeçalhos e totais
+                fonte = "Arial"
+                tamanho = 12
+                cor = "black"
+                estilo = "normal"
+                
+                if i == 0:  # Nome do produto
+                    estilo = "bold"
+                elif "Total" in linha[0]:  # Linha de total
+                    cor = "darkred"
+                    estilo = "bold"
+                
+                tabela.adicionar_texto(celula, x, y, 1, fonte, tamanho, cor, estilo)
+                x += 100
+        
+        return tabela
+    
+    def demonstrar_eficiencia(self):
+        """Demonstra a eficiência do padrão Flyweight"""
+        print("🎯 DEMONSTRAÇÃO DO PADRÃO FLYWEIGHT")
+        print("=" * 50)
+        
+        # Criar documentos
+        livro = self.criar_documento_livro()
+        tabela = self.criar_documento_tabela()
+        
+        self.documentos.extend([livro, tabela])
+        
+        # Renderizar documentos
+        print("\n" + "=" * 50)
+        print("📄 DOCUMENTOS RENDERIZADOS:")
+        print("=" * 50)
+        
+        for doc in self.documentos:
+            print(f"\n{'='*30}")
+            linhas_renderizadas = doc.renderizar()
+            for linha in linhas_renderizadas[:10]:  # Mostra apenas as primeiras 10 linhas
+                print(linha)
+            print("... [conteúdo truncado]")
+        
+        # Estatísticas de eficiência
+        print("\n" + "=" * 50)
+        print("📊 ESTATÍSTICAS DE EFICIÊNCIA:")
+        print("=" * 50)
+        
+        for i, doc in enumerate(self.documentos, 1):
+            stats = doc.get_estatisticas()
+            print(f"\nDocumento {i}: {doc.titulo}")
+            print(f"  • Total de caracteres: {stats['total_caracteres']}")
+            print(f"  • Caracteres únicos: {stats['caracteres_unicos']}")
+            print(f"  • Flyweights criados: {stats['flyweights_criados']}")
+            print(f"  • Economia de memória: {stats['economia_memoria']}")
+        
+        # Flyweights compartilhados
+        print(f"\n🔍 FLYWEIGHTS COMPARTILHADOS NO SISTEMA:")
+        flyweights = self.fabrica.listar_flyweights()
+        for fw in sorted(flyweights)[:10]:  # Mostra os primeiros 10
+            print(f"  • {fw}")
+        if len(flyweights) > 10:
+            print(f"  • ... e mais {len(flyweights) - 10} flyweights")
+        
+        print(f"\n🏭 Total de flyweights no sistema: {self.fabrica.get_quantidade_flyweights()}")
+
+# Exemplo de uso
+def main():
+    sistema = SistemaRenderizacao()
+    sistema.demonstrar_eficiencia()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/estruturais/flyweight/ficticio.png" alt="The Eras Tour Flyweight UML"
+                    class="cover-image" style="scale:1.1;">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Flyweight no nosso exemplo da The Eras Tour:</p>
+            <pre class="uml-code">
+@startuml
+class FabricaElementosShow {
+    - flyweights: Map<string, ElementoShow>
+    + getFigurino(era: string): FigurinoEra
+    + getCoreografia(musica: string): CoreografiaMusica
+    + getElementoPalco(nome: string): ElementoPalco
+    + getArranjo(musica: string): ArranjoMusical
+    + getQuantidadeFlyweights(): int
+    - getDadosFigurinoEra(era: string): any
+    - getDadosCoreografia(musica: string): any
+    - getDadosElementoPalco(nome: string): any
+    - getDadosArranjo(musica: string): any
+}
+
+interface ElementoShow {
+    + executar(estadoExtrinseco: EstadoExtrinseco): string
+}
+
+class FigurinoEra {
+    - era: string
+    - design: string
+    - cores: string[]
+    - materiais: string[]
+    + executar(estadoExtrinseco: EstadoExtrinseco): string
+    + getDetalhes(): string
+}
+
+class CoreografiaMusica {
+    - musica: string
+    - passos: string[]
+    - formacao: string
+    - duracao: number
+    + executar(estadoExtrinseco: EstadoExtrinseco): string
+}
+
+class ElementoPalco {
+    - nome: string
+    - tipo: string
+    - configuracao: any
+    - custo: number
+    + executar(estadoExtrinseco: EstadoExtrinseco): string
+}
+
+class ArranjoMusical {
+    - musica: string
+    - instrumentos: string[]
+    - bpm: number
+    - key: string
+    + executar(estadoExtrinseco: EstadoExtrinseco): string
+}
+
+class EstadoExtrinseco {
+    - data: string
+    - local: string
+    - publico: number
+    - clima: string
+    - energiaArtista: number
+}
+
+class ShowErasTour {
+    - fabrica: FabricaElementosShow
+    - estadoExtrinseco: EstadoExtrinseco
+    - setlist: string[]
+    - eras: string[]
+    + executarShow(): void
+}
+
+FabricaElementosShow --> ElementoShow
+ElementoShow <|-- FigurinoEra
+ElementoShow <|-- CoreografiaMusica
+ElementoShow <|-- ElementoPalco
+ElementoShow <|-- ArranjoMusical
+
+ShowErasTour --> FabricaElementosShow
+ShowErasTour --> EstadoExtrinseco
+
+note right of FabricaElementosShow
+    Gerencia pool de elementos
+    compartilhados entre todos
+    os shows da turnê
+end note
+
+note right of EstadoExtrinseco
+    Dados únicos para cada show
+    específico - não compartilhados
+    entre diferentes apresentações
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como elementos compartilhados são reutilizados entre múltiplos shows através da fábrica.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/estruturais/flyweight/pratico.png" alt="Text Rendering Flyweight UML"
+                    class="cover-image" style="scale:1.1">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Flyweight no exemplo prático do sistema de renderização de texto:</p>
+            <pre class="uml-code">
+@startuml
+class FabricaCaracteres {
+    - _instancia: FabricaCaracteres
+    - _flyweights: Dict[str, Caractere]
+    + get_caractere(simbolo: str, fonte: str, tamanho: int, cor: str, estilo: str): Caractere
+    + get_quantidade_flyweights(): int
+    + listar_flyweights(): List[str]
+}
+
+interface CaractereFlyweight {
+    + renderizar(posicao: PosicaoRenderizacao): str
+}
+
+class Caractere {
+    - simbolo: string
+    - fonte: string
+    - tamanho: int
+    - cor: string
+    - estilo: string
+    - _bitmap: List[List[bool]]
+    - _metrics: Dict[str, float]
+    + renderizar(posicao: PosicaoRenderizacao): str
+    + get_info(): str
+    - _gerar_bitmap(): List[List[bool]]
+    - _calcular_metrics(): Dict[str, float]
+}
+
+class PosicaoRenderizacao {
+    - x: int
+    - y: int
+    - pagina: int
+}
+
+class Documento {
+    - titulo: string
+    - fabrica: FabricaCaracteres
+    - conteudo: List[Tuple[Caractere, PosicaoRenderizacao]]
+    + adicionar_texto(texto: str, x: int, y: int, pagina: int, fonte: str, tamanho: int, cor: str, estilo: str): void
+    + renderizar(): List[str]
+    + get_estatisticas(): Dict[str, any]
+    - _calcular_economia_memoria(): str
+}
+
+class SistemaRenderizacao {
+    - fabrica: FabricaCaracteres
+    - documentos: List[Documento]
+    + criar_documento_livro(): Documento
+    + criar_documento_tabela(): Documento
+    + demonstrar_eficiencia(): void
+}
+
+FabricaCaracteres --> CaractereFlyweight
+CaractereFlyweight <|-- Caractere
+
+Documento --> FabricaCaracteres
+Documento --> PosicaoRenderizacao
+SistemaRenderizacao --> FabricaCaracteres
+SistemaRenderizacao --> Documento
+
+note right of FabricaCaracteres
+    Singleton que gerencia pool
+    de caracteres compartilhados
+    baseado em atributos únicos
+end note
+
+note right of Caractere
+    Armazena estado intrínseco
+    custoso (bitmap, métricas)
+    que é compartilhado entre
+    múltiplos usos
+end note
+
+note right of PosicaoRenderizacao
+    Estado extrínseco - único
+    para cada ocorrência do
+    caractere no documento
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite que caracteres idênticos sejam compartilhados entre múltiplos documentos e posições.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://people.com/thmb/-KdUpkgiMvEfsURlO0QjGJAVRog=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/taylor-swift-rain-eras-tour-052223-3-6fcc02053cde4150b2f1bde3182fd9e8.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Flyweight oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Economia de Memória:</strong> Reduz drasticamente o consumo de RAM ao compartilhar objetos</li>
+                <li><strong>Melhoria de Performance:</strong> Evita criação repetida de objetos custosos</li>
+                <li><strong>Escalabilidade:</strong> Permite trabalhar com grandes quantidades de objetos</li>
+                <li><strong>Cache Inteligente:</strong> Reutiliza objetos automaticamente quando apropriado</li>
+                <li><strong>Separação Clara:</strong> Distingue entre estado compartilhado e único</li>
+                <li><strong>Otimização de Recursos:</strong> Ideal para sistemas com recursos limitados</li>
+                <li><strong>Manutenção Simplificada:</strong> Mudanças no estado intrínseco afetam todos os usos</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://eu-images.contentstack.com/v3/assets/blt949ea8e16e463049/bltad8bede308241fb4/655b0a7b602384040a0c2897/taylor-swift-appears-emotional-eras-tour.png"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Flyweight também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Introduz múltiplas classes e uma fábrica</li>
+                <li><strong>Overhead de CPU:</strong> Busca na fábrica pode ter custo computacional</li>
+                <li><strong>Dificuldade de Debug:</strong> Pode ser difícil rastrear objetos compartilhados</li>
+                <li><strong>Acoplamento:</strong> Clientes precisam conhecer a diferença entre estados intrínseco/extrínseco</li>
+                <li><strong>Uso Inadequado:</strong> Pode ser overkill para pequenas quantidades de objetos</li>
+                <li><strong>Gerenciamento de Estado:</strong> Requer cuidado para não modificar estado intrínseco acidentalmente</li>
+                <li><strong>Memória Residual:</strong> Flyweights podem ficar em memória mesmo quando não usados</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://people.com/thmb/LefATFzrQL3NVNneqCjuubSGCaI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(694x267:696x269)/taylor-swift-eras-lyon-france-5-060224-5bff7d4500f04189aca005807ad71bb3.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Flyweight é uma solução elegante para otimizar sistemas que precisam trabalhar com grandes quantidades de objetos similares, compartilhando eficientemente o que é comum e mantendo único o que é específico.</p>
+            <p>Na nossa analogia da The Eras Tour, o Flyweight funciona como a <strong>engenhosa logística de produção</strong> - permitindo que elementos como figurinos, coreografias e arranjos musicais sejam compartilhados entre todos os shows, enquanto dados específicos como local, data e interações com o público permanecem únicos para cada apresentação.</p>
+            <p>Assim como Taylor Swift e sua equipe otimizam recursos para criar uma turnê espetacular que percorre o mundo, o padrão Flyweight nos permite criar sistemas eficientes que escalam graciosamente, economizando memória e processamento sem sacrificar funcionalidade.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/flyweight"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Flyweight</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-flyweight/16788"
+                        target="_blank">DevMedia - Padrão de Projeto Flyweight</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/16/mao-na-massa-flyweight/"
+                        target="_blank">Mão na Massa - Padrão Flyweight</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Flyweight" target="_blank">Wikipédia - Flyweight (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/flyweight-design-pattern/" target="_blank">GeeksforGeeks
+                        - Flyweight Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/flyweight" target="_blank">SourceMaking
+                        - Flyweight Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
