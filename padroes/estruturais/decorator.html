@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Decorator - A Arte Versátil de FKA twigs</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylestr.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/estruturais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/estruturais.html">Padrões Estruturais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Decorator?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Component vs Decorator</a></li>
+            <li><a href="#page5">Exemplo Fictício (A Arte de FKA twigs)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">DECORATOR</h1>
+            <p class="cover-subtitle">A Arte Versátil de FKA twigs - Adicionando Responsabilidades Dinamicamente</p>
+
+            <img src="https://www.billboard.com/wp-content/uploads/media/fkatwigs-sound-bb26-2019-billboard-fea-1500.jpg"
+                alt="Capa Decorator - FKA twigs" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Decorator?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://snworksceo.imgix.net/bdh/edbf7fba-727d-4522-a4d4-440e19ff2f78.sized-1000x1000.png?w=1000"
+                    alt="Decorator Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Decorator é um <strong>padrão de projeto estrutural</strong> que permite adicionar novos comportamentos a objetos dinamicamente, colocando-os dentro de objetos wrapper especiais [1].</p>
+            <p>É como a <strong>arte versátil de FKA twigs</strong> - onde uma performance básica pode ser enriquecida com coreografias complexas, efeitos visuais, e elementos teatrais, criando camadas de expressão artística.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://www.billboard.com/wp-content/uploads/2022/01/FKA-Twigs-cr-Orograph-press-2022-billboard-1548.jpg?w=942&h=628&crop=1"
+                    alt="Problema da Herança" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Decorator resolve é a <strong>rigidez da herança</strong> quando precisamos adicionar funcionalidades a objetos de forma flexível e dinâmica.</p>
+            <p>Sem este padrão, criar todas as combinações possíveis de funcionalidades através de herança resultaria em uma explosão de subclasses - como ter que criar classes específicas para cada combinação de elementos artísticos na performance de FKA twigs [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/estruturais/decorator/generico.png"
+                    alt="Decorator UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Decorator:</p>
+            <pre class="uml-code">
+@startuml
+interface Component {
+    + operation(): void
+}
+
+class ConcreteComponent {
+    + operation(): void
+}
+
+abstract class Decorator {
+    - component: Component
+    + operation(): void
+}
+
+class ConcreteDecoratorA {
+    - addedState: string
+    + operation(): void
+    + addedBehavior(): void
+}
+
+class ConcreteDecoratorB {
+    + operation(): void
+}
+
+Component <|-- ConcreteComponent
+Component <|-- Decorator
+Decorator --> Component
+Decorator <|-- ConcreteDecoratorA
+Decorator <|-- ConcreteDecoratorB
+
+note right of Component
+    Interface comum para todos
+    os objetos que podem ter
+    responsabilidades adicionadas
+end note
+
+note right of Decorator
+    Mantém referência para um
+    objeto Component e define
+    interface que segue Component
+end note
+
+note right of ConcreteDecoratorA
+    Adiciona responsabilidades
+    ao componente, podendo
+    adicionar estado extra
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Component:</strong> Interface comum para objetos que podem ter responsabilidades adicionadas</li>
+                <li><strong>ConcreteComponent:</strong> Objeto concreto que pode ser decorado</li>
+                <li><strong>Decorator:</strong> Classe abstrata que mantém referência ao componente</li>
+                <li><strong>ConcreteDecorator:</strong> Decoradores concretos que adicionam funcionalidades específicas</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Component vs Decorator</h1>
+            <div class="img-placeholder-5">
+                <img src="https://miro.medium.com/v2/resize:fit:1200/1*NmqtNU1Q23pc-xe542dwwA.png"
+                    alt="Component vs Decorator" class="cover-image">
+            </div>
+            
+            <h3>Component (Componente)</h3>
+            <p><strong>Características:</strong> Objeto base que define a interface comum</p>
+            <p><strong>Exemplo FKA twigs:</strong></p>
+            <ul>
+                <li>Performance vocal básica</li>
+                <li>Composição musical simples</li>
+                <li>Coreografia fundamental</li>
+                <li>Elemento artístico central</li>
+            </ul>
+
+            <h3>Decorator (Decorador)</h3>
+            <p><strong>Características:</strong> Wrapper que adiciona funcionalidades extras</p>
+            <p><strong>Exemplo FKA twigs:</strong></p>
+            <ul>
+                <li>Coreografia complexa de pole dance</li>
+                <li>Efeitos visuais e iluminação especial</li>
+                <li>Elementos teatrais e dramáticos</li>
+                <li>Orquestrações e arranjos complexos</li>
+                <li>Visual e figurino elaborado</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Princípio da Composição:</strong> Os decoradores envolvem os componentes, criando uma cadeia de responsabilidades que pode ser estendida dinamicamente.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (A Arte de FKA twigs)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://cdn.prod.website-files.com/64e632e1a07b9b35364590b5/66e65515c40e1bbd3fd78a92_66e6549fb2aa17f270c150a6_FKA-twigs-eusexua-music-video-black-leather-suit-big-hair.webp"
+                    alt="FKA twigs Art" class="cover-image">
+            </div>
+            <p>Imagine a <strong>evolução artística de FKA twigs</strong> usando o padrão Decorator:</p>
+
+            <h3>Hierarquia de Performance:</h3>
+            <ul>
+                <li><strong>Performance Básica</strong> (Component)
+                    <ul>
+                        <li><strong>+ Coreografia Avançada</strong> (Decorator)
+                            <ul>
+                                <li><strong>+ Pole Dance</strong> (Decorator)</li>
+                                <li><strong>+ Elementos Teatrais</strong> (Decorator)</li>
+                            </ul>
+                        </li>
+                        <li><strong>+ Efeitos Visuais</strong> (Decorator)
+                            <ul>
+                                <li><strong>+ Iluminação Especial</strong> (Decorator)</li>
+                                <li><strong>+ Projeções</strong> (Decorator)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>O Decorator permite combinar diferentes elementos artísticos de forma dinâmica e flexível.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://www.glamglare.com/content/images/size/w2000/2024/09/FKA-twigs.jpg"
+                    alt="Problema sem Decorator" class="cover-image">
+            </div>
+            <p>Sem o Padrão Decorator, criar todas as combinações possíveis seria caótico:</p>
+            <pre><code>
+// PROBLEMA: Explosão de subclasses!
+class PerformanceBasica {
+    executar(): void {
+        console.log("🎤 Performance vocal básica")
+    }
+}
+
+// Subclasses para cada combinação - INVIÁVEL!
+class PerformanceComCoreografia extends PerformanceBasica {
+    executar(): void {
+        super.executar()
+        console.log("💃 Adicionando coreografia")
+    }
+}
+
+class PerformanceComEfeitosVisuais extends PerformanceBasica {
+    executar(): void {
+        super.executar()
+        console.log("🎭 Adicionando efeitos visuais")
+    }
+}
+
+class PerformanceComCoreografiaEEfeitos extends PerformanceBasica {
+    executar(): void {
+        super.executar()
+        console.log("💃 Adicionando coreografia")
+        console.log("🎭 Adicionando efeitos visuais")
+    }
+}
+
+class PerformanceComPoleDance extends PerformanceComCoreografia {
+    executar(): void {
+        super.executar()
+        console.log("🤸 Adicionando pole dance")
+    }
+}
+
+// E assim por diante... Explosão combinatória!
+
+// PROBLEMAS:
+// 1. Número exponencial de subclasses
+// 2. Dificuldade de manutenção
+// 3. Rigidez - não pode mudar combinações em runtime
+// 4. Duplicação de código
+// 5. Violação do princípio aberto/fechado
+
+// Criação limitada e inflexível:
+const performance1 = new PerformanceBasica()
+const performance2 = new PerformanceComCoreografiaEEfeitos()
+const performance3 = new PerformanceComPoleDance()
+
+// Não posso adicionar pole dance a uma performance com efeitos visuais
+// sem criar uma nova classe específica!
+            </code></pre>
+            <p>Sem Decorator, cada combinação precisa de uma classe específica!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://consequence.net/wp-content/uploads/2025/01/FKA-twigs-Eusexua-Review.jpg"
+                    alt="Decorator FKA twigs" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Decorator, criamos uma hierarquia flexível e dinâmica:</p>
+            <pre><code>
+// Component Interface
+interface Performance {
+    executar(): void
+    getCusto(): number
+    getDuracao(): number
+    getDescricao(): string
+}
+
+// Concrete Component - Performance Básica
+class PerformanceBasica implements Performance {
+    executar(): void {
+        console.log("🎤 Executando performance vocal básica")
+    }
+    
+    getCusto(): number {
+        return 1000
+    }
+    
+    getDuracao(): number {
+        return 30
+    }
+    
+    getDescricao(): string {
+        return "Performance vocal básica"
+    }
+}
+
+// Base Decorator
+abstract class DecoratorDePerformance implements Performance {
+    protected performance: Performance
+    
+    constructor(performance: Performance) {
+        this.performance = performance
+    }
+    
+    executar(): void {
+        this.performance.executar()
+    }
+    
+    getCusto(): number {
+        return this.performance.getCusto()
+    }
+    
+    getDuracao(): number {
+        return this.performance.getDuracao()
+    }
+    
+    getDescricao(): string {
+        return this.performance.getDescricao()
+    }
+}
+
+// Concrete Decorators
+class DecoratorCoreografia extends DecoratorDePerformance {
+    private nivelDificuldade: string
+    
+    constructor(performance: Performance, nivelDificuldade: string = "intermediário") {
+        super(performance)
+        this.nivelDificuldade = nivelDificuldade
+    }
+    
+    executar(): void {
+        super.executar()
+        console.log(`💃 Executando coreografia ${this.nivelDificuldade}`)
+    }
+    
+    getCusto(): number {
+        return super.getCusto() + 500
+    }
+    
+    getDuracao(): number {
+        return super.getDuracao() + 10
+    }
+    
+    getDescricao(): string {
+        return `${super.getDescricao()} + Coreografia ${this.nivelDificuldade}`
+    }
+}
+
+class DecoratorPoleDance extends DecoratorDePerformance {
+    private estilo: string
+    
+    constructor(performance: Performance, estilo: string = "contemporâneo") {
+        super(performance)
+        this.estilo = estilo
+    }
+    
+    executar(): void {
+        super.executar()
+        console.log(`🤸 Executando pole dance no estilo ${this.estilo}`)
+    }
+    
+    getCusto(): number {
+        return super.getCusto() + 800
+    }
+    
+    getDuracao(): number {
+        return super.getDuracao() + 15
+    }
+    
+    getDescricao(): string {
+        return `${super.getDescricao()} + Pole Dance ${this.estilo}`
+    }
+}
+
+class DecoratorEfeitosVisuais extends DecoratorDePerformance {
+    private tipoEfeitos: string[]
+    
+    constructor(performance: Performance, tipoEfeitos: string[] = ["luzes"]) {
+        super(performance)
+        this.tipoEfeitos = tipoEfeitos
+    }
+    
+    executar(): void {
+        super.executar()
+        console.log(`🎭 Ativando efeitos visuais: ${this.tipoEfeitos.join(", ")}`)
+    }
+    
+    getCusto(): number {
+        return super.getCusto() + 1200
+    }
+    
+    getDuracao(): number {
+        return super.getDuracao() + 5
+    }
+    
+    getDescricao(): string {
+        return `${super.getDescricao()} + Efeitos Visuais (${this.tipoEfeitos.join(", ")})`
+    }
+}
+
+class DecoratorElementosTeatrais extends DecoratorDePerformance {
+    private tema: string
+    
+    constructor(performance: Performance, tema: string = "drama") {
+        super(performance)
+        this.tema = tema
+    }
+    
+    executar(): void {
+        super.executar()
+        console.log(`🎪 Incorporando elementos teatrais com tema: ${this.tema}`)
+    }
+    
+    getCusto(): number {
+        return super.getCusto() + 600
+    }
+    
+    getDuracao(): number {
+        return super.getDuracao() + 8
+    }
+    
+    getDescricao(): string {
+        return `${super.getDescricao()} + Elementos Teatrais (${this.tema})`
+    }
+}
+
+class DecoratorOrquestracao extends DecoratorDePerformance {
+    private instrumentos: string[]
+    
+    constructor(performance: Performance, instrumentos: string[] = ["piano", "strings"]) {
+        super(performance)
+        this.instrumentos = instrumentos
+    }
+    
+    executar(): void {
+        super.executar()
+        console.log(`🎻 Orquestração com: ${this.instrumentos.join(", ")}`)
+    }
+    
+    getCusto(): number {
+        return super.getCusto() + 1500
+    }
+    
+    getDuracao(): number {
+        return super.getDuracao() + 12
+    }
+    
+    getDescricao(): string {
+        return `${super.getDescricao()} + Orquestração (${this.instrumentos.join(", ")})`
+    }
+}
+
+// Sistema de Gerenciamento de Performances
+class SistemaFKAArt {
+    static criarPerformances(): void {
+        console.log("🎨 SISTEMA FKA TWIGS - PADRÃO DECORATOR 🎨")
+        console.log("============================================")
+        
+        // DEMONSTRAÇÃO DO DECORATOR EM AÇÃO
+        
+        // 1. Performance básica
+        console.log("\n1. 🎤 PERFORMANCE BÁSICA:")
+        const basica = new PerformanceBasica()
+        this.exibirPerformance(basica)
+        
+        // 2. Performance com coreografia
+        console.log("\n2. 💃 PERFORMANCE + COREOGRAFIA:")
+        const comCoreografia = new DecoratorCoreografia(basica, "avançada")
+        this.exibirPerformance(comCoreografia)
+        
+        // 3. Performance completa - Magdalene Tour
+        console.log("\n3. 🌟 PERFORMANCE COMPLETA (Magdalene Tour):")
+        const magdaleneTour = new DecoratorOrquestracao(
+            new DecoratorPoleDance(
+                new DecoratorEfeitosVisuais(
+                    new DecoratorCoreografia(
+                        new PerformanceBasica(),
+                        "extremamente complexa"
+                    ),
+                    ["projeções", "luzes LED", "neblina"]
+                ),
+                "artístico"
+            ),
+            ["harpa", "cordas", "sintetizadores"]
+        )
+        this.exibirPerformance(magdaleneTour)
+        
+        // 4. Performance alternativa - estilo mais íntimo
+        console.log("\n4. 🎪 PERFORMANCE ALTERNATIVA:")
+        const performanceIntima = new DecoratorElementosTeatrais(
+            new DecoratorCoreografia(
+                new PerformanceBasica(),
+                "suave"
+            ),
+            "vulnerabilidade"
+        )
+        this.exibirPerformance(performanceIntima)
+        
+        // 5. Demonstração de flexibilidade - modificando em runtime
+        console.log("\n5. 🔄 FLEXIBILIDADE EM RUNTIME:")
+        let performanceFlexivel: Performance = new PerformanceBasica()
+        this.exibirPerformance(performanceFlexivel)
+        
+        // Adicionando elementos dinamicamente
+        console.log("\n   ➕ Adicionando coreografia...")
+        performanceFlexivel = new DecoratorCoreografia(performanceFlexivel)
+        this.exibirPerformance(performanceFlexivel)
+        
+        console.log("\n   ➕ Adicionando pole dance...")
+        performanceFlexivel = new DecoratorPoleDance(performanceFlexivel)
+        this.exibirPerformance(performanceFlexivel)
+        
+        console.log("\n   ➕ Adicionando efeitos visuais...")
+        performanceFlexivel = new DecoratorEfeitosVisuais(performanceFlexivel, ["lasers", "hologramas"])
+        this.exibirPerformance(performanceFlexivel)
+        
+        // 6. Comparação de diferentes configurações
+        console.log("\n6. 📊 COMPARAÇÃO DE CONFIGURAÇÕES:")
+        const configuracoes = [
+            new PerformanceBasica(),
+            new DecoratorCoreografia(new PerformanceBasica()),
+            new DecoratorEfeitosVisuais(new PerformanceBasica()),
+            new DecoratorPoleDance(new DecoratorCoreografia(new PerformanceBasica())),
+            magdaleneTour
+        ]
+        
+        configuracoes.forEach((performance, index) => {
+            console.log(`\nConfiguração ${index + 1}:`)
+            console.log(`   Descrição: ${performance.getDescricao()}`)
+            console.log(`   Custo: $${performance.getCusto()}`)
+            console.log(`   Duração: ${performance.getDuracao()}min`)
+        })
+    }
+    
+    static exibirPerformance(performance: Performance): void {
+        console.log(`📋 ${performance.getDescricao()}`)
+        console.log(`💰 Custo: $${performance.getCusto()}`)
+        console.log(`⏱️  Duração: ${performance.getDuracao()} minutos`)
+        console.log("🎬 Executando...")
+        performance.executar()
+        console.log("---")
+    }
+    
+    static criarPerformancePersonalizada(elementos: string[]): Performance {
+        let performance: Performance = new PerformanceBasica()
+        
+        for (const elemento of elementos) {
+            switch (elemento.toLowerCase()) {
+                case "coreografia":
+                    performance = new DecoratorCoreografia(performance, "personalizada")
+                    break
+                case "pole dance":
+                    performance = new DecoratorPoleDance(performance, "artístico")
+                    break
+                case "efeitos visuais":
+                    performance = new DecoratorEfeitosVisuais(performance, ["personalizado"])
+                    break
+                case "teatral":
+                    performance = new DecoratorElementosTeatrais(performance, "drama")
+                    break
+                case "orquestracao":
+                    performance = new DecoratorOrquestracao(performance, ["personalizada"])
+                    break
+            }
+        }
+        
+        return performance
+    }
+}
+
+// Executando o sistema
+SistemaFKAArt.criarPerformances()
+
+// Exemplo de criação dinâmica
+console.log("\n" + "=" .repeat(50))
+console.log("🎛️  CRIAÇÃO DINÂMICA DE PERFORMANCE")
+console.log("=" .repeat(50))
+
+const performancePersonalizada = SistemaFKAArt.criarPerformancePersonalizada([
+    "coreografia",
+    "pole dance",
+    "efeitos visuais"
+])
+
+SistemaFKAArt.exibirPerformance(performancePersonalizada)
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Decorator em um sistema de processamento de texto:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any
+import html
+import re
+
+# Component Interface
+class TextProcessor(ABC):
+    @abstractmethod
+    def process(self, text: str) -> str:
+        pass
+    
+    @abstractmethod
+    def get_description(self) -> str:
+        pass
+
+# Concrete Component - Processador Básico
+class BasicTextProcessor(TextProcessor):
+    def process(self, text: str) -> str:
+        return text
+    
+    def get_description(self) -> str:
+        return "Processamento básico de texto"
+
+# Base Decorator
+class TextProcessorDecorator(TextProcessor):
+    def __init__(self, processor: TextProcessor):
+        self._processor = processor
+    
+    def process(self, text: str) -> str:
+        return self._processor.process(text)
+    
+    def get_description(self) -> str:
+        return self._processor.get_description()
+
+# Concrete Decorators
+class HTMLEncoderDecorator(TextProcessorDecorator):
+    def process(self, text: str) -> str:
+        processed = super().process(text)
+        return html.escape(processed)
+    
+    def get_description(self) -> str:
+        return f"{super().get_description()} + Codificação HTML"
+
+class LowercaseDecorator(TextProcessorDecorator):
+    def process(self, text: str) -> str:
+        processed = super().process(text)
+        return processed.lower()
+    
+    def get_description(self) -> str:
+        return f"{super().get_description()} + Minúsculas"
+
+class UppercaseDecorator(TextProcessorDecorator):
+    def process(self, text: str) -> str:
+        processed = super().process(text)
+        return processed.upper()
+    
+    def get_description(self) -> str:
+        return f"{super().get_description()} + Maiúsculas"
+
+class StripWhitespaceDecorator(TextProcessorDecorator):
+    def process(self, text: str) -> str:
+        processed = super().process(text)
+        return processed.strip()
+    
+    def get_description(self) -> str:
+        return f"{super().get_description()} + Remoção de espaços"
+
+class ReplaceTextDecorator(TextProcessorDecorator):
+    def __init__(self, processor: TextProcessor, replacements: Dict[str, str]):
+        super().__init__(processor)
+        self.replacements = replacements
+    
+    def process(self, text: str) -> str:
+        processed = super().process(text)
+        for old, new in self.replacements.items():
+            processed = processed.replace(old, new)
+        return processed
+    
+    def get_description(self) -> str:
+        replacements_str = ", ".join([f"'{k}'→'{v}'" for k, v in self.replacements.items()])
+        return f"{super().get_description()} + Substituições ({replacements_str})"
+
+class RegexFilterDecorator(TextProcessorDecorator):
+    def __init__(self, processor: TextProcessor, pattern: str, replacement: str = ""):
+        super().__init__(processor)
+        self.pattern = pattern
+        self.replacement = replacement
+    
+    def process(self, text: str) -> str:
+        processed = super().process(text)
+        return re.sub(self.pattern, self.replacement, processed)
+    
+    def get_description(self) -> str:
+        return f"{super().get_description()} + Filtro Regex ('{self.pattern}')"
+
+class CapitalizeDecorator(TextProcessorDecorator):
+    def process(self, text: str) -> str:
+        processed = super().process(text)
+        return processed.capitalize()
+    
+    def get_description(self) -> str:
+        return f"{super().get_description()} + Capitalização"
+
+class PrefixSuffixDecorator(TextProcessorDecorator):
+    def __init__(self, processor: TextProcessor, prefix: str = "", suffix: str = ""):
+        super().__init__(processor)
+        self.prefix = prefix
+        self.suffix = suffix
+    
+    def process(self, text: str) -> str:
+        processed = super().process(text)
+        return f"{self.prefix}{processed}{self.suffix}"
+    
+    def get_description(self) -> str:
+        prefix_suffix = []
+        if self.prefix:
+            prefix_suffix.append(f"prefixo='{self.prefix}'")
+        if self.suffix:
+            prefix_suffix.append(f"sufixo='{self.suffix}'")
+        return f"{super().get_description()} + {' e '.join(prefix_suffix)}"
+
+# Sistema de Processamento de Texto
+class TextProcessingSystem:
+    def __init__(self):
+        self.processors: Dict[str, TextProcessor] = {}
+        self._create_predefined_processors()
+    
+    def _create_predefined_processors(self):
+        """Cria processadores predefinidos inspirados em FKA twigs"""
+        
+        # Processador para títulos de músicas
+        self.processors["music_title"] = CapitalizeDecorator(
+            StripWhitespaceDecorator(
+                BasicTextProcessor()
+            )
+        )
+        
+        # Processador para letras HTML
+        self.processors["html_lyrics"] = HTMLEncoderDecorator(
+            ReplaceTextDecorator(
+                StripWhitespaceDecorator(
+                    BasicTextProcessor()
+                ),
+                {"\n": "<br>", "\t": "&nbsp;&nbsp;&nbsp;&nbsp;"}
+            )
+        )
+        
+        # Processador para metadados
+        self.processors["metadata"] = UppercaseDecorator(
+            RegexFilterDecorator(
+                StripWhitespaceDecorator(
+                    BasicTextProcessor()
+                ),
+                r'[^A-Za-z0-9\s]',
+                ''
+            )
+        )
+        
+        # Processador para análise de sentimento
+        self.processors["sentiment_analysis"] = LowercaseDecorator(
+            RegexFilterDecorator(
+                StripWhitespaceDecorator(
+                    BasicTextProcessor()
+                ),
+                r'[^\w\s]',
+                ''
+            )
+        )
+        
+        # Processador para formatação artística
+        self.processors["artistic_format"] = PrefixSuffixDecorator(
+            ReplaceTextDecorator(
+                CapitalizeDecorator(
+                    StripWhitespaceDecorator(
+                        BasicTextProcessor()
+                    )
+                ),
+                {" ": " • ", "a": "4", "e": "3", "i": "1", "o": "0"}
+            ),
+            prefix="🎵 ",
+            suffix=" 🎶"
+        )
+    
+    def process_text(self, processor_name: str, text: str) -> str:
+        if processor_name not in self.processors:
+            raise ValueError(f"Processador '{processor_name}' não encontrado")
+        
+        return self.processors[processor_name].process(text)
+    
+    def get_processor_info(self, processor_name: str) -> str:
+        if processor_name not in self.processors:
+            raise ValueError(f"Processador '{processor_name}' não encontrado")
+        
+        return self.processors[processor_name].get_description()
+    
+    def create_custom_processor(self, name: str, decorators: List[Dict[str, Any]]) -> None:
+        """Cria um processador personalizado com decoradores específicos"""
+        processor = BasicTextProcessor()
+        
+        for decorator_config in decorators:
+            decorator_type = decorator_config.get("type")
+            params = decorator_config.get("params", {})
+            
+            if decorator_type == "html_encode":
+                processor = HTMLEncoderDecorator(processor)
+            elif decorator_type == "lowercase":
+                processor = LowercaseDecorator(processor)
+            elif decorator_type == "uppercase":
+                processor = UppercaseDecorator(processor)
+            elif decorator_type == "strip":
+                processor = StripWhitespaceDecorator(processor)
+            elif decorator_type == "replace":
+                processor = ReplaceTextDecorator(processor, **params)
+            elif decorator_type == "regex":
+                processor = RegexFilterDecorator(processor, **params)
+            elif decorator_type == "capitalize":
+                processor = CapitalizeDecorator(processor)
+            elif decorator_type == "prefix_suffix":
+                processor = PrefixSuffixDecorator(processor, **params)
+        
+        self.processors[name] = processor
+    
+    def demonstrate_processing(self):
+        """Demonstra diferentes processamentos"""
+        print("🔤 SISTEMA DE PROCESSAMENTO DE TEXTO - PADRÃO DECORATOR")
+        print("=" * 60)
+        
+        # Textos de exemplo inspirados em FKA twigs
+        sample_texts = {
+            "music_title": "  cellophane  ",
+            "lyrics": "I'm like a glass of champagne\\nI'm like a beautiful bird",
+            "metadata": "FKA_twigs-MAGDALENE-2019!",
+            "sentiment": "HAPPY, JOYFUL, and EXCITED!!!",
+            "artistic": "magdalene album review"
+        }
+        
+        for processor_name, text in sample_texts.items():
+            print(f"\n🎯 Processador: {processor_name}")
+            print(f"📝 Texto original: '{text}'")
+            print(f"🔧 Configuração: {self.get_processor_info(processor_name)}")
+            print(f"✨ Resultado: '{self.process_text(processor_name, text)}'")
+            print("-" * 50)
+    
+    def demonstrate_flexibility(self):
+        """Demonstra a flexibilidade do padrão Decorator"""
+        print("\n🎭 DEMONSTRAÇÃO DE FLEXIBILIDADE")
+        print("=" * 40)
+        
+        # Criando um processador personalizado em tempo real
+        text = "  FKA twigs - home with you  "
+        print(f"\nTexto original: '{text}'")
+        
+        # Processamento básico
+        basic = BasicTextProcessor()
+        print(f"\n1. Básico: '{basic.process(text)}'")
+        
+        # Adicionando decoradores dinamicamente
+        processor = StripWhitespaceDecorator(basic)
+        print(f"2. + Strip: '{processor.process(text)}'")
+        
+        processor = CapitalizeDecorator(processor)
+        print(f"3. + Capitalize: '{processor.process(text)}'")
+        
+        processor = ReplaceTextDecorator(processor, {" ": " • ", "-": " — "})
+        print(f"4. + Replace: '{processor.process(text)}'")
+        
+        processor = PrefixSuffixDecorator(processor, prefix="🎵 ", suffix=" 🎶")
+        print(f"5. + Prefix/Suffix: '{processor.process(text)}'")
+        
+        print(f"\n📋 Processador final: {processor.get_description()}")
+
+# Exemplo de uso
+def main():
+    # Criar o sistema de processamento
+    system = TextProcessingSystem()
+    
+    # Demonstrar processadores predefinidos
+    system.demonstrate_processing()
+    
+    # Demonstrar flexibilidade
+    system.demonstrate_flexibility()
+    
+    # Criar um processador personalizado
+    print("\n" + "=" * 50)
+    print("🛠️  CRIANDO PROCESSADOR PERSONALIZADO")
+    print("=" * 50)
+    
+    custom_decorators = [
+        {"type": "strip"},
+        {"type": "lowercase"},
+        {"type": "replace", "params": {"replacements": {"fka": "FKA", "twigs": "TWIGS"}}},
+        {"type": "prefix_suffix", "params": {"prefix": "🌟 ", "suffix": " 🌟"}}
+    ]
+    
+    system.create_custom_processor("custom_artist", custom_decorators)
+    
+    test_text = "  fka twigs concert review  "
+    print(f"Texto: '{test_text}'")
+    print(f"Processador: {system.get_processor_info('custom_artist')}")
+    print(f"Resultado: '{system.process_text('custom_artist', test_text)}'")
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/estruturais/decorator/ficticio.png" alt="FKA twigs Decorator UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Decorator no nosso exemplo das performances de FKA twigs:</p>
+            <pre class="uml-code">
+@startuml
+interface Performance {
+    + executar(): void
+    + getCusto(): number
+    + getDuracao(): number
+    + getDescricao(): string
+}
+
+class PerformanceBasica {
+    + executar(): void
+    + getCusto(): number
+    + getDuracao(): number
+    + getDescricao(): string
+}
+
+abstract class DecoratorDePerformance {
+    - performance: Performance
+    + executar(): void
+    + getCusto(): number
+    + getDuracao(): number
+    + getDescricao(): string
+}
+
+class DecoratorCoreografia {
+    - nivelDificuldade: string
+    + executar(): void
+    + getCusto(): number
+    + getDuracao(): number
+    + getDescricao(): string
+}
+
+class DecoratorPoleDance {
+    - estilo: string
+    + executar(): void
+    + getCusto(): number
+    + getDuracao(): number
+    + getDescricao(): string
+}
+
+class DecoratorEfeitosVisuais {
+    - tipoEfeitos: string[]
+    + executar(): void
+    + getCusto(): number
+    + getDuracao(): number
+    + getDescricao(): string
+}
+
+class DecoratorElementosTeatrais {
+    - tema: string
+    + executar(): void
+    + getCusto(): number
+    + getDuracao(): number
+    + getDescricao(): string
+}
+
+class DecoratorOrquestracao {
+    - instrumentos: string[]
+    + executar(): void
+    + getCusto(): number
+    + getDuracao(): number
+    + getDescricao(): string
+}
+
+Performance <|-- PerformanceBasica
+Performance <|-- DecoratorDePerformance
+DecoratorDePerformance --> Performance
+DecoratorDePerformance <|-- DecoratorCoreografia
+DecoratorDePerformance <|-- DecoratorPoleDance
+DecoratorDePerformance <|-- DecoratorEfeitosVisuais
+DecoratorDePerformance <|-- DecoratorElementosTeatrais
+DecoratorDePerformance <|-- DecoratorOrquestracao
+
+note right of Performance
+    Interface comum para todas
+    as performances, básicas
+    e decoradas
+end note
+
+note right of DecoratorDePerformance
+    Classe abstrata que mantém
+    referência para uma performance
+    e delega operações
+end note
+
+note right of DecoratorCoreografia
+    Decorador concreto que
+    adiciona coreografia à
+    performance
+end note
+
+note right of DecoratorPoleDance
+    Decorador concreto que
+    adiciona pole dance com
+    estilo específico
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como diferentes decoradores podem ser combinados para criar performances complexas.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/estruturais/decorator/pratico.png" alt="Text Processing Decorator UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Decorator no exemplo prático do sistema de processamento de texto:</p>
+            <pre class="uml-code">
+@startuml
+interface TextProcessor {
+    + process(text: str): str
+    + get_description(): str
+}
+
+class BasicTextProcessor {
+    + process(text: str): str
+    + get_description(): str
+}
+
+abstract class TextProcessorDecorator {
+    - _processor: TextProcessor
+    + process(text: str): str
+    + get_description(): str
+}
+
+class HTMLEncoderDecorator {
+    + process(text: str): str
+    + get_description(): str
+}
+
+class LowercaseDecorator {
+    + process(text: str): str
+    + get_description(): str
+}
+
+class UppercaseDecorator {
+    + process(text: str): str
+    + get_description(): str
+}
+
+class StripWhitespaceDecorator {
+    + process(text: str): str
+    + get_description(): str
+}
+
+class ReplaceTextDecorator {
+    - replacements: Dict[str, str]
+    + process(text: str): str
+    + get_description(): str
+}
+
+class RegexFilterDecorator {
+    - pattern: str
+    - replacement: str
+    + process(text: str): str
+    + get_description(): str
+}
+
+class CapitalizeDecorator {
+    + process(text: str): str
+    + get_description(): str
+}
+
+class PrefixSuffixDecorator {
+    - prefix: str
+    - suffix: str
+    + process(text: str): str
+    + get_description(): str
+}
+
+TextProcessor <|-- BasicTextProcessor
+TextProcessor <|-- TextProcessorDecorator
+TextProcessorDecorator --> TextProcessor
+TextProcessorDecorator <|-- HTMLEncoderDecorator
+TextProcessorDecorator <|-- LowercaseDecorator
+TextProcessorDecorator <|-- UppercaseDecorator
+TextProcessorDecorator <|-- StripWhitespaceDecorator
+TextProcessorDecorator <|-- ReplaceTextDecorator
+TextProcessorDecorator <|-- RegexFilterDecorator
+TextProcessorDecorator <|-- CapitalizeDecorator
+TextProcessorDecorator <|-- PrefixSuffixDecorator
+
+note right of TextProcessor
+    Interface comum para todos
+    os processadores de texto
+end note
+
+note right of TextProcessorDecorator
+    Decorador base que mantém
+    referência para um processador
+    e delega operações
+end note
+
+note right of ReplaceTextDecorator
+    Decorador concreto que
+    realiza substituições
+    de texto configuráveis
+end note
+
+note right of RegexFilterDecorator
+    Decorador concreto que
+    aplica filtros regex
+    ao texto
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite combinar diferentes processadores de texto de forma flexível e dinâmica.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://thefader-res.cloudinary.com/private_images/w_760,c_limit,f_auto,q_auto:best/GettyImages-1207111670_mm8duv/fka-twigs-recorded-a-new-album-with-el-guincho-in-quarantine.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Decorator oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Flexibilidade Extrema:</strong> Pode adicionar/remover responsabilidades dinamicamente</li>
+                <li><strong>Evita Explosão de Subclasses:</strong> Substitui herança múltipla por composição</li>
+                <li><strong>Princípio Aberto/Fechado:</strong> Pode estender funcionalidades sem modificar código existente</li>
+                <li><strong>Separação de Responsabilidades:</strong> Cada decorador tem uma única responsabilidade</li>
+                <li><strong>Reusabilidade:</strong> Decoradores podem ser reutilizados em diferentes componentes</li>
+                <li><strong>Transparência:</strong> Clientes não precisam saber se estão lidando com componentes decorados ou não</li>
+                <li><strong>Configurabilidade:</strong> Fácil criar diferentes combinações em tempo de execução</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://tecoapple.com/wp-content/uploads/2020/08/fkatwigssaddayv020.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Decorator também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Pode criar muitos objetos pequenos e aumentar complexidade</li>
+                <li><strong>Dificuldade de Debug:</strong> Cadeias longas de decoradores podem ser difíceis de depurar</li>
+                <li><strong>Overhead:</strong> Múltiplas camadas de delegação podem impactar performance</li>
+                <li><strong>Instanciação Complexa:</strong> Configurar objetos com muitos decoradores pode ser verboso</li>
+                <li><strong>Dependência de Ordem:</strong> A ordem dos decoradores pode afetar o resultado final</li>
+                <li><strong>Interface Rígida:</strong> Todos os decoradores devem implementar a mesma interface do componente</li>
+                <li><strong>Over-engineering:</strong> Pode ser complexo demais para funcionalidades simples</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://www.nme.com/wp-content/uploads/2024/08/FKA-twigs@2000x1270-1-696x442.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Decorator é uma solução elegante para adicionar responsabilidades a objetos de forma dinâmica e flexível, usando composição em vez de herança.</p>
+            <p>Na nossa analogia de FKA twigs, o Decorator funciona como as <strong>camadas de expressão artística</strong> - permitindo que uma performance básica seja enriquecida com coreografias complexas, efeitos visuais, elementos teatrais e orquestrações, criando uma experiência artística única e multifacetada.</p>
+            <p>Assim como FKA twigs constrói suas performances através da combinação de diferentes disciplinas artísticas, o padrão Decorator nos permite construir sistemas flexíveis onde funcionalidades podem ser adicionadas e combinadas livremente, mantendo o código limpo, extensível e alinhado com os princípios do design orientado a objetos.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/decorator"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Decorator</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-decorator/17156"
+                        target="_blank">DevMedia - Padrão de Projeto Decorator</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/28/mao-na-massa-decorator/"
+                        target="_blank">Mão na Massa - Padrão Decorator</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Decorator" target="_blank">Wikipédia - Decorator (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/decorator-pattern/" target="_blank">GeeksforGeeks
+                        - Decorator Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/decorator" target="_blank">SourceMaking
+                        - Decorator Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
