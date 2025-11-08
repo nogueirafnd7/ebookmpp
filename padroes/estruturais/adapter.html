@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Adapter - A Adaptação Musical de Avril Lavigne</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/stylestr.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/estruturais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/estruturais.html">Padrões Estruturais</a>
+            <button class="btn btn-outline-primary ms-auto" id="downloadPdf">
+                <i class="bi bi-download"></i> Baixar PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Adapter?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Target vs Adaptee</a></li>
+            <li><a href="#page5">Exemplo Fictício (A Evolução de Avril Lavigne)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">ADAPTER</h1>
+            <p class="cover-subtitle">A Adaptação Musical de Avril Lavigne - Conectando Interfaces Incompatíveis</p>
+
+            <img src="https://wp.ufpel.edu.br/empauta/files/2022/06/IMAGEM-1-AVRIL-LAVIGNE.jpeg"
+                alt="Capa Adapter - Avril Lavigne" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Adapter?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://portalpopline.com.br/wp-content/uploads/2021/09/Avril-Lavigne.jpg"
+                    alt="Adapter Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Adapter é um <strong>padrão de projeto estrutural</strong> que permite que objetos com interfaces incompatíveis trabalhem juntos. Ele atua como um tradutor entre duas interfaces, convertendo a interface de uma classe em outra interface esperada pelos clientes [1].</p>
+            <p>É como a <strong>evolução musical de Avril Lavigne</strong> - onde seu estilo punk-rock inicial precisou se adaptar às mudanças da indústria musical, mantendo sua essência enquanto se conectava com novos públicos e tendências.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://i.ytimg.com/vi/Py0KMhyT6Bw/maxresdefault.jpg"
+                    alt="Problema das Interfaces Incompatíveis" class="cover-image">
+            </div>
+            <p>O principal problema que o Padrão Adapter resolve é a <strong>incompatibilidade entre interfaces</strong> quando você precisa integrar sistemas, bibliotecas ou componentes que não foram projetados para trabalhar juntos.</p>
+            <p>Sem este padrão, seria necessário modificar o código existente (violando o princípio aberto/fechado) ou criar soluções complexas e frágeis - como tentar fazer a Avril Lavigne dos anos 2000 se encaixar diretamente no cenário musical atual sem adaptações [2].</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/estruturais/adapter/generico.png"
+                    alt="Adapter UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Adapter:</p>
+            <pre class="uml-code">
+@startuml
+class Client {
+    + request(): void
+}
+
+interface Target {
+    + request(): void
+}
+
+class Adapter {
+    - adaptee: Adaptee
+    + request(): void
+}
+
+class Adaptee {
+    + specificRequest(): void
+}
+
+Client --> Target
+Adapter --> Target
+Adapter --> Adaptee
+
+note right of Target
+    Interface que o cliente
+    espera e conhece
+end note
+
+note right of Adaptee
+    Interface existente que
+    precisa ser adaptada
+end note
+
+note right of Adapter
+    Faz a tradução entre
+    Target e Adaptee
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Client:</strong> Classe que precisa usar a interface Target</li>
+                <li><strong>Target:</strong> Interface que o cliente espera</li>
+                <li><strong>Adaptee:</strong> Interface existente que precisa ser adaptada</li>
+                <li><strong>Adapter:</strong> Faz a tradução entre Target e Adaptee</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Target vs Adaptee</h1>
+            <div class="img-placeholder-5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Adapter_pattern.png/500px-Adapter_pattern.png"
+                    alt="Target vs Adaptee" class="cover-image">
+            </div>
+            
+            <h3>Target (Alvo)</h3>
+            <p><strong>Características:</strong> Interface que o cliente conhece e espera usar</p>
+            <p><strong>Exemplo Avril Lavigne:</strong></p>
+            <ul>
+                <li>Sistema de streaming moderno</li>
+                <li>Plataforma de redes sociais</li>
+                <li>Produção musical atual</li>
+                <li>Público contemporâneo</li>
+                <li>Tendências atuais da indústria</li>
+            </ul>
+
+            <h3>Adaptee (Adaptado)</h3>
+            <p><strong>Características:</strong> Interface existente que precisa ser integrada</p>
+            <p><strong>Exemplo Avril Lavigne:</strong></p>
+            <ul>
+                <li>Estilo punk-rock dos anos 2000</li>
+                <li>Músicas do álbum "Let Go"</li>
+                <li>Produção musical da época</li>
+                <li>Público adolescente da era</li>
+                <li>Estratégias de marketing antigas</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Princípio da Adaptação:</strong> O Adapter permite que o Adaptee funcione no contexto do Target sem modificar nenhum dos dois.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (A Evolução de Avril Lavigne)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://f.i.uol.com.br/fotografia/2024/09/26/172734575466f5345a03af4_1727345754_3x2_md.jpg"
+                    alt="Avril Lavigne Evolution" class="cover-image">
+            </div>
+            <p>Imagine a <strong>evolução da carreira de Avril Lavigne</strong> usando o padrão Adapter para conectar suas diferentes fases musicais:</p>
+
+            <h3>Linha do Tempo Musical:</h3>
+            <ul>
+                <li><strong>Era "Let Go" (2002)</strong> (Adaptee)
+                    <ul>
+                        <li>Estilo: Punk-rock adolescente</li>
+                        <li>Hit: "Complicated"</li>
+                        <li>Público: Adolescentes</li>
+                        <li>Produção: Guitarras distorcidas</li>
+                    </ul>
+                </li>
+                <li><strong>Era "The Best Damn Thing" (2007)</strong> (Adaptee)
+                    <ul>
+                        <li>Estilo: Pop-punk mais comercial</li>
+                        <li>Hit: "Girlfriend"</li>
+                        <li>Público: Jovens adultos</li>
+                        <li>Produção: Mais polida</li>
+                    </ul>
+                </li>
+                <li><strong>Era "Head Above Water" (2019)</strong> (Target)
+                    <ul>
+                        <li>Estilo: Pop adulto contemporâneo</li>
+                        <li>Hit: "Head Above Water"</li>
+                        <li>Público: Adultos</li>
+                        <li>Produção: Orquestral e emocional</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>O Adapter permite que músicas e estilos de diferentes eras sejam apresentados de forma coesa no cenário musical atual.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://ucsfm.com.br/wp-content/uploads/2024/05/avril-lavigne-e1715688491183.jpg"
+                    alt="Problema sem Adapter" class="cover-image">
+            </div>
+            <p>Sem o Padrão Adapter, integrar diferentes fases musicais seria problemático:</p>
+            <pre><code>
+// PROBLEMA: Interfaces incompatíveis!
+class MusicaAntiga2002 {
+    constructor(public titulo: string, public estilo: string) {}
+    
+    tocarNoCD(): void {  // Método específico da era
+        console.log(`🎵 Tocando no CD player: ${this.titulo}`)
+        console.log(`🎸 Estilo: ${this.estilo} (era 2002)`)
+    }
+    
+    promoverNaMTV(): void {  // Método específico da era
+        console.log(`📺 Promovendo na MTV: ${this.titulo}`)
+    }
+}
+
+class MusicaAntiga2007 {
+    constructor(public titulo: string, public estilo: string) {}
+    
+    tocarNoMP3(): void {  // Método específico da era
+        console.log(`🎵 Tocando no MP3 player: ${this.titulo}`)
+        console.log(`🎤 Estilo: ${this.estilo} (era 2007)`)
+    }
+    
+    promoverNoMyspace(): void {  // Método específico da era
+        console.log(`💻 Promovendo no MySpace: ${this.titulo}`)
+    }
+}
+
+class SistemaStreamingModerno {
+    // Sistema moderno espera uma interface específica
+    reproduzirNoSpotify(musica: any): void {
+        // VERIFICAÇÕES COMPLEXAS E FRÁGEIS!
+        if (musica.tocarNoCD) {
+            console.log("🔄 Convertendo para streaming...")
+            musica.tocarNoCD()
+        } else if (musica.tocarNoMP3) {
+            console.log("🔄 Convertendo para streaming...")
+            musica.tocarNoMP3()
+        } else if (musica.reproduzirStreaming) {
+            musica.reproduzirStreaming()
+        } else {
+            throw new Error("Formato de música não suportado!")
+        }
+    }
+    
+    promoverNasRedesSociais(musica: any): void {
+        // MAIS VERIFICAÇÕES!
+        if (musica.promoverNaMTV) {
+            console.log("🔄 Adaptando para redes sociais...")
+            musica.promoverNaMTV()
+        } else if (musica.promoverNoMyspace) {
+            console.log("🔄 Adaptando para redes sociais...")
+            musica.promoverNoMyspace()
+        } else if (musica.promoverInstagram) {
+            musica.promoverInstagram()
+        } else {
+            throw new Error("Método de promoção não suportado!")
+        }
+    }
+}
+
+// CENÁRIO PROBLEMÁTICO:
+const complicated = new MusicaAntiga2002("Complicated", "Punk-Rock")
+const girlfriend = new MusicaAntiga2007("Girlfriend", "Pop-Punk")
+
+const spotify = new SistemaStreamingModerno()
+
+// PROBLEMAS:
+// 1. Verificações de tipo constantes
+// 2. Código complexo e difícil de manter
+// 3. Violação do princípio aberto/fechado
+// 4. Dificuldade de adicionar novas eras musicais
+// 5. Acoplamento forte com implementações específicas
+
+// Tentativa de uso:
+try {
+    spotify.reproduzirNoSpotify(complicated)  // ✅ Funciona com adaptação manual
+    spotify.reproduzirNoSpotify(girlfriend)   // ✅ Funciona com adaptação manual
+} catch (error) {
+    console.error("❌ Erro:", error.message)
+}
+
+// E se quisermos adicionar uma música de 2019?
+// Teríamos que modificar o SistemaStreamingModerno!
+            </code></pre>
+            <p>Sem Adapter, o código fica cheio de verificações e é difícil de manter!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://akamai.sscdn.co/tb/letras-blog/wp-content/uploads/2021/05/602034e-avril-lavigne-1024x576.png"
+                    alt="Adapter Avril Lavigne" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Adapter, criamos uma integração elegante entre diferentes eras musicais:</p>
+            <pre><code>
+// Target Interface - O que o sistema moderno espera
+interface MusicaStreaming {
+    getTitulo(): string
+    getArtista(): string
+    reproduzirStreaming(): void
+    promoverInstagram(): void
+    getDuracao(): number
+    getAnoLancamento(): number
+    getGenero(): string
+}
+
+// Adaptee - Música da era 2002
+class MusicaEra2002 {
+    constructor(
+        private titulo: string,
+        private artista: string,
+        private duracao: number,
+        private genero: string,
+        private letra: string
+    ) {}
+    
+    // Métodos específicos da era 2002
+    tocarNoCD(): void {
+        console.log(`💿 CD Player: Tocando "${this.titulo}"`)
+        console.log(`   🎸 ${this.artista} - ${this.genero}`)
+        console.log(`   📀 Formato: CD (2002)`)
+    }
+    
+    promoverNaMTV(): void {
+        console.log(`📺 MTV: Nova música! "${this.titulo}"`)
+        console.log(`   🎥 Video clipe em rotação`)
+    }
+    
+    comprarCD(): string {
+        return `💰 Compre o CD de "${this.titulo}" na loja de música!`
+    }
+    
+    // Getters para informações básicas
+    getTituloOriginal(): string {
+        return this.titulo
+    }
+    
+    getArtistaOriginal(): string {
+        return this.artista
+    }
+    
+    getDuracaoOriginal(): number {
+        return this.duracao
+    }
+    
+    getGeneroOriginal(): string {
+        return this.genero
+    }
+    
+    getLetra(): string {
+        return this.letra
+    }
+}
+
+// Adaptee - Música da era 2007
+class MusicaEra2007 {
+    constructor(
+        private titulo: string,
+        private artista: string,
+        private duracao: number,
+        private genero: string,
+        private bpm: number
+    ) {}
+    
+    // Métodos específicos da era 2007
+    tocarNoMP3(): void {
+        console.log(`🎵 MP3 Player: "${this.titulo}"`)
+        console.log(`   🎤 ${this.artista} - ${this.genero}`)
+        console.log(`   ⚡ BPM: ${this.bpm}`)
+        console.log(`   📱 Formato: MP3 (2007)`)
+    }
+    
+    promoverNoMyspace(): void {
+        console.log(`💻 MySpace: Ouça "${this.titulo}"!`)
+        console.log(`   👥 Adicione em seu perfil`)
+    }
+    
+    comprarITunes(): string {
+        return `🛒 Baixe "${this.titulo}" no iTunes!`
+    }
+    
+    // Getters para informações básicas
+    getTituloOriginal(): string {
+        return this.titulo
+    }
+    
+    getArtistaOriginal(): string {
+        return this.artista
+    }
+    
+    getDuracaoOriginal(): number {
+        return this.duracao
+    }
+    
+    getGeneroOriginal(): string {
+        return this.genero
+    }
+    
+    getBPM(): number {
+        return this.bpm
+    }
+}
+
+// Adaptee - Música da era 2013
+class MusicaEra2013 {
+    constructor(
+        private titulo: string,
+        private artista: string,
+        private duracao: number,
+        private genero: string,
+        private colaboracoes: string[]
+    ) {}
+    
+    // Métodos específicos da era 2013
+    tocarNoYouTube(): void {
+        console.log(`📺 YouTube: "${this.titulo}"`)
+        console.log(`   🎶 ${this.artista} - ${this.genero}`)
+        if (this.colaboracoes.length > 0) {
+            console.log(`   👥 Feat. ${this.colaboracoes.join(", ")}`)
+        }
+        console.log(`   🌐 Formato: Streaming (2013)`)
+    }
+    
+    promoverNoTwitter(): void {
+        console.log(`🐦 Twitter: #NovaMúsica "${this.titulo}"`)
+        console.log(`   🔁 Retweet para espalhar!`)
+    }
+    
+    // Getters para informações básicas
+    getTituloOriginal(): string {
+        return this.titulo
+    }
+    
+    getArtistaOriginal(): string {
+        return this.artista
+    }
+    
+    getDuracaoOriginal(): number {
+        return this.duracao
+    }
+    
+    getGeneroOriginal(): string {
+        return this.genero
+    }
+    
+    getColaboracoes(): string[] {
+        return [...this.colaboracoes]
+    }
+}
+
+// Adapter para músicas da era 2002
+class AdapterEra2002 implements MusicaStreaming {
+    private musicaEra2002: MusicaEra2002
+    
+    constructor(musicaEra2002: MusicaEra2002) {
+        this.musicaEra2002 = musicaEra2002
+    }
+    
+    getTitulo(): string {
+        return this.musicaEra2002.getTituloOriginal()
+    }
+    
+    getArtista(): string {
+        return this.musicaEra2002.getArtistaOriginal()
+    }
+    
+    reproduzirStreaming(): void {
+        console.log(`🎧 STREAMING (Adaptado): "${this.getTitulo()}"`)
+        console.log(`   👤 ${this.getArtista()}`)
+        console.log(`   🎸 Gênero: ${this.getGenero()} (Original: 2002)`)
+        console.log(`   ⏱️  Duração: ${this.formatarDuracao(this.getDuracao())}`)
+        console.log(`   📅 Lançamento: ${this.getAnoLancamento()}`)
+        console.log(`   💫 Clássico adaptado para streaming moderno`)
+        
+        // Adapta a reprodução do CD para streaming
+        this.musicaEra2002.tocarNoCD()
+    }
+    
+    promoverInstagram(): void {
+        console.log(`📱 INSTAGRAM (Adaptado): "${this.getTitulo()}"`)
+        console.log(`   👤 ${this.getArtista()}`)
+        console.log(`   🎵 #Throwback #Classic`)
+        console.log(`   📸 Stories e Reels disponíveis`)
+        
+        // Adapta a promoção da MTV para Instagram
+        this.musicaEra2002.promoverNaMTV()
+    }
+    
+    getDuracao(): number {
+        return this.musicaEra2002.getDuracaoOriginal()
+    }
+    
+    getAnoLancamento(): number {
+        return 2002 // Era específica
+    }
+    
+    getGenero(): string {
+        const generoOriginal = this.musicaEra2002.getGeneroOriginal()
+        // Adapta o gênero para terminologia moderna
+        return this.adaptarGenero(generoOriginal)
+    }
+    
+    // Métodos auxiliares do adapter
+    private formatarDuracao(segundos: number): string {
+        const minutos = Math.floor(segundos / 60)
+        const segs = segundos % 60
+        return `${minutos}:${segs.toString().padStart(2, '0')}`
+    }
+    
+    private adaptarGenero(genero: string): string {
+        const adaptacoes: { [key: string]: string } = {
+            "Punk-Rock": "Pop Punk Clássico",
+            "Rock": "Rock Alternativo",
+            "Pop": "Pop Tradicional"
+        }
+        return adaptacoes[genero] || genero
+    }
+    
+    // Método para acessar funcionalidades específicas da era
+    getLetraOriginal(): string {
+        return this.musicaEra2002.getLetra()
+    }
+}
+
+// Adapter para músicas da era 2007
+class AdapterEra2007 implements MusicaStreaming {
+    private musicaEra2007: MusicaEra2007
+    
+    constructor(musicaEra2007: MusicaEra2007) {
+        this.musicaEra2007 = musicaEra2007
+    }
+    
+    getTitulo(): string {
+        return this.musicaEra2007.getTituloOriginal()
+    }
+    
+    getArtista(): string {
+        return this.musicaEra2007.getArtistaOriginal()
+    }
+    
+    reproduzirStreaming(): void {
+        console.log(`🎧 STREAMING (Adaptado): "${this.getTitulo()}"`)
+        console.log(`   👤 ${this.getArtista()}`)
+        console.log(`   🎤 Gênero: ${this.getGenero()} (Original: 2007)`)
+        console.log(`   ⏱️  Duração: ${this.formatarDuracao(this.getDuracao())}`)
+        console.log(`   📅 Lançamento: ${this.getAnoLancamento()}`)
+        console.log(`   ⚡ BPM: ${this.musicaEra2007.getBPM()}`)
+        console.log(`   💫 Hit dos anos 2000 adaptado`)
+        
+        // Adapta a reprodução do MP3 para streaming
+        this.musicaEra2007.tocarNoMP3()
+    }
+    
+    promoverInstagram(): void {
+        console.log(`📱 INSTAGRAM (Adaptado): "${this.getTitulo()}"`)
+        console.log(`   👤 ${this.getArtista()}`)
+        console.log(`   🎵 #Throwback #2000s`)
+        console.log(`   📸 Dance challenge disponível`)
+        
+        // Adapta a promoção do MySpace para Instagram
+        this.musicaEra2007.promoverNoMyspace()
+    }
+    
+    getDuracao(): number {
+        return this.musicaEra2007.getDuracaoOriginal()
+    }
+    
+    getAnoLancamento(): number {
+        return 2007 // Era específica
+    }
+    
+    getGenero(): string {
+        const generoOriginal = this.musicaEra2007.getGeneroOriginal()
+        // Adapta o gênero para terminologia moderna
+        return this.adaptarGenero(generoOriginal)
+    }
+    
+    // Métodos auxiliares do adapter
+    private formatarDuracao(segundos: number): string {
+        const minutos = Math.floor(segundos / 60)
+        const segs = segundos % 60
+        return `${minutos}:${segs.toString().padStart(2, '0')}`
+    }
+    
+    private adaptarGenero(genero: string): string {
+        const adaptacoes: { [key: string]: string } = {
+            "Pop-Punk": "Pop Punk",
+            "Rock": "Rock Mainstream",
+            "Pop": "Pop Comercial"
+        }
+        return adaptacoes[genero] || genero
+    }
+    
+    // Método para acessar funcionalidades específicas da era
+    getBPMOriginal(): number {
+        return this.musicaEra2007.getBPM()
+    }
+}
+
+// Adapter para músicas da era 2013
+class AdapterEra2013 implements MusicaStreaming {
+    private musicaEra2013: MusicaEra2013
+    
+    constructor(musicaEra2013: MusicaEra2013) {
+        this.musicaEra2013 = musicaEra2013
+    }
+    
+    getTitulo(): string {
+        return this.musicaEra2013.getTituloOriginal()
+    }
+    
+    getArtista(): string {
+        return this.musicaEra2013.getArtistaOriginal()
+    }
+    
+    reproduzirStreaming(): void {
+        console.log(`🎧 STREAMING (Adaptado): "${this.getTitulo()}"`)
+        console.log(`   👤 ${this.getArtista()}`)
+        console.log(`   🎶 Gênero: ${this.getGenero()} (Original: 2013)`)
+        console.log(`   ⏱️  Duração: ${this.formatarDuracao(this.getDuracao())}`)
+        console.log(`   📅 Lançamento: ${this.getAnoLancamento()}`)
+        
+        const colaboracoes = this.musicaEra2013.getColaboracoes()
+        if (colaboracoes.length > 0) {
+            console.log(`   👥 Colaborações: ${colaboracoes.join(", ")}`)
+        }
+        
+        console.log(`   💫 Transição para era digital`)
+        
+        // Adapta a reprodução do YouTube para streaming moderno
+        this.musicaEra2013.tocarNoYouTube()
+    }
+    
+    promoverInstagram(): void {
+        console.log(`📱 INSTAGRAM (Adaptado): "${this.getTitulo()}"`)
+        console.log(`   👤 ${this.getArtista()}`)
+        
+        const colaboracoes = this.musicaEra2013.getColaboracoes()
+        if (colaboracoes.length > 0) {
+            console.log(`   👥 Com ${colaboracoes.join(", ")}`)
+        }
+        
+        console.log(`   🎵 #2010s #Transition`)
+        console.log(`   📸 Carrossel de fotos disponível`)
+        
+        // Adapta a promoção do Twitter para Instagram
+        this.musicaEra2013.promoverNoTwitter()
+    }
+    
+    getDuracao(): number {
+        return this.musicaEra2013.getDuracaoOriginal()
+    }
+    
+    getAnoLancamento(): number {
+        return 2013 // Era específica
+    }
+    
+    getGenero(): string {
+        const generoOriginal = this.musicaEra2013.getGeneroOriginal()
+        // Menos adaptação necessária para era mais recente
+        return generoOriginal
+    }
+    
+    // Métodos auxiliares do adapter
+    private formatarDuracao(segundos: number): string {
+        const minutos = Math.floor(segundos / 60)
+        const segs = segundos % 60
+        return `${minutos}:${segs.toString().padStart(2, '0')}`
+    }
+    
+    // Método para acessar funcionalidades específicas da era
+    getColaboracoesOriginais(): string[] {
+        return this.musicaEra2013.getColaboracoes()
+    }
+}
+
+// Sistema de Streaming Moderno (Client)
+class SpotifyModerno {
+    private playlist: MusicaStreaming[] = []
+    
+    adicionarMusica(musica: MusicaStreaming): void {
+        this.playlist.push(musica)
+        console.log(`✅ Adicionada: ${musica.getTitulo()} (${musica.getAnoLancamento()})`)
+    }
+    
+    reproduzirPlaylist(): void {
+        console.log("\n🎧 SPOTIFY - REPRODUZINDO PLAYLIST")
+        console.log("=" .repeat(50))
+        
+        for (const musica of this.playlist) {
+            console.log("\n" + "-".repeat(30))
+            musica.reproduzirStreaming()
+        }
+        
+        console.log("\n🎉 Playlist concluída!")
+        this.mostrarEstatisticas()
+    }
+    
+    promoverPlaylist(): void {
+        console.log("\n📱 PROMOÇÃO NO INSTAGRAM")
+        console.log("=" .repeat(40))
+        
+        for (const musica of this.playlist) {
+            console.log("\n" + "-".repeat(20))
+            musica.promoverInstagram()
+        }
+    }
+    
+    private mostrarEstatisticas(): void {
+        console.log("\n📊 ESTATÍSTICAS DA PLAYLIST:")
+        console.log("-".repeat(30))
+        
+        const totalMusicas = this.playlist.length
+        const duracaoTotal = this.playlist.reduce((total, musica) => total + musica.getDuracao(), 0)
+        const anos = this.playlist.map(m => m.getAnoLancamento())
+        const anoMaisAntigo = Math.min(...anos)
+        const anoMaisRecente = Math.max(...anos)
+        
+        console.log(`Total de músicas: ${totalMusicas}`)
+        console.log(`Duração total: ${this.formatarDuracao(duracaoTotal)}`)
+        console.log(`Período: ${anoMaisAntigo} - ${anoMaisRecente}`)
+        console.log(`Artista: Avril Lavigne`)
+    }
+    
+    private formatarDuracao(segundos: number): string {
+        const minutos = Math.floor(segundos / 60)
+        const segs = segundos % 60
+        return `${minutos}:${segs.toString().padStart(2, '0')}`
+    }
+}
+
+// Fábrica de Adapters
+class AvrilLavigneAdapterFactory {
+    static criarAdapter(musica: any): MusicaStreaming {
+        if (musica instanceof MusicaEra2002) {
+            return new AdapterEra2002(musica)
+        } else if (musica instanceof MusicaEra2007) {
+            return new AdapterEra2007(musica)
+        } else if (musica instanceof MusicaEra2013) {
+            return new AdapterEra2013(musica)
+        } else {
+            throw new Error("Tipo de música não suportado")
+        }
+    }
+}
+
+// Sistema de Evolução Musical
+class EvolucaoAvrilLavigne {
+    static demonstrarAdaptacao(): void {
+        console.log("🎤 EVOLUÇÃO MUSICAL - AVRIL LAVIGNE")
+        console.log("====================================")
+        console.log("📀 Padrão Adapter em Ação")
+        console.log("")
+        
+        // Criando músicas de diferentes eras (Adaptees)
+        const complicated = new MusicaEra2002(
+            "Complicated",
+            "Avril Lavigne",
+            244,
+            "Punk-Rock",
+            "Chill out, what you yelling for?"
+        )
+        
+        const girlfriend = new MusicaEra2007(
+            "Girlfriend",
+            "Avril Lavigne",
+            217,
+            "Pop-Punk",
+            128
+        )
+        
+        const rockNRoll = new MusicaEra2013(
+            "Rock N Roll",
+            "Avril Lavigne",
+            226,
+            "Pop-Rock",
+            []
+        )
+        
+        const helloKitty = new MusicaEra2013(
+            "Hello Kitty",
+            "Avril Lavigne",
+            193,
+            "J-Pop",
+            []
+        )
+        
+        // Criando adapters para cada música
+        const adapterComplicated = AvrilLavigneAdapterFactory.criarAdapter(complicated)
+        const adapterGirlfriend = AvrilLavigneAdapterFactory.criarAdapter(girlfriend)
+        const adapterRockNRoll = AvrilLavigneAdapterFactory.criarAdapter(rockNRoll)
+        const adapterHelloKitty = AvrilLavigneAdapterFactory.criarAdapter(helloKitty)
+        
+        // Criando sistema de streaming moderno
+        const spotify = new SpotifyModerno()
+        
+        // Adicionando músicas adaptadas
+        spotify.adicionarMusica(adapterComplicated)
+        spotify.adicionarMusica(adapterGirlfriend)
+        spotify.adicionarMusica(adapterRockNRoll)
+        spotify.adicionarMusica(adapterHelloKitty)
+        
+        // DEMONSTRAÇÃO DO ADAPTER EM AÇÃO
+        console.log("\n🎯 DEMONSTRAÇÃO DO PADRÃO ADAPTER")
+        console.log("=" .repeat(40))
+        
+        // Reproduzindo playlist com interface uniforme
+        spotify.reproduzirPlaylist()
+        
+        // Promovendo no Instagram
+        spotify.promoverPlaylist()
+        
+        // Demonstração de tratamento uniforme
+        console.log("\n🔄 TRATAMENTO UNIFORME DAS ERAS")
+        console.log("=" .repeat(35))
+        
+        const musicasAdaptadas: MusicaStreaming[] = [
+            adapterComplicated,
+            adapterGirlfriend,
+            adapterRockNRoll
+        ]
+        
+        musicasAdaptadas.forEach((musica, index) => {
+            console.log(`\n${index + 1}. ${musica.getTitulo()} (${musica.getAnoLancamento()})`)
+            console.log(`   Artista: ${musica.getArtista()}`)
+            console.log(`   Gênero: ${musica.getGenero()}`)
+            console.log(`   Duração: ${musica.getDuracao()}s`)
+            // Todas respondem à mesma interface!
+        })
+        
+        console.log("\n🎸 Evolução musical de Avril Lavigne adaptada com sucesso!")
+        console.log("💫 Diferentes eras, mesma interface!")
+    }
+}
+
+// Executando a demonstração
+EvolucaoAvrilLavigne.demonstrarAdaptacao()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Adapter em um sistema de processamento de pagamentos:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import Dict, Any
+from datetime import datetime
+import json
+
+# Target Interface - O que nosso sistema espera
+class ProcessadorPagamentoModerno(ABC):
+    @abstractmethod
+    def processar_pagamento(self, valor: float, moeda: str, descricao: str) -> Dict[str, Any]:
+        pass
+    
+    @abstractmethod
+    def estornar_pagamento(self, id_transacao: str) -> bool:
+        pass
+    
+    @abstractmethod
+    def obter_status(self, id_transacao: str) -> Dict[str, Any]:
+        pass
+
+# Adaptee - Sistema legado de pagamento (simulação)
+class SistemaPagamentoLegado:
+    """Sistema legado com interface incompatível"""
+    
+    def autorizar_cartao(self, numero_cartao: str, valor: float, data_validade: str, cvv: str) -> Dict[str, Any]:
+        """Método legado para autorização de cartão"""
+        print(f"💳 SISTEMA LEGADO: Autorizando cartão {numero_cartao[-4:]}")
+        print(f"   Valor: ${valor:.2f}")
+        print(f"   Data: {data_validade}")
+        
+        # Simulação de processamento
+        transacao_id = f"LEG_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        
+        return {
+            "transacao_id": transacao_id,
+            "status": "autorizado",
+            "codigo_autorizacao": f"AUTH{datetime.now().strftime('%H%M%S')}",
+            "mensagem": "Transação autorizada pelo sistema legado",
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def capturar_valor(self, transacao_id: str, valor: float) -> Dict[str, Any]:
+        """Método legado para captura de valor"""
+        print(f"💰 SISTEMA LEGADO: Capturando valor para {transacao_id}")
+        print(f"   Valor a capturar: ${valor:.2f}")
+        
+        return {
+            "transacao_id": transacao_id,
+            "status": "capturado",
+            "valor_capturado": valor,
+            "mensagem": "Valor capturado com sucesso",
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def estornar_transacao(self, transacao_id: str, motivo: str = "") -> Dict[str, Any]:
+        """Método legado para estorno"""
+        print(f"🔄 SISTEMA LEGADO: Estornando transação {transacao_id}")
+        if motivo:
+            print(f"   Motivo: {motivo}")
+        
+        return {
+            "transacao_id": transacao_id,
+            "status": "estornado",
+            "mensagem": "Transação estornada no sistema legado",
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def consultar_transacao(self, transacao_id: str) -> Dict[str, Any]:
+        """Método legado para consulta"""
+        print(f"🔍 SISTEMA LEGADO: Consultando transação {transacao_id}")
+        
+        # Simulação de consulta
+        return {
+            "transacao_id": transacao_id,
+            "status": "completo",
+            "valor": 100.0,  # Valor simulado
+            "mensagem": "Consulta realizada no sistema legado",
+            "timestamp": datetime.now().isoformat()
+        }
+
+# Adaptee - Gateway de pagamento externo (simulação)
+class GatewayPagamentoExterno:
+    """Gateway de pagamento com interface diferente"""
+    
+    def criar_pagamento(self, amount: float, currency: str, description: str, 
+                       payment_method: str = "card") -> Dict[str, Any]:
+        """Método do gateway externo"""
+        print(f"🌐 GATEWAY EXTERNO: Criando pagamento")
+        print(f"   Amount: {amount} {currency}")
+        print(f"   Description: {description}")
+        print(f"   Method: {payment_method}")
+        
+        # Simulação de criação de pagamento
+        payment_id = f"EXT_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        
+        return {
+            "payment_id": payment_id,
+            "status": "created",
+            "approval_url": f"https://gateway.com/approve/{payment_id}",
+            "message": "Payment created successfully",
+            "created_at": datetime.now().isoformat()
+        }
+    
+    def executar_pagamento(self, payment_id: str, payer_id: str) -> Dict[str, Any]:
+        """Método do gateway externo para executar pagamento"""
+        print(f"⚡ GATEWAY EXTERNO: Executando pagamento {payment_id}")
+        print(f"   Payer ID: {payer_id}")
+        
+        return {
+            "payment_id": payment_id,
+            "status": "completed",
+            "transaction_id": f"TXN_{datetime.now().strftime('%H%M%S')}",
+            "message": "Payment completed successfully",
+            "completed_at": datetime.now().isoformat()
+        }
+    
+    def reembolsar_pagamento(self, payment_id: str, amount: float = None) -> Dict[str, Any]:
+        """Método do gateway externo para reembolso"""
+        print(f"💸 GATEWAY EXTERNO: Reembolsando pagamento {payment_id}")
+        if amount:
+            print(f"   Amount: {amount}")
+        
+        return {
+            "payment_id": payment_id,
+            "status": "refunded",
+            "refund_id": f"REF_{datetime.now().strftime('%H%M%S')}",
+            "message": "Payment refunded successfully",
+            "refunded_at": datetime.now().isoformat()
+        }
+    
+    def obter_detalhes_pagamento(self, payment_id: str) -> Dict[str, Any]:
+        """Método do gateway externo para obter detalhes"""
+        print(f"📋 GATEWAY EXTERNO: Obtendo detalhes do pagamento {payment_id}")
+        
+        # Simulação de detalhes
+        return {
+            "payment_id": payment_id,
+            "status": "completed",
+            "amount": 150.0,  # Valor simulado
+            "currency": "USD",
+            "message": "Payment details retrieved",
+            "retrieved_at": datetime.now().isoformat()
+        }
+
+# Adapter para o sistema legado
+class AdapterSistemaLegado(ProcessadorPagamentoModerno):
+    def __init__(self):
+        self.sistema_legado = SistemaPagamentoLegado()
+        self.mapa_transacoes = {}  # Mapeia IDs modernos para IDs legados
+    
+    def processar_pagamento(self, valor: float, moeda: str, descricao: str) -> Dict[str, Any]:
+        print(f"🔄 ADAPTER: Adaptando processamento para sistema legado")
+        print(f"   Valor: {valor} {moeda}")
+        print(f"   Descrição: {descrica o}")
+        
+        # Simulação de dados do cartão (em um sistema real, isso viria de forma segura)
+        numero_cartao = "4111111111111111"
+        data_validade = "12/25"
+        cvv = "123"
+        
+        # Adaptação: Converter chamada moderna para interface legada
+        # 1. Primeiro autorizar no sistema legado
+        resultado_autorizacao = self.sistema_legado.autorizar_cartao(
+            numero_cartao, valor, data_validade, cvv
+        )
+        
+        # 2. Depois capturar o valor
+        resultado_captura = self.sistema_legado.capturar_valor(
+            resultado_autorizacao["transacao_id"], valor
+        )
+        
+        # Criar ID moderno e mapear
+        id_moderno = f"MOD_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        self.mapa_transacoes[id_moderno] = resultado_autorizacao["transacao_id"]
+        
+        # Adaptar resposta para formato moderno
+        return {
+            "id_transacao": id_moderno,
+            "status": "processado",
+            "valor": valor,
+            "moeda": moeda,
+            "descricao": descricao,
+            "gateway": "sistema_legado",
+            "detalhes": {
+                "id_legado": resultado_autorizacao["transacao_id"],
+                "codigo_autorizacao": resultado_autorizacao["codigo_autorizacao"],
+                "mensagem_legado": resultado_captura["mensagem"]
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def estornar_pagamento(self, id_transacao: str) -> bool:
+        print(f"🔄 ADAPTER: Adaptando estorno para sistema legado")
+        print(f"   ID Transação: {id_transacao}")
+        
+        # Obter ID legado correspondente
+        id_legado = self.mapa_transacoes.get(id_transacao)
+        if not id_legado:
+            print(f"❌ Transação não encontrada: {id_transacao}")
+            return False
+        
+        # Adaptação: Converter estorno moderno para interface legada
+        resultado = self.sistema_legado.estornar_transacao(id_legado, "Solicitado pelo cliente")
+        
+        # Adaptar resposta
+        sucesso = resultado["status"] == "estornado"
+        if sucesso:
+            print(f"✅ Estorno adaptado com sucesso")
+        else:
+            print(f"❌ Falha no estorno adaptado")
+        
+        return sucesso
+    
+    def obter_status(self, id_transacao: str) -> Dict[str, Any]:
+        print(f"🔄 ADAPTER: Adaptando consulta de status para sistema legado")
+        print(f"   ID Transação: {id_transacao}")
+        
+        # Obter ID legado correspondente
+        id_legado = self.mapa_transacoes.get(id_transacao)
+        if not id_legado:
+            return {
+                "id_transacao": id_transacao,
+                "status": "nao_encontrado",
+                "mensagem": "Transação não encontrada",
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        # Adaptação: Converter consulta moderna para interface legada
+        resultado = self.sistema_legado.consultar_transacao(id_legado)
+        
+        # Adaptar resposta para formato moderno
+        status_adaptado = self._adaptar_status(resultado["status"])
+        
+        return {
+            "id_transacao": id_transacao,
+            "status": status_adaptado,
+            "valor": resultado["valor"],
+            "gateway": "sistema_legado",
+            "detalhes": {
+                "id_legado": id_legado,
+                "mensagem_legado": resultado["mensagem"]
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def _adaptar_status(self, status_legado: str) -> str:
+        """Adapta status do sistema legado para status moderno"""
+        mapeamento_status = {
+            "autorizado": "autorizado",
+            "capturado": "processado",
+            "completo": "concluido",
+            "estornado": "estornado"
+        }
+        return mapeamento_status.get(status_legado, "desconhecido")
+
+# Adapter para o gateway externo
+class AdapterGatewayExterno(ProcessadorPagamentoModerno):
+    def __init__(self):
+        self.gateway_externo = GatewayPagamentoExterno()
+        self.mapa_pagamentos = {}  # Mapeia IDs modernos para IDs do gateway
+    
+    def processar_pagamento(self, valor: float, moeda: str, descricao: str) -> Dict[str, Any]:
+        print(f"🔄 ADAPTER: Adaptando processamento para gateway externo")
+        print(f"   Valor: {valor} {moeda}")
+        print(f"   Descrição: {descricao}")
+        
+        # Adaptação: Converter chamada moderna para interface do gateway
+        # 1. Primeiro criar pagamento no gateway
+        resultado_criacao = self.gateway_externo.criar_pagamento(valor, moeda, descricao)
+        
+        # 2. Simular execução do pagamento (em sistema real, haveria redirecionamento)
+        payer_id = f"PAYER_{datetime.now().strftime('%H%M%S')}"
+        resultado_execucao = self.gateway_externo.executar_pagamento(
+            resultado_criacao["payment_id"], payer_id
+        )
+        
+        # Criar ID moderno e mapear
+        id_moderno = f"MOD_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        self.mapa_pagamentos[id_moderno] = resultado_criacao["payment_id"]
+        
+        # Adaptar resposta para formato moderno
+        return {
+            "id_transacao": id_moderno,
+            "status": "processado",
+            "valor": valor,
+            "moeda": moeda,
+            "descricao": descricao,
+            "gateway": "gateway_externo",
+            "detalhes": {
+                "payment_id": resultado_criacao["payment_id"],
+                "transaction_id": resultado_execucao["transaction_id"],
+                "approval_url": resultado_criacao["approval_url"]
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def estornar_pagamento(self, id_transacao: str) -> bool:
+        print(f"🔄 ADAPTER: Adaptando estorno para gateway externo")
+        print(f"   ID Transação: {id_transacao}")
+        
+        # Obter ID do gateway correspondente
+        payment_id = self.mapa_pagamentos.get(id_transacao)
+        if not payment_id:
+            print(f"❌ Transação não encontrada: {id_transacao}")
+            return False
+        
+        # Adaptação: Converter estorno moderno para interface do gateway
+        resultado = self.gateway_externo.reembolsar_pagamento(payment_id)
+        
+        # Adaptar resposta
+        sucesso = resultado["status"] == "refunded"
+        if sucesso:
+            print(f"✅ Estorno adaptado com sucesso")
+        else:
+            print(f"❌ Falha no estorno adaptado")
+        
+        return sucesso
+    
+    def obter_status(self, id_transacao: str) -> Dict[str, Any]:
+        print(f"🔄 ADAPTER: Adaptando consulta de status para gateway externo")
+        print(f"   ID Transação: {id_transacao}")
+        
+        # Obter ID do gateway correspondente
+        payment_id = self.mapa_pagamentos.get(id_transacao)
+        if not payment_id:
+            return {
+                "id_transacao": id_transacao,
+                "status": "nao_encontrado",
+                "mensagem": "Transação não encontrada",
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        # Adaptação: Converter consulta moderna para interface do gateway
+        resultado = self.gateway_externo.obter_detalhes_pagamento(payment_id)
+        
+        # Adaptar resposta para formato moderno
+        status_adaptado = self._adaptar_status(resultado["status"])
+        
+        return {
+            "id_transacao": id_transacao,
+            "status": status_adaptado,
+            "valor": resultado["amount"],
+            "moeda": resultado["currency"],
+            "gateway": "gateway_externo",
+            "detalhes": {
+                "payment_id": payment_id,
+                "mensagem_gateway": resultado["message"]
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def _adaptar_status(self, status_gateway: str) -> str:
+        """Adapta status do gateway para status moderno"""
+        mapeamento_status = {
+            "created": "criado",
+            "completed": "concluido",
+            "refunded": "estornado"
+        }
+        return mapeamento_status.get(status_gateway, "desconhecido")
+
+# Sistema de E-commerce Moderno (Client)
+class EcommerceModerno:
+    def __init__(self):
+        self.processadores = {}
+        self.registrar_processadores()
+    
+    def registrar_processadores(self):
+        """Registra os adapters disponíveis"""
+        self.processadores["legado"] = AdapterSistemaLegado()
+        self.processadores["gateway"] = AdapterGatewayExterno()
+    
+    def processar_pedido(self, pedido: Dict[str, Any], gateway: str = "gateway") -> Dict[str, Any]:
+        """Processa um pedido usando o gateway especificado"""
+        print(f"\n🛒 PROCESSANDO PEDIDO DE E-COMMERCE")
+        print("=" .repeat(40))
+        print(f"Pedido ID: {pedido['id']}")
+        print(f"Cliente: {pedido['cliente']}")
+        print(f"Gateway: {gateway}")
+        
+        processador = self.processadores.get(gateway)
+        if not processador:
+            return {
+                "sucesso": False,
+                "erro": f"Gateway não suportado: {gateway}"
+            }
+        
+        try:
+            # Usa a interface uniforme do processador
+            resultado = processador.processar_pagamento(
+                pedido["valor"],
+                pedido["moeda"],
+                f"Pedido {pedido['id']} - {pedido['cliente']}"
+            )
+            
+            resultado["sucesso"] = True
+            resultado["gateway_utilizado"] = gateway
+            return resultado
+            
+        except Exception as e:
+            return {
+                "sucesso": False,
+                "erro": str(e),
+                "gateway_utilizado": gateway
+            }
+    
+    def estornar_pedido(self, id_transacao: str, gateway: str) -> Dict[str, Any]:
+        """Estorna um pedido"""
+        print(f"\n🔄 ESTORNANDO PEDIDO")
+        print("=" .repeat(25))
+        print(f"Transação: {id_transacao}")
+        print(f"Gateway: {gateway}")
+        
+        processador = self.processadores.get(gateway)
+        if not processador:
+            return {
+                "sucesso": False,
+                "erro": f"Gateway não suportado: {gateway}"
+            }
+        
+        try:
+            sucesso = processador.estornar_pagamento(id_transacao)
+            return {
+                "sucesso": sucesso,
+                "id_transacao": id_transacao,
+                "gateway": gateway
+            }
+            
+        except Exception as e:
+            return {
+                "sucesso": False,
+                "erro": str(e),
+                "gateway": gateway
+            }
+    
+    def consultar_status(self, id_transacao: str, gateway: str) -> Dict[str, Any]:
+        """Consulta status de uma transação"""
+        processador = self.processadores.get(gateway)
+        if not processador:
+            return {
+                "sucesso": False,
+                "erro": f"Gateway não suportado: {gateway}"
+            }
+        
+        try:
+            status = processador.obter_status(id_transacao)
+            status["sucesso"] = True
+            return status
+            
+        except Exception as e:
+            return {
+                "sucesso": False,
+                "erro": str(e)
+            }
+
+# Demonstração do sistema
+def demonstrar_sistema_pagamentos():
+    """Demonstra o sistema de pagamentos com adapters"""
+    print("💳 SISTEMA DE PAGAMENTOS - PADRÃO ADAPTER")
+    print("=" .repeat(45))
+    print("Integrando sistemas legados e gateways externos")
+    print("com uma interface moderna e uniforme\n")
+    
+    # Criar sistema de e-commerce
+    ecommerce = EcommerceModerno()
+    
+    # Pedidos de exemplo
+    pedidos = [
+        {
+            "id": "PED001",
+            "cliente": "João Silva",
+            "valor": 150.50,
+            "moeda": "BRL",
+            "produtos": ["Camiseta Avril Lavigne", "CD Let Go"]
+        },
+        {
+            "id": "PED002", 
+            "cliente": "Maria Santos",
+            "valor": 89.99,
+            "moeda": "BRL",
+            "produtos": ["Poster", "Adesivos"]
+        },
+        {
+            "id": "PED003",
+            "cliente": "Carlos Lima",
+            "valor": 200.00,
+            "moeda": "USD",
+            "produtos": ["Box Colecionador", "Vinil"]
+        }
+    ]
+    
+    # Processar pedidos com diferentes gateways
+    resultados = []
+    
+    print("🎯 DEMONSTRAÇÃO DO PADRÃO ADAPTER")
+    print("=" .repeat(35))
+    
+    for i, pedido in enumerate(pedidos):
+        gateway = "legado" if i % 2 == 0 else "gateway"
+        print(f"\n📦 PROCESSANDO PEDIDO {i+1} COM GATEWAY: {gateway.upper()}")
+        print("-" .repeat(50))
+        
+        resultado = ecommerce.processar_pedido(pedido, gateway)
+        resultados.append(resultado)
+        
+        if resultado["sucesso"]:
+            print(f"✅ Pedido processado com sucesso!")
+            print(f"   ID Transação: {resultado['id_transacao']}")
+            print(f"   Status: {resultado['status']}")
+            print(f"   Gateway: {resultado['gateway_utilizado']}")
+        else:
+            print(f"❌ Falha no processamento: {resultado['erro']}")
+    
+    # Demonstrar estorno
+    print("\n🔄 DEMONSTRANDO ESTORNO")
+    print("=" .repeat(25))
+    
+    for resultado in resultados[:1]:  # Estornar apenas o primeiro
+        if resultado["sucesso"]:
+            estorno = ecommerce.estornar_pedido(
+                resultado["id_transacao"],
+                resultado["gateway_utilizado"]
+            )
+            
+            if estorno["sucesso"]:
+                print(f"✅ Estorno realizado com sucesso!")
+            else:
+                print(f"❌ Falha no estorno: {estorno['erro']}")
+    
+    # Demonstrar consulta de status
+    print("\n🔍 CONSULTANDO STATUS DAS TRANSAÇÕES")
+    print("=" .repeat(40))
+    
+    for resultado in resultados:
+        if resultado["sucesso"]:
+            status = ecommerce.consultar_status(
+                resultado["id_transacao"],
+                resultado["gateway_utilizado"]
+            )
+            
+            if status["sucesso"]:
+                print(f"📋 Transação: {status['id_transacao']}")
+                print(f"   Status: {status['status']}")
+                print(f"   Valor: {status.get('valor', 'N/A')}")
+                print(f"   Gateway: {status.get('gateway', 'N/A')}")
+            else:
+                print(f"❌ Erro na consulta: {status['erro']}")
+    
+    print("\n💫 Sistema de pagamentos integrado com sucesso!")
+    print("🔄 Diferentes gateways, mesma interface!")
+
+if __name__ == "__main__":
+    demonstrar_sistema_pagamentos()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/estruturais/adapter/ficticio.png" alt="Avril Lavigne Adapter UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Adapter no nosso exemplo da evolução musical de Avril Lavigne:</p>
+            <pre class="uml-code">
+@startuml
+interface MusicaStreaming {
+    + getTitulo(): string
+    + getArtista(): string
+    + reproduzirStreaming(): void
+    + promoverInstagram(): void
+    + getDuracao(): number
+    + getAnoLancamento(): number
+    + getGenero(): string
+}
+
+class MusicaEra2002 {
+    - titulo: string
+    - artista: string
+    - duracao: number
+    - genero: string
+    - letra: string
+    + tocarNoCD(): void
+    + promoverNaMTV(): void
+    + comprarCD(): string
+    + getTituloOriginal(): string
+    + getArtistaOriginal(): string
+    + getDuracaoOriginal(): number
+    + getGeneroOriginal(): string
+    + getLetra(): string
+}
+
+class MusicaEra2007 {
+    - titulo: string
+    - artista: string
+    - duracao: number
+    - genero: string
+    - bpm: number
+    + tocarNoMP3(): void
+    + promoverNoMyspace(): void
+    + comprarITunes(): string
+    + getTituloOriginal(): string
+    + getArtistaOriginal(): string
+    + getDuracaoOriginal(): number
+    + getGeneroOriginal(): string
+    + getBPM(): number
+}
+
+class MusicaEra2013 {
+    - titulo: string
+    - artista: string
+    - duracao: number
+    - genero: string
+    - colaboracoes: string[]
+    + tocarNoYouTube(): void
+    + promoverNoTwitter(): void
+    + getTituloOriginal(): string
+    + getArtistaOriginal(): string
+    + getDuracaoOriginal(): number
+    + getGeneroOriginal(): string
+    + getColaboracoes(): string[]
+}
+
+class AdapterEra2002 {
+    - musicaEra2002: MusicaEra2002
+    + getTitulo(): string
+    + getArtista(): string
+    + reproduzirStreaming(): void
+    + promoverInstagram(): void
+    + getDuracao(): number
+    + getAnoLancamento(): number
+    + getGenero(): string
+    + getLetraOriginal(): string
+}
+
+class AdapterEra2007 {
+    - musicaEra2007: MusicaEra2007
+    + getTitulo(): string
+    + getArtista(): string
+    + reproduzirStreaming(): void
+    + promoverInstagram(): void
+    + getDuracao(): number
+    + getAnoLancamento(): number
+    + getGenero(): string
+    + getBPMOriginal(): number
+}
+
+class AdapterEra2013 {
+    - musicaEra2013: MusicaEra2013
+    + getTitulo(): string
+    + getArtista(): string
+    + reproduzirStreaming(): void
+    + promoverInstagram(): void
+    + getDuracao(): number
+    + getAnoLancamento(): number
+    + getGenero(): string
+    + getColaboracoesOriginais(): string[]
+}
+
+class SpotifyModerno {
+    - playlist: MusicaStreaming[]
+    + adicionarMusica(musica: MusicaStreaming): void
+    + reproduzirPlaylist(): void
+    + promoverPlaylist(): void
+}
+
+MusicaStreaming <|.. AdapterEra2002
+MusicaStreaming <|.. AdapterEra2007
+MusicaStreaming <|.. AdapterEra2013
+
+AdapterEra2002 --> MusicaEra2002
+AdapterEra2007 --> MusicaEra2007
+AdapterEra2013 --> MusicaEra2013
+
+SpotifyModerno --> MusicaStreaming
+
+note right of MusicaEra2002
+    Adaptee - Interface legada
+    da era 2002 com métodos
+    específicos da época
+end note
+
+note right of AdapterEra2002
+    Adapter - Traduz a interface
+    legada para a interface
+    moderna de streaming
+end note
+
+note right of SpotifyModerno
+    Client - Usa apenas a interface
+    Target (MusicaStreaming) sem
+    conhecer as implementações
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como diferentes eras musicais são adaptadas para uma interface moderna uniforme.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/estruturais/adapter/pratico.png" alt="Payment System Adapter UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Adapter no exemplo prático do sistema de pagamentos:</p>
+            <pre class="uml-code">
+@startuml
+interface ProcessadorPagamentoModerno {
+    + processar_pagamento(valor: float, moeda: str, descricao: str): Dict[str, Any]
+    + estornar_pagamento(id_transacao: str): bool
+    + obter_status(id_transacao: str): Dict[str, Any]
+}
+
+class SistemaPagamentoLegado {
+    + autorizar_cartao(numero_cartao: str, valor: float, data_validade: str, cvv: str): Dict[str, Any]
+    + capturar_valor(transacao_id: str, valor: float): Dict[str, Any]
+    + estornar_transacao(transacao_id: str, motivo: str): Dict[str, Any]
+    + consultar_transacao(transacao_id: str): Dict[str, Any]
+}
+
+class GatewayPagamentoExterno {
+    + criar_pagamento(amount: float, currency: str, description: str, payment_method: str): Dict[str, Any]
+    + executar_pagamento(payment_id: str, payer_id: str): Dict[str, Any]
+    + reembolsar_pagamento(payment_id: str, amount: float): Dict[str, Any]
+    + obter_detalhes_pagamento(payment_id: str): Dict[str, Any]
+}
+
+class AdapterSistemaLegado {
+    - sistema_legado: SistemaPagamentoLegado
+    - mapa_transacoes: Dict[str, str]
+    + processar_pagamento(valor: float, moeda: str, descricao: str): Dict[str, Any]
+    + estornar_pagamento(id_transacao: str): bool
+    + obter_status(id_transacao: str): Dict[str, Any]
+    - _adaptar_status(status_legado: str): str
+}
+
+class AdapterGatewayExterno {
+    - gateway_externo: GatewayPagamentoExterno
+    - mapa_pagamentos: Dict[str, str]
+    + processar_pagamento(valor: float, moeda: str, descricao: str): Dict[str, Any]
+    + estornar_pagamento(id_transacao: str): bool
+    + obter_status(id_transacao: str): Dict[str, Any]
+    - _adaptar_status(status_gateway: str): str
+}
+
+class EcommerceModerno {
+    - processadores: Dict[str, ProcessadorPagamentoModerno]
+    + registrar_processadores(): void
+    + processar_pedido(pedido: Dict[str, Any], gateway: str): Dict[str, Any]
+    + estornar_pedido(id_transacao: str, gateway: str): Dict[str, Any]
+    + consultar_status(id_transacao: str, gateway: str): Dict[str, Any]
+}
+
+ProcessadorPagamentoModerno <|.. AdapterSistemaLegado
+ProcessadorPagamentoModerno <|.. AdapterGatewayExterno
+
+AdapterSistemaLegado --> SistemaPagamentoLegado
+AdapterGatewayExterno --> GatewayPagamentoExterno
+
+EcommerceModerno --> ProcessadorPagamentoModerno
+
+note right of SistemaPagamentoLegado
+    Adaptee - Sistema legado com
+    interface incompatível e
+    métodos específicos
+end note
+
+note right of AdapterSistemaLegado
+    Adapter - Traduz interface
+    legada para interface moderna
+    de processamento de pagamentos
+end note
+
+note right of EcommerceModerno
+    Client - Usa apenas a interface
+    Target sem conhecer os sistemas
+    legados ou gateways externos
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite integrar diferentes sistemas de pagamento através de uma interface uniforme.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://i.pinimg.com/736x/17/ef/31/17ef310ef8e9a1444ab622eecc7e1062.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Adapter oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Reutilização de Código:</strong> Permite usar classes existentes com interfaces incompatíveis</li>
+                <li><strong>Flexibilidade:</strong> Facilita a integração de novos componentes sem modificar código existente</li>
+                <li><strong>Princípio Aberto/Fechado:</strong> Pode adicionar novos adapters sem alterar o cliente</li>
+                <li><strong>Desacoplamento:</strong> Separa o cliente das implementações específicas dos adaptees</li>
+                <li><strong>Manutenibilidade:</strong> Facilita a manutenção de sistemas legados</li>
+                <li><strong>Testabilidade:</strong> Permite testar componentes isoladamente através de interfaces mock</li>
+                <li><strong>Interoperabilidade:</strong> Conecta sistemas desenvolvidos independentemente</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://i.ytimg.com/vi/ExQb4yMFmYc/maxresdefault.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Adapter também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Introduz classes adicionais na arquitetura</li>
+                <li><strong>Overhead:</strong> Pode adicionar latência devido às conversões</li>
+                <li><strong>Limitações:</strong> Nem sempre é possível adaptar interfaces radicalmente diferentes</li>
+                <li><strong>Manutenção:</strong> Requer manutenção de mapeamentos e conversões</li>
+                <li><strong>Performance:</strong> Conversões podem impactar performance em sistemas de alta carga</li>
+                <li><strong>Debug:</strong> Pode dificultar o rastreamento de problemas através das camadas</li>
+                <li><strong>Over-engineering:</strong> Pode ser desnecessário para integrações simples</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://cdn.meadd.com/photos/full/70566635.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Adapter é uma solução elegante para integrar sistemas com interfaces incompatíveis, permitindo que componentes desenvolvidos independentemente trabalhem juntos através de uma interface comum.</p>
+            <p>Na nossa analogia de Avril Lavigne, o Adapter funciona como a <strong>evolução e adaptação musical</strong> - permitindo que músicas de diferentes eras (2002, 2007, 2013) sejam apresentadas de forma coesa nas plataformas modernas, mantendo a essência original enquanto se conectam com o público contemporâneo.</p>
+            <p>Assim como Avril Lavigne adaptou seu estilo ao longo dos anos sem perder sua identidade artística, o padrão Adapter nos permite integrar sistemas legados e modernos, criando pontes entre tecnologias diferentes enquanto preserva o investimento em código existente e permite a evolução contínua dos sistemas.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/adapter"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Adapter</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-adapter/16766"
+                        target="_blank">DevMedia - Padrão de Projeto Adapter</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/25/mao-na-massa-adapter/"
+                        target="_blank">Mão na Massa - Padrão Adapter</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Adapter" target="_blank">Wikipédia - Adapter (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/adapter-pattern/" target="_blank">GeeksforGeeks
+                        - Adapter Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/adapter" target="_blank">SourceMaking
+                        - Adapter Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- html2pdf para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../assets/js/mainorg.js"></script>
+</body>
+
+</html>
