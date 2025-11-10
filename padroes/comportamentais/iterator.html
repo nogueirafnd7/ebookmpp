@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Iterator - Sia e Sua Arte Anônima</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Iterator?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Iterator, Aggregate</a></li>
+            <li><a href="#page5">Exemplo Fictício (Sia e Suas Coleções)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">ITERATOR</h1>
+            <p class="cover-subtitle">Sia - Navegando por Coleções sem Revelar a Estrutura Interna</p>
+
+            <img src="https://static.bonniernews.se/images/66/45/6645600b92e844a29f0d8ccc439fe9ac/annan/1920@90.jpg"
+                alt="Capa Iterator - Sia" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Iterator?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://veja.abril.com.br/wp-content/uploads/2017/03/cantora-sia-20160213-002.jpg?crop=1&resize=1212,909"
+                    alt="Iterator Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Iterator é um <strong>padrão de projeto comportamental</strong> que fornece uma maneira de acessar os elementos de uma coleção agregada sequencialmente sem expor sua representação subjacente [1].</p>
+            <p>É como a <strong>Sia e sua característica de não mostrar o rosto</strong> - você pode apreciar sua música e arte (iterar pelos elementos) sem precisar conhecer os detalhes pessoais por trás da artista (estrutura interna da coleção). A música é entregue de forma consistente, independentemente de como ela é produzida ou armazenada.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://assets.papelpop.com/wp-content/uploads/2021/02/sia-tonya-brewer-divulga%C3%A7%C3%A3o.jpg"
+                    alt="Problema do Acesso" class="cover-image">
+            </div>
+            <p>O principal problema que o Iterator resolve é a <strong>necessidade de percorrer diferentes estruturas de dados de forma uniforme</strong>, sem acoplar o código cliente aos detalhes internos de implementação [2].</p>
+            <p>Sem este padrão, para acessar as músicas da Sia em diferentes plataformas (Spotify, Apple Music, YouTube), você precisaria conhecer a estrutura específica de cada uma, tornando o código complexo e difícil de manter.</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/comportamentais/iterator/generico.png"
+                    alt="Iterator UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Iterator:</p>
+            <pre class="uml-code">
+@startuml
+class Client {
+    + processCollection(): void
+}
+
+interface Aggregate {
+    + createIterator(): Iterator
+}
+
+interface Iterator {
+    + first(): void
+    + next(): void
+    + isDone(): boolean
+    + currentItem(): any
+}
+
+class ConcreteAggregate {
+    - items: any[]
+    + createIterator(): Iterator
+    + count(): int
+    + getItem(index: int): any
+}
+
+class ConcreteIterator {
+    - aggregate: ConcreteAggregate
+    - current: int
+    + ConcreteIterator(aggregate: ConcreteAggregate)
+    + first(): void
+    + next(): void
+    + isDone(): boolean
+    + currentItem(): any
+}
+
+Client --> Aggregate
+Client --> Iterator
+Aggregate <|.. ConcreteAggregate
+Iterator <|.. ConcreteIterator
+ConcreteAggregate --> ConcreteIterator
+ConcreteIterator --> ConcreteAggregate
+
+note right of Aggregate
+    Interface que define o método
+    para criar iteradores para
+    a coleção
+end note
+
+note right of Iterator
+    Interface que define os métodos
+    para percorrer a coleção
+    sequencialmente
+end note
+
+note right of ConcreteIterator
+    Implementação concreta que
+    mantém o estado do percurso
+    e acessa os elementos
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Iterator:</strong> Interface comum para todos os iteradores</li>
+                <li><strong>ConcreteIterator:</strong> Implementação específica do algoritmo de iteração</li>
+                <li><strong>Aggregate:</strong> Interface para coleções que podem criar iteradores</li>
+                <li><strong>ConcreteAggregate:</strong> Coleção concreta que implementa createIterator()</li>
+                <li><strong>Client:</strong> Usa o iterator para percorrer a coleção sem conhecer sua estrutura</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Iterator, Aggregate</h1>
+            <div class="img-placeholder-5">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240321160604/Iterator2.jpg"
+                    alt="Conceitos Iterator" class="cover-image">
+            </div>
+            
+            <h3>Iterator (Iterador)</h3>
+            <p><strong>Características:</strong> Interface que define operações para percorrer coleções</p>
+            <p><strong>Exemplo Sia:</strong></p>
+            <ul>
+                <li>PlaylistIterator - Percorre músicas em sequência</li>
+                <li>AlbumIterator - Percorre álbuns cronologicamente</li>
+                <li>VideoIterator - Percorre vídeos musicais</li>
+            </ul>
+
+            <h3>ConcreteIterator (Iterador Concreto)</h3>
+            <p><strong>Características:</strong> Implementação específica do algoritmo de iteração</p>
+            <p><strong>Exemplo Sia:</strong></p>
+            <ul>
+                <li>SpotifyPlaylistIterator</li>
+                <li>AppleMusicAlbumIterator</li>
+                <li>YouTubeVideoIterator</li>
+            </ul>
+
+            <h3>Aggregate (Agregado)</h3>
+            <p><strong>Características:</strong> Interface para coleções que podem criar iteradores</p>
+            <p><strong>Exemplo Sia:</strong></p>
+            <ul>
+                <li>Playlist - Coleção de músicas</li>
+                <li>Discografia - Coleção de álbuns</li>
+                <li>VideoCollection - Coleção de vídeos</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> O Iterator permite que você percorra diferentes tipos de coleções usando a mesma interface - como ouvir Sia em diferentes plataformas sem se preocupar com os detalhes técnicos.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (Sia e Suas Coleções)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://fly.metroimg.com/upload/q_85,w_700/https://uploads.metroimg.com/wp-content/uploads/2022/01/06120053/sia-cantora.jpg"
+                    alt="Sia Coleções" class="cover-image">
+            </div>
+            <p>Imagine as <strong>diferentes coleções da Sia</strong> usando o padrão Iterator para fornecer acesso uniforme:</p>
+
+            <h3>Coleções Musicais (Aggregates):</h3>
+            <ul>
+                <li><strong>Discografia Completa:</strong> Todos os álbuns de estúdio</li>
+                <li><strong>Playlist de Sucessos:</strong> Músicas mais populares</li>
+                <li><strong>Vídeos Musicais:</strong> Coleção de clipes</li>
+                <li><strong>Colaborações:</strong> Músicas com outros artistas</li>
+            </ul>
+
+            <h3>Iteradores Especializados (Iterators):</h3>
+            <ul>
+                <li><strong>Iterador Cronológico:</strong> Percorre por data de lançamento</li>
+                <li><strong>Iterador por Popularidade:</strong> Ordena por número de streams</li>
+                <li><strong>Iterador Aleatório:</strong> Ordem randômica (shuffle)</li>
+                <li><strong>Iterador por Gênero:</strong> Filtra por estilo musical</li>
+            </ul>
+
+            <p>O Iterator permite que os fãs acessem a música da Sia de forma consistente, independentemente de como as coleções estão organizadas internamente - assim como apreciam sua arte sem ver seu rosto.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://rollingstone.com.br/wp-content/uploads/legacy/2015/img-1033855-sia.jpg"
+                    alt="Problema sem Iterator" class="cover-image">
+            </div>
+            <p>Sem o Padrão Iterator, o código cliente fica acoplado às estruturas de dados específicas:</p>
+            <pre><code>
+// PROBLEMA: Código acoplado às estruturas internas!
+class SpotifyPlaylist {
+    private musicas: string[];
+    private indiceAtual: number;
+
+    constructor() {
+        this.musicas = ["Chandelier", "Elastic Heart", "Cheap Thrills"];
+        this.indiceAtual = 0;
+    }
+
+    // Estrutura interna exposta
+    getMusicas(): string[] {
+        return this.musicas;
+    }
+
+    getIndiceAtual(): number {
+        return this.indiceAtual;
+    }
+}
+
+class AppleMusicAlbum {
+    private faixas: Map<number, string>;
+    private faixaAtual: number;
+
+    constructor() {
+        this.faixas = new Map([
+            [1, "Bird Set Free"],
+            [2, "Alive"],
+            [3, "One Million Bullets"]
+        ]);
+        this.faixaAtual = 1;
+    }
+
+    // Estrutura diferente exposta
+    getFaixas(): Map<number, string> {
+        return this.faixas;
+    }
+
+    getFaixaAtual(): number {
+        return this.faixaAtual;
+    }
+}
+
+class YouTubeVideos {
+    private videos: Set<string>;
+    private videoAtual: string;
+
+    constructor() {
+        this.videos = new Set([
+            "Chandelier Official Video",
+            "Elastic Heart Lyric Video",
+            "The Greatest Official Video"
+        ]);
+        this.videoAtual = "";
+    }
+
+    // Estrutura ainda diferente
+    getVideos(): Set<string> {
+        return this.videos;
+    }
+
+    getVideoAtual(): string {
+        return this.videoAtual;
+    }
+}
+
+// CLIENTE - Código complexo e acoplado
+class ReprodutorMusical {
+    reproduzirColecao(colecao: any): void {
+        console.log("🎵 INICIANDO REPRODUÇÃO");
+        console.log("=" .repeat(40));
+
+        // PROBLEMA: Precisa conhecer a estrutura de cada coleção
+        if (colecao instanceof SpotifyPlaylist) {
+            this.reproduzirSpotify(colecao);
+        } else if (colecao instanceof AppleMusicAlbum) {
+            this.reproduzirAppleMusic(colecao);
+        } else if (colecao instanceof YouTubeVideos) {
+            this.reproduzirYouTube(colecao);
+        } else {
+            console.log("❌ Tipo de coleção não suportado");
+        }
+    }
+
+    // Implementação específica para Spotify
+    private reproduzirSpotify(playlist: SpotifyPlaylist): void {
+        const musicas = playlist.getMusicas();
+        const indiceAtual = playlist.getIndiceAtual();
+        
+        console.log("🎧 Reproduzindo Spotify Playlist:");
+        for (let i = indiceAtual; i < musicas.length; i++) {
+            console.log(`   ▶️  ${i + 1}. ${musicas[i]}`);
+        }
+    }
+
+    // Implementação específica para Apple Music
+    private reproduzirAppleMusic(album: AppleMusicAlbum): void {
+        const faixas = album.getFaixas();
+        const faixaAtual = album.getFaixaAtual();
+        
+        console.log("🍎 Reproduzindo Apple Music Album:");
+        for (let i = faixaAtual; i <= faixas.size; i++) {
+            const faixa = faixas.get(i);
+            if (faixa) {
+                console.log(`   ▶️  Faixa ${i}: ${faixa}`);
+            }
+        }
+    }
+
+    // Implementação específica para YouTube
+    private reproduzirYouTube(videos: YouTubeVideos): void {
+        const videoSet = videos.getVideos();
+        
+        console.log("📺 Reproduzindo YouTube Videos:");
+        let index = 1;
+        for (const video of videoSet) {
+            console.log(`   ▶️  ${index}. ${video}`);
+            index++;
+        }
+    }
+}
+
+// PROBLEMAS IDENTIFICADOS:
+// 1. ALTO ACOPLAMENTO: Cliente conhece estruturas internas
+// 2. VIOLAÇÃO OCP: Novo tipo de coleção exige modificar o cliente
+// 3. CÓDIGO DUPLICADO: Lógica de iteração repetida
+// 4. COMPLEXIDADE: Múltiplas implementações para mesma funcionalidade
+// 5. DIFÍCIL MANUTENÇÃO: Mudanças nas estruturas afetam o cliente
+// 6. BAIXA REUSABILIDADE: Código específico para cada coleção
+
+// EXEMPLO DE USO PROBLEMÁTICO:
+console.log("❌ SISTEMA SEM ITERATOR PATTERN");
+console.log("=" .repeat(50));
+
+const reprodutor = new ReprodutorMusical();
+
+const spotifyPlaylist = new SpotifyPlaylist();
+const appleMusicAlbum = new AppleMusicAlbum();
+const youtubeVideos = new YouTubeVideos();
+
+console.log("\n1. Spotify Playlist:");
+reprodutor.reproduzirColecao(spotifyPlaylist);
+
+console.log("\n2. Apple Music Album:");
+reprodutor.reproduzirColecao(appleMusicAlbum);
+
+console.log("\n3. YouTube Videos:");
+reprodutor.reproduzirColecao(youtubeVideos);
+
+console.log("\n📊 RESUMO DOS PROBLEMAS:");
+console.log("   • 3 estruturas diferentes → 3 implementações diferentes");
+console.log("   • Cliente conhece detalhes internos de cada coleção");
+console.log("   • Adicionar nova plataforma exige modificar o reprodutor");
+console.log("   • Código difícil de manter e estender");
+            </code></pre>
+            <p>Alto acoplamento e código duplicado tornam o sistema frágil e difícil de evoluir!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://www.billboard.com/wp-content/uploads/media/Sia-Brooklyn-Oct-2016-billboard-a-1548.jpg"
+                    alt="Iterator Aplicado" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Iterator, desacoplamos o código cliente das estruturas de dados:</p>
+            <pre><code>
+// ITERATOR INTERFACE
+interface MusicaIterator {
+    first(): void;
+    next(): void;
+    isDone(): boolean;
+    currentItem(): string;
+    currentPosition(): number;
+}
+
+// AGGREGATE INTERFACE
+interface ColecaoMusical {
+    createIterator(): MusicaIterator;
+    getNome(): string;
+    getTamanho(): number;
+}
+
+// CONCRETE AGGREGATES - Diferentes coleções da Sia
+
+class SpotifyPlaylist implements ColecaoMusical {
+    private nome: string;
+    private musicas: string[];
+    private artista: string;
+
+    constructor() {
+        this.nome = "Sia - Greatest Hits";
+        this.artista = "Sia";
+        this.musicas = [
+            "Chandelier",
+            "Elastic Heart", 
+            "Cheap Thrills",
+            "The Greatest",
+            "Unstoppable",
+            "Bird Set Free",
+            "Alive",
+            "Snowman",
+            "Santa's Coming For Us",
+            "Snowflake"
+        ];
+    }
+
+    createIterator(): MusicaIterator {
+        return new PlaylistSequencialIterator(this);
+    }
+
+    createShuffleIterator(): MusicaIterator {
+        return new PlaylistShuffleIterator(this);
+    }
+
+    getNome(): string {
+        return this.nome;
+    }
+
+    getTamanho(): number {
+        return this.musicas.length;
+    }
+
+    getMusica(indice: number): string {
+        if (indice >= 0 && indice < this.musicas.length) {
+            return this.musicas[indice];
+        }
+        throw new Error("Índice fora dos limites");
+    }
+
+    getArtista(): string {
+        return this.artista;
+    }
+}
+
+class AppleMusicAlbum implements ColecaoMusical {
+    private nome: string;
+    private faixas: Map<number, string>;
+    private ano: number;
+    private artista: string;
+
+    constructor() {
+        this.nome = "This Is Acting";
+        this.artista = "Sia";
+        this.ano = 2016;
+        this.faixas = new Map([
+            [1, "Bird Set Free"],
+            [2, "Alive"],
+            [3, "One Million Bullets"],
+            [4, "Move Your Body"],
+            [5, "Unstoppable"],
+            [6, "Cheap Thrills"],
+            [7, "Reaper"],
+            [8, "House On Fire"],
+            [9, "Footprints"],
+            [10, "Sweet Design"],
+            [11, "Broken Glass"],
+            [12, "Space Between"]
+        ]);
+    }
+
+    createIterator(): MusicaIterator {
+        return new AlbumSequencialIterator(this);
+    }
+
+    getNome(): string {
+        return `${this.nome} (${this.ano})`;
+    }
+
+    getTamanho(): number {
+        return this.faixas.size;
+    }
+
+    getFaixa(numero: number): string | undefined {
+        return this.faixas.get(numero);
+    }
+
+    getFaixas(): Map<number, string> {
+        return new Map(this.faixas);
+    }
+
+    getArtista(): string {
+        return this.artista;
+    }
+
+    getAno(): number {
+        return this.ano;
+    }
+}
+
+class YouTubeVideos implements ColecaoMusical {
+    private nome: string;
+    private videos: Set<string>;
+    private artista: string;
+    private visualizacoes: Map<string, number>;
+
+    constructor() {
+        this.nome = "Sia - Official Videos";
+        this.artista = "Sia";
+        this.videos = new Set([
+            "Chandelier - Official Video",
+            "Elastic Heart - Official Video",
+            "Big Girls Cry - Official Video",
+            "Alive - Official Video",
+            "The Greatest - Official Video",
+            "Cheap Thrills - Official Video",
+            "Never Give Up - Official Video",
+            "Snowman - Lyric Video",
+            "Saved My Life - Official Video"
+        ]);
+        
+        this.visualizacoes = new Map([
+            ["Chandelier - Official Video", 2240000000],
+            ["Elastic Heart - Official Video", 876000000],
+            ["The Greatest - Official Video", 654000000],
+            ["Cheap Thrills - Official Video", 543000000],
+            ["Alive - Official Video", 234000000]
+        ]);
+    }
+
+    createIterator(): MusicaIterator {
+        return new VideoSequencialIterator(this);
+    }
+
+    createPopularidadeIterator(): MusicaIterator {
+        return new VideoPopularidadeIterator(this);
+    }
+
+    getNome(): string {
+        return this.nome;
+    }
+
+    getTamanho(): number {
+        return this.videos.size;
+    }
+
+    getVideos(): Set<string> {
+        return new Set(this.videos);
+    }
+
+    getVisualizacoes(video: string): number {
+        return this.visualizacoes.get(video) || 0;
+    }
+
+    getArtista(): string {
+        return this.artista;
+    }
+}
+
+// CONCRETE ITERATORS - Diferentes algoritmos de iteração
+
+class PlaylistSequencialIterator implements MusicaIterator {
+    private playlist: SpotifyPlaylist;
+    private posicaoAtual: number;
+
+    constructor(playlist: SpotifyPlaylist) {
+        this.playlist = playlist;
+        this.posicaoAtual = 0;
+    }
+
+    first(): void {
+        this.posicaoAtual = 0;
+        console.log(`   🔁 Reiniciando iteração da playlist`);
+    }
+
+    next(): void {
+        this.posicaoAtual++;
+    }
+
+    isDone(): boolean {
+        return this.posicaoAtual >= this.playlist.getTamanho();
+    }
+
+    currentItem(): string {
+        if (this.isDone()) {
+            throw new Error("Iteração concluída");
+        }
+        return this.playlist.getMusica(this.posicaoAtual);
+    }
+
+    currentPosition(): number {
+        return this.posicaoAtual + 1;
+    }
+}
+
+class PlaylistShuffleIterator implements MusicaIterator {
+    private playlist: SpotifyPlaylist;
+    private ordem: number[];
+    private posicaoAtual: number;
+
+    constructor(playlist: SpotifyPlaylist) {
+        this.playlist = playlist;
+        this.ordem = this.gerarOrdemAleatoria(playlist.getTamanho());
+        this.posicaoAtual = 0;
+    }
+
+    private gerarOrdemAleatoria(tamanho: number): number[] {
+        const ordem = Array.from({length: tamanho}, (_, i) => i);
+        for (let i = ordem.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [ordem[i], ordem[j]] = [ordem[j], ordem[i]];
+        }
+        return ordem;
+    }
+
+    first(): void {
+        this.posicaoAtual = 0;
+        console.log(`   🔀 Iniciando reprodução aleatória`);
+    }
+
+    next(): void {
+        this.posicaoAtual++;
+    }
+
+    isDone(): boolean {
+        return this.posicaoAtual >= this.playlist.getTamanho();
+    }
+
+    currentItem(): string {
+        if (this.isDone()) {
+            throw new Error("Iteração concluída");
+        }
+        const indiceReal = this.ordem[this.posicaoAtual];
+        return this.playlist.getMusica(indiceReal);
+    }
+
+    currentPosition(): number {
+        return this.posicaoAtual + 1;
+    }
+}
+
+class AlbumSequencialIterator implements MusicaIterator {
+    private album: AppleMusicAlbum;
+    private faixaAtual: number;
+
+    constructor(album: AppleMusicAlbum) {
+        this.album = album;
+        this.faixaAtual = 1; // Álbuns começam na faixa 1
+    }
+
+    first(): void {
+        this.faixaAtual = 1;
+        console.log(`   💿 Iniciando álbum do início`);
+    }
+
+    next(): void {
+        this.faixaAtual++;
+    }
+
+    isDone(): boolean {
+        return this.faixaAtual > this.album.getTamanho();
+    }
+
+    currentItem(): string {
+        if (this.isDone()) {
+            throw new Error("Iteração concluída");
+        }
+        const faixa = this.album.getFaixa(this.faixaAtual);
+        if (!faixa) {
+            throw new Error(`Faixa ${this.faixaAtual} não encontrada`);
+        }
+        return faixa;
+    }
+
+    currentPosition(): number {
+        return this.faixaAtual;
+    }
+}
+
+class VideoSequencialIterator implements MusicaIterator {
+    private videos: YouTubeVideos;
+    private videosArray: string[];
+    private posicaoAtual: number;
+
+    constructor(videos: YouTubeVideos) {
+        this.videos = videos;
+        this.videosArray = Array.from(videos.getVideos());
+        this.posicaoAtual = 0;
+    }
+
+    first(): void {
+        this.posicaoAtual = 0;
+        console.log(`   🎬 Iniciando lista de vídeos`);
+    }
+
+    next(): void {
+        this.posicaoAtual++;
+    }
+
+    isDone(): boolean {
+        return this.posicaoAtual >= this.videosArray.length;
+    }
+
+    currentItem(): string {
+        if (this.isDone()) {
+            throw new Error("Iteração concluída");
+        }
+        return this.videosArray[this.posicaoAtual];
+    }
+
+    currentPosition(): number {
+        return this.posicaoAtual + 1;
+    }
+}
+
+class VideoPopularidadeIterator implements MusicaIterator {
+    private videos: YouTubeVideos;
+    private videosOrdenados: string[];
+    private posicaoAtual: number;
+
+    constructor(videos: YouTubeVideos) {
+        this.videos = videos;
+        this.videosOrdenados = this.ordenarPorPopularidade(videos);
+        this.posicaoAtual = 0;
+    }
+
+    private ordenarPorPopularidade(videos: YouTubeVideos): string[] {
+        const videosArray = Array.from(videos.getVideos());
+        return videosArray.sort((a, b) => {
+            const viewsA = videos.getVisualizacoes(a);
+            const viewsB = videos.getVisualizacoes(b);
+            return viewsB - viewsA; // Ordem decrescente
+        });
+    }
+
+    first(): void {
+        this.posicaoAtual = 0;
+        console.log(`   📊 Iniciando por popularidade`);
+    }
+
+    next(): void {
+        this.posicaoAtual++;
+    }
+
+    isDone(): boolean {
+        return this.posicaoAtual >= this.videosOrdenados.length;
+    }
+
+    currentItem(): string {
+        if (this.isDone()) {
+            throw new Error("Iteração concluída");
+        }
+        return this.videosOrdenados[this.posicaoAtual];
+    }
+
+    currentPosition(): number {
+        return this.posicaoAtual + 1;
+    }
+}
+
+// CLIENTE - Reprodutor Universal
+class ReprodutorUniversal {
+    private nome: string;
+
+    constructor(nome: string) {
+        this.nome = nome;
+    }
+
+    reproduzirColecao(colecao: ColecaoMusical, iterator?: MusicaIterator): void {
+        console.log(`\n🎵 ${this.nome} - REPRODUZINDO: ${colecao.getNome()}`);
+        console.log(`   🎤 Artista: ${(colecao as any).getArtista?.() || "Sia"}`);
+        console.log(`   📊 Itens na coleção: ${colecao.getTamanho()}`);
+        console.log("=" .repeat(50));
+
+        const iterador = iterator || colecao.createIterator();
+        iterador.first();
+
+        while (!iterador.isDone()) {
+            const item = iterador.currentItem();
+            const posicao = iterador.currentPosition();
+            
+            console.log(`   ▶️  ${posicao}. ${item}`);
+            
+            iterador.next();
+        }
+
+        console.log("   ✅ Reprodução concluída!");
+    }
+
+    demonstrarDiferentesIteradores(colecao: ColecaoMusical): void {
+        console.log(`\n🎭 ${this.nome} - DEMONSTRANDO ITERADORES`);
+        console.log("=" .repeat(50));
+
+        // Iterador padrão (sequencial)
+        console.log("\n1. Iterador Sequencial:");
+        this.reproduzirColecao(colecao);
+
+        // Iteradores específicos se disponíveis
+        if (colecao instanceof SpotifyPlaylist) {
+            console.log("\n2. Iterador Aleatório (Shuffle):");
+            const shuffleIterator = colecao.createShuffleIterator();
+            this.reproduzirColecao(colecao, shuffleIterator);
+        }
+
+        if (colecao instanceof YouTubeVideos) {
+            console.log("\n3. Iterador por Popularidade:");
+            const popularidadeIterator = colecao.createPopularidadeIterator();
+            this.reproduzirColecao(colecao, popularidadeIterator);
+        }
+    }
+
+    compararColecoes(colecoes: ColecaoMusical[]): void {
+        console.log(`\n📊 ${this.nome} - COMPARAÇÃO DE COLEÇÕES`);
+        console.log("=" .repeat(50));
+
+        for (const colecao of colecoes) {
+            console.log(`\n🎵 Coleção: ${colecao.getNome()}`);
+            console.log(`   📁 Tipo: ${colecao.constructor.name}`);
+            console.log(`   🔢 Tamanho: ${colecao.getTamanho()} itens`);
+            
+            // Reproduzir apenas os primeiros 3 itens para demonstração
+            const iterator = colecao.createIterator();
+            iterator.first();
+            
+            let count = 0;
+            console.log(`   🎧 Primeiros 3 itens:`);
+            while (!iterator.isDone() && count < 3) {
+                console.log(`      ${count + 1}. ${iterator.currentItem()}`);
+                iterator.next();
+                count++;
+            }
+            
+            if (colecao.getTamanho() > 3) {
+                console.log(`      ... e mais ${colecao.getTamanho() - 3} itens`);
+            }
+        }
+    }
+}
+
+// SISTEMA PRINCIPAL
+class SistemaMusicalSia {
+    private colecoes: ColecaoMusical[];
+    private reprodutor: ReprodutorUniversal;
+
+    constructor() {
+        this.reprodutor = new ReprodutorUniversal("Sia Music System");
+        this.colecoes = [
+            new SpotifyPlaylist(),
+            new AppleMusicAlbum(),
+            new YouTubeVideos()
+        ];
+    }
+
+    demonstrarIteratorPattern(): void {
+        console.log("🎤 SISTEMA MUSICAL SIA - ITERATOR PATTERN 🎤");
+        console.log("============================================");
+        console.log("🎯 Demonstrando Acesso Uniforme a Coleções");
+        console.log("✨ Iteradores Ocultando Estruturas Internas\n");
+
+        // Demonstração 1: Reprodução universal
+        console.log("1️⃣  DEMONSTRAÇÃO: REPRODUÇÃO UNIVERSAL");
+        console.log("=" .repeat(50));
+        
+        for (const colecao of this.colecoes) {
+            this.reprodutor.reproduzirColecao(colecao);
+        }
+
+        // Demonstração 2: Diferentes algoritmos de iteração
+        console.log("\n2️⃣  DEMONSTRAÇÃO: ALGORITMOS DE ITERAÇÃO");
+        console.log("=" .repeat(50));
+        
+        this.reprodutor.demonstrarDiferentesIteradores(this.colecoes[0]); // Spotify
+        this.reprodutor.demonstrarDiferentesIteradores(this.colecoes[2]); // YouTube
+
+        // Demonstração 3: Comparação entre coleções
+        console.log("\n3️⃣  DEMONSTRAÇÃO: COMPARAÇÃO ENTRE COLEÇÕES");
+        console.log("=" .repeat(50));
+        
+        this.reprodutor.compararColecoes(this.colecoes);
+
+        console.log("\n📊 RESUMO DO SISTEMA:");
+        console.log("   • Coleções: 3 estruturas diferentes");
+        console.log("   • Iteradores: 5 algoritmos de iteração");
+        console.log("   • Cliente: 1 interface uniforme");
+        console.log("   • Acoplamento: Reduzido significativamente");
+        console.log("   • ✅ OCP e SRP aplicados com sucesso!");
+        console.log("   • 🎭 Como Sia: Acesso à arte sem ver a estrutura interna!");
+    }
+}
+
+// Exemplo de uso
+const sistema = new SistemaMusicalSia();
+sistema.demonstrarIteratorPattern();
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Iterator em um sistema de análise de dados de streaming musical:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any, Iterator as TypingIterator
+from datetime import datetime, timedelta
+import random
+from collections import defaultdict, deque
+
+class StreamingIterator(ABC):
+    @abstractmethod
+    def first(self) -> None:
+        pass
+    
+    @abstractmethod
+    def next(self) -> None:
+        pass
+    
+    @abstractmethod
+    def is_done(self) -> bool:
+        pass
+    
+    @abstractmethod
+    def current_item(self) -> Any:
+        pass
+    
+    @abstractmethod
+    def current_position(self) -> int:
+        pass
+
+class StreamingDataAggregate(ABC):
+    @abstractmethod
+    def create_iterator(self) -> StreamingIterator:
+        pass
+    
+    @abstractmethod
+    def get_name(self) -> str:
+        pass
+    
+    @abstractmethod
+    def get_size(self) -> int:
+        pass
+
+# Concrete Aggregates - Diferentes fontes de dados de streaming
+
+class SpotifyStreamingData(StreamingDataAggregate):
+    def __init__(self):
+        self.name = "Spotify Streaming Data - Sia"
+        self.platform = "Spotify"
+        self.data = [
+            {"song": "Chandelier", "streams": 1245678901, "date": "2014-03-17", "country": "Global"},
+            {"song": "Elastic Heart", "streams": 876543210, "date": "2015-01-07", "country": "Global"},
+            {"song": "Cheap Thrills", "streams": 987654321, "date": "2016-02-11", "country": "Global"},
+            {"song": "The Greatest", "streams": 654321098, "date": "2016-09-06", "country": "Global"},
+            {"song": "Unstoppable", "streams": 543210987, "date": "2016-01-29", "country": "Global"},
+            {"song": "Bird Set Free", "streams": 432109876, "date": "2015-11-04", "country": "Global"},
+            {"song": "Alive", "streams": 321098765, "date": "2015-09-24", "country": "Global"},
+            {"song": "Snowman", "streams": 210987654, "date": "2017-11-09", "country": "Global"},
+            {"song": "Santa's Coming For Us", "streams": 198765432, "date": "2017-11-17", "country": "Global"},
+            {"song": "Snowflake", "streams": 187654321, "date": "2017-11-17", "country": "Global"}
+        ]
+    
+    def create_iterator(self) -> StreamingIterator:
+        return SpotifySequentialIterator(self)
+    
+    def create_streams_iterator(self) -> StreamingIterator:
+        return SpotifyStreamsIterator(self)
+    
+    def create_date_iterator(self) -> StreamingIterator:
+        return SpotifyDateIterator(self)
+    
+    def get_name(self) -> str:
+        return self.name
+    
+    def get_size(self) -> int:
+        return len(self.data)
+    
+    def get_song(self, index: int) -> Dict[str, Any]:
+        if 0 <= index < len(self.data):
+            return self.data[index]
+        raise IndexError("Índice fora dos limites")
+    
+    def get_platform(self) -> str:
+        return self.platform
+
+class AppleMusicStreamingData(StreamingDataAggregate):
+    def __init__(self):
+        self.name = "Apple Music Analytics - Sia"
+        self.platform = "Apple Music"
+        # Dados estruturados como dicionário para simular estrutura diferente
+        self.data = {
+            "Chandelier": {"plays": 456789012, "downloads": 12345678, "completion_rate": 0.87},
+            "Elastic Heart": {"plays": 345678901, "downloads": 9876543, "completion_rate": 0.82},
+            "Cheap Thrills": {"plays": 567890123, "downloads": 15432109, "completion_rate": 0.91},
+            "The Greatest": {"plays": 234567890, "downloads": 8765432, "completion_rate": 0.79},
+            "Unstoppable": {"plays": 198765432, "downloads": 7654321, "completion_rate": 0.85},
+            "Bird Set Free": {"plays": 176543210, "downloads": 6543210, "completion_rate": 0.81},
+            "Alive": {"plays": 165432109, "downloads": 5432109, "completion_rate": 0.78},
+            "Snowman": {"plays": 154321098, "downloads": 4321098, "completion_rate": 0.88},
+            "Santa's Coming For Us": {"plays": 143210987, "downloads": 3210987, "completion_rate": 0.83},
+            "Snowflake": {"plays": 132109876, "downloads": 2109876, "completion_rate": 0.80}
+        }
+    
+    def create_iterator(self) -> StreamingIterator:
+        return AppleMusicSequentialIterator(self)
+    
+    def create_plays_iterator(self) -> StreamingIterator:
+        return AppleMusicPlaysIterator(self)
+    
+    def create_completion_iterator(self) -> StreamingIterator:
+        return AppleMusicCompletionIterator(self)
+    
+    def get_name(self) -> str:
+        return self.name
+    
+    def get_size(self) -> int:
+        return len(self.data)
+    
+    def get_song_data(self, song: str) -> Dict[str, Any]:
+        return self.data.get(song, {})
+    
+    def get_songs(self) -> List[str]:
+        return list(self.data.keys())
+    
+    def get_platform(self) -> str:
+        return self.platform
+
+class YouTubeMusicData(StreamingDataAggregate):
+    def __init__(self):
+        self.name = "YouTube Music Statistics - Sia"
+        self.platform = "YouTube Music"
+        # Dados como lista de tuplas para simular outra estrutura
+        self.data = deque([
+            ("Chandelier", 2240000000, "Official Video", "2014-05-06"),
+            ("Elastic Heart", 876000000, "Official Video", "2015-01-07"),
+            ("The Greatest", 654000000, "Official Video", "2016-09-05"),
+            ("Cheap Thrills", 543000000, "Official Video", "2016-02-11"),
+            ("Big Girls Cry", 321000000, "Official Video", "2015-03-17"),
+            ("Alive", 234000000, "Official Video", "2015-09-25"),
+            ("Never Give Up", 198000000, "Official Video", "2016-11-18"),
+            ("Snowman", 187000000, "Lyric Video", "2017-11-17"),
+            ("Saved My Life", 176000000, "Official Video", "2020-05-07"),
+            ("Together", 165000000, "Audio Video", "2021-05-20")
+        ])
+    
+    def create_iterator(self) -> StreamingIterator:
+        return YouTubeSequentialIterator(self)
+    
+    def create_views_iterator(self) -> StreamingIterator:
+        return YouTubeViewsIterator(self)
+    
+    def create_date_iterator(self) -> StreamingIterator:
+        return YouTubeDateIterator(self)
+    
+    def get_name(self) -> str:
+        return self.name
+    
+    def get_size(self) -> int:
+        return len(self.data)
+    
+    def get_video(self, index: int) -> Any:
+        if 0 <= index < len(self.data):
+            return self.data[index]
+        raise IndexError("Índice fora dos limites")
+    
+    def get_platform(self) -> str:
+        return self.platform
+
+# Concrete Iterators para Spotify
+
+class SpotifySequentialIterator(StreamingIterator):
+    def __init__(self, aggregate: SpotifyStreamingData):
+        self.aggregate = aggregate
+        self.current_position = 0
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   🔁 Iniciando análise sequencial do Spotify")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= self.aggregate.get_size()
+    
+    def current_item(self) -> Dict[str, Any]:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        return self.aggregate.get_song(self.current_position)
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+class SpotifyStreamsIterator(StreamingIterator):
+    def __init__(self, aggregate: SpotifyStreamingData):
+        self.aggregate = aggregate
+        self.current_position = 0
+        # Ordenar por streams (decrescente)
+        self.sorted_data = sorted(
+            aggregate.data,
+            key=lambda x: x['streams'],
+            reverse=True
+        )
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   📊 Iniciando análise por streams (Spotify)")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= len(self.sorted_data)
+    
+    def current_item(self) -> Dict[str, Any]:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        return self.sorted_data[self.current_position]
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+class SpotifyDateIterator(StreamingIterator):
+    def __init__(self, aggregate: SpotifyStreamingData):
+        self.aggregate = aggregate
+        self.current_position = 0
+        # Ordenar por data (crescente)
+        self.sorted_data = sorted(
+            aggregate.data,
+            key=lambda x: x['date']
+        )
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   📅 Iniciando análise por data (Spotify)")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= len(self.sorted_data)
+    
+    def current_item(self) -> Dict[str, Any]:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        return self.sorted_data[self.current_position]
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+# Concrete Iterators para Apple Music
+
+class AppleMusicSequentialIterator(StreamingIterator):
+    def __init__(self, aggregate: AppleMusicStreamingData):
+        self.aggregate = aggregate
+        self.current_position = 0
+        self.songs = aggregate.get_songs()
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   🔁 Iniciando análise sequencial do Apple Music")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= len(self.songs)
+    
+    def current_item(self) -> Dict[str, Any]:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        song = self.songs[self.current_position]
+        data = self.aggregate.get_song_data(song)
+        return {"song": song, **data}
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+class AppleMusicPlaysIterator(StreamingIterator):
+    def __init__(self, aggregate: AppleMusicStreamingData):
+        self.aggregate = aggregate
+        self.current_position = 0
+        # Ordenar por plays (decrescente)
+        songs_data = []
+        for song in aggregate.get_songs():
+            data = aggregate.get_song_data(song)
+            songs_data.append({"song": song, **data})
+        
+        self.sorted_data = sorted(
+            songs_data,
+            key=lambda x: x['plays'],
+            reverse=True
+        )
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   📊 Iniciando análise por plays (Apple Music)")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= len(self.sorted_data)
+    
+    def current_item(self) -> Dict[str, Any]:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        return self.sorted_data[self.current_position]
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+class AppleMusicCompletionIterator(StreamingIterator):
+    def __init__(self, aggregate: AppleMusicStreamingData):
+        self.aggregate = aggregate
+        self.current_position = 0
+        # Ordenar por completion rate (decrescente)
+        songs_data = []
+        for song in aggregate.get_songs():
+            data = aggregate.get_song_data(song)
+            songs_data.append({"song": song, **data})
+        
+        self.sorted_data = sorted(
+            songs_data,
+            key=lambda x: x['completion_rate'],
+            reverse=True
+        )
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   🎯 Iniciando análise por completion rate (Apple Music)")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= len(self.sorted_data)
+    
+    def current_item(self) -> Dict[str, Any]:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        return self.sorted_data[self.current_position]
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+# Concrete Iterators para YouTube
+
+class YouTubeSequentialIterator(StreamingIterator):
+    def __init__(self, aggregate: YouTubeMusicData):
+        self.aggregate = aggregate
+        self.current_position = 0
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   🔁 Iniciando análise sequencial do YouTube")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= self.aggregate.get_size()
+    
+    def current_item(self) -> Any:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        return self.aggregate.get_video(self.current_position)
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+class YouTubeViewsIterator(StreamingIterator):
+    def __init__(self, aggregate: YouTubeMusicData):
+        self.aggregate = aggregate
+        self.current_position = 0
+        # Ordenar por views (decrescente)
+        self.sorted_data = sorted(
+            list(aggregate.data),
+            key=lambda x: x[1],
+            reverse=True
+        )
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   📊 Iniciando análise por views (YouTube)")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= len(self.sorted_data)
+    
+    def current_item(self) -> Any:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        return self.sorted_data[self.current_position]
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+class YouTubeDateIterator(StreamingIterator):
+    def __init__(self, aggregate: YouTubeMusicData):
+        self.aggregate = aggregate
+        self.current_position = 0
+        # Ordenar por data (crescente)
+        self.sorted_data = sorted(
+            list(aggregate.data),
+            key=lambda x: x[3]
+        )
+    
+    def first(self) -> None:
+        self.current_position = 0
+        print(f"   📅 Iniciando análise por data (YouTube)")
+    
+    def next(self) -> None:
+        self.current_position += 1
+    
+    def is_done(self) -> bool:
+        return self.current_position >= len(self.sorted_data)
+    
+    def current_item(self) -> Any:
+        if self.is_done():
+            raise StopIteration("Análise concluída")
+        return self.sorted_data[self.current_position]
+    
+    def current_position(self) -> int:
+        return self.current_position + 1
+
+# Sistema de Análise
+
+class StreamingDataAnalyzer:
+    def __init__(self, name: str):
+        self.name = name
+    
+    def analyze_collection(self, collection: StreamingDataAggregate, iterator: StreamingIterator = None) -> None:
+        print(f"\n📈 {self.name} - ANALISANDO: {collection.get_name()}")
+        print(f"   📱 Plataforma: {collection.get_platform()}")
+        print(f"   📊 Total de itens: {collection.get_size()}")
+        print("=" * 60)
+        
+        analysis_iterator = iterator or collection.create_iterator()
+        analysis_iterator.first()
+        
+        total_streams = 0
+        item_count = 0
+        
+        while not analysis_iterator.is_done():
+            item = analysis_iterator.current_item()
+            position = analysis_iterator.current_position()
+            
+            # Análise genérica - funciona para qualquer estrutura
+            if isinstance(item, dict):
+                # Spotify ou Apple Music
+                song_name = item.get('song', 'N/A')
+                streams = item.get('streams', 0) or item.get('plays', 0)
+                print(f"   {position:2d}. {song_name:<25} | Streams: {streams:>12,}")
+                total_streams += streams
+            else:
+                # YouTube
+                song_name, views, video_type, date = item
+                print(f"   {position:2d}. {song_name:<25} | Views: {views:>13,} | {video_type}")
+                total_streams += views
+            
+            item_count += 1
+            analysis_iterator.next()
+        
+        print("-" * 60)
+        print(f"   📈 Total de streams/views: {total_streams:,}")
+        print(f"   📊 Média por item: {total_streams // item_count if item_count > 0 else 0:,}")
+        print("   ✅ Análise concluída!")
+    
+    def compare_platforms(self, collections: List[StreamingDataAggregate]) -> None:
+        print(f"\n📊 {self.name} - COMPARAÇÃO ENTRE PLATAFORMAS")
+        print("=" * 60)
+        
+        platform_stats = {}
+        
+        for collection in collections:
+            print(f"\n🎵 Plataforma: {collection.get_platform()}")
+            print(f"   Coleção: {collection.get_name()}")
+            print(f"   Itens: {collection.get_size()}")
+            
+            # Calcular estatísticas usando iterador
+            iterator = collection.create_iterator()
+            iterator.first()
+            
+            total = 0
+            count = 0
+            
+            while not iterator.is_done():
+                item = iterator.current_item()
+                
+                if isinstance(item, dict):
+                    streams = item.get('streams', 0) or item.get('plays', 0)
+                    total += streams
+                else:
+                    # YouTube
+                    total += item[1]  # views
+                
+                count += 1
+                iterator.next()
+            
+            avg = total // count if count > 0 else 0
+            platform_stats[collection.get_platform()] = {
+                'total': total,
+                'average': avg,
+                'count': count
+            }
+            
+            print(f"   📈 Total streams/views: {total:,}")
+            print(f"   📊 Média por item: {avg:,}")
+        
+        # Encontrar plataforma líder
+        leader = max(platform_stats.items(), key=lambda x: x[1]['total'])
+        print(f"\n🏆 Líder em streaming: {leader[0]} com {leader[1]['total']:,} streams totais")
+    
+    def demonstrate_iterators(self, collection: StreamingDataAggregate) -> None:
+        print(f"\n🎭 {self.name} - DEMONSTRANDO ITERADORES")
+        print(f"   Coleção: {collection.get_name()}")
+        print("=" * 60)
+        
+        # Iterador padrão
+        print("\n1. Iterador Sequencial:")
+        self.analyze_collection(collection)
+        
+        # Iteradores específicos
+        if hasattr(collection, 'create_streams_iterator'):
+            print("\n2. Iterador por Streams:")
+            streams_iterator = collection.create_streams_iterator()
+            self.analyze_collection(collection, streams_iterator)
+        
+        if hasattr(collection, 'create_plays_iterator'):
+            print("\n3. Iterador por Plays:")
+            plays_iterator = collection.create_plays_iterator()
+            self.analyze_collection(collection, plays_iterator)
+        
+        if hasattr(collection, 'create_views_iterator'):
+            print("\n4. Iterador por Views:")
+            views_iterator = collection.create_views_iterator()
+            self.analyze_collection(collection, views_iterator)
+        
+        if hasattr(collection, 'create_date_iterator'):
+            print("\n5. Iterador por Data:")
+            date_iterator = collection.create_date_iterator()
+            self.analyze_collection(collection, date_iterator)
+
+# Sistema Principal
+
+class SiaStreamingAnalysisSystem:
+    def __init__(self):
+        self.analyzer = StreamingDataAnalyzer("Sia Streaming Analytics")
+        self.collections = [
+            SpotifyStreamingData(),
+            AppleMusicStreamingData(),
+            YouTubeMusicData()
+        ]
+    
+    def demonstrate_iterator_pattern(self) -> None:
+        print("🎤 SISTEMA DE ANÁLISE SIA - ITERATOR PATTERN 🎤")
+        print("================================================")
+        print("🎯 Demonstrando Análise Uniforme de Dados")
+        print("✨ Iteradores Ocultando Estruturas de Dados\n")
+        
+        # Demonstração 1: Análise individual
+        print("1️⃣  DEMONSTRAÇÃO: ANÁLISE INDIVIDUAL")
+        print("=" * 60)
+        
+        for collection in self.collections:
+            self.analyzer.analyze_collection(collection)
+        
+        # Demonstração 2: Diferentes algoritmos
+        print("\n2️⃣  DEMONSTRAÇÃO: ALGORITMOS DE ANÁLISE")
+        print("=" * 60)
+        
+        for collection in self.collections:
+            self.analyzer.demonstrate_iterators(collection)
+        
+        # Demonstração 3: Comparação entre plataformas
+        print("\n3️⃣  DEMONSTRAÇÃO: COMPARAÇÃO ENTRE PLATAFORMAS")
+        print("=" * 60)
+        
+        self.analyzer.compare_platforms(self.collections)
+        
+        print(f"\n📊 RESUMO DO SISTEMA:")
+        print(f"   • Fontes de dados: {len(self.collections)} plataformas diferentes")
+        print(f"   • Iteradores: 8 algoritmos de análise")
+        print(f"   • Analisador: 1 interface uniforme")
+        print(f"   • Acoplamento: Mínimo entre análise e estruturas")
+        print(f"   • ✅ Princípios SOLID aplicados com sucesso!")
+        print(f"   • 🎭 Como Sia: Análise da música sem ver a estrutura dos dados!")
+
+# Exemplo de uso
+def main():
+    system = SiaStreamingAnalysisSystem()
+    system.demonstrate_iterator_pattern()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/comportamentais/iterator/ficticio.png" alt="Sia Iterator UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Iterator no exemplo da Sia e suas coleções musicais:</p>
+            <pre class="uml-code">
+@startuml
+interface MusicaIterator {
+    + first(): void
+    + next(): void
+    + isDone(): boolean
+    + currentItem(): string
+    + currentPosition(): number
+}
+
+interface ColecaoMusical {
+    + createIterator(): MusicaIterator
+    + getNome(): string
+    + getTamanho(): number
+}
+
+class SpotifyPlaylist {
+    - nome: string
+    - musicas: string[]
+    - artista: string
+    + createIterator(): MusicaIterator
+    + createShuffleIterator(): MusicaIterator
+    + getNome(): string
+    + getTamanho(): number
+    + getMusica(indice: number): string
+    + getArtista(): string
+}
+
+class AppleMusicAlbum {
+    - nome: string
+    - faixas: Map<number, string>
+    - ano: number
+    - artista: string
+    + createIterator(): MusicaIterator
+    + getNome(): string
+    + getTamanho(): number
+    + getFaixa(numero: number): string
+    + getArtista(): string
+}
+
+class YouTubeVideos {
+    - nome: string
+    - videos: Set<string>
+    - artista: string
+    - visualizacoes: Map<string, number>
+    + createIterator(): MusicaIterator
+    + createPopularidadeIterator(): MusicaIterator
+    + getNome(): string
+    + getTamanho(): number
+    + getVideos(): Set<string>
+    + getVisualizacoes(video: string): number
+    + getArtista(): string
+}
+
+class PlaylistSequencialIterator {
+    - playlist: SpotifyPlaylist
+    - posicaoAtual: number
+    + first(): void
+    + next(): void
+    + isDone(): boolean
+    + currentItem(): string
+    + currentPosition(): number
+}
+
+class PlaylistShuffleIterator {
+    - playlist: SpotifyPlaylist
+    - ordem: number[]
+    - posicaoAtual: number
+    + first(): void
+    + next(): void
+    + isDone(): boolean
+    + currentItem(): string
+    + currentPosition(): number
+}
+
+class AlbumSequencialIterator {
+    - album: AppleMusicAlbum
+    - faixaAtual: number
+    + first(): void
+    + next(): void
+    + isDone(): boolean
+    + currentItem(): string
+    + currentPosition(): number
+}
+
+class VideoSequencialIterator {
+    - videos: YouTubeVideos
+    - videosArray: string[]
+    - posicaoAtual: number
+    + first(): void
+    + next(): void
+    + isDone(): boolean
+    + currentItem(): string
+    + currentPosition(): number
+}
+
+class VideoPopularidadeIterator {
+    - videos: YouTubeVideos
+    - videosOrdenados: string[]
+    - posicaoAtual: number
+    + first(): void
+    + next(): void
+    + isDone(): boolean
+    + currentItem(): string
+    + currentPosition(): number
+}
+
+class ReprodutorUniversal {
+    - nome: string
+    + reproduzirColecao(colecao: ColecaoMusical, iterator?: MusicaIterator): void
+    + demonstrarDiferentesIteradores(colecao: ColecaoMusical): void
+    + compararColecoes(colecoes: ColecaoMusical[]): void
+}
+
+class SistemaMusicalSia {
+    - colecoes: ColecaoMusical[]
+    - reprodutor: ReprodutorUniversal
+    + demonstrarIteratorPattern(): void
+}
+
+MusicaIterator <|.. PlaylistSequencialIterator
+MusicaIterator <|.. PlaylistShuffleIterator
+MusicaIterator <|.. AlbumSequencialIterator
+MusicaIterator <|.. VideoSequencialIterator
+MusicaIterator <|.. VideoPopularidadeIterator
+
+ColecaoMusical <|.. SpotifyPlaylist
+ColecaoMusical <|.. AppleMusicAlbum
+ColecaoMusical <|.. YouTubeVideos
+
+SpotifyPlaylist --> PlaylistSequencialIterator
+SpotifyPlaylist --> PlaylistShuffleIterator
+AppleMusicAlbum --> AlbumSequencialIterator
+YouTubeVideos --> VideoSequencialIterator
+YouTubeVideos --> VideoPopularidadeIterator
+
+SistemaMusicalSia --> ColecaoMusical
+SistemaMusicalSia --> ReprodutorUniversal
+ReprodutorUniversal --> ColecaoMusical
+ReprodutorUniversal --> MusicaIterator
+
+note right of ColecaoMusical
+    Interface comum para todas
+    as coleções musicais que
+    podem criar iteradores
+end note
+
+note right of MusicaIterator
+    Interface que define como
+    percorrer coleções sem
+    conhecer sua estrutura
+end note
+
+note right of ReprodutorUniversal
+    Cliente que usa iteradores
+    para acessar diferentes
+    coleções uniformemente
+end note
+
+note right of PlaylistShuffleIterator
+    Iterador concreto com
+    algoritmo específico de
+    ordenação aleatória
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como diferentes coleções podem ser percorridas de forma uniforme através de iteradores especializados.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/comportamentais/iterator/pratico.png" alt="Sistema Análise Iterator UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Iterator no exemplo prático do sistema de análise de dados de streaming:</p>
+            <pre class="uml-code">
+@startuml
+class StreamingIterator {
+    + first(): void
+    + next(): void
+    + is_done(): bool
+    + current_item(): Any
+    + current_position(): int
+}
+
+class StreamingDataAggregate {
+    + create_iterator(): StreamingIterator
+    + get_name(): str
+    + get_size(): int
+}
+
+class SpotifyStreamingData {
+    - name: str
+    - platform: str
+    - data: List[Dict]
+    + create_iterator(): StreamingIterator
+    + create_streams_iterator(): StreamingIterator
+    + create_date_iterator(): StreamingIterator
+    + get_name(): str
+    + get_size(): int
+    + get_song(index: int): Dict
+    + get_platform(): str
+}
+
+class AppleMusicStreamingData {
+    - name: str
+    - platform: str
+    - data: Dict[str, Dict]
+    + create_iterator(): StreamingIterator
+    + create_plays_iterator(): StreamingIterator
+    + create_completion_iterator(): StreamingIterator
+    + get_name(): str
+    + get_size(): int
+    + get_song_data(song: str): Dict
+    + get_songs(): List[str]
+    + get_platform(): str
+}
+
+class YouTubeMusicData {
+    - name: str
+    - platform: str
+    - data: deque
+    + create_iterator(): StreamingIterator
+    + create_views_iterator(): StreamingIterator
+    + create_date_iterator(): StreamingIterator
+    + get_name(): str
+    + get_size(): int
+    + get_video(index: int): Any
+    + get_platform(): str
+}
+
+class SpotifySequentialIterator {
+    - aggregate: SpotifyStreamingData
+    - current_position: int
+    + first(): void
+    + next(): void
+    + is_done(): bool
+    + current_item(): Dict
+    + current_position(): int
+}
+
+class SpotifyStreamsIterator {
+    - aggregate: SpotifyStreamingData
+    - current_position: int
+    - sorted_data: List[Dict]
+    + first(): void
+    + next(): void
+    + is_done(): bool
+    + current_item(): Dict
+    + current_position(): int
+}
+
+class AppleMusicSequentialIterator {
+    - aggregate: AppleMusicStreamingData
+    - current_position: int
+    - songs: List[str]
+    + first(): void
+    + next(): void
+    + is_done(): bool
+    + current_item(): Dict
+    + current_position(): int
+}
+
+class AppleMusicPlaysIterator {
+    - aggregate: AppleMusicStreamingData
+    - current_position: int
+    - sorted_data: List[Dict]
+    + first(): void
+    + next(): void
+    + is_done(): bool
+    + current_item(): Dict
+    + current_position(): int
+}
+
+class YouTubeSequentialIterator {
+    - aggregate: YouTubeMusicData
+    - current_position: int
+    + first(): void
+    + next(): void
+    + is_done(): bool
+    + current_item(): Any
+    + current_position(): int
+}
+
+class YouTubeViewsIterator {
+    - aggregate: YouTubeMusicData
+    - current_position: int
+    - sorted_data: List[Any]
+    + first(): void
+    + next(): void
+    + is_done(): bool
+    + current_item(): Any
+    + current_position(): int
+}
+
+class StreamingDataAnalyzer {
+    - name: str
+    + analyze_collection(collection: StreamingDataAggregate, iterator: StreamingIterator): void
+    + compare_platforms(collections: List[StreamingDataAggregate]): void
+    + demonstrate_iterators(collection: StreamingDataAggregate): void
+}
+
+class SiaStreamingAnalysisSystem {
+    - analyzer: StreamingDataAnalyzer
+    - collections: List[StreamingDataAggregate]
+    + demonstrate_iterator_pattern(): void
+}
+
+StreamingIterator <|-- SpotifySequentialIterator
+StreamingIterator <|-- SpotifyStreamsIterator
+StreamingIterator <|-- AppleMusicSequentialIterator
+StreamingIterator <|-- AppleMusicPlaysIterator
+StreamingIterator <|-- YouTubeSequentialIterator
+StreamingIterator <|-- YouTubeViewsIterator
+
+StreamingDataAggregate <|-- SpotifyStreamingData
+StreamingDataAggregate <|-- AppleMusicStreamingData
+StreamingDataAggregate <|-- YouTubeMusicData
+
+SpotifyStreamingData --> SpotifySequentialIterator
+SpotifyStreamingData --> SpotifyStreamsIterator
+AppleMusicStreamingData --> AppleMusicSequentialIterator
+AppleMusicStreamingData --> AppleMusicPlaysIterator
+YouTubeMusicData --> YouTubeSequentialIterator
+YouTubeMusicData --> YouTubeViewsIterator
+
+SiaStreamingAnalysisSystem --> StreamingDataAggregate
+SiaStreamingAnalysisSystem --> StreamingDataAnalyzer
+StreamingDataAnalyzer --> StreamingDataAggregate
+StreamingDataAnalyzer --> StreamingIterator
+
+note right of StreamingDataAggregate
+    Interface Python para agregados
+    de dados de streaming que
+    podem criar iteradores
+end note
+
+note right of StreamingIterator
+    Interface que define operações
+    para percorrer dados sem
+    conhecer estrutura interna
+end note
+
+note right of StreamingDataAnalyzer
+    Cliente que usa iteradores para
+    analisar dados de diferentes
+    fontes uniformemente
+end note
+
+note right of SpotifyStreamsIterator
+    Iterador concreto que ordena
+    dados por número de streams
+    antes da iteração
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite analisar dados de streaming de diferentes plataformas usando uma interface uniforme, sem conhecer os detalhes internos de cada fonte.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://images.thewest.com.au/publication/YA-381625/429675278-1a7d2q4.jpg/"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Iterator oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Desacoplamento:</strong> Cliente não conhece a estrutura interna da coleção</li>
+                <li><strong>Interface Uniforme:</strong> Mesma forma de percorrer diferentes coleções</li>
+                <li><strong>Suporte a Diferentes Algoritmos:</strong> Múltiplas formas de percorrer a mesma coleção</li>
+                <li><strong>Controle de Iteração:</strong> Pausar, retomar ou interromper a iteração</li>
+                <li><strong>Princípio da Responsabilidade Única:</strong> Separa algoritmo de iteração da coleção</li>
+                <li><strong>Princípio Aberto/Fechado:</strong> Novos iteradores sem modificar coleções</li>
+                <li><strong>Paralelismo:</strong> Múltiplas iterações simultâneas na mesma coleção</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2023/09/1200/675/sia.jpg?ve=1&tl=1"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Iterator também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Aumenta número de classes no sistema</li>
+                <li><strong>Overhead:</strong> Pode ser pesado para coleções simples</li>
+                <li><strong>Modificações Durante Iteração:</strong> Comportamento indefinido se coleção muda</li>
+                <li><strong>Acesso Limitado:</strong> Só permite acesso sequencial, não aleatório</li>
+                <li><strong>Performance:</strong> Pode ser mais lento que iteração direta</li>
+                <li><strong>Dificuldade com Coleções Complexas:</strong> Iteradores para estruturas complexas podem ser difíceis de implementar</li>
+                <li><strong>Gerenciamento de Estado:</strong> Estado da iteração precisa ser mantido</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://www.out.com/media-library/sia.jpg?id=32788697&width=1245&height=700&coordinates=0%2C39%2C0%2C40"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Iterator é uma solução elegante para percorrer coleções de objetos sem expor sua representação interna, promovendo o baixo acoplamento e a flexibilidade do sistema.</p>
+            <p>Na nossa analogia da <strong>Sia e sua característica de não mostrar o rosto</strong>, o Iterator funciona como a <strong>interface consistente para acessar sua música</strong> - onde os fãs podem apreciar sua arte (iterar pelos elementos) sem precisar conhecer os detalhes pessoais por trás da artista (estrutura interna das coleções). A música é entregue de forma uniforme, seja através de playlists, álbuns ou vídeos.</p>
+            <p>Assim como Sia mantém seu anonimato enquanto entrega performances poderosas e música cativante através de diferentes mídias e plataformas, o padrão Iterator nos permite criar sistemas onde clientes podem acessar e percorrer diferentes tipos de coleções usando uma interface uniforme, sem se preocupar com os detalhes de implementação internos - promovendo a reutilização, a manutenibilidade e a escalabilidade de forma organizada e desacoplada.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/iterator"
+                        target="_blank">Refactoring.Guru - Padrão Iterator</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-iterator/16793"
+                        target="_blank">DevMedia - Padrão Iterator</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/25/mao-na-massa-iterator/"
+                        target="_blank">Mão na Massa - Padrão Iterator</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Iterator" target="_blank">Wikipédia - Iterator (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/iterator-pattern/" target="_blank">GeeksforGeeks
+                        - Iterator Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/iterator" target="_blank">SourceMaking
+                        - Iterator Pattern</a></li>
+                <li>[7] <a href="https://en.wikipedia.org/wiki/Sia_(musician)" target="_blank">Wikipedia - Sia Biography</a></li>
+                <li>[8] <a href="https://www.billboard.com/music/sia/" target="_blank">Billboard - Sia Career</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    
+</body>
+
+</html>
