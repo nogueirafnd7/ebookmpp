@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Template Method - A Jornada de Anitta</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Template Method?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: AbstractClass, ConcreteClass</a></li>
+            <li><a href="#page5">Exemplo Fictício (Jornada da Anitta)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">TEMPLATE METHOD</h1>
+            <p class="cover-subtitle">A Jornada de Anitta - Estruturando Processos na Carreira Musical</p>
+
+            <img src="https://media.hugogloss.uol.com.br/uploads/2025/11/Anitta-Foto_-Lucas-Ramos-_-Brazil-News-768x432.jpg"
+                alt="Capa Template Method - Anitta" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Template Method?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://akamai.sscdn.co/tb/letras-blog/wp-content/uploads/2023/07/aed1423-Anitta-no-Grammy-1024x768.jpg"
+                    alt="Template Method Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Template Method é um <strong>padrão de projeto comportamental</strong> que define o esqueleto de um algoritmo na superclasse, mas permite que as subclasses sobrescrevam etapas específicas do algoritmo sem alterar sua estrutura [1].</p>
+            <p>É como a <strong>jornada da Anitta</strong> - ela segue um processo estruturado para lançar músicas, mas adapta cada etapa conforme o gênero musical, público-alvo e estratégia de marketing.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://portalpopline.com.br/wp-content/uploads/2025/10/anitta-detalhe-preparativos-show-global-citizen-festival-chama-atencao-fas.jpg"
+                    alt="Problema da Duplicação" class="cover-image">
+            </div>
+            <p>O principal problema que o Template Method resolve é a <strong>duplicação de código</strong> em algoritmos que seguem a mesma estrutura mas têm implementações diferentes em algumas etapas [2].</p>
+            <p>Sem este padrão, cada tipo de lançamento musical da Anitta teria seu próprio código completo, repetindo a estrutura comum e dificultando a manutenção.</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/comportamentais/template/generico.png"
+                    alt="Template Method UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Template Method:</p>
+            <pre class="uml-code">
+@startuml
+abstract class AbstractClass {
+    + templateMethod(): void
+    # step1(): void
+    # step2(): void
+    # step3(): void
+    # {abstract} primitiveOperation1(): void
+    # {abstract} primitiveOperation2(): void
+    # hook(): void
+}
+
+class ConcreteClassA {
+    # primitiveOperation1(): void
+    # primitiveOperation2(): void
+}
+
+class ConcreteClassB {
+    # primitiveOperation1(): void
+    # primitiveOperation2(): void
+}
+
+AbstractClass <|-- ConcreteClassA
+AbstractClass <|-- ConcreteClassB
+
+note right of AbstractClass
+    Define o esqueleto do algoritmo
+    e implementa as partes comuns
+    (template method e hooks)
+end note
+
+note right of ConcreteClassA
+    Implementa as operações
+    primitivas específicas
+    para esta variação
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>AbstractClass:</strong> Define o template method e operações abstratas</li>
+                <li><strong>ConcreteClass:</strong> Implementa as operações específicas</li>
+                <li><strong>Template Method:</strong> Método que define a estrutura do algoritmo</li>
+                <li><strong>Primitive Operations:</strong> Métodos abstratos que as subclasses devem implementar</li>
+                <li><strong>Hooks:</strong> Métodos opcionais que podem ser sobrescritos</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: AbstractClass, ConcreteClass</h1>
+            <div class="img-placeholder-5">
+                <img src="data:image/png;base64,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"
+                    alt="Conceitos Template Method" class="cover-image">
+            </div>
+            
+            <h3>AbstractClass (Classe Abstrata)</h3>
+            <p><strong>Características:</strong> Define a estrutura do algoritmo no template method e declara operações primitivas</p>
+            <p><strong>Exemplo Anitta:</strong></p>
+            <ul>
+                <li>Define o processo padrão de lançamento musical</li>
+                <li>Implementa etapas comuns a todos os lançamentos</li>
+                <li>Declara métodos abstratos para etapas específicas</li>
+            </ul>
+
+            <h3>ConcreteClass (Classe Concreta)</h3>
+            <p><strong>Características:</strong> Implementa as operações primitivas específicas para cada variação</p>
+            <p><strong>Exemplo Anitta:</strong></p>
+            <ul>
+                <li>Lançamento de Funk</li>
+                <li>Lançamento de Pop Internacional</li>
+                <li>Lançamento de Reggaeton</li>
+                <li>Lançamento de Samba</li>
+            </ul>
+
+            <h3>Template Method (Método Template)</h3>
+            <p><strong>Características:</strong> Define a sequência de etapas do algoritmo</p>
+            <p><strong>Exemplo Anitta:</strong></p>
+            <ul>
+                <li>Processo estruturado de lançamento musical</li>
+                <li>Sequência fixa de etapas (pré-produção, produção, lançamento, promoção)</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> O Template Method permite que subclasses redefinam certas etapas de um algoritmo sem alterar sua estrutura.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (Jornada da Anitta)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaAkZI4UNxD7IBTIlsX0XDsyH_Hy1ZDbGHxg&s"
+                    alt="Jornada Anitta" class="cover-image">
+            </div>
+            <p>Imagine a <strong>jornada artística da Anitta</strong> usando o padrão Template Method para estruturar seus lançamentos musicais:</p>
+
+            <h3>Processo de Lançamento (Template Method):</h3>
+            <ul>
+                <li><strong>Pré-produção:</strong> Composição, arranjos, definição de conceito</li>
+                <li><strong>Produção:</strong> Gravação, mixagem, masterização</li>
+                <li><strong>Lançamento:</strong> Estratégia de distribuição e plataformas</li>
+                <li><strong>Promoção:</strong> Marketing, divulgação, performances</li>
+            </ul>
+
+            <h3>Tipos de Lançamento (Concrete Classes):</h3>
+            <ul>
+                <li><strong>Funk Brasileiro:</strong> Foco em batidas pesadas, letras ousadas, viralização no TikTok</li>
+                <li><strong>Pop Internacional:</strong> Produção refinada, colaborações globais, estratégia cross-platform</li>
+                <li><strong>Reggaeton:</strong> Ritmo latino, coreografias marcantes, apelo hispânico</li>
+                <li><strong>Samba/Pagode:</strong> Raízes brasileiras, apelo nostálgico, conexão cultural</li>
+            </ul>
+
+            <p>O Template Method garante que todos os lançamentos sigam a mesma estrutura, mas com implementações específicas para cada gênero.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://rollingstone.com.br/wp-content/uploads/anitta_foto_pedro_fiuzanurphotosipa_usaap.jpg"
+                    alt="Problema sem Template Method" class="cover-image">
+            </div>
+            <p>Sem o Padrão Template Method, o código teria duplicação e falta de estrutura consistente:</p>
+            <pre><code>
+// PROBLEMA: Código duplicado e sem estrutura comum!
+class LancamentoFunk {
+    executarProcesso(): void {
+        console.log("🎵 INICIANDO LANÇAMENTO FUNK");
+        
+        // PRÉ-PRODUÇÃO - Código específico para funk
+        console.log("📝 Componendo letra ousada e batida pesada");
+        console.log("🎹 Criando base de funk com batida marcante");
+        console.log("💃 Definindo coreografia sensual");
+        
+        // PRODUÇÃO - Código duplicado
+        console.log("🎤 Gravando vocais em estúdio profissional");
+        console.log("🎚️  Mixando e masterizando a faixa");
+        
+        // LANÇAMENTO - Código específico para funk
+        console.log("📱 Priorizando lançamento no TikTok e YouTube");
+        console.log("🔥 Foco em viralização nas redes sociais");
+        
+        // PROMOÇÃO - Código específico para funk
+        console.log("📱 Criando desafios no TikTok");
+        console.log("🎤 Performando em bailes funk");
+    }
+}
+
+class LancamentoPop {
+    executarProcesso(): void {
+        console.log("🎵 INICIANDO LANÇAMENTO POP INTERNACIONAL");
+        
+        // PRÉ-PRODUÇÃO - Código específico para pop
+        console.log("📝 Componendo em inglês com refrão cativante");
+        console.log("🎹 Produzindo com sons internacionais");
+        console.log("🌍 Planejando colaboração com artista global");
+        
+        // PRODUÇÃO - Código duplicado
+        console.log("🎤 Gravando vocais em estúdio profissional");
+        console.log("🎚️  Mixando e masterizando a faixa");
+        
+        // LANÇAMENTO - Código específico para pop
+        console.log("🌐 Lançamento global em todas as plataformas");
+        console.log("📀 Estratégia cross-platform integrada");
+        
+        // PROMOÇÃO - Código específico para pop
+        console.log("📺 Participação em programas internacionais");
+        console.log("🎤 Turnê mundial planejada");
+    }
+}
+
+class LancamentoReggaeton {
+    executarProcesso(): void {
+        console.log("🎵 INICIANDO LANÇAMENTO REGGAETON");
+        
+        // PRÉ-PRODUÇÃO - Código específico para reggaeton
+        console.log("📝 Componendo em espanhol com ritmo latino");
+        console.log("🎹 Produzindo dembow e batidas caribenhas");
+        console.log("💃 Coreografia marcante e sensual");
+        
+        // PRODUÇÃO - Código duplicado
+        console.log("🎤 Gravando vocais em estúdio profissional");
+        console.log("🎚️  Mixando e masterizando a faixa");
+        
+        // LANÇAMENTO - Código específico para reggaeton
+        console.log("🇪🇸 Foco em mercado latino-americano");
+        console.log("📱 Estratégia para Spotify e YouTube Music");
+        
+        // PROMOÇÃO - Código específico para reggaeton
+        console.log("🎤 Performando em festivais latinos");
+        console.log("📺 Participação em programas hispânicos");
+    }
+}
+
+// PROBLEMAS IDENTIFICADOS:
+// 1. DUPLICAÇÃO DE CÓDIGO: Etapas de produção repetidas em todas as classes
+// 2. DIFÍCIL MANUTENÇÃO: Mudança no processo exige modificar todas as classes
+// 3. FALTA DE PADRONIZAÇÃO: Cada classe tem sua própria estrutura
+// 4. VIOLAÇÃO DO DRY: Don't Repeat Yourself - código repetido
+// 5. BAIXA REUTILIZAÇÃO: Lógica comum não é compartilhada
+
+// EXEMPLO DE USO PROBLEMÁTICO:
+const funk = new LancamentoFunk();
+const pop = new LancamentoPop();
+const reggaeton = new LancamentoReggaeton();
+
+funk.executarProcesso();
+console.log("\n" + "=".repeat(50) + "\n");
+pop.executarProcesso();
+console.log("\n" + "=".repeat(50) + "\n");
+reggaeton.executarProcesso();
+            </code></pre>
+            <p>Duplicação de código e falta de estrutura consistente tornam o sistema difícil de manter!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/08/anitta.jpg?w=419&h=283&crop=0"
+                    alt="Template Method Aplicado" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Template Method, criamos uma estrutura consistente e reutilizável:</p>
+            <pre><code>
+// Abstract Class - Define o template method
+abstract class ProcessoLancamento {
+    // TEMPLATE METHOD - Define a estrutura do algoritmo
+    executarLancamento(): void {
+        console.log(`🎵 INICIANDO ${this.obterTipoLancamento()}`);
+        console.log("=".repeat(50));
+        
+        this.executarPreProducao();
+        this.executarProducao();
+        this.executarEstrategiaLancamento();
+        this.executarPromocao();
+        
+        this.finalizarLancamento(); // Hook opcional
+    }
+    
+    // Método concreto - comum a todos os lançamentos
+    protected executarProducao(): void {
+        console.log("\n🎛️  FASE DE PRODUÇÃO:");
+        console.log("   🎤 Gravando vocais em estúdio profissional");
+        console.log("   🎚️  Mixando e masterizando a faixa");
+        console.log("   📀 Garantindo qualidade de áudio premium");
+    }
+    
+    // Operações primitivas - devem ser implementadas pelas subclasses
+    protected abstract executarPreProducao(): void;
+    protected abstract executarEstrategiaLancamento(): void;
+    protected abstract executarPromocao(): void;
+    
+    // Hook - método opcional que pode ser sobrescrito
+    protected finalizarLancamento(): void {
+        console.log("\n✅ Lançamento concluído com sucesso!");
+    }
+    
+    // Método auxiliar
+    protected abstract obterTipoLancamento(): string;
+}
+
+// Concrete Classes - Implementam as operações específicas
+
+class LancamentoFunk extends ProcessoLancamento {
+    protected executarPreProducao(): void {
+        console.log("\n📝 FASE DE PRÉ-PRODUÇÃO (FUNK):");
+        console.log("   🎹 Criando base de funk com batida marcante");
+        console.log("   📝 Componendo letra ousada e engajadora");
+        console.log("   💃 Definindo coreografia sensual e viral");
+        console.log("   🔥 Preparando elementos para viralização");
+    }
+    
+    protected executarEstrategiaLancamento(): void {
+        console.log("\n🚀 ESTRATÉGIA DE LANÇAMENTO (FUNK):");
+        console.log("   📱 Priorizando TikTok e YouTube Shorts");
+        console.log("   🔥 Lançamento em horário de pico (sexta 18h)");
+        console.log("   💃 Foco em desafios de dança nas redes");
+    }
+    
+    protected executarPromocao(): void {
+        console.log("\n📢 CAMPANHA DE PROMOÇÃO (FUNK):");
+        console.log("   📱 Criando desafio no TikTok com influencers");
+        console.log("   🎤 Performando em bailes funk estratégicos");
+        console.log("   🔥 Colaboração com MCs renomados");
+    }
+    
+    protected obterTipoLancamento(): string {
+        return "LANÇAMENTO FUNK BRASILEIRO";
+    }
+    
+    // Sobrescrevendo o hook para comportamento específico
+    protected finalizarLancamento(): void {
+        console.log("\n🎉 FUNK LANÇADO! Preparando para viralizar!");
+        console.log("   📈 Monitorando métricas de engajamento");
+        console.log("   🔥 Pronta para trend no TikTok!");
+    }
+}
+
+class LancamentoPop extends ProcessoLancamento {
+    protected executarPreProducao(): void {
+        console.log("\n📝 FASE DE PRÉ-PRODUÇÃO (POP INTERNACIONAL):");
+        console.log("   🌍 Componendo em inglês com refrão cativante");
+        console.log("   🎹 Produção com sons internacionais modernos");
+        console.log("   🤝 Planejando colaboração com artista global");
+        console.log("   🎬 Desenvolvendo conceito visual sofisticado");
+    }
+    
+    protected executarEstrategiaLancamento(): void {
+        console.log("\n🚀 ESTRATÉGIA DE LANÇAMENTO (POP):");
+        console.log("   🌐 Lançamento global simultâneo");
+        console.log("   📀 Todas as plataformas digitais");
+        console.log("   🕒 Timing para diferentes fusos horários");
+        console.log("   💿 Estratégia cross-platform integrada");
+    }
+    
+    protected executarPromocao(): void {
+        console.log("\n📢 CAMPANHA DE PROMOÇÃO (POP):");
+        console.log("   📺 Participação em programas internacionais");
+        console.log("   🎤 Entrevistas com mídia global");
+        console.log("   ✈️  Turnê mundial planejada");
+        console.log("   🤝 Parcerias com marcas internacionais");
+    }
+    
+    protected obterTipoLancamento(): string {
+        return "LANÇAMENTO POP INTERNACIONAL";
+    }
+}
+
+class LancamentoReggaeton extends ProcessoLancamento {
+    protected executarPreProducao(): void {
+        console.log("\n📝 FASE DE PRÉ-PRODUÇÃO (REGGAETON):");
+        console.log("   🇪🇸 Componendo em espanhol com flow latino");
+        console.log("   🎹 Produzindo dembow e batidas caribenhas");
+        console.log("   💃 Coreografia marcante e sensual");
+        console.log("   🌴 Visual com estética tropical");
+    }
+    
+    protected executarEstrategiaLancamento(): void {
+        console.log("\n🚀 ESTRATÉGIA DE LANÇAMENTO (REGGAETON):");
+        console.log("   🇪🇸 Foco principal em mercado latino");
+        console.log("   📱 Destaque no Spotify e YouTube Music");
+        console.log("   🎧 Playlists estratégicas em plataformas");
+        console.log("   🌎 Expansão gradual para outros mercados");
+    }
+    
+    protected executarPromocao(): void {
+        console.log("\n📢 CAMPANHA DE PROMOÇÃO (REGGAETON):");
+        console.log("   🎤 Performando em festivais latinos");
+        console.log("   📺 Participação em programas hispânicos");
+        console.log("   💃 Colaboração com artistas do reggaeton");
+        console.log("   🌴 Conteúdo para redes sociais em espanhol");
+    }
+    
+    protected obterTipoLancamento(): string {
+        return "LANÇAMENTO REGGAETON";
+    }
+}
+
+class LancamentoSamba extends ProcessoLancamento {
+    protected executarPreProducao(): void {
+        console.log("\n📝 FASE DE PRÉ-PRODUÇÃO (SAMBA):");
+        console.log("   🇧🇷 Componendo com raízes brasileiras");
+        console.log("   🎶 Arranjos com violão, cavaquinho e pandeiro");
+        console.log("   🎵 Letras com temática nostálgica/romântica");
+        console.log("   🎭 Conceito visual com elementos tradicionais");
+    }
+    
+    protected executarEstrategiaLancamento(): void {
+        console.log("\n🚀 ESTRATÉGIA DE LANÇAMENTO (SAMBA):");
+        console.log("   🇧🇷 Foco no mercado brasileiro");
+        console.log("   📻 Priorizando rádios AM/FM tradicionais");
+        console.log("   🎵 Plataformas de streaming nacionais");
+        console.log("   🎭 Eventos culturais e rodas de samba");
+    }
+    
+    protected executarPromocao(): void {
+        console.log("\n📢 CAMPANHA DE PROMOÇÃO (SAMBA):");
+        console.log("   🎤 Apresentações em programas de TV nacional");
+        console.log("   🎭 Participação em rodas de samba tradicionais");
+        console.log("   📻 Entrevistas em rádios especializadas");
+        console.log("   🇧🇷 Conexão com patrimônio cultural brasileiro");
+    }
+    
+    protected obterTipoLancamento(): string {
+        return "LANÇAMENTO SAMBA";
+    }
+    
+    // Hook específico para samba
+    protected finalizarLancamento(): void {
+        console.log("\n🎭 SAMBA LANÇADO! Homenagem à cultura brasileira!");
+        console.log("   💛 Celebrando as raízes musicais do Brasil");
+        console.log("   🎶 Pronto para emocionar o público tradicional");
+    }
+}
+
+// Sistema de Gerenciamento de Carreira
+class SistemaCarreiraAnitta {
+    demonstrarTemplateMethod(): void {
+        console.log("🎵 SISTEMA DE CARREIRA - ANITTA 🎵");
+        console.log("===================================");
+        console.log("📊 Demonstrando Padrão Template Method");
+        console.log("✨ Estrutura comum + Implementações específicas\n");
+        
+        const lancamentos: ProcessoLancamento[] = [
+            new LancamentoFunk(),
+            new LancamentoPop(),
+            new LancamentoReggaeton(),
+            new LancamentoSamba()
+        ];
+        
+        for (const lancamento of lancamentos) {
+            lancamento.executarLancamento();
+            console.log("\n" + "⭐".repeat(50) + "\n");
+        }
+        
+        console.log("📈 RESUMO DO SISTEMA:");
+        console.log("   • 1 Template Method (estrutura comum)");
+        console.log("   • 4 Concrete Classes (implementações específicas)");
+        console.log("   • 0 Duplicação de código");
+        console.log("   • ✅ DRY Principle aplicado com sucesso!");
+    }
+}
+
+// Exemplo de uso
+const sistema = new SistemaCarreiraAnitta();
+sistema.demonstrarTemplateMethod();
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Template Method em um sistema de processamento de documentos:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from datetime import datetime
+from typing import List, Dict
+
+# Abstract Class - Define o template method para processamento de documentos
+class ProcessadorDocumento(ABC):
+    def processar_documento(self, conteudo: str) -> Dict:
+        """
+        TEMPLATE METHOD - Define a estrutura do processamento
+        """
+        print(f"📄 INICIANDO PROCESSAMENTO DE {self.obter_tipo_documento()}")
+        print("=" * 50)
+        
+        # Estrutura fixa do algoritmo
+        self.validar_conteudo(conteudo)
+        dados_extraidos = self.extrair_dados(conteudo)
+        dados_processados = self.processar_dados(dados_extraidos)
+        resultado = self.gerar_saida(dados_processados)
+        
+        # Hook opcional
+        self.finalizar_processamento()
+        
+        return resultado
+    
+    # Método concreto - comum a todos os processadores
+    def validar_conteudo(self, conteudo: str) -> None:
+        print("\n🔍 VALIDAÇÃO DO CONTEÚDO:")
+        if not conteudo or len(conteudo.strip()) == 0:
+            raise ValueError("Conteúdo do documento não pode estar vazio")
+        
+        if len(conteudo) < 10:
+            raise ValueError("Conteúdo muito curto para processamento")
+        
+        print("   ✅ Conteúdo validado com sucesso")
+        print(f"   📊 Tamanho do documento: {len(conteudo)} caracteres")
+    
+    # Operações primitivas - devem ser implementadas pelas subclasses
+    @abstractmethod
+    def extrair_dados(self, conteudo: str) -> Dict:
+        pass
+    
+    @abstractmethod
+    def processar_dados(self, dados: Dict) -> Dict:
+        pass
+    
+    @abstractmethod
+    def gerar_saida(self, dados_processados: Dict) -> Dict:
+        pass
+    
+    @abstractmethod
+    def obter_tipo_documento(self) -> str:
+        pass
+    
+    # Hook - método opcional que pode ser sobrescrito
+    def finalizar_processamento(self) -> None:
+        print(f"\n✅ Processamento de {self.obter_tipo_documento()} concluído!")
+        print(f"   🕒 Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+# Concrete Classes - Implementações específicas
+
+class ProcessadorContrato(ProcessadorDocumento):
+    def extrair_dados(self, conteudo: str) -> Dict:
+        print("\n📝 EXTRAINDO DADOS DE CONTRATO:")
+        dados = {
+            'partes': self._extrair_partes(conteudo),
+            'valor': self._extrair_valor(conteudo),
+            'vigencia': self._extrair_vigencia(conteudo),
+            'clausulas': self._extrair_clausulas(conteudo)
+        }
+        print("   ✅ Dados do contrato extraídos")
+        return dados
+    
+    def processar_dados(self, dados: Dict) -> Dict:
+        print("\n⚖️  PROCESSANDO DADOS DO CONTRATO:")
+        dados_processados = dados.copy()
+        
+        # Análise de risco
+        dados_processados['risco'] = self._calcular_risco(dados)
+        
+        # Validação legal
+        dados_processados['valido'] = self._validar_contrato(dados)
+        
+        # Recomendações
+        dados_processados['recomendacoes'] = self._gerar_recomendacoes(dados)
+        
+        print("   ✅ Análise contratual concluída")
+        return dados_processados
+    
+    def gerar_saida(self, dados_processados: Dict) -> Dict:
+        print("\n📋 GERANDO RELATÓRIO DO CONTRATO:")
+        relatorio = {
+            'tipo': 'contrato',
+            'resumo': f"Contrato entre {dados_processados['partes']}",
+            'valor_total': dados_processados['valor'],
+            'nivel_risco': dados_processados['risco'],
+            'validade_legal': dados_processados['valido'],
+            'recomendacoes': dados_processados['recomendacoes'],
+            'timestamp': datetime.now().isoformat()
+        }
+        print("   ✅ Relatório gerado com sucesso")
+        return relatorio
+    
+    def obter_tipo_documento(self) -> str:
+        return "CONTRATO LEGAL"
+    
+    # Métodos específicos para contratos
+    def _extrair_partes(self, conteudo: str) -> str:
+        # Simulação de extração de partes
+        return "Empresa A e Empresa B"
+    
+    def _extrair_valor(self, conteudo: str) -> float:
+        # Simulação de extração de valor
+        return 150000.00
+    
+    def _extrair_vigencia(self, conteudo: str) -> str:
+        # Simulação de extração de vigência
+        return "24 meses"
+    
+    def _extrair_clausulas(self, conteudo: str) -> List[str]:
+        # Simulação de extração de cláusulas
+        return ["Confidencialidade", "Prazo", "Multa"]
+    
+    def _calcular_risco(self, dados: Dict) -> str:
+        # Simulação de cálculo de risco
+        return "MODERADO"
+    
+    def _validar_contrato(self, dados: Dict) -> bool:
+        # Simulação de validação legal
+        return True
+    
+    def _gerar_recomendacoes(self, dados: Dict) -> List[str]:
+        # Simulação de geração de recomendações
+        return ["Revisar cláusula de confidencialidade", "Definir indicadores de performance"]
+
+class ProcessadorNotaFiscal(ProcessadorDocumento):
+    def extrair_dados(self, conteudo: str) -> Dict:
+        print("\n🧾 EXTRAINDO DADOS DA NOTA FISCAL:")
+        dados = {
+            'emitente': self._extrair_emitente(conteudo),
+            'destinatario': self._extrair_destinatario(conteudo),
+            'itens': self._extrair_itens(conteudo),
+            'valor_total': self._extrair_valor_total(conteudo),
+            'impostos': self._extrair_impostos(conteudo)
+        }
+        print("   ✅ Dados fiscais extraídos")
+        return dados
+    
+    def processar_dados(self, dados: Dict) -> Dict:
+        print("\n💰 PROCESSANDO DADOS FISCAIS:")
+        dados_processados = dados.copy()
+        
+        # Cálculo de impostos
+        dados_processados['impostos_calculados'] = self._calcular_impostos(dados)
+        
+        # Validação fiscal
+        dados_processados['valida'] = self._validar_fiscalmente(dados)
+        
+        # Classificação contábil
+        dados_processados['classificacao'] = self._classificar_despesa(dados)
+        
+        print("   ✅ Processamento fiscal concluído")
+        return dados_processados
+    
+    def gerar_saida(self, dados_processados: Dict) -> Dict:
+        print("\n📊 GERANDO RELATÓRIO FISCAL:")
+        relatorio = {
+            'tipo': 'nota_fiscal',
+            'resumo': f"NF {dados_processados['emitente']} → {dados_processados['destinatario']}",
+            'valor_total': dados_processados['valor_total'],
+            'impostos_totais': dados_processados['impostos_calculados'],
+            'validade_fiscal': dados_processados['valida'],
+            'classificacao_contabil': dados_processados['classificacao'],
+            'quantidade_itens': len(dados_processados['itens']),
+            'timestamp': datetime.now().isoformat()
+        }
+        print("   ✅ Relatório fiscal gerado")
+        return relatorio
+    
+    def obter_tipo_documento(self) -> str:
+        return "NOTA FISCAL"
+    
+    # Hook específico para notas fiscais
+    def finalizar_processamento(self) -> None:
+        print(f"\n🧾 PROCESSAMENTO FISCAL CONCLUÍDO!")
+        print(f"   📅 Próxima auditoria: {(datetime.now().replace(day=1)).strftime('%Y-%m-%d')}")
+    
+    # Métodos específicos para notas fiscais
+    def _extrair_emitente(self, conteudo: str) -> str:
+        return "Loja Comércio Ltda"
+    
+    def _extrair_destinatario(self, conteudo: str) -> str:
+        return "Empresa Cliente SA"
+    
+    def _extrair_itens(self, conteudo: str) -> List[Dict]:
+        return [
+            {'descricao': 'Produto A', 'quantidade': 2, 'valor': 250.00},
+            {'descricao': 'Produto B', 'quantidade': 1, 'valor': 150.00}
+        ]
+    
+    def _extrair_valor_total(self, conteudo: str) -> float:
+        return 650.00
+    
+    def _extrair_impostos(self, conteudo: str) -> Dict:
+        return {'ICMS': 58.50, 'PIS': 4.23, 'COFINS': 19.47}
+    
+    def _calcular_impostos(self, dados: Dict) -> float:
+        return sum(dados['impostos'].values())
+    
+    def _validar_fiscalmente(self, dados: Dict) -> bool:
+        return dados['valor_total'] > 0 and len(dados['itens']) > 0
+    
+    def _classificar_despesa(self, dados: Dict) -> str:
+        return "MATERIAL DE ESCRITÓRIO"
+
+class ProcessadorRelatorio(ProcessadorDocumento):
+    def extrair_dados(self, conteudo: str) -> Dict:
+        print("\n📈 EXTRAINDO DADOS DO RELATÓRIO:")
+        dados = {
+            'titulo': self._extrair_titulo(conteudo),
+            'autor': self._extrair_autor(conteudo),
+            'resumo': self._extrair_resumo(conteudo),
+            'metricas': self._extrair_metricas(conteudo),
+            'conclusoes': self._extrair_conclusoes(conteudo)
+        }
+        print("   ✅ Dados do relatório extraídos")
+        return dados
+    
+    def processar_dados(self, dados: Dict) -> Dict:
+        print("\n📊 PROCESSANDO DADOS DO RELATÓRIO:")
+        dados_processados = dados.copy()
+        
+        # Análise de métricas
+        dados_processados['analise_metricas'] = self._analisar_metricas(dados)
+        
+        # Qualidade do relatório
+        dados_processados['qualidade'] = self._avaliar_qualidade(dados)
+        
+        # Insights gerados
+        dados_processados['insights'] = self._gerar_insights(dados)
+        
+        print("   ✅ Análise do relatório concluída")
+        return dados_processados
+    
+    def gerar_saida(self, dados_processados: Dict) -> Dict:
+        print("\n🎯 GERANDO RESUMO EXECUTIVO:")
+        relatorio = {
+            'tipo': 'relatorio_analitico',
+            'titulo': dados_processados['titulo'],
+            'autor': dados_processados['autor'],
+            'resumo_executivo': dados_processados['resumo'],
+            'insights_principais': dados_processados['insights'],
+            'qualidade_avaliacao': dados_processados['qualidade'],
+            'metricas_chave': dados_processados['analise_metricas'],
+            'timestamp': datetime.now().isoformat()
+        }
+        print("   ✅ Resumo executivo gerado")
+        return relatorio
+    
+    def obter_tipo_documento(self) -> str:
+        return "RELATÓRIO ANALÍTICO"
+    
+    # Métodos específicos para relatórios
+    def _extrair_titulo(self, conteudo: str) -> str:
+        return "Relatório de Performance Trimestral"
+    
+    def _extrair_autor(self, conteudo: str) -> str:
+        return "Departamento de Analytics"
+    
+    def _extrair_resumo(self, conteudo: str) -> str:
+        return "Análise detalhada do desempenho no último trimestre"
+    
+    def _extrair_metricas(self, conteudo: str) -> Dict:
+        return {
+            'vendas': 1500000,
+            'crescimento': '15%',
+            'clientes_novos': 250,
+            'satisfacao': '92%'
+        }
+    
+    def _extrair_conclusoes(self, conteudo: str) -> List[str]:
+        return [
+            "Crescimento consistente nas vendas",
+            "Aumento na base de clientes",
+            "Satisfação do cliente em alta"
+        ]
+    
+    def _analisar_metricas(self, dados: Dict) -> Dict:
+        metricas = dados['metricas']
+        return {
+            'status': 'POSITIVO',
+            'tendencia': 'CRESCENTE',
+            'destaques': ['crescimento de 15%', 'satisfação de 92%']
+        }
+    
+    def _avaliar_qualidade(self, dados: Dict) -> str:
+        return "ALTA"
+    
+    def _gerar_insights(self, dados: Dict) -> List[str]:
+        return [
+            "Investir em campanhas de aquisição de clientes",
+            "Expandir para novos mercados",
+            "Manter foco na qualidade do atendimento"
+        ]
+
+# Sistema de Processamento de Documentos
+class SistemaDocumentos:
+    def demonstrar_template_method(self) -> None:
+        print("📄 SISTEMA DE PROCESSAMENTO DE DOCUMENTOS")
+        print("==========================================")
+        print("🎯 Demonstrando Padrão Template Method")
+        print("✨ Estrutura comum + Processamento específico\n")
+        
+        # Documentos de exemplo
+        documentos = [
+            ("CONTRATO", "Contrato de prestação de serviços..."),
+            ("NOTA_FISCAL", "Nota fiscal eletrônica..."),
+            ("RELATORIO", "Relatório trimestral de performance...")
+        ]
+        
+        processadores = {
+            "CONTRATO": ProcessadorContrato(),
+            "NOTA_FISCAL": ProcessadorNotaFiscal(),
+            "RELATORIO": ProcessadorRelatorio()
+        }
+        
+        resultados = []
+        
+        for tipo, conteudo in documentos:
+            if tipo in processadores:
+                try:
+                    print(f"\n{'🚀' * 20}")
+                    resultado = processadores[tipo].processar_documento(conteudo)
+                    resultados.append(resultado)
+                    print(f"{'✅' * 20}\n")
+                except Exception as e:
+                    print(f"❌ Erro no processamento: {e}")
+        
+        # Resumo do sistema
+        print("\n📊 RESUMO DO SISTEMA:")
+        print(f"   • Documentos processados: {len(resultados)}")
+        print(f"   • Template Method: 1 estrutura comum")
+        print(f"   • Concrete Classes: {len(processadores)} implementações")
+        print(f"   • Eficiência: 0 duplicação de código")
+        print("   • ✅ DRY Principle aplicado com sucesso!")
+
+# Exemplo de uso
+def main():
+    sistema = SistemaDocumentos()
+    sistema.demonstrar_template_method()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/comportamentais/template/ficticio.png" alt="Anitta Template Method UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Template Method no exemplo da jornada da Anitta:</p>
+            <pre class="uml-code">
+@startuml
+abstract class ProcessoLancamento {
+    + executarLancamento(): void
+    # executarPreProducao(): void {abstract}
+    # executarProducao(): void
+    # executarEstrategiaLancamento(): void {abstract}
+    # executarPromocao(): void {abstract}
+    # finalizarLancamento(): void
+    # obterTipoLancamento(): string {abstract}
+}
+
+class LancamentoFunk {
+    # executarPreProducao(): void
+    # executarEstrategiaLancamento(): void
+    # executarPromocao(): void
+    # obterTipoLancamento(): string
+    # finalizarLancamento(): void
+}
+
+class LancamentoPop {
+    # executarPreProducao(): void
+    # executarEstrategiaLancamento(): void
+    # executarPromocao(): void
+    # obterTipoLancamento(): string
+}
+
+class LancamentoReggaeton {
+    # executarPreProducao(): void
+    # executarEstrategiaLancamento(): void
+    # executarPromocao(): void
+    # obterTipoLancamento(): string
+}
+
+class LancamentoSamba {
+    # executarPreProducao(): void
+    # executarEstrategiaLancamento(): void
+    # executarPromocao(): void
+    # obterTipoLancamento(): string
+    # finalizarLancamento(): void
+}
+
+class SistemaCarreiraAnitta {
+    - processadores: List<ProcessoLancamento>
+    + demonstrarTemplateMethod(): void
+}
+
+ProcessoLancamento <|-- LancamentoFunk
+ProcessoLancamento <|-- LancamentoPop
+ProcessoLancamento <|-- LancamentoReggaeton
+ProcessoLancamento <|-- LancamentoSamba
+SistemaCarreiraAnitta --> ProcessoLancamento
+
+note right of ProcessoLancamento
+    Classe abstrata que define
+    o template method com a
+    estrutura comum do processo
+end note
+
+note right of LancamentoFunk
+    Implementação concreta para
+    lançamentos do gênero funk
+    com estratégias específicas
+end note
+
+note right of SistemaCarreiraAnitta
+    Client que utiliza os
+    processadores concretos
+    seguindo a estrutura comum
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como o template method define a estrutura comum enquanto as subclasses implementam as etapas específicas.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/comportamentais/template/pratico.png" alt="Sistema Documentos Template Method UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Template Method no exemplo prático do sistema de processamento de documentos:</p>
+            <pre class="uml-code">
+@startuml
+abstract class ProcessadorDocumento {
+    + processar_documento(conteudo: str): Dict
+    # validar_conteudo(conteudo: str): void
+    # extrair_dados(conteudo: str): Dict {abstract}
+    # processar_dados(dados: Dict): Dict {abstract}
+    # gerar_saida(dados_processados: Dict): Dict {abstract}
+    # finalizar_processamento(): void
+    # obter_tipo_documento(): str {abstract}
+}
+
+class ProcessadorContrato {
+    # extrair_dados(conteudo: str): Dict
+    # processar_dados(dados: Dict): Dict
+    # gerar_saida(dados_processados: Dict): Dict
+    # obter_tipo_documento(): str
+    - _extrair_partes(conteudo: str): str
+    - _extrair_valor(conteudo: str): float
+    - _calcular_risco(dados: Dict): str
+}
+
+class ProcessadorNotaFiscal {
+    # extrair_dados(conteudo: str): Dict
+    # processar_dados(dados: Dict): Dict
+    # gerar_saida(dados_processados: Dict): Dict
+    # obter_tipo_documento(): str
+    # finalizar_processamento(): void
+    - _extrair_emitente(conteudo: str): str
+    - _extrair_itens(conteudo: str): List[Dict]
+    - _validar_fiscalmente(dados: Dict): bool
+}
+
+class ProcessadorRelatorio {
+    # extrair_dados(conteudo: str): Dict
+    # processar_dados(dados: Dict): Dict
+    # gerar_saida(dados_processados: Dict): Dict
+    # obter_tipo_documento(): str
+    - _extrair_titulo(conteudo: str): str
+    - _extrair_metricas(conteudo: str): Dict
+    - _gerar_insights(dados: Dict): List[str]
+}
+
+class SistemaDocumentos {
+    - processadores: Dict[str, ProcessadorDocumento]
+    + demonstrar_template_method(): void
+}
+
+ProcessadorDocumento <|-- ProcessadorContrato
+ProcessadorDocumento <|-- ProcessadorNotaFiscal
+ProcessadorDocumento <|-- ProcessadorRelatorio
+SistemaDocumentos --> ProcessadorDocumento
+
+note right of ProcessadorDocumento
+    Define o template method
+    processar_documento() que
+    estabelece a estrutura fixa
+    do algoritmo
+end note
+
+note right of ProcessadorContrato
+    Implementação específica para
+    processamento de contratos
+    com análise legal e de risco
+end note
+
+note right of SistemaDocumentos
+    Client que orquestra o uso
+    dos diferentes processadores
+    mantendo a estrutura comum
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura garante que todos os tipos de documentos sejam processados seguindo a mesma sequência, mas com implementações específicas para cada tipo.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://caras.com.br/wp-content/uploads/2022-maio/anitta__3.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Template Method oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Reutilização de Código:</strong> Elimina duplicação ao centralizar código comum na superclasse</li>
+                <li><strong>Controle de Estrutura:</strong> Garante que o algoritmo siga sempre a mesma sequência</li>
+                <li><strong>Flexibilidade:</strong> Permite que subclasses redefinam etapas específicas</li>
+                <li><strong>Extensibilidade:</strong> Fácil adicionar novas variações do algoritmo</li>
+                <li><strong>Inversão de Controle:</strong> A superclasse controla o algoritmo, subclasses implementam detalhes</li>
+                <li><strong>Manutenção Simplificada:</strong> Mudanças na estrutura afetam apenas a superclasse</li>
+                <li><strong>DRY Principle:</strong> Don't Repeat Yourself - evita código duplicado</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://pbs.twimg.com/media/EAgwMfHXkAAMmhR.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Template Method também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Rigidez na Estrutura:</strong> A sequência do algoritmo é fixa e não pode ser alterada</li>
+                <li><strong>Herança Obrigatória:</strong> Requer uso de herança, o que pode ser limitante</li>
+                <li><strong>Dificuldade de Compreensão:</strong> Pode ser confuso para desenvolvedores iniciantes</li>
+                <li><strong>Acoplamento:</strong> Subclasses ficam acopladas à superclasse</li>
+                <li><strong>Violacao LSP:</strong> Pode violar o Princípio de Substituição de Liskov se hooks forem mal usados</li>
+                <li><strong>Complexidade:</strong> Pode adicionar complexidade desnecessária para algoritmos simples</li>
+                <li><strong>Limitação de Reuso:</strong> Dificuldade em reusar partes do algoritmo isoladamente</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://media1.tenor.com/m/FlCPhTL-Hl4AAAAd/e-isso-um-beijo-da-anitta.gif"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Template Method é uma solução poderosa para definir a estrutura de um algoritmo enquanto permite que subclasses personalizem etapas específicas sem alterar a sequência geral.</p>
+            <p>Na nossa analogia da <strong>jornada da Anitta</strong>, o Template Method funciona como a <strong>estratégia consistente de lançamentos musicais</strong> - onde todos os lançamentos seguem o mesmo processo estruturado (pré-produção, produção, lançamento, promoção), mas cada gênero musical (funk, pop, reggaeton, samba) implementa essas etapas de forma específica e otimizada.</p>
+            <p>Assim como a Anitta mantém uma marca consistente enquanto se adapta a diferentes mercados e gêneros musicais, o padrão Template Method nos permite criar sistemas que mantêm uma estrutura coerente enquanto permitem variações específicas, garantindo qualidade, consistência e facilitando a manutenção e evolução do código.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/template-method"
+                        target="_blank">Refactoring.Guru - Padrão Template Method</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-template-method/16768"
+                        target="_blank">DevMedia - Padrão Template Method</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/25/mao-na-massa-template-method/"
+                        target="_blank">Mão na Massa - Padrão Template Method</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Template_Method" target="_blank">Wikipédia - Template Method (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/template-method-design-pattern/" target="_blank">GeeksforGeeks
+                        - Template Method Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/template_method" target="_blank">SourceMaking
+                        - Template Method Pattern</a></li>
+                <li>[7] <a href="https://en.wikipedia.org/wiki/Anitta_(singer)" target="_blank">Wikipedia - Anitta Biography</a></li>
+                <li>[8] <a href="https://www.bbc.com/news/world-latin-america-65209919" target="_blank">BBC - Anitta's International Career</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    
+</body>
+
+</html>
