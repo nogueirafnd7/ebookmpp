@@ -122,6 +122,52 @@
                 <img src="../../assets/img/comportamentais/strategy/4.png" crossOrigin="anonymous" alt="Strategy UML"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class Context {
+  - strategy: Strategy
+  + setStrategy(strategy: Strategy): void
+  + executeStrategy(): void
+}
+
+interface Strategy {
+  + execute(): void
+}
+
+class ConcreteStrategyA {
+  + execute(): void
+}
+
+class ConcreteStrategyB {
+  + execute(): void
+}
+
+class ConcreteStrategyC {
+  + execute(): void
+}
+
+Strategy <|-- ConcreteStrategyA
+Strategy <|-- ConcreteStrategyB
+Strategy <|-- ConcreteStrategyC
+
+Context --> Strategy : strategy
+
+note right of Context::executeStrategy
+  strategy.execute()
+end note
+
+note right of ConcreteStrategyA::execute
+  // Implementation of algorithm A
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Strategy:</p>
             <ul>
                 <li><strong>Context:</strong> Mantém uma referência para um objeto Strategy. Pode definir uma interface
@@ -374,6 +420,56 @@ processor.process(300.00)
                 <img src="../../assets/img/comportamentais/strategy/9.png" crossOrigin="anonymous"
                     alt="Britney Spears UML" class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class BritneySpears {
+  - currentStrategy: PerformanceStrategy
+  + setStrategy(strategy: PerformanceStrategy): void
+  + performShow(): void
+}
+
+interface PerformanceStrategy {
+  + setupStage(): void
+  + executePerformance(): void
+}
+
+class PopStrategy {
+  + setupStage(): void
+  + executePerformance(): void
+}
+
+class AcousticStrategy {
+  + setupStage(): void
+  + executePerformance(): void
+}
+
+class VegasStrategy {
+  + setupStage(): void
+  + executePerformance(): void
+}
+
+PerformanceStrategy <|-- PopStrategy
+PerformanceStrategy <|-- AcousticStrategy
+PerformanceStrategy <|-- VegasStrategy
+
+BritneySpears --> PerformanceStrategy : currentStrategy
+
+note right of BritneySpears::performShow
+  currentStrategy.setupStage()\n  currentStrategy.executePerformance()
+end note
+
+note right of PopStrategy::executePerformance
+  print("Executando coreografia elaborada e cantando hits pop!")
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>Este diagrama UML detalha a aplicação do Padrão Strategy no nosso exemplo fictício da Britney Spears:</p>
             <ul>
                 <li>A classe <code>BritneySpears</code> é o Context, que mantém uma referência para a estratégia atual.
@@ -401,6 +497,58 @@ processor.process(300.00)
                 <img src="../../assets/img/comportamentais/strategy/10.png" crossOrigin="anonymous"
                     alt="Payment Processor UML" class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class PaymentProcessor {
+  - strategy: PaymentStrategy
+  + setPaymentStrategy(strategy: PaymentStrategy): void
+  + process(amount: float): void
+}
+
+interface PaymentStrategy {
+  + processPayment(amount: float): void
+}
+
+class CreditCardStrategy {
+  - cardNumber: String
+  - expiryDate: String
+  - cvv: String
+  + processPayment(amount: float): void
+}
+
+class PayPalStrategy {
+  - email: String
+  + processPayment(amount: float): void
+}
+
+class BankTransferStrategy {
+  - accountNumber: String
+  - bankCode: String
+  + processPayment(amount: float): void
+}
+
+PaymentStrategy <|-- CreditCardStrategy
+PaymentStrategy <|-- PayPalStrategy
+PaymentStrategy <|-- BankTransferStrategy
+
+PaymentProcessor --> PaymentStrategy : strategy
+
+note right of PaymentProcessor::process
+  if (strategy != null) {\n    strategy.processPayment(amount)\n  }
+end note
+
+note right of CreditCardStrategy::processPayment
+  print(f"Processando pagamento de R${amount} via cartão de crédito {cardNumber[-4:]}")
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>Este diagrama UML mostra a aplicação do Padrão Strategy no exemplo prático do processador de pagamentos:
             </p>
             <ul>
