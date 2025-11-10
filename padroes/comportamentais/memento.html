@@ -117,6 +117,47 @@
                 <img src="../../assets/img/comportamentais/memento/uml_generica.png" alt="Memento UML"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class Originator {
+  - state: String
+  + setState(state: String): void
+  + getState(): String
+  + saveToMemento(): Memento
+  + restoreFromMemento(memento: Memento): void
+}
+
+class Memento {
+  - state: String
+  + Memento(state: String)
+  + getState(): String
+}
+
+class Caretaker {
+  - mementos: List&lt;Memento&gt;
+  + addMemento(memento: Memento): void
+  + getMemento(index: int): Memento
+}
+
+Originator --> Memento : creates
+Caretaker --> Memento : stores
+
+note right of Originator::saveToMemento
+  return new Memento(this.state)
+end note
+
+note right of Originator::restoreFromMemento
+  this.state = memento.getState()
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Memento:</p>
             <ul>
                 <li><strong>Originator:</strong> O objeto cujo estado precisa ser salvo</li>
@@ -374,6 +415,48 @@ if memento:
                 <img src="../../assets/img/comportamentais/memento/diag_proj_fic.png" alt="Artistas Congelados UML"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class ArtistaNatalino {
+  - voz: String
+  - humor: String
+  - repertorio: List&lt;String&gt;
+  - energia: int
+  + criarMemento(): MementoNatalino
+  + restaurar(memento: MementoNatalino): void
+}
+
+class MementoNatalino {
+  - estado: Map&lt;String, Object&gt;
+  + MementoNatalino(estado: Map&lt;String, Object&gt;)
+  + getEstado(): Map&lt;String, Object&gt;
+}
+
+class SistemaCongelamento {
+  - mementos: Map&lt;String, MementoNatalino&gt;
+  + congelarArtista(nome: String, artista: ArtistaNatalino): void
+  + descongelarArtista(nome: String, artista: ArtistaNatalino): void
+}
+
+ArtistaNatalino --> MementoNatalino : creates
+SistemaCongelamento --> MementoNatalino : stores
+
+note right of ArtistaNatalino::criarMemento
+  return new MementoNatalino({\n    voz: this.voz,\n    humor: this.humor,\n    repertorio: [...this.repertorio],\n    energia: this.energia\n  })
+end note
+
+note right of ArtistaNatalino::restaurar
+  const estado = memento.getEstado()\n  this.voz = estado.voz\n  this.humor = estado.humor\n  this.repertorio = [...estado.repertorio]\n  this.energia = estado.energia
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>Este diagrama UML detalha a aplicação do Padrão Memento no nosso exemplo dos artistas congelados:</p>
             <ul>
                 <li>A classe <code>ArtistaNatalino</code> é o Originator, que pode criar e restaurar mementos</li>
@@ -396,6 +479,50 @@ if memento:
                 <img src="../../assets/img/comportamentais/memento/diag_proj_pra.png" alt="Editor de Texto UML"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class TextEditor {
+  - content: String
+  + write(text: String): void
+  + getContent(): String
+  + save(): TextMemento
+  + restore(memento: TextMemento): void
+}
+
+class TextMemento {
+  - state: String
+  - date: String
+  + TextMemento(state: String)
+  + getState(): String
+  + getName(): String
+  + getDate(): String
+}
+
+class History {
+  - mementos: List&lt;TextMemento&gt;
+  + push(memento: TextMemento): void
+  + pop(): TextMemento
+}
+
+TextEditor --> TextMemento : creates
+History --> TextMemento : stores
+
+note right of TextEditor::save
+  return new TextMemento(this.content)
+end note
+
+note right of TextEditor::restore
+  this.content = memento.getState()
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>Este diagrama UML mostra a aplicação do Padrão Memento no exemplo prático do editor de texto:</p>
             <ul>
                 <li>A classe <code>TextEditor</code> é o Originator, responsável por criar e restaurar mementos</li>
@@ -439,139 +566,140 @@ if memento:
         <div class="ebook-page" id="page11">
             <h1>Desvantagens</h1>
             <div class="img-placeholder-12">
-                <img src="https://statics.otvfoco.com.br/2023/05/roberto-carlos-1.jpg" <p>O Padrão Memento também
-                apresenta algumas desvantagens:</p>
-                <ul>
-                    <li><strong>Consumo de Memória:</strong> Pode consumir muita memória se muitos mementos forem
-                        armazenados</li>
-                    <li><strong>Complexidade Adicional:</strong> Adiciona mais classes e complexidade ao código</li>
-                    <li><strong>Overhead de Performance:</strong> A criação e restauração de mementos pode ser custosa
-                    </li>
-                    <li><strong>Gerenciamento de Mementos:</strong> O Caretaker precisa gerenciar adequadamente o ciclo
-                        de vida dos mementos</li>
-                    <li><strong>Dificuldade com Objetos Grandes:</strong> Pode ser ineficiente para objetos muito
-                        grandes ou complexos</li>
-                </ul>
-
-                <div class="page-navigation">
-                    <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
-                    <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
-                </div>
+                <img src="https://statics.otvfoco.com.br/2023/05/roberto-carlos-1.jpg" alt="Disadvantages" class="cover-image">
             </div>
+            <p>O Padrão Memento também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Consumo de Memória:</strong> Pode consumir muita memória se muitos mementos forem
+                    armazenados</li>
+                <li><strong>Complexidade Adicional:</strong> Adiciona mais classes e complexidade ao código</li>
+                <li><strong>Overhead de Performance:</strong> A criação e restauração de mementos pode ser custosa
+                </li>
+                <li><strong>Gerenciamento de Mementos:</strong> O Caretaker precisa gerenciar adequadamente o ciclo
+                    de vida dos mementos</li>
+                <li><strong>Dificuldade com Objetos Grandes:</strong> Pode ser ineficiente para objetos muito
+                    grandes ou complexos</li>
+            </ul>
 
-            <div class="ebook-page" id="page12">
-                <h1>Conclusão</h1>
-                <div class="img-placeholder-13">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
-                        alt="Conclusion" class="cover-image">
-                </div>
-                <p>O Padrão Memento é uma ferramenta poderosa para gerenciar o estado de objetos ao longo do tempo. Ele
-                    é particularmente útil quando você precisa implementar funcionalidades de desfazer/refazer ou quando
-                    precisa capturar snapshots do estado de um objeto.</p>
-                <p>Na nossa analogia dos artistas congelados, o Memento funciona como uma <strong>cápsula do
-                        tempo</strong> que preserva perfeitamente o estado natalino de Mariah Carey e Roberto Carlos,
-                    permitindo que eles sejam "descongelados" exatamente como estavam no último Natal.</p>
-                <p>No entanto, como todo padrão de projeto, é importante avaliar se o Memento Pattern é a solução
-                    adequada para o problema em questão. Para sistemas que não precisam de funcionalidades de undo/redo
-                    ou onde o consumo de memória é crítico, outras abordagens podem ser mais apropriadas.</p>
-
-                <div class="page-navigation">
-                    <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
-                    <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="ebook-page" id="page13">
-                <h1>Fontes Bibliográficas</h1>
-                <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
-                <ul class="reference-list">
-                    <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/memento"
-                            target="_blank">Refactoring.Guru - Padrão de Projeto Memento</a></li>
-                    <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-memento/16767"
-                            target="_blank">DevMedia - Padrão de Projeto Memento</a></li>
-                    <li>[3] <a href="https://brizeno.wordpress.com/2011/10/26/mao-na-massa-memento/" target="_blank">Mão
-                            na Massa - Padrão Memento</a></li>
-                    <li>[4] <a href="https://pt.wikipedia.org/wiki/Memento" target="_blank">Wikipédia - Memento (padrão
-                            de projeto)</a></li>
-                    <li>[5] <a href="https://www.geeksforgeeks.org/memento-design-pattern/"
-                            target="_blank">GeeksforGeeks - Memento Design Pattern</a></li>
-                    <li>[6] <a href="https://sourcemaking.com/design_patterns/memento" target="_blank">SourceMaking -
-                            Memento Pattern</a></li>
-                </ul>
-                <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
-
-                <div class="page-navigation">
-                    <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
-                    <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
-                </div>
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
 
-        <!-- Botão de voltar ao topo -->
-        <a href="#" class="back-to-top" id="backToTop">
-            <i class="bi bi-arrow-up"></i>
-        </a>
+        <div class="ebook-page" id="page12">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-13">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Memento é uma ferramenta poderosa para gerenciar o estado de objetos ao longo do tempo. Ele
+                é particularmente útil quando você precisa implementar funcionalidades de desfazer/refazer ou quando
+                precisa capturar snapshots do estado de um objeto.</p>
+            <p>Na nossa analogia dos artistas congelados, o Memento funciona como uma <strong>cápsula do
+                    tempo</strong> que preserva perfeitamente o estado natalino de Mariah Carey e Roberto Carlos,
+                permitindo que eles sejam "descongelados" exatamente como estavam no último Natal.</p>
+            <p>No entanto, como todo padrão de projeto, é importante avaliar se o Memento Pattern é a solução
+                adequada para o problema em questão. Para sistemas que não precisam de funcionalidades de undo/redo
+                ou onde o consumo de memória é crítico, outras abordagens podem ser mais apropriadas.</p>
 
-        <script>
-            // Script para controle do sidebar no mobile
-            document.addEventListener('DOMContentLoaded', function () {
-                const sidebarToggle = document.getElementById('sidebarToggle');
-                const sidebar = document.getElementById('sidebar');
-                const overlay = document.getElementById('overlay');
-                const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
 
-                // Função para abrir o sidebar
-                function openSidebar() {
-                    sidebar.classList.add('show');
-                    overlay.classList.add('show');
-                    document.body.style.overflow = 'hidden';
-                }
+        <div class="ebook-page" id="page13">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/memento"
+                        target="_blank">Refactoring.Guru - Padrão de Projeto Memento</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-memento/16767"
+                        target="_blank">DevMedia - Padrão de Projeto Memento</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/10/26/mao-na-massa-memento/" target="_blank">Mão
+                        na Massa - Padrão Memento</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Memento" target="_blank">Wikipédia - Memento (padrão
+                        de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/memento-design-pattern/"
+                        target="_blank">GeeksforGeeks - Memento Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/memento" target="_blank">SourceMaking -
+                        Memento Pattern</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
 
-                // Função para fechar o sidebar
-                function closeSidebar() {
-                    sidebar.classList.remove('show');
-                    overlay.classList.remove('show');
-                    document.body.style.overflow = '';
-                }
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
 
-                // Abrir sidebar ao clicar no botão hamburguer
-                sidebarToggle.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    openSidebar();
-                });
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
 
-                // Fechar sidebar ao clicar no overlay
-                overlay.addEventListener('click', function () {
-                    closeSidebar();
-                });
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
 
-                // Fechar sidebar ao clicar em um link (mobile)
-                sidebarLinks.forEach(link => {
-                    link.addEventListener('click', function () {
-                        if (window.innerWidth <= 991) {
-                            closeSidebar();
-                        }
-                    });
-                });
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
 
-                // Fechar sidebar ao pressionar a tecla ESC
-                document.addEventListener('keydown', function (e) {
-                    if (e.key === 'Escape') {
-                        closeSidebar();
-                    }
-                });
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
 
-                // Fechar sidebar ao redimensionar a janela para desktop
-                window.addEventListener('resize', function () {
-                    if (window.innerWidth > 991) {
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
                         closeSidebar();
                     }
                 });
             });
-        </script>
-        <!-- Bootstrap JS e Popper.js -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 </body>
 
