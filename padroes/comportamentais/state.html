@@ -123,6 +123,52 @@
                 <img src="../../assets/img/comportamentais/state/4.png" crossOrigin="anonymous" alt="State UML"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class Context {
+  - state: State
+  + request(): void
+  + setState(state: State): void
+}
+
+interface State {
+  + handle(context: Context): void
+}
+
+class ConcreteStateA {
+  + handle(context: Context): void
+}
+
+class ConcreteStateB {
+  + handle(context: Context): void
+}
+
+class ConcreteStateC {
+  + handle(context: Context): void
+}
+
+State <|-- ConcreteStateA
+State <|-- ConcreteStateB
+State <|-- ConcreteStateC
+
+Context --> State : state
+
+note right of Context::request
+  state.handle(this)
+end note
+
+note right of ConcreteStateA::handle
+  // Behavior for state A\n  // Can change context state if needed\n  context.setState(new ConcreteStateB())
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão State:</p>
             <ul>
                 <li><strong>Context:</strong> Mantém uma referência para um objeto State que define o estado atual.
@@ -152,7 +198,7 @@
             <ul>
                 <li><strong>Estado Pop:</strong> Quando está criando músicas pop como "Bad Romance" ou "Poker Face"</li>
                 <li><strong>Estado Jazz:</strong> Quando está em sua fase jazz com Tony Bennett</li>
-                <strong>Estado Experimental:</strong> Quando está explorando novos sons e performances artísticas</li>
+                <li><strong>Estado Experimental:</strong> Quando está explorando novos sons e performances artísticas</li>
             </ul>
             <p>Cada estado influencia como ela se apresenta, compõe e interage com o público. O padrão State permite que
                 ela mude facilmente entre esses estados sem modificar sua essência como artista.</p>
@@ -369,6 +415,57 @@ player.stop()   # Parando a música...
                 <img src="../../assets/img/comportamentais/state/9.png" crossOrigin="anonymous" alt="Lady Gaga UML"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class LadyGaga {
+  - currentState: ArtisticState
+  + setState(state: ArtisticState): void
+  + perform(): void
+  + compose(): void
+}
+
+interface ArtisticState {
+  + perform(): void
+  + compose(): void
+}
+
+class PopState {
+  + perform(): void
+  + compose(): void
+}
+
+class JazzState {
+  + perform(): void
+  + compose(): void
+}
+
+class ExperimentalState {
+  + perform(): void
+  + compose(): void
+}
+
+ArtisticState <|-- PopState
+ArtisticState <|-- JazzState
+ArtisticState <|-- ExperimentalState
+
+LadyGaga --> ArtisticState : currentState
+
+note right of LadyGaga::perform
+  currentState.perform()
+end note
+
+note right of PopState::perform
+  print("Executando coreografia elaborada e cantando hits pop!")
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>Este diagrama UML detalha a aplicação do Padrão State no nosso exemplo fictício da Lady Gaga:</p>
             <ul>
                 <li>A classe <code>LadyGaga</code> é o Context, que mantém uma referência para o estado atual.</li>
@@ -393,6 +490,61 @@ player.stop()   # Parando a música...
                 <img src="../../assets/img/comportamentais/state/10.png" crossOrigin="anonymous" alt="Music Player UML"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class MusicPlayer {
+  - state: State
+  + play(): void
+  + pause(): void
+  + stop(): void
+}
+
+interface State {
+  + play(player: MusicPlayer): void
+  + pause(player: MusicPlayer): void
+  + stop(player: MusicPlayer): void
+}
+
+class PlayingState {
+  + play(player: MusicPlayer): void
+  + pause(player: MusicPlayer): void
+  + stop(player: MusicPlayer): void
+}
+
+class PausedState {
+  + play(player: MusicPlayer): void
+  + pause(player: MusicPlayer): void
+  + stop(player: MusicPlayer): void
+}
+
+class StoppedState {
+  + play(player: MusicPlayer): void
+  + pause(player: MusicPlayer): void
+  + stop(player: MusicPlayer): void
+}
+
+State <|-- PlayingState
+State <|-- PausedState
+State <|-- StoppedState
+
+MusicPlayer --> State : state
+
+note right of MusicPlayer::play
+  state.play(this)
+end note
+
+note right of PlayingState::pause
+  print("Pausando a música...")\n  player.state = PausedState()
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>Este diagrama UML mostra a aplicação do Padrão State no exemplo prático do reprodutor de música:</p>
             <ul>
                 <li>A classe <code>MusicPlayer</code> é o Context, que delega as operações para o estado atual.</li>
@@ -422,8 +574,8 @@ player.stop()   # Parando a música...
                     classes distintas, tornando o código mais organizado e fácil de entender.</li>
                 <li><strong>Elimina Condições Complexas:</strong> Remove a necessidade de longas declarações if-else ou
                     switch-case que verificam o estado do objeto.</li>
-                <strong>Facilita a Adição de Novos Estados:</strong> Novos estados podem ser adicionados criando novas
-                classes sem modificar o Context ou estados existentes, seguindo o princípio Open/Closed.</li>
+                <li><strong>Facilita a Adição de Novos Estados:</strong> Novos estados podem ser adicionados criando novas
+                    classes sem modificar o Context ou estados existentes, seguindo o princípio Open/Closed.</li>
                 <li><strong>Comportamento Específico por Estado:</strong> Cada estado pode ter seu próprio comportamento
                     e transições, encapsulando a lógica específica do estado.</li>
                 <li><strong>Melhora a Manutenibilidade:</strong> Torna o código mais fácil de manter e estender, pois as
