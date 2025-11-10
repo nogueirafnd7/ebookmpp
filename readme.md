@@ -43,8 +43,7 @@ cd ebookmpp
 ---
 
 ## 🧠 Requisitos
-
-- Node.js (já vem instalado no Codespaces)  
+ 
 - Navegador moderno (Chrome, Edge, Firefox, etc.)  
 - Conexão com a internet  
 
