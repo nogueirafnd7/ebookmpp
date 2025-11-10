@@ -130,6 +130,57 @@
                 <img src="../../assets/img/comportamentais/observer/4.png" crossOrigin="anonymous" alt="Capa Observer"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+interface Subject {
+  + attach(observer: Observer): void
+  + detach(observer: Observer): void
+  + notify(): void
+}
+
+interface Observer {
+  + update(): void
+}
+
+class ConcreteSubject {
+  - state: String
+  - observers: List&lt;Observer&gt;
+  + getState(): String
+  + setState(state: String): void
+}
+
+class ConcreteObserverA {
+  - subject: ConcreteSubject
+  + update(): void
+}
+
+class ConcreteObserverB {
+  - subject: ConcreteSubject
+  + update(): void
+}
+
+Subject <|-- ConcreteSubject
+Observer <|-- ConcreteObserverA
+Observer <|-- ConcreteObserverB
+
+ConcreteSubject --> Observer : observers
+
+note right of ConcreteSubject::setState
+  this.state = state\n  this.notify()
+end note
+
+note right of ConcreteObserverA::update
+  // React to state change\n  String state = subject.getState()
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Observer. Ele é composto por
                 duas hierarquias principais: o <strong>Subject</strong> (ou Publicador) e o <strong>Observer</strong>
                 (ou Assinante).</p>
@@ -454,6 +505,60 @@ station.set_temperature(22)
                 <img src="../../assets/img/comportamentais/observer/6.png" crossOrigin="anonymous" alt="Capa Observer"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class BeyonceOfficialApp {
+  - subscribers: List&lt;FanObserver&gt;
+  - latestNews: Object
+  + subscribe(fan: FanObserver): void
+  + unsubscribe(fan: FanObserver): void
+  + notifySubscribers(newsType: String, newsDetails: Object): void
+  + announceNews(newsType: String, newsDetails: Object): void
+}
+
+interface FanObserver {
+  + update(newsType: String, newsDetails: Object): void
+}
+
+class InstagramFan {
+  + update(newsType: String, newsDetails: Object): void
+  + postStory(message: String): void
+}
+
+class SpotifyListener {
+  + update(newsType: String, newsDetails: Object): void
+  + addToBeyoncePlaylist(songName: String): void
+  + playOnRepeat(): void
+}
+
+class TourNewsFan {
+  + update(newsType: String, newsDetails: Object): void
+  + buyTicketImmediately(tourName: String): void
+  + notifyFriends(): void
+}
+
+FanObserver <|-- InstagramFan
+FanObserver <|-- SpotifyListener
+FanObserver <|-- TourNewsFan
+
+BeyonceOfficialApp --> FanObserver : subscribers
+
+note right of BeyonceOfficialApp::announceNews
+  this.latestNews = { type: newsType, details: newsDetails }\n  this.notifySubscribers(newsType, newsDetails)
+end note
+
+note right of InstagramFan::update
+  if (newsType === 'NEW_SINGLE') {\n    this.postStory(`🎶 ${newsDetails.singleName} já disponível! 👑`)\n  }
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>Este diagrama UML detalha a aplicação do Padrão Observer no nosso exemplo fictício da Beyoncé.</p>
             <ul>
                 <li>A classe <code>BeyonceOfficialApp</code> é o publicador, responsável por gerenciar os fãs e
@@ -482,6 +587,50 @@ station.set_temperature(22)
                 <img src="../../assets/img/comportamentais/observer/7.png" crossOrigin="anonymous" alt="Capa Observer"
                     class="cover-image">
             </div>
+            
+            <div class="mt-4">
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+@startuml
+skinparam classAttributeIconSize 0
+
+class WeatherStation {
+  - observers: Set&lt;Display&gt;
+  - temperature: int
+  + add(observer: Display): void
+  + remove(observer: Display): void
+  + _notify(): void
+  + set_temperature(temp: int): void
+}
+
+interface Display {
+  + update(station: WeatherStation): void
+}
+
+class PhoneDisplay {
+  + update(station: WeatherStation): void
+}
+
+class TVDisplay {
+  + update(station: WeatherStation): void
+}
+
+Display <|-- PhoneDisplay
+Display <|-- TVDisplay
+
+WeatherStation --> Display : observers
+
+note right of WeatherStation::set_temperature
+  print(f"Estação: Temperatura alterada para {temp}°C")\n  this._temperature = temp\n  this._notify()
+end note
+
+note right of PhoneDisplay::update
+  print(f"Celular: Nova temperatura é {station._temperature}°C")
+end note
+
+@enduml
+                </pre>
+            </div>
+            
             <p>Aqui está o diagrama UML para o exemplo prático da Estação Meteorológica, demonstrando a estrutura do
                 Padrão Observer em um contexto real.</p>
             <ul>
