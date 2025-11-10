@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Visitor - A Katy Perry e Seus Personagens</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Visitor?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Visitor, Element, ConcreteElement</a></li>
+            <li><a href="#page5">Exemplo Fictício (Katy Perry e Seus Personagens)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">VISITOR</h1>
+            <p class="cover-subtitle">A Katy Perry e Seus Personagens - Visitando Diferentes Identidades Artísticas</p>
+
+            <img src="https://i.pinimg.com/736x/8e/13/e5/8e13e5502b556af50ffeadaf9ff32d2b.jpg"
+                alt="Capa Visitor - Katy Perry" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Visitor?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://portalpopline.com.br/wp-content/uploads/2021/12/katy-perry-play-setlist.jpg"
+                    alt="Visitor Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Visitor é um <strong>padrão de projeto comportamental</strong> que permite separar algoritmos dos objetos nos quais operam. Ele permite adicionar novas operações a objetos sem modificá-los, definindo essas operações em classes separadas chamadas visitors [1].</p>
+            <p>É como a <strong>Katy Perry e seus múltiplos personagens</strong> - cada personagem (California Gurl, Teenage Dream, Prism) aceita "visitantes" diferentes (produtores, coreógrafos, estilistas) que aplicam suas especialidades sem modificar a essência do personagem.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://cdn.trendhunterstatic.com/thumbs/202/katy-perry-vogue-magazine_ba9edea2.jpeg"
+                    alt="Problema da Separação" class="cover-image">
+            </div>
+            <p>O principal problema que o Visitor resolve é a <strong>necessidade de adicionar novas operações a uma hierarquia de classes sem modificar essas classes</strong>. Ele evita a "poluição" das classes com métodos que não são de sua responsabilidade direta [2].</p>
+            <p>Sem este padrão, cada personagem da Katy Perry teria que saber como lidar com todos os tipos de profissionais, resultando em classes inchadas e difíceis de manter.</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/comportamentais/visitor/generico.png"
+                    alt="Visitor UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Visitor:</p>
+            <pre class="uml-code">
+@startuml
+class Client {
+    + executeOperations(): void
+}
+
+interface Visitor {
+    + visitConcreteElementA(element: ConcreteElementA): void
+    + visitConcreteElementB(element: ConcreteElementB): void
+}
+
+interface Element {
+    + accept(visitor: Visitor): void
+}
+
+class ConcreteElementA {
+    + accept(visitor: Visitor): void
+    + operationA(): void
+    + getStateA(): string
+}
+
+class ConcreteElementB {
+    + accept(visitor: Visitor): void
+    + operationB(): void
+    + getStateB(): string
+}
+
+class ConcreteVisitor1 {
+    + visitConcreteElementA(element: ConcreteElementA): void
+    + visitConcreteElementB(element: ConcreteElementB): void
+}
+
+class ConcreteVisitor2 {
+    + visitConcreteElementA(element: ConcreteElementA): void
+    + visitConcreteElementB(element: ConcreteElementB): void
+}
+
+Client --> Visitor
+Client --> Element
+Visitor <|.. ConcreteVisitor1
+Visitor <|.. ConcreteVisitor2
+Element <|.. ConcreteElementA
+Element <|.. ConcreteElementB
+ConcreteVisitor1 --> ConcreteElementA
+ConcreteVisitor1 --> ConcreteElementB
+ConcreteVisitor2 --> ConcreteElementA
+ConcreteVisitor2 --> ConcreteElementB
+
+note right of Element
+    Interface que define o método
+    accept() para aceitar visitors
+    e permitir operações externas
+end note
+
+note right of Visitor
+    Interface que declara métodos
+    visit para cada tipo de
+    elemento concreto
+end note
+
+note right of ConcreteVisitor1
+    Implementação concreta que
+    define operações específicas
+    para cada tipo de elemento
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Visitor:</strong> Interface comum para todos os visitors</li>
+                <li><strong>ConcreteVisitor:</strong> Implementações específicas de operações</li>
+                <li><strong>Element:</strong> Interface para elementos que aceitam visitors</li>
+                <li><strong>ConcreteElement:</strong> Elementos concretos que implementam accept()</li>
+                <li><strong>Client:</strong> Orquestra a interação entre elements e visitors</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Visitor, Element, ConcreteElement</h1>
+            <div class="img-placeholder-5">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcJqzHOC-6YRAAuFXcyZF3nxH6hu6seIrF-N1oaVQb0vARixPL7d2Xoz_eq0gCRAXPTPJn0lrj69lleAFDHQbv7S5BmGJTewVuXsxk7D9PXifEXjalWmT4GOcjAyIi73-MyhhNMMOfupm9EeC2vKe_hcY7NErd_rtE7xPqOcx9rTPfgSj6bkRxqgEw/s591/Visitor-UML.webp"
+                    alt="Conceitos Visitor" class="cover-image">
+            </div>
+            
+            <h3>Visitor (Visitante)</h3>
+            <p><strong>Características:</strong> Interface que define operações que podem ser aplicadas a elementos</p>
+            <p><strong>Exemplo Katy Perry:</strong></p>
+            <ul>
+                <li>ProdutorMusicalVisitor</li>
+                <li>CoreografoVisitor</li>
+                <li>EstilistaVisitor</li>
+                <li>DiretorVideoVisitor</li>
+            </ul>
+
+            <h3>Element (Elemento)</h3>
+            <p><strong>Características:</strong> Interface que define o método accept() para receber visitors</p>
+            <p><strong>Exemplo Katy Perry:</strong></p>
+            <ul>
+                <li>Interface PersonagemArtistico</li>
+                <li>Define accept(Visitor visitor)</li>
+                <li>Base para todos os personagens</li>
+            </ul>
+
+            <h3>ConcreteElement (Elemento Concreto)</h3>
+            <p><strong>Características:</strong> Implementações específicas que aceitam visitors</p>
+            <p><strong>Exemplo Katy Perry:</strong></p>
+            <ul>
+                <li>CaliforniaGurlPersona</li>
+                <li>TeenageDreamPersona</li>
+                <li>PrismPersona</li>
+                <li>SmilePersona</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> O Visitor permite adicionar funcionalidades sem modificar classes existentes - perfeito para sistemas que precisam evoluir.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (Katy Perry e Seus Personagens)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://labdicasjornalismo.com/images/noticias/14090/09022024225810_ERAS_BCHAR.jpg"
+                    alt="Katy Perry Personagens" class="cover-image">
+            </div>
+            <p>Imagine a <strong>Katy Perry e seus diversos personagens artísticos</strong> usando o padrão Visitor para receber diferentes profissionais:</p>
+
+            <h3>Personagens Artísticos (Elements):</h3>
+            <ul>
+                <li><strong>California Gurl:</strong> Personagem divertida e colorida da era Teenage Dream</li>
+                <li><strong>Prism Persona:</strong> Versão mais madura e introspectiva</li>
+                <li><strong>Witness Era:</strong> Personagem político e consciente</li>
+                <li><strong>Smile Persona:</strong> Versão resiliente e otimista</li>
+            </ul>
+
+            <h3>Profissionais Visitantes (Visitors):</h3>
+            <ul>
+                <li><strong>Produtor Musical:</strong> Desenvolve arranjos e produção</li>
+                <li><strong>Coreógrafo:</strong> Cria sequências de dança</li>
+                <li><strong>Estilista:</strong> Desenvolve figurinos e visual</li>
+                <li><strong>Diretor de Vídeo:</strong> Planeja conceitos visuais</li>
+            </ul>
+
+            <p>O Visitor permite que cada profissional aplique sua expertise específica em cada personagem sem modificar a essência do personagem.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://www.billboard.com/wp-content/uploads/2024/08/katy-perry-2010-MTV-Movie-Awards-Show-billboard-1548.jpg?w=942&h=628&crop=1"
+                    alt="Problema sem Visitor" class="cover-image">
+            </div>
+            <p>Sem o Padrão Visitor, as classes ficam inchadas com métodos que não são de sua responsabilidade:</p>
+            <pre><code>
+// PROBLEMA: Classes inchadas com métodos não relacionados!
+class CaliforniaGurlPersona {
+    private nome: string = "California Gurl";
+    private estilo: string = "Colorido e Divertido";
+    private tema: string = "Praia e Diversão";
+    
+    // MÉTODOS DE NEGÓCIO PRÓPRIOS
+    performar(): void {
+        console.log(`🎤 ${this.nome} performando com energia de praia!`);
+    }
+    
+    // PROBLEMA: MÉTODOS DE OUTRAS RESPONSABILIDADES
+    desenvolverProducaoMusical(): void {
+        console.log(`🎵 Desenvolvendo produção musical para ${this.nome}`);
+        console.log("   🎹 Sintetizadores brilhantes e batidas pop");
+        console.log("   🎶 Refrão cativante e otimista");
+    }
+    
+    criarCoreografia(): void {
+        console.log(`💃 Criando coreografia para ${this.nome}`);
+        console.log("   🕺 Movimentos divertidos e descontraídos");
+        console.log("   🌊 Influências de surf e praia");
+    }
+    
+    desenvolverFigurino(): void {
+        console.log(`👗 Desenvolvendo figurino para ${this.nome}`);
+        console.log("   🍭 Cores pastel e elementos doces");
+        console.log("   🌈 Acessórios divertidos e coloridos");
+    }
+    
+    planejarVideoMusical(): void {
+        console.log(`🎬 Planejando vídeo musical para ${this.nome}`);
+        console.log("   🏖️  Cenário de praia California");
+        console.log("   🍦 Elementos de fantasia e diversão");
+    }
+}
+
+class PrismPersona {
+    private nome: string = "Prism Persona";
+    private estilo: string = "Maduro e Introspectivo";
+    private tema: string = "Crescimento e Superação";
+    
+    performar(): void {
+        console.log(`🎤 ${this.nome} performando com emotividade!`);
+    }
+    
+    // PROBLEMA: MESMOS MÉTODOS DUPLICADOS
+    desenvolverProducaoMusical(): void {
+        console.log(`🎵 Desenvolvendo produção musical para ${this.nome}`);
+        console.log("   🎹 Piano emocional e batidas profundas");
+        console.log("   🎶 Letras introspectivas e poderosas");
+    }
+    
+    criarCoreografia(): void {
+        console.log(`💃 Criando coreografia para ${this.nome}`);
+        console.log("   🕺 Movimentos fluidos e expressivos");
+        console.log("   ✨ Coreografia simbólica e emocional");
+    }
+    
+    desenvolverFigurino(): void {
+        console.log(`👗 Desenvolvendo figurino para ${this.nome}`);
+        console.log("   🌙 Cores escuras com detalhes brilhantes");
+        console.log("   💎 Elementos prismáticos e reflexivos");
+    }
+    
+    planejarVideoMusical(): void {
+        console.log(`🎬 Planejando vídeo musical para ${this.nome}`);
+        console.log("   🌌 Cenários noturnos e simbólicos");
+        console.log("   🔥 Metáforas visuais de transformação");
+    }
+}
+
+class WitnessPersona {
+    private nome: string = "Witness Persona";
+    private estilo: string = "Político e Consciente";
+    private tema: string = "Ativismo e Consciência";
+    
+    performar(): void {
+        console.log(`🎤 ${this.nome} performando com mensagem social!`);
+    }
+    
+    // PROBLEMA: MAIS DUPLICAÇÃO
+    desenvolverProducaoMusical(): void {
+        console.log(`🎵 Desenvolvendo produção musical para ${this.nome}`);
+        console.log("   🎹 Sons eletrônicos e experimentais");
+        console.log("   🎶 Letras com mensagem política");
+    }
+    
+    criarCoreografia(): void {
+        console.log(`💃 Criando coreografia para ${this.nome}`);
+        console.log("   🕺 Movimentos robóticos e sincronizados");
+        console.log("   🌍 Coreografia com simbolismo social");
+    }
+    
+    desenvolverFigurino(): void {
+        console.log(`👗 Desenvolvendo figurino para ${this.nome}`);
+        console.log("   ⚫ Cores sóbrias com elementos futuristas");
+        console.log("   👁️  Temática de vigilância e consciência");
+    }
+    
+    planejarVideoMusical(): void {
+        console.log(`🎬 Planejando vídeo musical para ${this.nome}`);
+        console.log("   🏛️  Cenários institucionais e políticos");
+        console.log("   📡 Metáforas de tecnologia e sociedade");
+    }
+}
+
+// PROBLEMAS IDENTIFICADOS:
+// 1. VIOLAÇÃO SRP: Cada persona tem múltiplas responsabilidades
+// 2. ALTA DUPLICAÇÃO: Mesmos métodos em todas as classes
+// 3. DIFÍCIL MANUTENÇÃO: Mudanças exigem modificar todas as classes
+// 4. BAIXA EXTENSIBILIDADE: Novo profissional exige modificar todas as personas
+// 5. ACOPLAMENTO: Personas conhecem detalhes de outras áreas
+// 6. INCHAMENTO: Classes com muitos métodos não essenciais
+
+// EXEMPLO DE USO PROBLEMÁTICO:
+console.log("❌ SISTEMA SEM VISITOR PATTERN");
+console.log("=" .repeat(50));
+
+const californiaGurl = new CaliforniaGurlPersona();
+const prism = new PrismPersona();
+const witness = new WitnessPersona();
+
+const personas = [californiaGurl, prism, witness];
+
+// Processamento problemático - cada persona faz tudo
+for (const persona of personas) {
+    console.log(`\n🎭 PROCESSANDO ${persona.constructor.name}`);
+    console.log("-".repeat(40));
+    persona.desenvolverProducaoMusical();
+    persona.criarCoreografia();
+    persona.desenvolverFigurino();
+    persona.planejarVideoMusical();
+}
+            </code></pre>
+            <p>Classes inchadas e duplicação de código tornam o sistema difícil de manter e evoluir!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://www.billboard.com/wp-content/uploads/media/katy-perry-roar-video-650-430.jpg"
+                    alt="Visitor Aplicado" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Visitor, separamos responsabilidades e tornamos o sistema extensível:</p>
+            <pre><code>
+// VISITOR INTERFACE
+interface PersonagemVisitor {
+    visitCaliforniaGurl(persona: CaliforniaGurlPersona): void;
+    visitPrismPersona(persona: PrismPersona): void;
+    visitWitnessPersona(persona: WitnessPersona): void;
+    visitSmilePersona(persona: SmilePersona): void;
+}
+
+// ELEMENT INTERFACE
+interface PersonagemArtistico {
+    accept(visitor: PersonagemVisitor): void;
+    getNome(): string;
+    performar(): void;
+}
+
+// CONCRETE ELEMENTS - Personagens de Katy Perry
+
+class CaliforniaGurlPersona implements PersonagemArtistico {
+    private nome: string = "California Gurl";
+    private estilo: string = "Colorido e Divertido";
+    private tema: string = "Praia e Diversão";
+    private energia: number = 100;
+    
+    accept(visitor: PersonagemVisitor): void {
+        visitor.visitCaliforniaGurl(this);
+    }
+    
+    getNome(): string {
+        return this.nome;
+    }
+    
+    getEstilo(): string {
+        return this.estilo;
+    }
+    
+    getTema(): string {
+        return this.tema;
+    }
+    
+    getEnergia(): number {
+        return this.energia;
+    }
+    
+    performar(): void {
+        console.log(`🎤 ${this.nome} performando com ${this.energia}% de energia de praia!`);
+        console.log(`   Tema: ${this.tema}`);
+        console.log(`   Estilo: ${this.estilo}`);
+    }
+}
+
+class PrismPersona implements PersonagemArtistico {
+    private nome: string = "Prism Persona";
+    private estilo: string = "Maduro e Introspectivo";
+    private tema: string = "Crescimento e Superação";
+    private profundidade: number = 90;
+    
+    accept(visitor: PersonagemVisitor): void {
+        visitor.visitPrismPersona(this);
+    }
+    
+    getNome(): string {
+        return this.nome;
+    }
+    
+    getEstilo(): string {
+        return this.estilo;
+    }
+    
+    getTema(): string {
+        return this.tema;
+    }
+    
+    getProfundidade(): number {
+        return this.profundidade;
+    }
+    
+    performar(): void {
+        console.log(`🎤 ${this.nome} performando com ${this.profundidade}% de profundidade emocional!`);
+        console.log(`   Tema: ${this.tema}`);
+        console.log(`   Estilo: ${this.estilo}`);
+    }
+}
+
+class WitnessPersona implements PersonagemArtistico {
+    private nome: string = "Witness Persona";
+    private estilo: string = "Político e Consciente";
+    private tema: string = "Ativismo e Consciência";
+    private intensidade: number = 95;
+    
+    accept(visitor: PersonagemVisitor): void {
+        visitor.visitWitnessPersona(this);
+    }
+    
+    getNome(): string {
+        return this.nome;
+    }
+    
+    getEstilo(): string {
+        return this.estilo;
+    }
+    
+    getTema(): string {
+        return this.tema;
+    }
+    
+    getIntensidade(): number {
+        return this.intensidade;
+    }
+    
+    performar(): void {
+        console.log(`🎤 ${this.nome} performando com ${this.intensidade}% de intensidade social!`);
+        console.log(`   Tema: ${this.tema}`);
+        console.log(`   Estilo: ${this.estilo}`);
+    }
+}
+
+class SmilePersona implements PersonagemArtistico {
+    private nome: string = "Smile Persona";
+    private estilo: string = "Resiliente e Otimista";
+    private tema: string = "Superação e Alegria";
+    private otimismo: number = 85;
+    
+    accept(visitor: PersonagemVisitor): void {
+        visitor.visitSmilePersona(this);
+    }
+    
+    getNome(): string {
+        return this.nome;
+    }
+    
+    getEstilo(): string {
+        return this.estilo;
+    }
+    
+    getTema(): string {
+        return this.tema;
+    }
+    
+    getOtimismo(): number {
+        return this.otimismo;
+    }
+    
+    performar(): void {
+        console.log(`🎤 ${this.nome} performando com ${this.otimismo}% de otimismo contagiante!`);
+        console.log(`   Tema: ${this.tema}`);
+        console.log(`   Estilo: ${this.estilo}`);
+    }
+}
+
+// CONCRETE VISITORS - Profissionais especializados
+
+class ProdutorMusicalVisitor implements PersonagemVisitor {
+    visitCaliforniaGurl(persona: CaliforniaGurlPersona): void {
+        console.log(`🎵 PRODUTOR MUSICAL trabalhando com ${persona.getNome()}`);
+        console.log(`   🎹 Desenvolvendo sintetizadores brilhantes e batidas pop`);
+        console.log(`   🎶 Refrão cativante e otimista`);
+        console.log(`   🌊 Influências de surf rock e pop verão`);
+        console.log(`   💿 Produção: Max Martin e Dr. Luke`);
+    }
+    
+    visitPrismPersona(persona: PrismPersona): void {
+        console.log(`🎵 PRODUTOR MUSICAL trabalhando com ${persona.getNome()}`);
+        console.log(`   🎹 Piano emocional e batidas profundas`);
+        console.log(`   🎶 Letras introspectivas e poderosas`);
+        console.log(`   ✨ Elementos de EDM e pop experimental`);
+        console.log(`   💿 Produção: Klas Åhlund e Greg Kurstin`);
+    }
+    
+    visitWitnessPersona(persona: WitnessPersona): void {
+        console.log(`🎵 PRODUTOR MUSICAL trabalhando com ${persona.getNome()}`);
+        console.log(`   🎹 Sons eletrônicos e experimentais`);
+        console.log(`   🎶 Letras com mensagem política`);
+        console.log(`   🌍 Influências de world music e electropop`);
+        console.log(`   💿 Produção: Jack Garratt e Purity Ring`);
+    }
+    
+    visitSmilePersona(persona: SmilePersona): void {
+        console.log(`🎵 PRODUTOR MUSICAL trabalhando com ${persona.getNome()}`);
+        console.log(`   🎹 Pop clássico com toques modernos`);
+        console.log(`   🎶 Letras de superação e esperança`);
+        console.log(`   🌈 Influências de disco e funk revival`);
+        console.log(`   💿 Produção: The Monsters & Strangerz`);
+    }
+}
+
+class CoreografoVisitor implements PersonagemVisitor {
+    visitCaliforniaGurl(persona: CaliforniaGurlPersona): void {
+        console.log(`💃 COREÓGRAFO trabalhando com ${persona.getNome()}`);
+        console.log(`   🕺 Movimentos divertidos e descontraídos`);
+        console.log(`   🌊 Influências de surf e praia`);
+        console.log(`   🍭 Coreografia brincalhona e energética`);
+        console.log(`   👯 Formações em grupo dinâmicas`);
+    }
+    
+    visitPrismPersona(persona: PrismPersona): void {
+        console.log(`💃 COREÓGRAFO trabalhando com ${persona.getNome()}`);
+        console.log(`   🕺 Movimentos fluidos e expressivos`);
+        console.log(`   ✨ Coreografia simbólica e emocional`);
+        console.log(`   🌙 Transições suaves e dramáticas`);
+        console.log(`   👤 Foco em performance solo poderosa`);
+    }
+    
+    visitWitnessPersona(persona: WitnessPersona): void {
+        console.log(`💃 COREÓGRAFO trabalhando com ${persona.getNome()}`);
+        console.log(`   🕺 Movimentos robóticos e sincronizados`);
+        console.log(`   🌍 Coreografia com simbolismo social`);
+        console.log(`   ⚖️  Formações geométricas e precisas`);
+        console.log(`   👁️  Expressão corporal consciente`);
+    }
+    
+    visitSmilePersona(persona: SmilePersona): void {
+        console.log(`💃 COREÓGRAFO trabalhando com ${persona.getNome()}`);
+        console.log(`   🕺 Movimentos alegres e expansivos`);
+        console.log(`   🌈 Coreografia uplifting e positiva`);
+        console.log(`   💫 Transições suaves e otimistas`);
+        console.log(`   🤗 Interação com plateia e conexão`);
+    }
+}
+
+class EstilistaVisitor implements PersonagemVisitor {
+    visitCaliforniaGurl(persona: CaliforniaGurlPersona): void {
+        console.log(`👗 ESTILISTA trabalhando com ${persona.getNome()}`);
+        console.log(`   🍭 Cores pastel e elementos doces`);
+        console.log(`   🌈 Acessórios divertidos e coloridos`);
+        console.log(`   🍬 Looks de praia com toque fashion`);
+        console.log(`   👙 Biquínis estilizados e shorts`);
+    }
+    
+    visitPrismPersona(persona: PrismPersona): void {
+        console.log(`👗 ESTILISTA trabalhando com ${persona.getNome()}`);
+        console.log(`   🌙 Cores escuras com detalhes brilhantes`);
+        console.log(`   💎 Elementos prismáticos e reflexivos`);
+        console.log(`   ✨ Tecidos luxuosos e cortes elegantes`);
+        console.log(`   👠 Silhueta poderosa e sofisticada`);
+    }
+    
+    visitWitnessPersona(persona: WitnessPersona): void {
+        console.log(`👗 ESTILISTA trabalhando com ${persona.getNome()}`);
+        console.log(`   ⚫ Cores sóbrias com elementos futuristas`);
+        console.log(`   👁️  Temática de vigilância e consciência`);
+        console.log(`   📡 Tecidos tecnológicos e cortes sharp`);
+        console.log(`   👓 Acessórios conceituais e statement`);
+    }
+    
+    visitSmilePersona(persona: SmilePersona): void {
+        console.log(`👗 ESTILISTA trabalhando com ${persona.getNome()}`);
+        console.log(`   🌈 Cores vibrantes e padrões alegres`);
+        console.log(`   😊 Estampa de sorrisos e elementos positivos`);
+        console.log(`   👗 Cortes confortáveis e acolhedores`);
+        console.log(`   🌟 Detalhes brilhantes e otimistas`);
+    }
+}
+
+class DiretorVideoVisitor implements PersonagemVisitor {
+    visitCaliforniaGurl(persona: CaliforniaGurlPersona): void {
+        console.log(`🎬 DIRETOR DE VÍDEO trabalhando com ${persona.getNome()}`);
+        console.log(`   🏖️  Cenário de praia California`);
+        console.log(`   🍦 Elementos de fantasia e diversão`);
+        console.log(`   🌞 Iluminação solar e cores vibrantes`);
+        console.log(`   🎪 Sequências de dança em grupo`);
+    }
+    
+    visitPrismPersona(persona: PrismPersona): void {
+        console.log(`🎬 DIRETOR DE VÍDEO trabalhando com ${persona.getNome()}`);
+        console.log(`   🌌 Cenários noturnos e simbólicos`);
+        console.log(`   🔥 Metáforas visuais de transformação`);
+        console.log(`   💎 Efeitos de luz e reflexão`);
+        console.log(`   🎭 Performance emocional intensa`);
+    }
+    
+    visitWitnessPersona(persona: WitnessPersona): void {
+        console.log(`🎬 DIRETOR DE VÍDEO trabalhando com ${persona.getNome()}`);
+        console.log(`   🏛️  Cenários institucionais e políticos`);
+        console.log(`   📡 Metáforas de tecnologia e sociedade`);
+        console.log(`   👁️  Temática de vigilância e controle`);
+        console.log(`   🌐 Elementos de mídia e comunicação`);
+    }
+    
+    visitSmilePersona(persona: SmilePersona): void {
+        console.log(`🎬 DIRETOR DE VÍDEO trabalhando com ${persona.getNome()}`);
+        console.log(`   🌈 Cenários coloridos e otimistas`);
+        console.log(`   😊 Elementos de alegria e superação`);
+        console.log(`   💛 Iluminação quente e acolhedora`);
+        console.log(`   🤗 Interação genuína com plateia`);
+    }
+}
+
+// CLIENT - Sistema de Gerenciamento
+class SistemaKatyPerry {
+    private personagens: PersonagemArtistico[];
+    private visitors: PersonagemVisitor[];
+    
+    constructor() {
+        this.personagens = [
+            new CaliforniaGurlPersona(),
+            new PrismPersona(),
+            new WitnessPersona(),
+            new SmilePersona()
+        ];
+        
+        this.visitors = [
+            new ProdutorMusicalVisitor(),
+            new CoreografoVisitor(),
+            new EstilistaVisitor(),
+            new DiretorVideoVisitor()
+        ];
+    }
+    
+    demonstrarVisitorPattern(): void {
+        console.log("🎤 SISTEMA KATY PERRY - VISITOR PATTERN 🎤");
+        console.log("===========================================");
+        console.log("🎯 Demonstrando Separação de Responsabilidades");
+        console.log("✨ Personagens + Visitantes Especializados\n");
+        
+        // Demonstração 1: Cada visitante visita todos os personagens
+        console.log("1️⃣  DEMONSTRAÇÃO: VISITANTES ESPECIALIZADOS");
+        console.log("=" .repeat(50));
+        
+        for (const visitor of this.visitors) {
+            console.log(`\n${'⭐'.repeat(20)}`);
+            console.log(`👤 ${visitor.constructor.name}:`);
+            console.log(`${'⭐'.repeat(20)}\n`);
+            
+            for (const personagem of this.personagens) {
+                personagem.accept(visitor);
+                console.log("");
+            }
+        }
+        
+        // Demonstração 2: Todos os visitantes em um personagem
+        console.log("\n2️⃣  DEMONSTRAÇÃO: DESENVOLVIMENTO COMPLETO");
+        console.log("=" .repeat(50));
+        
+        const personagemFoco = this.personagens[0]; // California Gurl
+        console.log(`\n🎭 DESENVOLVENDO: ${personagemFoco.getNome()}`);
+        console.log("-".repeat(40));
+        
+        for (const visitor of this.visitors) {
+            personagemFoco.accept(visitor);
+            console.log("");
+        }
+        
+        // Demonstração 3: Performances
+        console.log("\n3️⃣  DEMONSTRAÇÃO: PERFORMANCES");
+        console.log("=" .repeat(50));
+        
+        for (const personagem of this.personagens) {
+            personagem.performar();
+            console.log("");
+        }
+        
+        console.log("📊 RESUMO DO SISTEMA:");
+        console.log("   • Personagens: 4 elementos artísticos");
+        console.log("   • Visitantes: 4 profissionais especializados");
+        console.log("   • Operações: 16 combinações possíveis");
+        console.log("   • Extensibilidade: Novos visitantes sem modificar personagens");
+        console.log("   • ✅ SRP aplicado com sucesso!");
+    }
+}
+
+// Exemplo de uso
+const sistema = new SistemaKatyPerry();
+sistema.demonstrarVisitorPattern();
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Visitor em um sistema de processamento de documentos empresariais:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any
+from datetime import datetime
+from enum import Enum
+
+# Element Interface
+class Documento(ABC):
+    @abstractmethod
+    def accept(self, visitor: 'DocumentoVisitor') -> Any:
+        pass
+    
+    @abstractmethod
+    def get_tipo(self) -> str:
+        pass
+
+# Concrete Elements - Tipos de documentos
+
+class Contrato(Documento):
+    def __init__(self, numero: str, partes: List[str], valor: float, vigencia: str):
+        self.numero = numero
+        self.partes = partes
+        self.valor = valor
+        self.vigencia = vigencia
+        self.clausulas = []
+        self.assinado = False
+    
+    def accept(self, visitor: 'DocumentoVisitor') -> Any:
+        return visitor.visit_contrato(self)
+    
+    def get_tipo(self) -> str:
+        return "Contrato"
+    
+    def adicionar_clausula(self, clausula: str) -> None:
+        self.clausulas.append(clausula)
+    
+    def assinar(self) -> None:
+        self.assinado = True
+    
+    def __str__(self) -> str:
+        return f"Contrato {self.numero} - {', '.join(self.partes)}"
+
+class NotaFiscal(Documento):
+    def __init__(self, numero: str, emitente: str, destinatario: str, valor: float):
+        self.numero = numero
+        self.emitente = emitente
+        self.destinatario = destinatario
+        self.valor = valor
+        self.itens = []
+        self.impostos = {}
+        self.data_emissao = datetime.now()
+    
+    def accept(self, visitor: 'DocumentoVisitor') -> Any:
+        return visitor.visit_nota_fiscal(self)
+    
+    def get_tipo(self) -> str:
+        return "Nota Fiscal"
+    
+    def adicionar_item(self, descricao: str, quantidade: int, valor_unitario: float) -> None:
+        self.itens.append({
+            'descricao': descricao,
+            'quantidade': quantidade,
+            'valor_unitario': valor_unitario,
+            'valor_total': quantidade * valor_unitario
+        })
+    
+    def calcular_impostos(self) -> None:
+        # Simulação de cálculo de impostos
+        self.impostos = {
+            'ICMS': self.valor * 0.18,
+            'PIS': self.valor * 0.0165,
+            'COFINS': self.valor * 0.076
+        }
+    
+    def __str__(self) -> str:
+        return f"Nota Fiscal {self.numero} - {self.emitente} → {self.destinatario}"
+
+class Relatorio(Documento):
+    def __init__(self, titulo: str, autor: str, departamento: str):
+        self.titulo = titulo
+        self.autor = autor
+        self.departamento = departamento
+        self.metricas = {}
+        self.conclusoes = []
+        self.recomendacoes = []
+        self.data_geracao = datetime.now()
+        self.status = "Rascunho"
+    
+    def accept(self, visitor: 'DocumentoVisitor') -> Any:
+        return visitor.visit_relatorio(self)
+    
+    def get_tipo(self) -> str:
+        return "Relatório"
+    
+    def adicionar_metrica(self, nome: str, valor: Any, unidade: str = "") -> None:
+        self.metricas[nome] = {'valor': valor, 'unidade': unidade}
+    
+    def adicionar_conclusao(self, conclusao: str) -> None:
+        self.conclusoes.append(conclusao)
+    
+    def adicionar_recomendacao(self, recomendacao: str) -> None:
+        self.recomendacoes.append(recomendacao)
+    
+    def finalizar(self) -> None:
+        self.status = "Finalizado"
+    
+    def __str__(self) -> str:
+        return f"Relatório: {self.titulo} - {self.autor}"
+
+class Proposta(Documento):
+    def __init__(self, numero: str, cliente: str, vendedor: str, valor_total: float):
+        self.numero = numero
+        self.cliente = cliente
+        self.vendedor = vendedor
+        self.valor_total = valor_total
+        self.itens = []
+        self.condicoes = []
+        self.validade = 30  # dias
+        self.status = "Em análise"
+    
+    def accept(self, visitor: 'DocumentoVisitor') -> Any:
+        return visitor.visit_proposta(self)
+    
+    def get_tipo(self) -> str:
+        return "Proposta Comercial"
+    
+    def adicionar_item(self, descricao: str, quantidade: int, valor_unitario: float) -> None:
+        self.itens.append({
+            'descricao': descricao,
+            'quantidade': quantidade,
+            'valor_unitario': valor_unitario,
+            'valor_total': quantidade * valor_unitario
+        })
+    
+    def adicionar_condicao(self, condicao: str) -> None:
+        self.condicoes.append(condicao)
+    
+    def aprovar(self) -> None:
+        self.status = "Aprovada"
+    
+    def rejeitar(self) -> None:
+        self.status = "Rejeitada"
+    
+    def __str__(self) -> str:
+        return f"Proposta {self.numero} - {self.cliente}"
+
+# Visitor Interface
+class DocumentoVisitor(ABC):
+    @abstractmethod
+    def visit_contrato(self, contrato: Contrato) -> Any:
+        pass
+    
+    @abstractmethod
+    def visit_nota_fiscal(self, nota_fiscal: NotaFiscal) -> Any:
+        pass
+    
+    @abstractmethod
+    def visit_relatorio(self, relatorio: Relatorio) -> Any:
+        pass
+    
+    @abstractmethod
+    def visit_proposta(self, proposta: Proposta) -> Any:
+        pass
+
+# Concrete Visitors - Processadores especializados
+
+class ValidadorVisitor(DocumentoVisitor):
+    def visit_contrato(self, contrato: Contrato) -> Dict[str, Any]:
+        print(f"🔍 VALIDADOR: Validando {contrato}")
+        problemas = []
+        
+        # Validações específicas para contratos
+        if not contrato.partes or len(contrato.partes) < 2:
+            problemas.append("Contrato deve ter pelo menos duas partes")
+        
+        if contrato.valor <= 0:
+            problemas.append("Valor do contrato deve ser positivo")
+        
+        if not contrato.vigencia:
+            problemas.append("Vigência não definida")
+        
+        if not contrato.clausulas:
+            problemas.append("Contrato sem cláusulas")
+        
+        resultado = {
+            'documento': str(contrato),
+            'tipo': 'Contrato',
+            'valido': len(problemas) == 0,
+            'problemas': problemas,
+            'recomendacoes': ['Verificar assinaturas', 'Confirmar vigência'] if not problemas else []
+        }
+        
+        if resultado['valido']:
+            print("   ✅ Contrato válido")
+        else:
+            print(f"   ❌ Problemas encontrados: {len(problemas)}")
+        
+        return resultado
+    
+    def visit_nota_fiscal(self, nota_fiscal: NotaFiscal) -> Dict[str, Any]:
+        print(f"🔍 VALIDADOR: Validando {nota_fiscal}")
+        problemas = []
+        
+        # Validações específicas para notas fiscais
+        if not nota_fiscal.emitente:
+            problemas.append("Emitente não informado")
+        
+        if not nota_fiscal.destinatario:
+            problemas.append("Destinatário não informado")
+        
+        if nota_fiscal.valor <= 0:
+            problemas.append("Valor deve ser positivo")
+        
+        if not nota_fiscal.itens:
+            problemas.append("Nota fiscal sem itens")
+        
+        if not nota_fiscal.impostos:
+            problemas.append("Impostos não calculados")
+        
+        resultado = {
+            'documento': str(nota_fiscal),
+            'tipo': 'Nota Fiscal',
+            'valido': len(problemas) == 0,
+            'problemas': problemas,
+            'recomendacoes': ['Verificar CNPJ', 'Confirmar data emissão'] if not problemas else []
+        }
+        
+        if resultado['valido']:
+            print("   ✅ Nota fiscal válida")
+        else:
+            print(f"   ❌ Problemas encontrados: {len(problemas)}")
+        
+        return resultado
+    
+    def visit_relatorio(self, relatorio: Relatorio) -> Dict[str, Any]:
+        print(f"🔍 VALIDADOR: Validando {relatorio}")
+        problemas = []
+        
+        # Validações específicas para relatórios
+        if not relatorio.titulo:
+            problemas.append("Título não informado")
+        
+        if not relatorio.autor:
+            problemas.append("Autor não informado")
+        
+        if not relatorio.metricas:
+            problemas.append("Relatório sem métricas")
+        
+        if not relatorio.conclusoes:
+            problemas.append("Relatório sem conclusões")
+        
+        if relatorio.status != "Finalizado":
+            problemas.append("Relatório não finalizado")
+        
+        resultado = {
+            'documento': str(relatorio),
+            'tipo': 'Relatório',
+            'valido': len(problemas) == 0,
+            'problemas': problemas,
+            'recomendacoes': ['Revisar formatação', 'Verificar dados'] if not problemas else []
+        }
+        
+        if resultado['valido']:
+            print("   ✅ Relatório válido")
+        else:
+            print(f"   ❌ Problemas encontrados: {len(problemas)}")
+        
+        return resultado
+    
+    def visit_proposta(self, proposta: Proposta) -> Dict[str, Any]:
+        print(f"🔍 VALIDADOR: Validando {proposta}")
+        problemas = []
+        
+        # Validações específicas para propostas
+        if not proposta.cliente:
+            problemas.append("Cliente não informado")
+        
+        if not proposta.vendedor:
+            problemas.append("Vendedor não informado")
+        
+        if proposta.valor_total <= 0:
+            problemas.append("Valor total deve ser positivo")
+        
+        if not proposta.itens:
+            problemas.append("Proposta sem itens")
+        
+        if not proposta.condicoes:
+            problemas.append("Proposta sem condições")
+        
+        resultado = {
+            'documento': str(proposta),
+            'tipo': 'Proposta',
+            'valido': len(problemas) == 0,
+            'problemas': problemas,
+            'recomendacoes': ['Verificar prazos', 'Confirmar condições'] if not problemas else []
+        }
+        
+        if resultado['valido']:
+            print("   ✅ Proposta válida")
+        else:
+            print(f"   ❌ Problemas encontrados: {len(problemas)}")
+        
+        return resultado
+
+class ProcessadorFinanceiroVisitor(DocumentoVisitor):
+    def visit_contrato(self, contrato: Contrato) -> Dict[str, Any]:
+        print(f"💰 PROCESSADOR FINANCEIRO: Analisando {contrato}")
+        
+        # Análise financeira do contrato
+        analise = {
+            'valor_total': contrato.valor,
+            'categoria_valor': self._classificar_valor(contrato.valor),
+            'risco_financeiro': 'MODERADO',  # Simulação
+            'impostos_estimados': contrato.valor * 0.27,
+            'fluxo_caixa': self._calcular_fluxo(contrato.valor)
+        }
+        
+        print(f"   📊 Valor: R$ {contrato.valor:,.2f}")
+        print(f"   🏷️  Categoria: {analise['categoria_valor']}")
+        print(f"   ⚠️  Risco: {analise['risco_financeiro']}")
+        
+        return analise
+    
+    def visit_nota_fiscal(self, nota_fiscal: NotaFiscal) -> Dict[str, Any]:
+        print(f"💰 PROCESSADOR FINANCEIRO: Processando {nota_fiscal}")
+        
+        # Processamento financeiro da nota fiscal
+        total_impostos = sum(nota_fiscal.impostos.values())
+        valor_liquido = nota_fiscal.valor - total_impostos
+        
+        processamento = {
+            'valor_bruto': nota_fiscal.valor,
+            'total_impostos': total_impostos,
+            'valor_liquido': valor_liquido,
+            'rateio_impostos': nota_fiscal.impostos,
+            'contabilizacao': self._contabilizar_nota(nota_fiscal)
+        }
+        
+        print(f"   💵 Valor bruto: R$ {nota_fiscal.valor:,.2f}")
+        print(f"   🧾 Impostos: R$ {total_impostos:,.2f}")
+        print(f"   💰 Valor líquido: R$ {valor_liquido:,.2f}")
+        
+        return processamento
+    
+    def visit_relatorio(self, relatorio: Relatorio) -> Dict[str, Any]:
+        print(f"💰 PROCESSADOR FINANCEIRO: Analisando {relatorio}")
+        
+        # Extração de métricas financeiras do relatório
+        metricas_financeiras = {}
+        for nome, metrica in relatorio.metricas.items():
+            if any(termo in nome.lower() for termo in ['lucro', 'receita', 'custo', 'investimento']):
+                metricas_financeiras[nome] = metrica
+        
+        analise = {
+            'metricas_financeiras': metricas_financeiras,
+            'tendencia': self._analisar_tendencia(relatorio),
+            'impacto_financeiro': self._calcular_impacto(relatorio)
+        }
+        
+        print(f"   📈 Métricas financeiras: {len(metricas_financeiras)}")
+        print(f"   📊 Tendência: {analise['tendencia']}")
+        
+        return analise
+    
+    def visit_proposta(self, proposta: Proposta) -> Dict[str, Any]:
+        print(f"💰 PROCESSADOR FINANCEIRO: Avaliando {proposta}")
+        
+        # Avaliação financeira da proposta
+        margem_lucro = 0.30  # Simulação
+        custos_estimados = proposta.valor_total * (1 - margem_lucro)
+        lucro_estimado = proposta.valor_total * margem_lucro
+        
+        avaliacao = {
+            'valor_total': proposta.valor_total,
+            'custo_estimado': custos_estimados,
+            'lucro_estimado': lucro_estimado,
+            'margem': margem_lucro,
+            'viabilidade': 'ALTA' if margem_lucro > 0.20 else 'MODERADA'
+        }
+        
+        print(f"   💼 Valor: R$ {proposta.valor_total:,.2f}")
+        print(f"   💰 Lucro estimado: R$ {lucro_estimado:,.2f}")
+        print(f"   📈 Viabilidade: {avaliacao['viabilidade']}")
+        
+        return avaliacao
+    
+    def _classificar_valor(self, valor: float) -> str:
+        if valor < 10000:
+            return "PEQUENO"
+        elif valor < 100000:
+            return "MÉDIO"
+        else:
+            return "GRANDE"
+    
+    def _calcular_fluxo(self, valor: float) -> List[Dict]:
+        # Simulação de fluxo de caixa
+        return [
+            {'mes': 1, 'valor': valor * 0.3},
+            {'mes': 2, 'valor': valor * 0.3},
+            {'mes': 3, 'valor': valor * 0.4}
+        ]
+    
+    def _contabilizar_nota(self, nota_fiscal: NotaFiscal) -> Dict:
+        return {
+            'conta_devedora': 'Fornecedores',
+            'conta_credora': 'Caixa',
+            'centro_custo': 'Aquisições'
+        }
+    
+    def _analisar_tendencia(self, relatorio: Relatorio) -> str:
+        return "CRESCENTE"  # Simulação
+    
+    def _calcular_impacto(self, relatorio: Relatorio) -> str:
+        return "POSITIVO"  # Simulação
+
+class ExportadorVisitor(DocumentoVisitor):
+    def __init__(self, formato: str = "PDF"):
+        self.formato = formato
+    
+    def visit_contrato(self, contrato: Contrato) -> Dict[str, Any]:
+        print(f"📤 EXPORTADOR ({self.formato}): Exportando {contrato}")
+        
+        exportacao = {
+            'documento': str(contrato),
+            'formato': self.formato,
+            'tamanho_arquivo': f"{len(contrato.clausulas) * 2}KB",
+            'metadados': {
+                'partes': contrato.partes,
+                'valor': contrato.valor,
+                'vigencia': contrato.vigencia,
+                'clausulas_count': len(contrato.clausulas)
+            }
+        }
+        
+        print(f"   📄 Formato: {self.formato}")
+        print(f"   💾 Tamanho: {exportacao['tamanho_arquivo']}")
+        
+        return exportacao
+    
+    def visit_nota_fiscal(self, nota_fiscal: NotaFiscal) -> Dict[str, Any]:
+        print(f"📤 EXPORTADOR ({self.formato}): Exportando {nota_fiscal}")
+        
+        exportacao = {
+            'documento': str(nota_fiscal),
+            'formato': self.formato,
+            'tamanho_arquivo': f"{len(nota_fiscal.itens) * 1.5}KB",
+            'metadados': {
+                'emitente': nota_fiscal.emitente,
+                'destinatario': nota_fiscal.destinatario,
+                'valor': nota_fiscal.valor,
+                'itens_count': len(nota_fiscal.itens)
+            }
+        }
+        
+        print(f"   📄 Formato: {self.formato}")
+        print(f"   💾 Tamanho: {exportacao['tamanho_arquivo']}")
+        
+        return exportacao
+    
+    def visit_relatorio(self, relatorio: Relatorio) -> Dict[str, Any]:
+        print(f"📤 EXPORTADOR ({self.formato}): Exportando {relatorio}")
+        
+        exportacao = {
+            'documento': str(relatorio),
+            'formato': self.formato,
+            'tamanho_arquivo': f"{len(relatorio.metricas) * 3}KB",
+            'metadados': {
+                'titulo': relatorio.titulo,
+                'autor': relatorio.autor,
+                'metricas_count': len(relatorio.metricas),
+                'status': relatorio.status
+            }
+        }
+        
+        print(f"   📄 Formato: {self.formato}")
+        print(f"   💾 Tamanho: {exportacao['tamanho_arquivo']}")
+        
+        return exportacao
+    
+    def visit_proposta(self, proposta: Proposta) -> Dict[str, Any]:
+        print(f"📤 EXPORTADOR ({self.formato}): Exportando {proposta}")
+        
+        exportacao = {
+            'documento': str(proposta),
+            'formato': self.formato,
+            'tamanho_arquivo': f"{len(proposta.itens) * 2}KB",
+            'metadados': {
+                'cliente': proposta.cliente,
+                'vendedor': proposta.vendedor,
+                'valor_total': proposta.valor_total,
+                'itens_count': len(proposta.itens)
+            }
+        }
+        
+        print(f"   📄 Formato: {self.formato}")
+        print(f"   💾 Tamanho: {exportacao['tamanho_arquivo']}")
+        
+        return exportacao
+
+# Sistema de Gerenciamento de Documentos
+class SistemaDocumentos:
+    def __init__(self):
+        self.documentos: List[Documento] = []
+        self.visitors: List[DocumentoVisitor] = [
+            ValidadorVisitor(),
+            ProcessadorFinanceiroVisitor(),
+            ExportadorVisitor("PDF"),
+            ExportadorVisitor("XML")
+        ]
+    
+    def adicionar_documento(self, documento: Documento) -> None:
+        self.documentos.append(documento)
+        print(f"📥 Documento adicionado: {documento}")
+    
+    def processar_documentos(self) -> None:
+        print("\n🔄 PROCESSANDO TODOS OS DOCUMENTOS")
+        print("=" * 50)
+        
+        for documento in self.documentos:
+            print(f"\n🎯 DOCUMENTO: {documento}")
+            print("-" * 40)
+            
+            for visitor in self.visitors:
+                resultado = documento.accept(visitor)
+                print("")
+    
+    def demonstrar_visitor_pattern(self) -> None:
+        print("📊 SISTEMA DE DOCUMENTOS - VISITOR PATTERN")
+        print("==========================================")
+        print("🎯 Demonstrando Processamento Especializado")
+        print("✨ Documentos + Visitantes Especializados\n")
+        
+        # Criar documentos de exemplo
+        contrato = Contrato("CT-2024-001", ["Empresa A", "Empresa B"], 150000.00, "24 meses")
+        contrato.adicionar_clausula("Confidencialidade")
+        contrato.adicionar_clausula("Prazo de entrega")
+        contrato.adicionar_clausula("Multa por atraso")
+        contrato.assinar()
+        
+        nota_fiscal = NotaFiscal("NF-2024-001", "Fornecedor XYZ", "Empresa A", 25000.00)
+        nota_fiscal.adicionar_item("Notebook Dell", 5, 3000.00)
+        nota_fiscal.adicionar_item("Mouse sem fio", 10, 89.90)
+        nota_fiscal.calcular_impostos()
+        
+        relatorio = Relatorio("Performance Q1 2024", "Ana Silva", "Vendas")
+        relatorio.adicionar_metrica("Vendas Totais", 1500000, "R$")
+        relatorio.adicionar_metrica("Crescimento", "15%", "")
+        relatorio.adicionar_conclusao("Crescimento acima da meta")
+        relatorio.adicionar_recomendacao("Expandir para novo mercado")
+        relatorio.finalizar()
+        
+        proposta = Proposta("P-2024-001", "Cliente Corporativo", "João Santos", 75000.00)
+        proposta.adicionar_item("Consultoria Estratégica", 40, 1500.00)
+        proposta.adicionar_item("Desenvolvimento Software", 100, 300.00)
+        proposta.adicionar_condicao("Pagamento em 30 dias")
+        proposta.aprovar()
+        
+        # Adicionar documentos ao sistema
+        self.adicionar_documento(contrato)
+        self.adicionar_documento(nota_fiscal)
+        self.adicionar_documento(relatorio)
+        self.adicionar_documento(proposta)
+        
+        # Processar todos os documentos
+        self.processar_documentos()
+        
+        print(f"\n📊 RESUMO DO SISTEMA:")
+        print(f"   • Documentos: {len(self.documentos)} tipos diferentes")
+        print(f"   • Visitantes: {len(self.visitors)} processadores especializados")
+        print(f"   • Operações: {len(self.documentos) * len(self.visitors)} processamentos")
+        print(f"   • Extensibilidade: Novos processadores sem modificar documentos")
+        print(f"   • ✅ Visitor Pattern aplicado com sucesso!")
+
+# Exemplo de uso
+def main():
+    sistema = SistemaDocumentos()
+    sistema.demonstrar_visitor_pattern()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/comportamentais/visitor/ficticio.png" alt="Katy Perry Visitor UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Visitor no exemplo da Katy Perry e seus personagens:</p>
+            <pre class="uml-code">
+@startuml
+interface PersonagemVisitor {
+    + visitCaliforniaGurl(persona: CaliforniaGurlPersona): void
+    + visitPrismPersona(persona: PrismPersona): void
+    + visitWitnessPersona(persona: WitnessPersona): void
+    + visitSmilePersona(persona: SmilePersona): void
+}
+
+interface PersonagemArtistico {
+    + accept(visitor: PersonagemVisitor): void
+    + getNome(): string
+    + performar(): void
+}
+
+class CaliforniaGurlPersona {
+    - nome: string
+    - estilo: string
+    - tema: string
+    - energia: number
+    + accept(visitor: PersonagemVisitor): void
+    + getNome(): string
+    + getEstilo(): string
+    + getTema(): string
+    + getEnergia(): number
+    + performar(): void
+}
+
+class PrismPersona {
+    - nome: string
+    - estilo: string
+    - tema: string
+    - profundidade: number
+    + accept(visitor: PersonagemVisitor): void
+    + getNome(): string
+    + getEstilo(): string
+    + getTema(): string
+    + getProfundidade(): number
+    + performar(): void
+}
+
+class WitnessPersona {
+    - nome: string
+    - estilo: string
+    - tema: string
+    - intensidade: number
+    + accept(visitor: PersonagemVisitor): void
+    + getNome(): string
+    + getEstilo(): string
+    + getTema(): string
+    + getIntensidade(): number
+    + performar(): void
+}
+
+class SmilePersona {
+    - nome: string
+    - estilo: string
+    - tema: string
+    - otimismo: number
+    + accept(visitor: PersonagemVisitor): void
+    + getNome(): string
+    + getEstilo(): string
+    + getTema(): string
+    + getOtimismo(): number
+    + performar(): void
+}
+
+class ProdutorMusicalVisitor {
+    + visitCaliforniaGurl(persona: CaliforniaGurlPersona): void
+    + visitPrismPersona(persona: PrismPersona): void
+    + visitWitnessPersona(persona: WitnessPersona): void
+    + visitSmilePersona(persona: SmilePersona): void
+}
+
+class CoreografoVisitor {
+    + visitCaliforniaGurl(persona: CaliforniaGurlPersona): void
+    + visitPrismPersona(persona: PrismPersona): void
+    + visitWitnessPersona(persona: WitnessPersona): void
+    + visitSmilePersona(persona: SmilePersona): void
+}
+
+class EstilistaVisitor {
+    + visitCaliforniaGurl(persona: CaliforniaGurlPersona): void
+    + visitPrismPersona(persona: PrismPersona): void
+    + visitWitnessPersona(persona: WitnessPersona): void
+    + visitSmilePersona(persona: SmilePersona): void
+}
+
+class DiretorVideoVisitor {
+    + visitCaliforniaGurl(persona: CaliforniaGurlPersona): void
+    + visitPrismPersona(persona: PrismPersona): void
+    + visitWitnessPersona(persona: WitnessPersona): void
+    + visitSmilePersona(persona: SmilePersona): void
+}
+
+class SistemaKatyPerry {
+    - personagens: PersonagemArtistico[]
+    - visitors: PersonagemVisitor[]
+    + demonstrarVisitorPattern(): void
+}
+
+PersonagemVisitor <|.. ProdutorMusicalVisitor
+PersonagemVisitor <|.. CoreografoVisitor
+PersonagemVisitor <|.. EstilistaVisitor
+PersonagemVisitor <|.. DiretorVideoVisitor
+
+PersonagemArtistico <|.. CaliforniaGurlPersona
+PersonagemArtistico <|.. PrismPersona
+PersonagemArtistico <|.. WitnessPersona
+PersonagemArtistico <|.. SmilePersona
+
+ProdutorMusicalVisitor --> CaliforniaGurlPersona
+ProdutorMusicalVisitor --> PrismPersona
+ProdutorMusicalVisitor --> WitnessPersona
+ProdutorMusicalVisitor --> SmilePersona
+
+SistemaKatyPerry --> PersonagemArtistico
+SistemaKatyPerry --> PersonagemVisitor
+
+note right of PersonagemArtistico
+    Interface comum para todos
+    os personagens artísticos
+    com método accept()
+end note
+
+note right of PersonagemVisitor
+    Interface que define operações
+    específicas para cada tipo
+    de personagem
+end note
+
+note right of ProdutorMusicalVisitor
+    Visitante concreto que aplica
+    operações de produção musical
+    especializadas por personagem
+end note
+
+note right of SistemaKatyPerry
+    Client que orquestra a
+    interação entre personagens
+    e visitantes
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como cada visitante especializado pode aplicar operações específicas em cada tipo de personagem.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/comportamentais/visitor/pratico.png" alt="Sistema Documentos Visitor UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Visitor no exemplo prático do sistema de processamento de documentos:</p>
+            <pre class="uml-code">
+@startuml
+class Documento {
+    + accept(visitor: DocumentoVisitor): Any
+    + get_tipo(): str
+}
+
+class Contrato {
+    - numero: str
+    - partes: List[str]
+    - valor: float
+    - vigencia: str
+    - clausulas: List[str]
+    - assinado: bool
+    + accept(visitor: DocumentoVisitor): Any
+    + get_tipo(): str
+    + adicionar_clausula(clausula: str): void
+    + assinar(): void
+}
+
+class NotaFiscal {
+    - numero: str
+    - emitente: str
+    - destinatario: str
+    - valor: float
+    - itens: List[Dict]
+    - impostos: Dict[str, float]
+    - data_emissao: datetime
+    + accept(visitor: DocumentoVisitor): Any
+    + get_tipo(): str
+    + adicionar_item(descricao: str, quantidade: int, valor_unitario: float): void
+    + calcular_impostos(): void
+}
+
+class Relatorio {
+    - titulo: str
+    - autor: str
+    - departamento: str
+    - metricas: Dict[str, Any]
+    - conclusoes: List[str]
+    - recomendacoes: List[str]
+    - data_geracao: datetime
+    - status: str
+    + accept(visitor: DocumentoVisitor): Any
+    + get_tipo(): str
+    + adicionar_metrica(nome: str, valor: Any, unidade: str): void
+    + adicionar_conclusao(conclusao: str): void
+    + adicionar_recomendacao(recomendacao: str): void
+    + finalizar(): void
+}
+
+class Proposta {
+    - numero: str
+    - cliente: str
+    - vendedor: str
+    - valor_total: float
+    - itens: List[Dict]
+    - condicoes: List[str]
+    - validade: int
+    - status: str
+    + accept(visitor: DocumentoVisitor): Any
+    + get_tipo(): str
+    + adicionar_item(descricao: str, quantidade: int, valor_unitario: float): void
+    + adicionar_condicao(condicao: str): void
+    + aprovar(): void
+    + rejeitar(): void
+}
+
+class DocumentoVisitor {
+    + visit_contrato(contrato: Contrato): Any
+    + visit_nota_fiscal(nota_fiscal: NotaFiscal): Any
+    + visit_relatorio(relatorio: Relatorio): Any
+    + visit_proposta(proposta: Proposta): Any
+}
+
+class ValidadorVisitor {
+    + visit_contrato(contrato: Contrato): Dict[str, Any]
+    + visit_nota_fiscal(nota_fiscal: NotaFiscal): Dict[str, Any]
+    + visit_relatorio(relatorio: Relatorio): Dict[str, Any]
+    + visit_proposta(proposta: Proposta): Dict[str, Any]
+}
+
+class ProcessadorFinanceiroVisitor {
+    + visit_contrato(contrato: Contrato): Dict[str, Any]
+    + visit_nota_fiscal(nota_fiscal: NotaFiscal): Dict[str, Any]
+    + visit_relatorio(relatorio: Relatorio): Dict[str, Any]
+    + visit_proposta(proposta: Proposta): Dict[str, Any]
+}
+
+class ExportadorVisitor {
+    - formato: str
+    + visit_contrato(contrato: Contrato): Dict[str, Any]
+    + visit_nota_fiscal(nota_fiscal: NotaFiscal): Dict[str, Any]
+    + visit_relatorio(relatorio: Relatorio): Dict[str, Any]
+    + visit_proposta(proposta: Proposta): Dict[str, Any]
+}
+
+class SistemaDocumentos {
+    - documentos: List[Documento]
+    - visitors: List[DocumentoVisitor]
+    + adicionar_documento(documento: Documento): void
+    + processar_documentos(): void
+    + demonstrar_visitor_pattern(): void
+}
+
+Documento <|-- Contrato
+Documento <|-- NotaFiscal
+Documento <|-- Relatorio
+Documento <|-- Proposta
+
+DocumentoVisitor <|-- ValidadorVisitor
+DocumentoVisitor <|-- ProcessadorFinanceiroVisitor
+DocumentoVisitor <|-- ExportadorVisitor
+
+ValidadorVisitor --> Contrato
+ValidadorVisitor --> NotaFiscal
+ValidadorVisitor --> Relatorio
+ValidadorVisitor --> Proposta
+
+SistemaDocumentos --> Documento
+SistemaDocumentos --> DocumentoVisitor
+
+note right of Documento
+    Classe abstrata Python que
+    define a interface comum
+    para todos os documentos
+end note
+
+note right of DocumentoVisitor
+    Interface que declara métodos
+    visit para cada tipo de
+    documento concreto
+end note
+
+note right of ValidadorVisitor
+    Visitante concreto especializado
+    em validação de documentos
+    com regras específicas
+end note
+
+note right of SistemaDocumentos
+    Client que gerencia documentos
+    e orquestra o processamento
+    por visitantes
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite que diferentes processadores especializados atuem sobre diversos tipos de documentos sem modificar suas classes.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://images.mubicdn.net/images/film/90658/cache-45179-1745490861/image-w1280.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Visitor oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Separação de Responsabilidades:</strong> Operações são separadas dos objetos</li>
+                <li><strong>Extensibilidade:</strong> Novas operações podem ser adicionadas sem modificar classes existentes</li>
+                <strong>Open/Closed Principle:</strong> Objetos estão abertos para extensão, fechados para modificação</li>
+                <li><strong>Reúso de Operações:</strong> Visitors podem ser reutilizados em diferentes contextos</li>
+                <li><strong>Acumulação de Estado:</strong> Visitors podem acumular estado durante a visita</li>
+                <li><strong>Algoritmos Complexos:</strong> Permite implementar algoritmos complexos que operam sobre hierarquias</li>
+                <li><strong>Manutenção:</strong> Mais fácil manter operações relacionadas em uma classe</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://images.complex.com/complex/image/upload/v1723841242/sanity-new/katy-perry-134035598.png"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Visitor também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Quebra de Encapsulamento:</strong> Visitors podem precisar acessar membros privados</li>
+                <li><strong>Dificuldade de Adição de Elements:</strong> Adicionar novo element exige modificar todos os visitors</li>
+                <li><strong>Complexidade:</strong> Aumenta o número de classes no sistema</li>
+                <li><strong>Acoplamento:</strong> Visitors ficam acoplados à estrutura dos elements</li>
+                <li><strong>Dificuldade de Manutenção:</strong> Mudanças na hierarquia afetam todos os visitors</li>
+                <li><strong>Overhead:</strong> Pode adicionar complexidade desnecessária para casos simples</li>
+                <li><strong>Dificuldade de Teste:</strong> Testar visitors pode ser mais complexo</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://media.newyorker.com/photos/590966602179605b11ad62ba/master/w_2560%2Cc_limit/Goldstein-Katy-Perry-Super-Bowl-Halftime-Show-Sharks.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Visitor é uma solução poderosa para separar algoritmos dos objetos nos quais operam, permitindo adicionar novas operações sem modificar as classes existentes.</p>
+            <p>Na nossa analogia da <strong>Katy Perry e seus múltiplos personagens</strong>, o Visitor funciona como o <strong>sistema de colaboração artística</strong> - onde cada personagem (California Gurl, Prism, Witness, Smile) aceita diferentes profissionais especializados (produtores, coreógrafos, estilistas, diretores) que aplicam suas expertises específicas sem modificar a essência fundamental de cada personagem.</p>
+            <p>Assim como Katy Perry se transforma em diferentes personagens enquanto mantém sua identidade artística central, permitindo que diversos profissionais contribuam com suas especialidades para criar performances únicas, o padrão Visitor nos permite criar sistemas onde objetos podem aceitar diversas operações externas enquanto mantêm sua estrutura interna intacta, promovendo a extensibilidade e a separação de concerns de forma elegante e eficiente.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/visitor"
+                        target="_blank">Refactoring.Guru - Padrão Visitor</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-visitor/16797"
+                        target="_blank">DevMedia - Padrão Visitor</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/25/mao-na-massa-visitor/"
+                        target="_blank">Mão na Massa - Padrão Visitor</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Visitor" target="_blank">Wikipédia - Visitor (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/visitor-design-pattern/" target="_blank">GeeksforGeeks
+                        - Visitor Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/visitor" target="_blank">SourceMaking
+                        - Visitor Pattern</a></li>
+                <li>[7] <a href="https://en.wikipedia.org/wiki/Katy_Perry" target="_blank">Wikipedia - Katy Perry Biography</a></li>
+                <li>[8] <a href="https://www.billboard.com/music/katy-perry/" target="_blank">Billboard - Katy Perry Career</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    
+</body>
+
+</html> 
