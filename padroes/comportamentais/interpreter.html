@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Interpreter - A Shakira Poliglota</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Interpreter?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: AbstractExpression, Terminal, NonTerminal</a></li>
+            <li><a href="#page5">Exemplo Fictício (Shakira Poliglota)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">INTERPRETER</h1>
+            <p class="cover-subtitle">A Shakira Poliglota - Interpretando Múltiplos Idiomas na Carreira Global</p>
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Shakira_-_She_Wolf_%28video%29.png/1200px-Shakira_-_She_Wolf_%28video%29.png"
+                alt="Capa Interpreter - Shakira" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Interpreter?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://www.rollingstone.com/wp-content/uploads/2023/01/GettyImages-1246956373-e1673977374965.jpg"
+                    alt="Interpreter Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Interpreter é um <strong>padrão de projeto comportamental</strong> que define uma representação gramatical para uma linguagem e um interpretador para processar essa gramática. É útil para implementar linguagens simples, definir gramáticas e representar sentenças na linguagem como árvores de sintaxe abstrata [1].</p>
+            <p>É como a <strong>Shakira se comunicando em múltiplos idiomas</strong> - ela interpreta e traduz mensagens entre espanhol, inglês e português, adaptando a estrutura gramatical de cada língua para se conectar com fãs ao redor do mundo.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://s2-glb.glbimg.com/0j0h8nZf0bLd5Lk7J9Q9y9Q9Z9Y=/0x0:1280x720/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/6/V/5qk0Q8R2yA4A3p6yJ6zQ/shakira.jpg"
+                    alt="Problema da Interpretação" class="cover-image">
+            </div>
+            <p>O principal problema que o Interpreter resolve é a <strong>interpretação de linguagens ou gramáticas específicas</strong>. Ele permite definir uma gramática para uma linguagem e interpretar sentenças nessa linguagem, representando cada regra gramatical como uma classe [2].</p>
+            <p>Sem este padrão, processar diferentes estruturas linguísticas seria complexo e acoplado - como a Shakira teria que criar sistemas separados para cada idioma em vez de uma estrutura unificada de interpretação.</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/comportamentais/interpreter/generico.png"
+                    alt="Interpreter UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Interpreter:</p>
+            <pre class="uml-code">
+@startuml
+class Client {
+    + buildAST(): AbstractExpression
+    + interpret(context: Context): void
+}
+
+abstract class AbstractExpression {
+    + interpret(context: Context): void
+}
+
+class TerminalExpression {
+    + interpret(context: Context): void
+}
+
+class NonterminalExpression {
+    - expressions: List<AbstractExpression>
+    + interpret(context: Context): void
+    + addExpression(expr: AbstractExpression): void
+}
+
+class Context {
+    - variables: Map<String, Object>
+    + getVariable(key: String): Object
+    + setVariable(key: String, value: Object): void
+}
+
+Client --> AbstractExpression
+AbstractExpression <|-- TerminalExpression
+AbstractExpression <|-- NonterminalExpression
+NonterminalExpression --> AbstractExpression
+Client --> Context
+
+note right of AbstractExpression
+    Interface comum para todas
+    as expressões na gramática,
+    define método interpret()
+end note
+
+note right of TerminalExpression
+    Representa expressões
+    terminais na gramática
+    (símbolos finais)
+end note
+
+note right of NonterminalExpression
+    Representa regras complexas
+    que contém outras expressões
+    (composição)
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>AbstractExpression:</strong> Interface comum para todas as expressões</li>
+                <li><strong>TerminalExpression:</strong> Expressões terminais da gramática</li>
+                <li><strong>NonterminalExpression:</strong> Expressões não-terminais que contém outras expressões</li>
+                <li><strong>Context:</strong> Contém informações globais para interpretação</li>
+                <li><strong>Client:</strong> Constrói a árvore de sintaxe e inicia a interpretação</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: AbstractExpression, Terminal, NonTerminal</h1>
+            <div class="img-placeholder-5">
+                <img src="https://miro.medium.com/v2/resize:fit:1400/1*2kLx5Mk2M1L6M-8p-6qJ6g.png"
+                    alt="Conceitos Interpreter" class="cover-image">
+            </div>
+            
+            <h3>AbstractExpression (Expressão Abstrata)</h3>
+            <p><strong>Características:</strong> Interface comum que define o método interpret() para todas as expressões</p>
+            <p><strong>Exemplo Shakira:</strong></p>
+            <ul>
+                <li>Interface comum para frases em todos os idiomas</li>
+                <li>Define o método "traduzir()"</li>
+                <li>Base para todas as expressões linguísticas</li>
+            </ul>
+
+            <h3>TerminalExpression (Expressão Terminal)</h3>
+            <p><strong>Características:</strong> Representa símbolos terminais da gramática que não podem ser decompostos</p>
+            <p><strong>Exemplo Shakira:</strong></p>
+            <ul>
+                <li>Palavras individuais em cada idioma</li>
+                <li>Saudações básicas ("Hola", "Hello", "Olá")</li>
+                <li>Expressões de agradecimento</li>
+            </ul>
+
+            <h3>NonterminalExpression (Expressão Não-Terminal)</h3>
+            <p><strong>Características:</strong> Representa regras gramaticais complexas que contém outras expressões</p>
+            <p><strong>Exemplo Shakira:</strong></p>
+            <ul>
+                <li>Frases completas com sujeito-verbo-objeto</li>
+                <li>Perguntas e negações</li>
+                <li>Expressões idiomáticas complexas</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> O Interpreter é ideal para gramáticas simples - para linguagens complexas, considere usar parsers profissionais.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (Shakira Poliglota)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://www.billboard.com/wp-content/uploads/media/shakira-2014-billboard-650.jpg"
+                    alt="Shakira Poliglota" class="cover-image">
+            </div>
+            <p>Imagine a <strong>Shakira como uma artista global</strong> usando o padrão Interpreter para se comunicar em múltiplos idiomas com seus fãs:</p>
+
+            <h3>Gramática dos Idiomas (Expressões):</h3>
+            <ul>
+                <li><strong>Espanhol (Língua Nativa):</strong> Estrutura SVO, gênero gramatical, conjugações complexas</li>
+                <li><strong>Inglês (Língua Internacional):</strong> Estrutura SVO simples, poucas conjugações</li>
+                <li><strong>Português (Língua Irmã):</strong> Estrutura similar ao espanhol com diferenças sutis</li>
+            </ul>
+
+            <h3>Componentes do Sistema de Tradução:</h3>
+            <ul>
+                <li><strong>Expressões Terminais:</strong> Palavras básicas, saudações, verbos no infinitivo</li>
+                <li><strong>Expressões Não-Terminais:</strong> Frases completas, perguntas, expressões idiomáticas</li>
+                <li><strong>Contexto:</strong> País do fã, ocasião, formalidade</li>
+                <li><strong>Interpretador:</strong> Sistema que processa a árvore sintática</li>
+            </ul>
+
+            <p>O Interpreter permite que Shakira tenha uma base gramatical unificada enquanto adapta a mensagem para cada idioma.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://media.pitchfork.com/photos/5929b0c9c0084474cd0c3c5e/1:1/w_600/4a1f6f5f.jpg"
+                    alt="Problema sem Interpreter" class="cover-image">
+            </div>
+            <p>Sem o Padrão Interpreter, o processamento de linguagens seria caótico e com lógica espalhada:</p>
+            <pre><code>
+// PROBLEMA: Lógica de interpretação espalhada e complexa!
+class TradutorShakira {
+    // MÉTODOS ESPALHADOS E ACOPLADOS
+    traduzirParaEspanhol(mensagem: string): string {
+        console.log(`🇪🇸 TRADUZINDO PARA ESPANHOL: "${mensagem}"`);
+        
+        // LÓGICA COMPLEXA E ESPALHADA PARA CADA IDIOMA
+        if (mensagem.includes("Hello")) {
+            return mensagem.replace("Hello", "Hola");
+        }
+        if (mensagem.includes("Thank you")) {
+            return mensagem.replace("Thank you", "Gracias");
+        }
+        if (mensagem.includes("I love")) {
+            return mensagem.replace("I love", "Amo");
+        }
+        if (mensagem.includes("my fans")) {
+            return mensagem.replace("my fans", "mis fans");
+        }
+        
+        // VERIFICAÇÕES COMPLEXAS PARA FRASES
+        if (mensagem.startsWith("How are you")) {
+            return "¿Cómo estás?";
+        }
+        if (mensagem.startsWith("Where is")) {
+            return "¿Dónde está " + mensagem.substring(8) + "?";
+        }
+        
+        return mensagem + " [Não traduzido]";
+    }
+    
+    traduzirParaIngles(mensagem: string): string {
+        console.log(`🇺🇸 TRADUZINDO PARA INGLÊS: "${mensagem}"`);
+        
+        // LÓGICA DUPLICADA COM VARIAÇÕES
+        if (mensagem.includes("Hola")) {
+            return mensagem.replace("Hola", "Hello");
+        }
+        if (mensagem.includes("Gracias")) {
+            return mensagem.replace("Gracias", "Thank you");
+        }
+        if (mensagem.includes("Amo")) {
+            return mensagem.replace("Amo", "I love");
+        }
+        if (mensagem.includes("mis fans")) {
+            return mensagem.replace("mis fans", "my fans");
+        }
+        
+        if (mensagem.startsWith("¿Cómo estás?")) {
+            return "How are you?";
+        }
+        if (mensagem.startsWith("¿Dónde está")) {
+            return "Where is " + mensagem.substring(11, mensagem.length - 1);
+        }
+        
+        return mensagem + " [Not translated]";
+    }
+    
+    traduzirParaPortugues(mensagem: string): string {
+        console.log(`🇧🇷 TRADUZINDO PARA PORTUGUÊS: "${mensagem}"`);
+        
+        // MAIS LÓGICA DUPLICADA
+        if (mensagem.includes("Hello")) {
+            return mensagem.replace("Hello", "Olá");
+        }
+        if (mensagem.includes("Hola")) {
+            return mensagem.replace("Hola", "Olá");
+        }
+        if (mensagem.includes("Thank you")) {
+            return mensagem.replace("Thank you", "Obrigada");
+        }
+        if (mensagem.includes("Gracias")) {
+            return mensagem.replace("Gracias", "Obrigada");
+        }
+        
+        // TRATAMENTO ESPECÍFICO PARA PORTUGUÊS
+        if (mensagem.includes("my fans") || mensagem.includes("mis fans")) {
+            return mensagem.replace("my fans", "meus fãs").replace("mis fans", "meus fãs");
+        }
+        
+        if (mensagem.startsWith("How are you")) {
+            return "Como você está?";
+        }
+        if (mensagem.startsWith("¿Cómo estás?")) {
+            return "Como você está?";
+        }
+        
+        return mensagem + " [Não traduzido]";
+    }
+    
+    // PROBLEMA: Processamento de frases complexas é caótico
+    processarFraseComplexa(frase: string, idiomaAlvo: string): string {
+        console.log(`🔄 PROCESSANDO FRASE COMPLEXA: "${frase}" → ${idiomaAlvo}`);
+        
+        let resultado = frase;
+        
+        // LÓGICA ANINHADA E COMPLEXA
+        if (frase.includes("I love my fans around the world")) {
+            if (idiomaAlvo === "espanhol") {
+                return "Amo a mis fans alrededor del mundo";
+            } else if (idiomaAlvo === "portugues") {
+                return "Amo meus fãs ao redor do mundo";
+            }
+        }
+        
+        if (frase.includes("Music is my life")) {
+            if (idiomaAlvo === "espanhol") {
+                return "La música es mi vida";
+            } else if (idiomaAlvo === "portugues") {
+                return "A música é minha vida";
+            }
+        }
+        
+        // TRATAMENTO GENÉRICO INEFICIENTE
+        const palavras = frase.split(" ");
+        let fraseTraduzida = "";
+        
+        for (const palavra of palavras) {
+            let palavraTraduzida = palavra;
+            
+            // VERIFICAÇÕES REPETITIVAS
+            if (palavra === "love" && idiomaAlvo === "espanhol") {
+                palavraTraduzida = "amo";
+            } else if (palavra === "love" && idiomaAlvo === "portugues") {
+                palavraTraduzida = "amo";
+            } else if (palavra === "music" && idiomaAlvo === "espanhol") {
+                palavraTraduzida = "música";
+            } else if (palavra === "music" && idiomaAlvo === "portugues") {
+                palavraTraduzida = "música";
+            }
+            // ... centenas de outras verificações
+            
+            fraseTraduzida += palavraTraduzida + " ";
+        }
+        
+        return fraseTraduzida.trim();
+    }
+}
+
+// PROBLEMAS IDENTIFICADOS:
+// 1. LÓGICA ESPALHADA: Regras gramaticais misturadas em múltiplos métodos
+// 2. ALTA DUPLICAÇÃO: Mesma lógica repetida para cada idioma
+// 3. DIFÍCIL MANUTENÇÃO: Adicionar novo idioma exige modificar toda a classe
+// 4. COMPLEXIDADE: Processamento de frases torna-se rapidamente complexo
+// 5. BAIXA EXTENSIBILIDADE: Difícil adicionar novas regras gramaticais
+// 6. ACOPLAMENTO: Todas as regras estão em uma única classe
+
+// EXEMPLO DE USO PROBLEMÁTICO:
+const tradutor = new TradutorShakira();
+
+console.log("❌ SISTEMA SEM INTERPRETER PATTERN");
+console.log("=" .repeat(50));
+
+const mensagens = [
+    "Hello my fans",
+    "I love music",
+    "Thank you for your support",
+    "How are you today?",
+    "Where is the concert?"
+];
+
+for (const mensagem of mensagens) {
+    console.log(`\n📝 Original: "${mensagem}"`);
+    console.log(`🇪🇸 Espanhol: ${tradutor.traduzirParaEspanhol(mensagem)}`);
+    console.log(`🇧🇷 Português: ${tradutor.traduzirParaPortugues(mensagem)}`);
+    console.log(`🇺🇸 Inglês: ${tradutor.traduzirParaIngles(mensagem)}`);
+}
+
+console.log("\n🔗 Frase complexa:");
+console.log(tradutor.processarFraseComplexa(
+    "I love my fans around the world", 
+    "portugues"
+));
+            </code></pre>
+            <p>Lógica espalhada e duplicação tornam o sistema difícil de manter e evoluir!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://www.nme.com/wp-content/uploads/2021/06/Shakira-2021.jpg"
+                    alt="Interpreter Aplicado" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Interpreter, criamos uma estrutura gramatical organizada e extensível:</p>
+            <pre><code>
+// CONTEXTO - Contém informações para a interpretação
+class ContextoTraducao {
+    private idiomaAlvo: string;
+    private formalidade: string; // "formal", "informal"
+    private regiao: string; // "es", "br", "mx", etc.
+    
+    constructor(idiomaAlvo: string, formalidade: string = "informal", regiao: string = "") {
+        this.idiomaAlvo = idiomaAlvo;
+        this.formalidade = formalidade;
+        this.regiao = regiao;
+    }
+    
+    getIdiomaAlvo(): string {
+        return this.idiomaAlvo;
+    }
+    
+    getFormalidade(): string {
+        return this.formalidade;
+    }
+    
+    getRegiao(): string {
+        return this.regiao;
+    }
+    
+    isEspanhol(): boolean {
+        return this.idiomaAlvo === "espanhol";
+    }
+    
+    isPortugues(): boolean {
+        return this.idiomaAlvo === "portugues";
+    }
+    
+    isIngles(): boolean {
+        return this.idiomaAlvo === "ingles";
+    }
+}
+
+// ABSTRACT EXPRESSION
+interface Expressao {
+    interpretar(contexto: ContextoTraducao): string;
+    getDescricao(): string;
+}
+
+// TERMINAL EXPRESSIONS - Palavras e elementos básicos
+
+class ExpressaoSaudacao implements Expressao {
+    private tipo: string; // "ola", "obrigada", "adeus"
+    
+    constructor(tipo: string) {
+        this.tipo = tipo;
+    }
+    
+    interpretar(contexto: ContextoTraducao): string {
+        switch (this.tipo) {
+            case "ola":
+                if (contexto.isEspanhol()) return "¡Hola!";
+                if (contexto.isPortugues()) return "Olá!";
+                if (contexto.isIngles()) return "Hello!";
+                break;
+                
+            case "obrigada":
+                if (contexto.isEspanhol()) return "¡Gracias!";
+                if (contexto.isPortugues()) return "Obrigada!";
+                if (contexto.isIngles()) return "Thank you!";
+                break;
+                
+            case "adeus":
+                if (contexto.isEspanhol()) return "¡Adiós!";
+                if (contexto.isPortugues()) return "Tchau!";
+                if (contexto.isIngles()) return "Goodbye!";
+                break;
+        }
+        
+        return `[Saudação: ${this.tipo}]`;
+    }
+    
+    getDescricao(): string {
+        return `Saudação(${this.tipo})`;
+    }
+}
+
+class ExpressaoPronome implements Expressao {
+    private tipo: string; // "eu", "voce", "nos"
+    private numero: string; // "singular", "plural"
+    
+    constructor(tipo: string, numero: string = "singular") {
+        this.tipo = tipo;
+        this.numero = numero;
+    }
+    
+    interpretar(contexto: ContextoTraducao): string {
+        switch (this.tipo) {
+            case "eu":
+                return "I"; // Inglês
+                // Espanhol e Português usam "yo" e "eu" mas dependem do verbo
+                
+            case "voce":
+                if (contexto.isEspanhol()) return "tú";
+                if (contexto.isPortugues()) return "você";
+                if (contexto.isIngles()) return "you";
+                break;
+                
+            case "nos":
+                if (contexto.isEspanhol()) return "nosotros";
+                if (contexto.isPortugues()) return "nós";
+                if (contexto.isIngles()) return "we";
+                break;
+        }
+        
+        return `[Pronome: ${this.tipo}]`;
+    }
+    
+    getDescricao(): string {
+        return `Pronome(${this.tipo}, ${this.numero})`;
+    }
+}
+
+class ExpressaoVerbo implements Expressao {
+    private infinitivo: string;
+    private tempo: string; // "presente", "passado", "futuro"
+    private pessoa: string; // "eu", "voce", "ele", etc.
+    
+    constructor(infinitivo: string, tempo: string = "presente", pessoa: string = "eu") {
+        this.infinitivo = infinitivo;
+        this.tempo = tempo;
+        this.pessoa = pessoa;
+    }
+    
+    interpretar(contexto: ContextoTraducao): string {
+        // Dicionário de verbos com conjugações
+        const conjugacoes: any = {
+            "amar": {
+                "espanhol": {
+                    "presente": { "eu": "amo", "voce": "amas", "ele": "ama", "nos": "amamos" },
+                    "passado": { "eu": "amé", "voce": "amaste", "ele": "amó", "nos": "amamos" }
+                },
+                "portugues": {
+                    "presente": { "eu": "amo", "voce": "ama", "ele": "ama", "nos": "amamos" },
+                    "passado": { "eu": "amei", "voce": "amou", "ele": "amou", "nos": "amamos" }
+                },
+                "ingles": {
+                    "presente": { "eu": "love", "voce": "love", "ele": "loves", "nos": "love" },
+                    "passado": { "eu": "loved", "voce": "loved", "ele": "loved", "nos": "loved" }
+                }
+            },
+            "cantar": {
+                "espanhol": {
+                    "presente": { "eu": "canto", "voce": "cantas", "ele": "canta", "nos": "cantamos" }
+                },
+                "portugues": {
+                    "presente": { "eu": "canto", "voce": "canta", "ele": "canta", "nos": "cantamos" }
+                },
+                "ingles": {
+                    "presente": { "eu": "sing", "voce": "sing", "ele": "sings", "nos": "sing" }
+                }
+            },
+            "agradecer": {
+                "espanhol": {
+                    "presente": { "eu": "agradezco", "voce": "agradeces", "ele": "agradece", "nos": "agradecemos" }
+                },
+                "portugues": {
+                    "presente": { "eu": "agradeço", "voce": "agradece", "ele": "agradece", "nos": "agradecemos" }
+                },
+                "ingles": {
+                    "presente": { "eu": "thank", "voce": "thank", "ele": "thanks", "nos": "thank" }
+                }
+            }
+        };
+        
+        const verbo = conjugacoes[this.infinitivo];
+        if (verbo && verbo[contexto.getIdiomaAlvo()]) {
+            const conjugacao = verbo[contexto.getIdiomaAlvo()][this.tempo];
+            if (conjugacao && conjugacao[this.pessoa]) {
+                return conjugacao[this.pessoa];
+            }
+        }
+        
+        return `[Verbo: ${this.infinitivo}]`;
+    }
+    
+    getDescricao(): string {
+        return `Verbo(${this.infinitivo}, ${this.tempo}, ${this.pessoa})`;
+    }
+}
+
+class ExpressaoSubstantivo implements Expressao {
+    private substantivo: string;
+    private numero: string; // "singular", "plural"
+    
+    constructor(substantivo: string, numero: string = "singular") {
+        this.substantivo = substantivo;
+        this.numero = numero;
+    }
+    
+    interpretar(contexto: ContextoTraducao): string {
+        const dicionario: any = {
+            "musica": {
+                "espanhol": { "singular": "música", "plural": "músicas" },
+                "portugues": { "singular": "música", "plural": "músicas" },
+                "ingles": { "singular": "music", "plural": "music" }
+            },
+            "fãs": {
+                "espanhol": { "singular": "fan", "plural": "fans" },
+                "portugues": { "singular": "fã", "plural": "fãs" },
+                "ingles": { "singular": "fan", "plural": "fans" }
+            },
+            "mundo": {
+                "espanhol": { "singular": "mundo", "plural": "mundos" },
+                "portugues": { "singular": "mundo", "plural": "mundos" },
+                "ingles": { "singular": "world", "plural": "worlds" }
+            },
+            "vida": {
+                "espanhol": { "singular": "vida", "plural": "vidas" },
+                "portugues": { "singular": "vida", "plural": "vidas" },
+                "ingles": { "singular": "life", "plural": "lives" }
+            }
+        };
+        
+        const traducao = dicionario[this.substantivo];
+        if (traducao && traducao[contexto.getIdiomaAlvo()]) {
+            return traducao[contexto.getIdiomaAlvo()][this.numero];
+        }
+        
+        return `[Substantivo: ${this.substantivo}]`;
+    }
+    
+    getDescricao(): string {
+        return `Substantivo(${this.substantivo}, ${this.numero})`;
+    }
+}
+
+// NON-TERMINAL EXPRESSIONS - Frases e estruturas complexas
+
+class ExpressaoFraseSimples implements Expressao {
+    private sujeito: Expressao;
+    private verbo: Expressao;
+    private objeto: Expressao;
+    
+    constructor(sujeito: Expressao, verbo: Expressao, objeto: Expressao) {
+        this.sujeito = sujeito;
+        this.verbo = verbo;
+        this.objeto = objeto;
+    }
+    
+    interpretar(contexto: ContextoTraducao): string {
+        const sujeitoStr = this.sujeito.interpretar(contexto);
+        const verboStr = this.verbo.interpretar(contexto);
+        const objetoStr = this.objeto.interpretar(contexto);
+        
+        // Ordem das palavras pode variar por idioma
+        if (contexto.isIngles() || contexto.isPortugues()) {
+            return `${sujeitoStr} ${verboStr} ${objetoStr}`;
+        } else if (contexto.isEspanhol()) {
+            return `${sujeitoStr} ${verboStr} ${objetoStr}`;
+        }
+        
+        return `${sujeitoStr} ${verboStr} ${objetoStr}`;
+    }
+    
+    getDescricao(): string {
+        return `Frase(${this.sujeito.getDescricao()} + ${this.verbo.getDescricao()} + ${this.objeto.getDescricao()})`;
+    }
+}
+
+class ExpressaoPergunta implements Expressao {
+    private expressao: Expressao;
+    private tipo: string; // "sim_nao", "onde", "quando"
+    
+    constructor(expressao: Expressao, tipo: string = "sim_nao") {
+        this.expressao = expressao;
+        this.tipo = tipo;
+    }
+    
+    interpretar(contexto: ContextoTraducao): string {
+        const frase = this.expressao.interpretar(contexto);
+        
+        switch (this.tipo) {
+            case "sim_nao":
+                if (contexto.isEspanhol()) return `¿${frase}?`;
+                if (contexto.isPortugues()) return `${frase}?`;
+                if (contexto.isIngles()) {
+                    // Inverter ordem para perguntas em inglês
+                    const palavras = frase.split(" ");
+                    if (palavras.length >= 2) {
+                        return `Do ${palavras[0]} ${palavras.slice(1).join(" ")}?`;
+                    }
+                    return `Is ${frase}?`;
+                }
+                break;
+                
+            case "onde":
+                if (contexto.isEspanhol()) return `¿Dónde está ${frase}?`;
+                if (contexto.isPortugues()) return `Onde está ${frase}?`;
+                if (contexto.isIngles()) return `Where is ${frase}?`;
+                break;
+                
+            case "quando":
+                if (contexto.isEspanhol()) return `¿Cuándo es ${frase}?`;
+                if (contexto.isPortugues()) return `Quando é ${frase}?`;
+                if (contexto.isIngles()) return `When is ${frase}?`;
+                break;
+        }
+        
+        return `${frase}?`;
+    }
+    
+    getDescricao(): string {
+        return `Pergunta(${this.tipo}: ${this.expressao.getDescricao()})`;
+    }
+}
+
+class ExpressaoExpressaoIdiomatica implements Expressao {
+    private tipo: string; // "agradecimento_fas", "amor_musica", "saudacao_especial"
+    
+    constructor(tipo: string) {
+        this.tipo = tipo;
+    }
+    
+    interpretar(contexto: ContextoTraducao): string {
+        const expressoes: any = {
+            "agradecimento_fas": {
+                "espanhol": "¡Gracias a todos mis fans por su apoyo increíble!",
+                "portugues": "Obrigada a todos os meus fãs pelo apoio incrível!",
+                "ingles": "Thank you to all my fans for your incredible support!"
+            },
+            "amor_musica": {
+                "espanhol": "La música es el lenguaje universal que conecta nuestros corazones",
+                "portugues": "A música é a linguagem universal que conecta nossos corações",
+                "ingles": "Music is the universal language that connects our hearts"
+            },
+            "saudacao_especial": {
+                "espanhol": "¡Hola a todos mis amores alrededor del mundo!",
+                "portugues": "Olá a todos os meus amores ao redor do mundo!",
+                "ingles": "Hello to all my loves around the world!"
+            }
+        };
+        
+        const traducao = expressoes[this.tipo];
+        if (traducao && traducao[contexto.getIdiomaAlvo()]) {
+            return traducao[contexto.getIdiomaAlvo()];
+        }
+        
+        return `[Expressão: ${this.tipo}]`;
+    }
+    
+    getDescricao(): string {
+        return `ExpressãoIdiomática(${this.tipo})`;
+    }
+}
+
+// CLIENT - Constrói e interpreta as árvores de expressão
+class SistemaTraducaoShakira {
+    private contexto: ContextoTraducao;
+    
+    constructor(idiomaAlvo: string) {
+        this.contexto = new ContextoTraducao(idiomaAlvo);
+    }
+    
+    mudarIdioma(idiomaAlvo: string): void {
+        this.contexto = new ContextoTraducao(idiomaAlvo);
+    }
+    
+    // Métodos para construir árvores de expressão comuns
+    construirFraseAmoMusica(): ExpressaoFraseSimples {
+        return new ExpressaoFraseSimples(
+            new ExpressaoPronome("eu"),
+            new ExpressaoVerbo("amar", "presente", "eu"),
+            new ExpressaoSubstantivo("musica")
+        );
+    }
+    
+    construirFraseAmoFas(): ExpressaoFraseSimples {
+        return new ExpressaoFraseSimples(
+            new ExpressaoPronome("eu"),
+            new ExpressaoVerbo("amar", "presente", "eu"),
+            new ExpressaoSubstantivo("fãs", "plural")
+        );
+    }
+    
+    construirPerguntaOndeShow(): ExpressaoPergunta {
+        return new ExpressaoPergunta(
+            new ExpressaoSubstantivo("show"),
+            "onde"
+        );
+    }
+    
+    demonstrarInterpretacao(): void {
+        console.log("🎤 SISTEMA DE TRADUÇÃO - SHAKIRA 🎤");
+        console.log("====================================");
+        console.log(`🌍 Idioma alvo: ${this.contexto.getIdiomaAlvo()}`);
+        console.log("✨ Demonstrando Padrão Interpreter\n");
+        
+        const expressoes: Expressao[] = [
+            new ExpressaoSaudacao("ola"),
+            new ExpressaoSaudacao("obrigada"),
+            this.construirFraseAmoMusica(),
+            this.construirFraseAmoFas(),
+            this.construirPerguntaOndeShow(),
+            new ExpressaoExpressaoIdiomatica("agradecimento_fas"),
+            new ExpressaoExpressaoIdiomatica("amor_musica")
+        ];
+        
+        console.log("📝 EXPRESSÕES INTERPRETADAS:");
+        console.log("-".repeat(40));
+        
+        for (const expressao of expressoes) {
+            const resultado = expressao.interpretar(this.contexto);
+            console.log(`   ${expressao.getDescricao()}`);
+            console.log(`   → "${resultado}"\n`);
+        }
+    }
+    
+    demonstrarMultiplosIdiomas(): void {
+        console.log("\n🌐 DEMONSTRAÇÃO MULTI-IDIOMA");
+        console.log("=" .repeat(50));
+        
+        const idiomas = ["espanhol", "ingles", "portugues"];
+        const expressoes = [
+            this.construirFraseAmoMusica(),
+            new ExpressaoExpressaoIdiomatica("agradecimento_fas")
+        ];
+        
+        for (const idioma of idiomas) {
+            this.mudarIdioma(idioma);
+            console.log(`\n🇺🇸 IDIOMA: ${idioma.toUpperCase()}`);
+            console.log("-".repeat(30));
+            
+            for (const expressao of expressoes) {
+                const resultado = expressao.interpretar(this.contexto);
+                console.log(`   "${resultado}"`);
+            }
+        }
+        
+        console.log("\n📊 RESUMO DO SISTEMA:");
+        console.log("   • Expressões Terminais: 4 tipos (Saudação, Pronome, Verbo, Substantivo)");
+        console.log("   • Expressões Não-Terminais: 3 tipos (Frase, Pergunta, Expressão Idiomática)");
+        console.log("   • Idiomas Suportados: 3 (Espanhol, Inglês, Português)");
+        console.log("   • Estrutura: Árvore de Sintaxe Abstrata (AST)");
+        console.log("   • ✅ Gramática organizada e extensível!");
+    }
+}
+
+// Exemplo de uso
+const sistema = new SistemaTraducaoShakira("espanhol");
+sistema.demonstrarInterpretacao();
+sistema.demonstrarMultiplosIdiomas();
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Interpreter em um sistema de consulta de dados musicais:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any
+from enum import Enum
+
+# Contexto para a interpretação
+class ContextoConsulta:
+    def __init__(self, dados_musicais: Dict[str, Any]):
+        self.dados_musicais = dados_musicais
+        self.resultado = None
+        self.variaveis = {}
+    
+    def set_variavel(self, nome: str, valor: Any) -> None:
+        self.variaveis[nome] = valor
+    
+    def get_variavel(self, nome: str) -> Any:
+        return self.variaveis.get(nome)
+    
+    def get_dados(self) -> Dict[str, Any]:
+        return self.dados_musicais
+
+# Abstract Expression
+class Expressao(ABC):
+    @abstractmethod
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        pass
+    
+    @abstractmethod
+    def __str__(self) -> str:
+        pass
+
+# Terminal Expressions
+
+class ExpressaoArtista(Expressao):
+    def __init__(self, nome_artista: str):
+        self.nome_artista = nome_artista
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        dados = contexto.get_dados()
+        artista = dados.get('artistas', {}).get(self.nome_artista)
+        if artista:
+            contexto.resultado = artista
+            return artista
+        return None
+    
+    def __str__(self) -> str:
+        return f"Artista('{self.nome_artista}')"
+
+class ExpressaoAlbum(Expressao):
+    def __init__(self, nome_album: str):
+        self.nome_album = nome_album
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        dados = contexto.get_dados()
+        for artista in dados.get('artistas', {}).values():
+            for album in artista.get('albuns', []):
+                if album['titulo'].lower() == self.nome_album.lower():
+                    contexto.resultado = album
+                    return album
+        return None
+    
+    def __str__(self) -> str:
+        return f"Album('{self.nome_album}')"
+
+class ExpressaoMusica(Expressao):
+    def __init__(self, nome_musica: str):
+        self.nome_musica = nome_musica
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        dados = contexto.get_dados()
+        for artista in dados.get('artistas', {}).values():
+            for album in artista.get('albuns', []):
+                for musica in album.get('musicas', []):
+                    if musica['titulo'].lower() == self.nome_musica.lower():
+                        contexto.resultado = musica
+                        return musica
+        return None
+    
+    def __str__(self) -> str:
+        return f"Musica('{self.nome_musica}')"
+
+class ExpressaoAno(Expressao):
+    def __init__(self, ano: int):
+        self.ano = ano
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        return self.ano
+    
+    def __str__(self) -> str:
+        return f"Ano({self.ano})"
+
+class ExpressaoPropriedade(Expressao):
+    def __init__(self, propriedade: str):
+        self.propriedade = propriedade
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        # Tenta obter a propriedade do resultado atual
+        if contexto.resultado and hasattr(contexto.resultado, 'get'):
+            return contexto.resultado.get(self.propriedade)
+        elif contexto.resultado and hasattr(contexto.resultado, self.propriedade):
+            return getattr(contexto.resultado, self.propriedade)
+        return None
+    
+    def __str__(self) -> str:
+        return f"Propriedade('{self.propriedade}')"
+
+# Non-Terminal Expressions
+
+class ExpressaoFiltroAno(Expressao):
+    def __init__(self, expressao: Expressao, operador: str, ano: Expressao):
+        self.expressao = expressao
+        self.operador = operador  # '>', '<', '=='
+        self.ano = ano
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        resultado_base = self.expressao.interpretar(contexto)
+        ano_alvo = self.ano.interpretar(contexto)
+        
+        if not resultado_base or not ano_alvo:
+            return None
+        
+        # Filtra baseado no ano
+        if isinstance(resultado_base, list):
+            if self.operador == '>':
+                return [item for item in resultado_base if item.get('ano', 0) > ano_alvo]
+            elif self.operador == '<':
+                return [item for item in resultado_base if item.get('ano', 0) < ano_alvo]
+            elif self.operador == '==':
+                return [item for item in resultado_base if item.get('ano', 0) == ano_alvo]
+        elif isinstance(resultado_base, dict):
+            ano_item = resultado_base.get('ano')
+            if ano_item:
+                if self.operador == '>' and ano_item > ano_alvo:
+                    return resultado_base
+                elif self.operador == '<' and ano_item < ano_alvo:
+                    return resultado_base
+                elif self.operador == '==' and ano_item == ano_alvo:
+                    return resultado_base
+        return None
+    
+    def __str__(self) -> str:
+        return f"FiltroAno({self.expressao} {self.operador} {self.ano})"
+
+class ExpressaoBusca(Expressao):
+    def __init__(self, tipo: str, criterio: Expressao):
+        self.tipo = tipo  # 'artista', 'album', 'musica'
+        self.criterio = criterio
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        dados = contexto.get_dados()
+        
+        if self.tipo == 'artista':
+            # Busca por artista
+            if isinstance(self.criterio, ExpressaoArtista):
+                return self.criterio.interpretar(contexto)
+            elif isinstance(self.criterio, str):
+                artista = dados.get('artistas', {}).get(self.criterio)
+                contexto.resultado = artista
+                return artista
+        
+        elif self.tipo == 'album':
+            # Busca todos os álbuns ou filtra
+            albuns = []
+            for artista in dados.get('artistas', {}).values():
+                albuns.extend(artista.get('albuns', []))
+            
+            if isinstance(self.criterio, ExpressaoAlbum):
+                return self.criterio.interpretar(contexto)
+            elif self.criterio is None:
+                contexto.resultado = albuns
+                return albuns
+        
+        elif self.tipo == 'musica':
+            # Busca todas as músicas ou filtra
+            musicas = []
+            for artista in dados.get('artistas', {}).values():
+                for album in artista.get('albuns', []):
+                    musicas.extend(album.get('musicas', []))
+            
+            if isinstance(self.criterio, ExpressaoMusica):
+                return self.criterio.interpretar(contexto)
+            elif self.criterio is None:
+                contexto.resultado = musicas
+                return musicas
+        
+        return None
+    
+    def __str__(self) -> str:
+        return f"Busca({self.tipo}, {self.criterio})"
+
+class ExpressaoEstatistica(Expressao):
+    def __init__(self, estatistica: str, expressao: Expressao):
+        self.estatistica = estatistica  # 'count', 'sum', 'avg', 'max', 'min'
+        self.expressao = expressao
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        resultado = self.expressao.interpretar(contexto)
+        
+        if not resultado:
+            return None
+        
+        if self.estatistica == 'count':
+            if isinstance(resultado, list):
+                return len(resultado)
+            else:
+                return 1 if resultado else 0
+        
+        elif self.estatistica == 'sum':
+            if isinstance(resultado, list):
+                # Soma streams ou vendas
+                return sum(item.get('streams', 0) for item in resultado)
+            elif isinstance(resultado, dict):
+                return resultado.get('streams', 0)
+        
+        elif self.estatistica == 'avg':
+            if isinstance(resultado, list) and resultado:
+                streams = [item.get('streams', 0) for item in resultado]
+                return sum(streams) / len(streams)
+            elif isinstance(resultado, dict):
+                return resultado.get('streams', 0)
+        
+        elif self.estatistica == 'max':
+            if isinstance(resultado, list) and resultado:
+                return max(item.get('streams', 0) for item in resultado)
+            elif isinstance(resultado, dict):
+                return resultado.get('streams', 0)
+        
+        elif self.estatistica == 'min':
+            if isinstance(resultado, list) and resultado:
+                return min(item.get('streams', 0) for item in resultado)
+            elif isinstance(resultado, dict):
+                return resultado.get('streams', 0)
+        
+        return None
+    
+    def __str__(self) -> str:
+        return f"Estatistica({self.estatistica}, {self.expressao})"
+
+class ExpressaoComposta(Expressao):
+    def __init__(self, expressoes: List[Expressao], operador: str = 'AND'):
+        self.expressoes = expressoes
+        self.operador = operador
+    
+    def interpretar(self, contexto: ContextoConsulta) -> Any:
+        resultados = []
+        for expressao in self.expressoes:
+            resultado = expressao.interpretar(contexto)
+            if resultado:
+                if self.operador == 'AND':
+                    resultados.append(resultado)
+                elif self.operador == 'OR':
+                    return resultado  # Retorna no primeiro verdadeiro
+            elif self.operador == 'AND':
+                return None  # AND falha se alguma for falsa
+        
+        if self.operador == 'AND' and resultados:
+            return resultados[0] if len(resultados) == 1 else resultados
+        return None
+    
+    def __str__(self) -> str:
+        expressoes_str = " & ".join(str(expr) for expr in self.expressoes)
+        return f"Composta({expressoes_str})"
+
+# Sistema de Consulta Musical
+class SistemaConsultaMusical:
+    def __init__(self):
+        self.dados = self._carregar_dados_musicais()
+    
+    def _carregar_dados_musicais(self) -> Dict[str, Any]:
+        return {
+            'artistas': {
+                'Shakira': {
+                    'nome': 'Shakira',
+                    'pais': 'Colômbia',
+                    'genero': 'Pop Latino',
+                    'anos_ativos': '1990-presente',
+                    'albuns': [
+                        {
+                            'titulo': 'Laundry Service',
+                            'ano': 2001,
+                            'genero': 'Pop Rock',
+                            'musicas': [
+                                {'titulo': 'Whenever, Wherever', 'duracao': '3:16', 'streams': 1500000000},
+                                {'titulo': 'Underneath Your Clothes', 'duracao': '3:44', 'streams': 800000000}
+                            ]
+                        },
+                        {
+                            'titulo': 'Oral Fixation Vol. 2',
+                            'ano': 2005,
+                            'genero': 'Pop Latino',
+                            'musicas': [
+                                {'titulo': 'Hips Don\'t Lie', 'duracao': '3:38', 'streams': 2000000000},
+                                {'titulo': 'Illegal', 'duracao': '3:53', 'streams': 300000000}
+                            ]
+                        },
+                        {
+                            'titulo': 'She Wolf',
+                            'ano': 2009,
+                            'genero': 'Electropop',
+                            'musicas': [
+                                {'titulo': 'She Wolf', 'duracao': '3:08', 'streams': 900000000},
+                                {'titulo': 'Did It Again', 'duracao': '4:15', 'streams': 200000000}
+                            ]
+                        }
+                    ]
+                },
+                'Beyoncé': {
+                    'nome': 'Beyoncé',
+                    'pais': 'EUA',
+                    'genero': 'R&B',
+                    'anos_ativos': '1997-presente',
+                    'albuns': [
+                        {
+                            'titulo': 'Dangerously in Love',
+                            'ano': 2003,
+                            'genero': 'R&B',
+                            'musicas': [
+                                {'titulo': 'Crazy in Love', 'duracao': '3:56', 'streams': 1800000000},
+                                {'titulo': 'Baby Boy', 'duracao': '4:05', 'streams': 600000000}
+                            ]
+                        },
+                        {
+                            'titulo': 'Lemonade',
+                            'ano': 2016,
+                            'genero': 'R&B',
+                            'musicas': [
+                                {'titulo': 'Formation', 'duracao': '3:26', 'streams': 1200000000},
+                                {'titulo': 'Sorry', 'duracao': '3:52', 'streams': 900000000}
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    
+    def executar_consulta(self, expressao: Expressao) -> Any:
+        contexto = ContextoConsulta(self.dados)
+        resultado = expressao.interpretar(contexto)
+        return resultado
+    
+    def demonstrar_interpreter(self) -> None:
+        print("🎵 SISTEMA DE CONSULTA MUSICAL - INTERPRETER")
+        print("============================================")
+        print("🎯 Demonstrando Consultas Complexas")
+        print("✨ Expressões + Composição Gramatical\n")
+        
+        # Consulta 1: Artista específico
+        print("1️⃣  CONSULTA: ARTISTA ESPECÍFICO")
+        print("-" * 40)
+        consulta_artista = ExpressaoBusca('artista', ExpressaoArtista('Shakira'))
+        resultado = self.executar_consulta(consulta_artista)
+        print(f"   Consulta: {consulta_artista}")
+        print(f"   Resultado: {resultado['nome']} - {resultado['pais']}")
+        
+        # Consulta 2: Álbuns após 2005
+        print("\n2️⃣  CONSULTA: ÁLBUNS APÓS 2005")
+        print("-" * 40)
+        todos_albuns = ExpressaoBusca('album', None)
+        albuns_recentes = ExpressaoFiltroAno(todos_albuns, '>', ExpressaoAno(2005))
+        resultado = self.executar_consulta(albuns_recentes)
+        print(f"   Consulta: {albuns_recentes}")
+        print(f"   Resultado: {len(resultado)} álbuns encontrados")
+        for album in resultado:
+            print(f"     • {album['titulo']} ({album['ano']})")
+        
+        # Consulta 3: Estatísticas de streams
+        print("\n3️⃣  CONSULTA: ESTATÍSTICAS DE STREAMS")
+        print("-" * 40)
+        todas_musicas = ExpressaoBusca('musica', None)
+        total_streams = ExpressaoEstatistica('sum', todas_musicas)
+        media_streams = ExpressaoEstatistica('avg', todas_musicas)
+        
+        total = self.executar_consulta(total_streams)
+        media = self.executar_consulta(media_streams)
+        
+        print(f"   Consulta: {total_streams}")
+        print(f"   Total de streams: {total:,}")
+        print(f"   Consulta: {media_streams}")
+        print(f"   Média de streams por música: {media:,.0f}")
+        
+        # Consulta 4: Música específica
+        print("\n4️⃣  CONSULTA: MÚSICA ESPECÍFICA")
+        print("-" * 40)
+        consulta_musica = ExpressaoBusca('musica', ExpressaoMusica('Hips Don\'t Lie'))
+        resultado = self.executar_consulta(consulta_musica)
+        print(f"   Consulta: {consulta_musica}")
+        print(f"   Resultado: {resultado['titulo']} - {resultado['duracao']} - {resultado['streams']:,} streams")
+        
+        # Consulta 5: Consulta composta
+        print("\n5️⃣  CONSULTA: COMPOSTA")
+        print("-" * 40)
+        consulta_composta = ExpressaoComposta([
+            ExpressaoBusca('artista', ExpressaoArtista('Shakira')),
+            ExpressaoFiltroAno(ExpressaoBusca('album', None), '>', ExpressaoAno(2000))
+        ])
+        resultado = self.executar_consulta(consulta_composta)
+        print(f"   Consulta: {consulta_composta}")
+        print(f"   Resultado: {len(resultado)} álbuns de Shakira após 2000")
+        
+        print(f"\n📊 RESUMO DO SISTEMA:")
+        print(f"   • Expressões Terminais: 5 tipos (Artista, Album, Musica, Ano, Propriedade)")
+        print(f"   • Expressões Não-Terminais: 4 tipos (Filtro, Busca, Estatística, Composta)")
+        print(f"   • Consultas Suportadas: Artistas, Álbuns, Músicas, Estatísticas")
+        print(f"   • Gramática: Consultas musicais complexas")
+        print(f"   • ✅ Interpreter Pattern aplicado com sucesso!")
+
+# Exemplo de uso
+def main():
+    sistema = SistemaConsultaMusical()
+    sistema.demonstrar_interpreter()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/comportamentais/interpreter/ficticio.png" alt="Shakira Interpreter UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Interpreter no exemplo da Shakira poliglota:</p>
+            <pre class="uml-code">
+@startuml
+class ContextoTraducao {
+    - idiomaAlvo: string
+    - formalidade: string
+    - regiao: string
+    + getIdiomaAlvo(): string
+    + getFormalidade(): string
+    + getRegiao(): string
+    + isEspanhol(): boolean
+    + isPortugues(): boolean
+    + isIngles(): boolean
+}
+
+interface Expressao {
+    + interpretar(contexto: ContextoTraducao): string
+    + getDescricao(): string
+}
+
+class ExpressaoSaudacao {
+    - tipo: string
+    + interpretar(contexto: ContextoTraducao): string
+    + getDescricao(): string
+}
+
+class ExpressaoPronome {
+    - tipo: string
+    - numero: string
+    + interpretar(contexto: ContextoTraducao): string
+    + getDescricao(): string
+}
+
+class ExpressaoVerbo {
+    - infinitivo: string
+    - tempo: string
+    - pessoa: string
+    + interpretar(contexto: ContextoTraducao): string
+    + getDescricao(): string
+}
+
+class ExpressaoSubstantivo {
+    - substantivo: string
+    - numero: string
+    + interpretar(contexto: ContextoTraducao): string
+    + getDescricao(): string
+}
+
+class ExpressaoFraseSimples {
+    - sujeito: Expressao
+    - verbo: Expressao
+    - objeto: Expressao
+    + interpretar(contexto: ContextoTraducao): string
+    + getDescricao(): string
+}
+
+class ExpressaoPergunta {
+    - expressao: Expressao
+    - tipo: string
+    + interpretar(contexto: ContextoTraducao): string
+    + getDescricao(): string
+}
+
+class ExpressaoExpressaoIdiomatica {
+    - tipo: string
+    + interpretar(contexto: ContextoTraducao): string
+    + getDescricao(): string
+}
+
+class SistemaTraducaoShakira {
+    - contexto: ContextoTraducao
+    + mudarIdioma(idiomaAlvo: string): void
+    + construirFraseAmoMusica(): ExpressaoFraseSimples
+    + construirFraseAmoFas(): ExpressaoFraseSimples
+    + construirPerguntaOndeShow(): ExpressaoPergunta
+    + demonstrarInterpretacao(): void
+    + demonstrarMultiplosIdiomas(): void
+}
+
+Expressao <|.. ExpressaoSaudacao
+Expressao <|.. ExpressaoPronome
+Expressao <|.. ExpressaoVerbo
+Expressao <|.. ExpressaoSubstantivo
+Expressao <|.. ExpressaoFraseSimples
+Expressao <|.. ExpressaoPergunta
+Expressao <|.. ExpressaoExpressaoIdiomatica
+
+ExpressaoFraseSimples --> Expressao
+ExpressaoPergunta --> Expressao
+
+SistemaTraducaoShakira --> ContextoTraducao
+SistemaTraducaoShakira --> Expressao
+
+note right of Expressao
+    Interface comum para todas
+    as expressões gramaticais
+    com método interpretar()
+end note
+
+note right of ExpressaoSaudacao
+    Expressão Terminal que
+    representa saudações
+    básicas em cada idioma
+end note
+
+note right of ExpressaoFraseSimples
+    Expressão Não-Terminal que
+    compõe outras expressões
+    para formar frases
+end note
+
+note right of SistemaTraducaoShakira
+    Client que constrói a
+    árvore de sintaxe e
+    orquestra a interpretação
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como cada expressão gramatical é representada como uma classe que sabe se interpretar em diferentes idiomas.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/comportamentais/interpreter/pratico.png" alt="Sistema Consulta Musical Interpreter UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Interpreter no exemplo prático do sistema de consulta musical:</p>
+            <pre class="uml-code">
+@startuml
+class ContextoConsulta {
+    - dados_musicais: Dict[str, Any]
+    - resultado: Any
+    - variaveis: Dict[str, Any]
+    + set_variavel(nome: str, valor: Any): void
+    + get_variavel(nome: str): Any
+    + get_dados(): Dict[str, Any]
+}
+
+class Expressao {
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoArtista {
+    - nome_artista: str
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoAlbum {
+    - nome_album: str
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoMusica {
+    - nome_musica: str
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoAno {
+    - ano: int
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoPropriedade {
+    - propriedade: str
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoFiltroAno {
+    - expressao: Expressao
+    - operador: str
+    - ano: Expressao
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoBusca {
+    - tipo: str
+    - criterio: Expressao
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoEstatistica {
+    - estatistica: str
+    - expressao: Expressao
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class ExpressaoComposta {
+    - expressoes: List[Expressao]
+    - operador: str
+    + interpretar(contexto: ContextoConsulta): Any
+    + __str__(): str
+}
+
+class SistemaConsultaMusical {
+    - dados: Dict[str, Any]
+    + executar_consulta(expressao: Expressao): Any
+    + demonstrar_interpreter(): void
+    - _carregar_dados_musicais(): Dict[str, Any]
+}
+
+Expressao <|-- ExpressaoArtista
+Expressao <|-- ExpressaoAlbum
+Expressao <|-- ExpressaoMusica
+Expressao <|-- ExpressaoAno
+Expressao <|-- ExpressaoPropriedade
+Expressao <|-- ExpressaoFiltroAno
+Expressao <|-- ExpressaoBusca
+Expressao <|-- ExpressaoEstatistica
+Expressao <|-- ExpressaoComposta
+
+ExpressaoFiltroAno --> Expressao
+ExpressaoBusca --> Expressao
+ExpressaoEstatistica --> Expressao
+ExpressaoComposta --> Expressao
+
+SistemaConsultaMusical --> Expressao
+SistemaConsultaMusical --> ContextoConsulta
+
+note right of Expressao
+    Classe abstrata Python
+    que define a interface
+    comum para interpretação
+end note
+
+note right of ExpressaoArtista
+    Expressão Terminal para
+    buscar artistas
+    específicos
+end note
+
+note right of ExpressaoFiltroAno
+    Expressão Não-Terminal
+    que aplica filtros
+    baseados em ano
+end note
+
+note right of SistemaConsultaMusical
+    Client que carrega dados
+    e executa as consultas
+    construídas
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite consultas musicais complexas através da composição de expressões gramaticais simples.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://www.thewowstyle.com/wp-content/uploads/2015/07/Shakira-2014-Photos.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Interpreter oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Gramática Definida:</strong> Permite definir claramente a gramática da linguagem</li>
+                <li><strong>Extensibilidade:</strong> Fácil adicionar novas expressões à gramática</li>
+                <li><strong>Implementação Simples:</strong> Cada regra gramatical é uma classe simples</li>
+                <li><strong>Árvore de Sintaxe:</strong> Representação natural da estrutura da linguagem</li>
+                <li><strong>Manutenção Facilitada:</strong> Mudanças em uma regra não afetam outras</li>
+                <li><strong>Composição:</strong> Permite construir expressões complexas a partir de simples</li>
+                <li><strong>Testabilidade:</strong> Cada expressão pode ser testada isoladamente</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://media.gq.com/photos/5582d53d1177d66d68d59a18/16:9/w_2560%2Cc_limit/shakira-2014-06-18-01.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Interpreter também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade para Gramáticas Grandes:</strong> Muitas classes para gramáticas complexas</li>
+                <li><strong>Performance:</strong> Pode ser lento para interpretação de grandes árvores</li>
+                <li><strong>Manutenção da Gramática:</strong> Difícil manter gramáticas muito complexas</li>
+                <li><strong>Dificuldade de Debug:</strong> Complexo depurar árvores de expressão grandes</li>
+                <li><strong>Limitação a Gramáticas Simples:</strong> Não é adequado para linguagens complexas</li>
+                <li><strong>Overhead de Memória:</strong> Muitos objetos para representar a árvore sintática</li>
+                <li><strong>Dificuldade de Evolução:</strong> Mudanças na gramática podem exigir refatoração</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://www.billboard.com/wp-content/uploads/media/shakira-2017-performance-billboard-1548.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Interpreter é uma solução elegante para implementar gramáticas simples, representando cada regra gramatical como uma classe e permitindo a interpretação de sentenças através da composição dessas regras.</p>
+            <p>Na nossa analogia da <strong>Shakira poliglota</strong>, o Interpreter funciona como o <strong>sistema de tradução multilíngue</strong> - onde cada elemento gramatical (saudação, verbo, substantivo) e cada estrutura (frase, pergunta, expressão idiomática) é representado como uma expressão que sabe se interpretar em diferentes idiomas, mantendo uma base comum enquanto se adapta às particularidades de cada língua.</p>
+            <p>Assim como Shakira domina múltiplos idiomas para se conectar com fãs ao redor do mundo, adaptando sua mensagem enquanto mantém sua essência artística, o padrão Interpreter nos permite criar sistemas que interpretam linguagens específicas de domínio, transformando regras gramaticais em estruturas de objetos que podem ser compostas e executadas de forma flexível e extensível.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/interpreter"
+                        target="_blank">Refactoring.Guru - Padrão Interpreter</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-interpreter/16767"
+                        target="_blank">DevMedia - Padrão Interpreter</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/25/mao-na-massa-interpreter/"
+                        target="_blank">Mão na Massa - Padrão Interpreter</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Interpreter" target="_blank">Wikipédia - Interpreter (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/interpreter-design-pattern/" target="_blank">GeeksforGeeks
+                        - Interpreter Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/interpreter" target="_blank">SourceMaking
+                        - Interpreter Pattern</a></li>
+                <li>[7] <a href="https://en.wikipedia.org/wiki/Shakira" target="_blank">Wikipedia - Shakira Biography</a></li>
+                <li>[8] <a href="https://www.billboard.com/music/shakira/" target="_blank">Billboard - Shakira Career</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    
+</body>
+
+</html>

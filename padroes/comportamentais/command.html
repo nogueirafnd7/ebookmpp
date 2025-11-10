@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Command - A Jornada de Lorde</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Command?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Command, Invoker, Receiver</a></li>
+            <li><a href="#page5">Exemplo Fictício (Jornada da Lorde)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">COMMAND</h1>
+            <p class="cover-subtitle">A Jornada de Lorde - Orquestrando Ações na Carreira Musical</p>
+
+            <img src="https://tmjbrazil.com.br/wp-content/uploads/2025/04/Detalhes-sobre-o-retorno-da-carreira-musical-da-Lorde.jpg"
+                alt="Capa Command - Lorde" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Command?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://ogimg.infoglobo.com.br/in/25164583-259-9b5/FT1086A/Lorde.jpg"
+                    alt="Command Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Command é um <strong>padrão de projeto comportamental</strong> que transforma uma solicitação em um objeto independente que contém toda a informação sobre a solicitação. Essa transformação permite parametrizar métodos com diferentes solicitações, adiar ou enfileirar a execução de uma solicitação e implementar funcionalidades de desfazer [1].</p>
+            <p>É como a <strong>jornada da Lorde</strong> - cada ação artística (lançar álbum, fazer turnê, conceder entrevista) é encapsulada como um comando que pode ser executado, agendado ou desfeito conforme a estratégia de carreira.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://imagenes.elpais.com/resizer/v2/UMIRF35OAQA2K57ECIGIVUACPU.jpg?auth=f9d25b4a0d200459b1ac441ec910c82c8b72b8e53e13a8bbdafc53d5360fa714&width=414"
+                    alt="Problema do Acoplamento" class="cover-image">
+            </div>
+            <p>O principal problema que o Command resolve é o <strong>acoplamento direto entre quem solicita uma ação e quem a executa</strong>. Ele permite que solicitações sejam tratadas como objetos, possibilitando operações como fila, log, desfazer/refazer e operações em lote [2].</p>
+            <p>Sem este padrão, o sistema de gerenciamento da carreira da Lorde teria chamadas diretas entre diferentes componentes, dificultando operações complexas como agendamento de turnês ou cancelamento de compromissos.</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/comportamentais/command/generico.png"
+                    alt="Command UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Command:</p>
+            <pre class="uml-code">
+@startuml
+class Client {
+    + configureCommands(): void
+}
+
+interface Command {
+    + execute(): void
+    + undo(): void
+}
+
+class Invoker {
+    - commands: List<Command>
+    - history: List<Command>
+    + setCommand(command: Command): void
+    + executeCommands(): void
+    + undoLastCommand(): void
+}
+
+class ConcreteCommandA {
+    - receiver: Receiver
+    - parameters: any
+    + execute(): void
+    + undo(): void
+}
+
+class ConcreteCommandB {
+    - receiver: Receiver
+    - parameters: any
+    + execute(): void
+    + undo(): void
+}
+
+class Receiver {
+    + actionA(parameters: any): void
+    + actionB(parameters: any): void
+}
+
+Client --> Command
+Command <|.. ConcreteCommandA
+Command <|.. ConcreteCommandB
+ConcreteCommandA --> Receiver
+ConcreteCommandB --> Receiver
+Invoker --> Command
+
+note right of Command
+    Interface comum para todos
+    os comandos, definindo
+    execute() e undo()
+end note
+
+note right of Invoker
+    Solicita a execução dos
+    comandos e mantém
+    histórico para undo
+end note
+
+note right of Receiver
+    Contém a lógica de negócio
+    real que será executada
+    pelos comandos
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Command:</strong> Interface comum para todos os comandos</li>
+                <li><strong>ConcreteCommand:</strong> Implementações específicas que encapsulam ações</li>
+                <li><strong>Invoker:</strong> Solicita a execução dos comandos</li>
+                <li><strong>Receiver:</strong> Contém a lógica de negócio real</li>
+                <li><strong>Client:</strong> Configura e cria os comandos</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Command, Invoker, Receiver</h1>
+            <div class="img-placeholder-5">
+                <img src="https://designpatternsinjava.wordpress.com/wp-content/uploads/2012/12/image_thumb3.png"
+                    alt="Conceitos Command" class="cover-image">
+            </div>
+            
+            <h3>Command (Comando)</h3>
+            <p><strong>Características:</strong> Interface que declara métodos para execução e desfazer operações</p>
+            <p><strong>Exemplo Lorde:</strong></p>
+            <ul>
+                <li>LançarSingleCommand</li>
+                <li>AgendarTurnêCommand</li>
+                <li>ConcederEntrevistaCommand</li>
+                <li>GravarAlbumCommand</li>
+            </ul>
+
+            <h3>Invoker (Invocador)</h3>
+            <p><strong>Características:</strong> Solicita a execução dos comandos e pode manter histórico</p>
+            <p><strong>Exemplo Lorde:</strong></p>
+            <ul>
+                <li>GerenciadorDeCarreira</li>
+                <li>AgendaArtística</li>
+                <li>SistemaDeTurnês</li>
+            </ul>
+
+            <h3>Receiver (Receptor)</h3>
+            <p><strong>Características:</strong> Contém a lógica de negócio real que será executada</p>
+            <p><strong>Exemplo Lorde:</strong></p>
+            <ul>
+                <li>EstúdioDeGravação</li>
+                <li>EquipeDeMarketing</li>
+                <li>ProdutoraMusical</li>
+                <li>EquipeDeTurnê</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> O Command desacopla o objeto que invoca a operação do objeto que sabe como executá-la.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (Jornada da Lorde)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://imageresizer.static9.net.au/atfAaHyxxWZgm_aDNwPLjQOl3RA=/1200x628/smart/https%3A%2F%2Fprod.static9.net.au%2Ffs%2F8fe7fe93-ece1-445c-8dba-b792b6528c89"
+                    alt="Jornada Lorde" class="cover-image">
+            </div>
+            <p>Imagine a <strong>jornada artística da Lorde</strong> usando o padrão Command para gerenciar suas ações artísticas:</p>
+
+            <h3>Comandos da Carreira (Commands):</h3>
+            <ul>
+                <li><strong>LançarSingleCommand:</strong> Encapsula o lançamento de um single</li>
+                <li><strong>GravarAlbumCommand:</strong> Controla o processo de gravação de álbum</li>
+                <li><strong>AgendarTurnêCommand:</strong> Gerencia o agendamento de turnês</li>
+                <li><strong>ConcederEntrevistaCommand:</strong> Lida com compromissos de mídia</li>
+                <li><strong>ParticiparFestivalCommand:</strong> Organiza participação em festivais</li>
+            </ul>
+
+            <h3>Receptores Especializados (Receivers):</h3>
+            <ul>
+                <li><strong>EstúdioDeGravação:</strong> Executa gravações e produção</li>
+                <li><strong>EquipeDeTurnê:</strong> Gerencia logística de apresentações</li>
+                <li><strong>EquipeDeMarketing:</strong> Cuida de promoção e divulgação</li>
+                <li><strong>Gravadora:</strong> Controla distribuição e lançamentos</li>
+            </ul>
+
+            <p>O Command permite que a equipe de Lorde agende, cancele e reprograme ações complexas de forma desacoplada.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://tmjbrazil.com.br/wp-content/uploads/2025/06/A-reflexao-de-Lorde-sobre-%E2%80%98Solar-Power.jpg"
+                    alt="Problema sem Command" class="cover-image">
+            </div>
+            <p>Sem o Padrão Command, o código teria acoplamento direto e dificuldade para operações complexas:</p>
+            <pre><code>
+// PROBLEMA: Acoplamento direto e falta de flexibilidade!
+class GerenciadorCarreira {
+    private estudio: EstudioGravacao;
+    private equipeTurnê: EquipeTurnê;
+    private equipeMarketing: EquipeMarketing;
+    private gravadora: Gravadora;
+    
+    constructor() {
+        this.estudio = new EstudioGravacao();
+        this.equipeTurnê = new EquipeTurnê();
+        this.equipeMarketing = new EquipeMarketing();
+        this.gravadora = new Gravadora();
+    }
+    
+    // MÉTODOS ACOPLADOS - cada ação chama diretamente os receptores
+    lancarSingle(titulo: string, data: Date): void {
+        console.log(`🎵 LANÇANDO SINGLE: ${titulo}`);
+        
+        // CHAMADAS DIRETAS E ACOPLADAS
+        this.estudio.finalizarMixagem(titulo);
+        this.gravadora.distribuirParaPlataformas(titulo);
+        this.equipeMarketing.criarCampanha(titulo, data);
+        this.equipeMarketing.agendarRedesSociais(titulo, data);
+        
+        console.log(`✅ Single "${titulo}" lançado em ${data.toLocaleDateString()}`);
+    }
+    
+    agendarTurnê(cidades: string[], datas: Date[]): void {
+        console.log(`🎤 AGENDANDO TURNÊ: ${cidades.length} cidades`);
+        
+        // CHAMADAS DIRETAS E ACOPLADAS
+        this.equipeTurnê.reservarTransporte(cidades, datas);
+        this.equipeTurnê.contratarEquipeTecnica(datas.length);
+        this.equipeMarketing.promoverTurnê(cidades, datas);
+        this.equipeTurnê.reservarHoteis(cidades, datas);
+        
+        console.log(`✅ Turnê agendada para ${cidades.join(', ')}`);
+    }
+    
+    concederEntrevista(veiculo: string, data: Date, tema: string): void {
+        console.log(`🎤 CONCEDENDO ENTREVISTA: ${veiculo}`);
+        
+        // CHAMADAS DIRETAS E ACOPLADAS
+        this.equipeMarketing.prepararMaterialImprensa(tema);
+        this.equipeMarketing.coordenarLogistica(data, veiculo);
+        this.equipeMarketing.agendarDivulgacao(veiculo, data);
+        
+        console.log(`✅ Entrevista com ${veiculo} agendada`);
+    }
+    
+    // PROBLEMA: Cancelar ações é complexo e acoplado
+    cancelarTurnê(cidades: string[]): void {
+        console.log(`❌ CANCELANDO TURNÊ: ${cidades.join(', ')}`);
+        
+        // LÓGICA COMPLEXA E ESPALHADA
+        this.equipeTurnê.cancelarTransporte(cidades);
+        this.equipeTurnê.dispensarEquipeTecnica();
+        this.equipeMarketing.cancelarPromocaoTurnê(cidades);
+        this.equipeTurnê.cancelarHoteis(cidades);
+        
+        console.log(`✅ Turnê cancelada - todas as reservas removidas`);
+    }
+    
+    // PROBLEMA: Não há histórico para undo/redo
+    // PROBLEMA: Dificuldade para agendamento em lote
+    // PROBLEMA: Impossibilidade de fila de comandos
+}
+
+// CLASSES RECEPTORAS ACOPLADAS
+class EstudioGravacao {
+    finalizarMixagem(titulo: string): void {
+        console.log(`   🎚️  Finalizando mixagem de "${titulo}"`);
+    }
+}
+
+class EquipeTurnê {
+    reservarTransporte(cidades: string[], datas: Date[]): void {
+        console.log(`   🚌 Reservando transporte para ${cidades.length} cidades`);
+    }
+    
+    contratarEquipeTecnica(dias: number): void {
+        console.log(`   👥 Contratando equipe técnica para ${dias} dias`);
+    }
+    
+    reservarHoteis(cidades: string[], datas: Date[]): void {
+        console.log(`   🏨 Reservando hotéis em ${cidades.length} cidades`);
+    }
+    
+    cancelarTransporte(cidades: string[]): void {
+        console.log(`   🚫 Cancelando transporte para ${cidades.join(', ')}`);
+    }
+    
+    dispensarEquipeTecnica(): void {
+        console.log(`   👋 Dispensando equipe técnica`);
+    }
+    
+    cancelarHoteis(cidades: string[]): void {
+        console.log(`   🏨 Cancelando reservas de hotéis`);
+    }
+}
+
+class EquipeMarketing {
+    criarCampanha(titulo: string, data: Date): void {
+        console.log(`   📢 Criando campanha para "${titulo}"`);
+    }
+    
+    agendarRedesSociais(titulo: string, data: Date): void {
+        console.log(`   📱 Agendando posts para "${titulo}"`);
+    }
+    
+    promoverTurnê(cidades: string[], datas: Date[]): void {
+        console.log(`   🎪 Promovendo turnê nas redes sociais`);
+    }
+    
+    prepararMaterialImprensa(tema: string): void {
+        console.log(`   📰 Preparando material de imprensa sobre ${tema}`);
+    }
+    
+    coordenarLogistica(data: Date, veiculo: string): void {
+        console.log(`   🗓️  Coordenando logística para ${veiculo}`);
+    }
+    
+    agendarDivulgacao(veiculo: string, data: Date): void {
+        console.log(`   📅 Agendando divulgação com ${veiculo}`);
+    }
+    
+    cancelarPromocaoTurnê(cidades: string[]): void {
+        console.log(`   📢 Cancelando promoção da turnê`);
+    }
+}
+
+class Gravadora {
+    distribuirParaPlataformas(titulo: string): void {
+        console.log(`   🌐 Distribuindo "${titulo}" para plataformas`);
+    }
+}
+
+// PROBLEMAS IDENTIFICADOS:
+// 1. ALTO ACOPLAMENTO: Gerenciador conhece todos os receptores diretamente
+// 2. DIFÍCIL MANUTENÇÃO: Mudanças exigem modificar múltiplas classes
+// 3. SEM HISTÓRICO: Impossível desfazer/refazer operações
+// 4. SEM FILA: Dificuldade para agendamento e execução em lote
+// 5. LÓGICA ESPALHADA: Cancelamento requer conhecer todos os detalhes
+
+// EXEMPLO DE USO PROBLEMÁTICO:
+const gerenciador = new GerenciadorCarreira();
+
+// Ações acopladas - difícil de gerenciar
+gerenciador.lancarSingle("Solar Power", new Date("2021-06-10"));
+console.log("\n" + "=".repeat(50) + "\n");
+gerenciador.agendarTurnê(
+    ["Auckland", "Melbourne", "Londres", "Nova York"],
+    [new Date("2022-01-15"), new Date("2022-01-20"), new Date("2022-02-05"), new Date("2022-02-12")]
+);
+console.log("\n" + "=".repeat(50) + "\n");
+gerenciador.concederEntrevista("Rolling Stone", new Date("2021-08-15"), "Novo álbum");
+            </code></pre>
+            <p>Acoplamento direto e falta de flexibilidade tornam o sistema rígido e difícil de evoluir!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://xodivad.com/wp-content/uploads/2025/06/lorde-virgin-2025-ftr-img-1600x838-1.jpg?w=1024"
+                    alt="Command Aplicado" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Command, criamos um sistema desacoplado e flexível:</p>
+            <pre><code>
+// RECEIVERS - Contêm a lógica de negócio real
+
+class EstudioGravacao {
+    finalizarMixagem(titulo: string): void {
+        console.log(`   🎚️  ESTÚDIO: Finalizando mixagem de "${titulo}"`);
+    }
+    
+    iniciarGravaçãoAlbum(titulo: string): void {
+        console.log(`   🎙️  ESTÚDIO: Iniciando gravação do álbum "${titulo}"`);
+    }
+    
+    cancelarGravação(titulo: string): void {
+        console.log(`   🚫 ESTÚDIO: Cancelando gravação de "${titulo}"`);
+    }
+}
+
+class EquipeTurnê {
+    reservarTransporte(cidades: string[], datas: Date[]): void {
+        console.log(`   🚌 EQUIPE TURNÊ: Reservando transporte para ${cidades.length} cidades`);
+    }
+    
+    contratarEquipeTecnica(dias: number): void {
+        console.log(`   👥 EQUIPE TURNÊ: Contratando equipe para ${dias} dias`);
+    }
+    
+    reservarHoteis(cidades: string[], datas: Date[]): void {
+        console.log(`   🏨 EQUIPE TURNÊ: Reservando hotéis em ${cidades.length} cidades`);
+    }
+    
+    cancelarTransporte(cidades: string[]): void {
+        console.log(`   🚫 EQUIPE TURNÊ: Cancelando transporte para ${cidades.join(', ')}`);
+    }
+    
+    dispensarEquipeTecnica(): void {
+        console.log(`   👋 EQUIPE TURNÊ: Dispensando equipe técnica`);
+    }
+    
+    cancelarHoteis(cidades: string[]): void {
+        console.log(`   🏨 EQUIPE TURNÊ: Cancelando reservas de hotéis`);
+    }
+}
+
+class EquipeMarketing {
+    criarCampanha(titulo: string, data: Date): void {
+        console.log(`   📢 MARKETING: Criando campanha para "${titulo}"`);
+    }
+    
+    agendarRedesSociais(titulo: string, data: Date): void {
+        console.log(`   📱 MARKETING: Agendando posts para "${titulo}"`);
+    }
+    
+    promoverTurnê(cidades: string[], datas: Date[]): void {
+        console.log(`   🎪 MARKETING: Promovendo turnê em ${cidades.length} cidades`);
+    }
+    
+    prepararMaterialImprensa(tema: string): void {
+        console.log(`   📰 MARKETING: Preparando material sobre ${tema}`);
+    }
+    
+    coordenarLogistica(data: Date, veiculo: string): void {
+        console.log(`   🗓️  MARKETING: Coordenando logística para ${veiculo}`);
+    }
+    
+    agendarDivulgacao(veiculo: string, data: Date): void {
+        console.log(`   📅 MARKETING: Agendando divulgação com ${veiculo}`);
+    }
+    
+    cancelarCampanha(titulo: string): void {
+        console.log(`   🚫 MARKETING: Cancelando campanha de "${titulo}"`);
+    }
+    
+    cancelarPromocaoTurnê(cidades: string[]): void {
+        console.log(`   📢 MARKETING: Cancelando promoção da turnê`);
+    }
+}
+
+class Gravadora {
+    distribuirParaPlataformas(titulo: string): void {
+        console.log(`   🌐 GRAVADORA: Distribuindo "${titulo}" para plataformas`);
+    }
+    
+    programarLancamento(titulo: string, data: Date): void {
+        console.log(`   📅 GRAVADORA: Programando lançamento de "${titulo}" para ${data.toLocaleDateString()}`);
+    }
+    
+    cancelarLancamento(titulo: string): void {
+        console.log(`   🚫 GRAVADORA: Cancelando lançamento de "${titulo}"`);
+    }
+}
+
+// COMMAND INTERFACE
+interface Command {
+    execute(): void;
+    undo(): void;
+    getDescription(): string;
+}
+
+// CONCRETE COMMANDS - Encapsulam ações específicas
+
+class LancarSingleCommand implements Command {
+    constructor(
+        private estudio: EstudioGravacao,
+        private gravadora: Gravadora,
+        private marketing: EquipeMarketing,
+        private titulo: string,
+        private dataLancamento: Date
+    ) {}
+    
+    execute(): void {
+        console.log(`🎵 EXECUTANDO: Lançar Single "${this.titulo}"`);
+        this.estudio.finalizarMixagem(this.titulo);
+        this.gravadora.distribuirParaPlataformas(this.titulo);
+        this.gravadora.programarLancamento(this.titulo, this.dataLancamento);
+        this.marketing.criarCampanha(this.titulo, this.dataLancamento);
+        this.marketing.agendarRedesSociais(this.titulo, this.dataLancamento);
+    }
+    
+    undo(): void {
+        console.log(`↩️  DESFAZENDO: Lançamento do Single "${this.titulo}"`);
+        this.gravadora.cancelarLancamento(this.titulo);
+        this.marketing.cancelarCampanha(this.titulo);
+        console.log(`   ✅ Lançamento de "${this.titulo}" cancelado`);
+    }
+    
+    getDescription(): string {
+        return `Lançar Single: ${this.titulo} (${this.dataLancamento.toLocaleDateString()})`;
+    }
+}
+
+class GravarAlbumCommand implements Command {
+    constructor(
+        private estudio: EstudioGravacao,
+        private titulo: string,
+        private dataInicio: Date
+    ) {}
+    
+    execute(): void {
+        console.log(`💿 EXECUTANDO: Gravar Álbum "${this.titulo}"`);
+        this.estudio.iniciarGravaçãoAlbum(this.titulo);
+        console.log(`   📅 Início das gravações: ${this.dataInicio.toLocaleDateString()}`);
+    }
+    
+    undo(): void {
+        console.log(`↩️  DESFAZENDO: Gravação do Álbum "${this.titulo}"`);
+        this.estudio.cancelarGravação(this.titulo);
+        console.log(`   ✅ Gravação de "${this.titulo}" cancelada`);
+    }
+    
+    getDescription(): string {
+        return `Gravar Álbum: ${this.titulo} (início: ${this.dataInicio.toLocaleDateString()})`;
+    }
+}
+
+class AgendarTurnêCommand implements Command {
+    constructor(
+        private equipeTurnê: EquipeTurnê,
+        private marketing: EquipeMarketing,
+        private cidades: string[],
+        private datas: Date[]
+    ) {}
+    
+    execute(): void {
+        console.log(`🎤 EXECUTANDO: Agendar Turnê - ${this.cidades.length} cidades`);
+        this.equipeTurnê.reservarTransporte(this.cidades, this.datas);
+        this.equipeTurnê.contratarEquipeTecnica(this.datas.length);
+        this.equipeTurnê.reservarHoteis(this.cidades, this.datas);
+        this.marketing.promoverTurnê(this.cidades, this.datas);
+    }
+    
+    undo(): void {
+        console.log(`↩️  DESFAZENDO: Agendamento da Turnê`);
+        this.equipeTurnê.cancelarTransporte(this.cidades);
+        this.equipeTurnê.dispensarEquipeTecnica();
+        this.equipeTurnê.cancelarHoteis(this.cidades);
+        this.marketing.cancelarPromocaoTurnê(this.cidades);
+        console.log(`   ✅ Turnê cancelada - todas as reservas removidas`);
+    }
+    
+    getDescription(): string {
+        return `Agendar Turnê: ${this.cidades.length} cidades (${this.cidades.slice(0, 2).join(', ')}...)`;
+    }
+}
+
+class ConcederEntrevistaCommand implements Command {
+    constructor(
+        private marketing: EquipeMarketing,
+        private veiculo: string,
+        private data: Date,
+        private tema: string
+    ) {}
+    
+    execute(): void {
+        console.log(`🎤 EXECUTANDO: Entrevista com ${this.veiculo}`);
+        this.marketing.prepararMaterialImprensa(this.tema);
+        this.marketing.coordenarLogistica(this.data, this.veiculo);
+        this.marketing.agendarDivulgacao(this.veiculo, this.data);
+    }
+    
+    undo(): void {
+        console.log(`↩️  DESFAZENDO: Entrevista com ${this.veiculo}`);
+        console.log(`   ✅ Entrevista cancelada - logística removida`);
+    }
+    
+    getDescription(): string {
+        return `Entrevista: ${this.veiculo} (${this.data.toLocaleDateString()})`;
+    }
+}
+
+// INVOKER - Gerencia a execução dos comandos
+class GerenciadorCarreira {
+    private comandos: Command[] = [];
+    private historico: Command[] = [];
+    private comandosExecutados: Command[] = [];
+    
+    adicionarComando(comando: Command): void {
+        this.comandos.push(comando);
+        console.log(`📥 Comando adicionado: ${comando.getDescription()}`);
+    }
+    
+    executarComandos(): void {
+        console.log("\n🚀 EXECUTANDO TODOS OS COMANDOS NA FILA");
+        console.log("=" .repeat(50));
+        
+        while (this.comandos.length > 0) {
+            const comando = this.comandos.shift()!;
+            comando.execute();
+            this.comandosExecutados.push(comando);
+            console.log("");
+        }
+        
+        console.log("✅ Todos os comandos executados!");
+    }
+    
+    executarComando(comando: Command): void {
+        console.log(`\n🎯 EXECUTANDO COMANDO ESPECÍFICO`);
+        console.log("-".repeat(40));
+        comando.execute();
+        this.comandosExecutados.push(comando);
+        this.historico.push(comando);
+    }
+    
+    desfazerUltimoComando(): void {
+        if (this.comandosExecutados.length === 0) {
+            console.log("❌ Nenhum comando para desfazer");
+            return;
+        }
+        
+        const comando = this.comandosExecutados.pop()!;
+        console.log(`\n↩️  DESFAZENDO ÚLTIMO COMANDO`);
+        console.log("-".repeat(40));
+        comando.undo();
+    }
+    
+    listarComandosPendentes(): void {
+        console.log("\n📋 COMANDOS NA FILA:");
+        if (this.comandos.length === 0) {
+            console.log("   📭 Nenhum comando pendente");
+            return;
+        }
+        
+        this.comandos.forEach((comando, index) => {
+            console.log(`   ${index + 1}. ${comando.getDescription()}`);
+        });
+    }
+    
+    listarComandosExecutados(): void {
+        console.log("\n📜 HISTÓRICO DE COMANDOS EXECUTADOS:");
+        if (this.comandosExecutados.length === 0) {
+            console.log("   📭 Nenhum comando executado");
+            return;
+        }
+        
+        this.comandosExecutados.forEach((comando, index) => {
+            console.log(`   ${index + 1}. ${comando.getDescription()}`);
+        });
+    }
+}
+
+// CLIENT - Configura o sistema
+class SistemaCarreiraLorde {
+    demonstrarCommandPattern(): void {
+        console.log("🎵 SISTEMA DE CARREIRA - LORDE 🎵");
+        console.log("==================================");
+        console.log("🎯 Demonstrando Padrão Command");
+        console.log("✨ Ações encapsuladas + Execução flexível\n");
+        
+        // Criando os receptores
+        const estudio = new EstudioGravacao();
+        const equipeTurnê = new EquipeTurnê();
+        const marketing = new EquipeMarketing();
+        const gravadora = new Gravadora();
+        
+        // Criando o invoker
+        const gerenciador = new GerenciadorCarreira();
+        
+        // Demonstração 1: Fila de comandos
+        console.log("1️⃣  DEMONSTRAÇÃO: FILA DE COMANDOS");
+        console.log("-".repeat(40));
+        
+        // Adicionando comandos à fila
+        gerenciador.adicionarComando(
+            new LancarSingleCommand(estudio, gravadora, marketing, "Solar Power", new Date("2021-06-10"))
+        );
+        gerenciador.adicionarComando(
+            new AgendarTurnêCommand(
+                equipeTurnê, 
+                marketing, 
+                ["Auckland", "Melbourne", "Londres", "Nova York"],
+                [new Date("2022-01-15"), new Date("2022-01-20"), new Date("2022-02-05"), new Date("2022-02-12")]
+            )
+        );
+        gerenciador.adicionarComando(
+            new ConcederEntrevistaCommand(marketing, "Rolling Stone", new Date("2021-08-15"), "Novo álbum")
+        );
+        
+        // Executando todos os comandos na fila
+        gerenciador.executarComandos();
+        
+        // Demonstração 2: Undo/Redo
+        console.log("\n2️⃣  DEMONSTRAÇÃO: DESFAZER OPERAÇÕES");
+        console.log("-".repeat(40));
+        gerenciador.desfazerUltimoComando();
+        
+        // Demonstração 3: Comando específico
+        console.log("\n3️⃣  DEMONSTRAÇÃO: COMANDO ESPECÍFICO");
+        console.log("-".repeat(40));
+        const albumCommand = new GravarAlbumCommand(estudio, "Solar Power", new Date("2020-09-01"));
+        gerenciador.executarComando(albumCommand);
+        
+        // Listando histórico
+        console.log("\n4️⃣  DEMONSTRAÇÃO: HISTÓRICO");
+        console.log("-".repeat(40));
+        gerenciador.listarComandosExecutados();
+        
+        console.log("\n📊 RESUMO DO SISTEMA:");
+        console.log("   • Commands: 4 tipos de ações encapsuladas");
+        console.log("   • Receivers: 4 componentes especializados");
+        console.log("   • Invoker: 1 gerenciador central");
+        console.log("   • Funcionalidades: Fila, Undo, Histórico");
+        console.log("   • ✅ Acoplamento reduzido com sucesso!");
+    }
+}
+
+// Exemplo de uso
+const sistema = new SistemaCarreiraLorde();
+sistema.demonstrarCommandPattern();
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Command em um sistema de automação residencial (Smart Home):</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from datetime import datetime
+from typing import List, Dict
+from enum import Enum
+
+# Receivers - Dispositivos da casa inteligente
+
+class Luz:
+    def __init__(self, local: str):
+        self.local = local
+        self.estado = False
+        self.intensidade = 0
+    
+    def ligar(self) -> None:
+        self.estado = True
+        self.intensidade = 100
+        print(f"💡 LUZ {self.local}: Ligada (100%)")
+    
+    def desligar(self) -> None:
+        self.estado = False
+        self.intensidade = 0
+        print(f"💡 LUZ {self.local}: Desligada")
+    
+    def ajustar_intensidade(self, intensidade: int) -> None:
+        if 0 <= intensidade <= 100:
+            self.intensidade = intensidade
+            self.estado = intensidade > 0
+            print(f"💡 LUZ {self.local}: Intensidade ajustada para {intensidade}%")
+        else:
+            print(f"❌ Intensidade inválida: {intensidade}%")
+
+class Termostato:
+    def __init__(self):
+        self.temperatura = 22
+        self.modo = "resfriamento"
+    
+    def ajustar_temperatura(self, temperatura: float) -> None:
+        self.temperatura = temperatura
+        print(f"🌡️  TERMOSTATO: Temperatura ajustada para {temperatura}°C")
+    
+    def ligar_resfriamento(self) -> None:
+        self.modo = "resfriamento"
+        print(f"❄️  TERMOSTATO: Modo resfriamento ativado")
+    
+    def ligar_aquecimento(self) -> None:
+        self.modo = "aquecimento"
+        print(f"🔥 TERMOSTATO: Modo aquecimento ativado")
+    
+    def desligar(self) -> None:
+        print(f"⏸️  TERMOSTATO: Sistema desligado")
+
+class Cortina:
+    def __init__(self, local: str):
+        self.local = local
+        self.estado = "fechada"  # aberta, fechada
+    
+    def abrir(self) -> None:
+        self.estado = "aberta"
+        print(f"🪟 CORTINA {self.local}: Aberta")
+    
+    def fechar(self) -> None:
+        self.estado = "fechada"
+        print(f"🪟 CORTINA {self.local}: Fechada")
+    
+    def ajustar_posicao(self, porcentagem: int) -> None:
+        if 0 <= porcentagem <= 100:
+            self.estado = "parcial" if 0 < porcentagem < 100 else "aberta" if porcentagem == 100 else "fechada"
+            print(f"🪟 CORTINA {self.local}: Posição ajustada para {porcentagem}%")
+
+class SistemaSeguranca:
+    def __init__(self):
+        self.armado = False
+        self.sensores_ativos = False
+    
+    def armar(self) -> None:
+        self.armado = True
+        self.sensores_ativos = True
+        print(f"🚨 SEGURANÇA: Sistema armado")
+    
+    def desarmar(self) -> None:
+        self.armado = False
+        self.sensores_ativos = False
+        print(f"🔓 SEGURANÇA: Sistema desarmado")
+    
+    def ativar_sensores(self) -> None:
+        self.sensores_ativos = True
+        print(f"📡 SEGURANÇA: Sensores ativados")
+    
+    def desativar_sensores(self) -> None:
+        self.sensores_ativos = False
+        print(f"📡 SEGURANÇA: Sensores desativados")
+
+class SistemaSom:
+    def __init__(self):
+        self.volume = 50
+        self.playing = False
+        self.faixa_atual = ""
+    
+    def ligar(self) -> None:
+        self.playing = True
+        print(f"🎵 SISTEMA DE SOM: Ligado")
+    
+    def desligar(self) -> None:
+        self.playing = False
+        print(f"🎵 SISTEMA DE SOM: Desligado")
+    
+    def ajustar_volume(self, volume: int) -> None:
+        if 0 <= volume <= 100:
+            self.volume = volume
+            print(f"🎵 SISTEMA DE SOM: Volume ajustado para {volume}%")
+    
+    def tocar_musica(self, faixa: str) -> None:
+        self.faixa_atual = faixa
+        self.playing = True
+        print(f"🎵 SISTEMA DE SOM: Tocando '{faixa}'")
+    
+    def pausar(self) -> None:
+        self.playing = False
+        print(f"🎵 SISTEMA DE SOM: Pausado")
+
+# Command Interface
+class Command(ABC):
+    @abstractmethod
+    def execute(self) -> None:
+        pass
+    
+    @abstractmethod
+    def undo(self) -> None:
+        pass
+    
+    @abstractmethod
+    def get_description(self) -> str:
+        pass
+
+# Concrete Commands
+
+class ComandoLuz(Command):
+    def __init__(self, luz: Luz, acao: str, intensidade: int = 100):
+        self.luz = luz
+        self.acao = acao  # "ligar", "desligar", "ajustar"
+        self.intensidade = intensidade
+        self.estado_anterior = luz.estado
+        self.intensidade_anterior = luz.intensidade
+    
+    def execute(self) -> None:
+        if self.acao == "ligar":
+            self.luz.ligar()
+        elif self.acao == "desligar":
+            self.luz.desligar()
+        elif self.acao == "ajustar":
+            self.luz.ajustar_intensidade(self.intensidade)
+    
+    def undo(self) -> None:
+        if self.estado_anterior:
+            self.luz.ligar()
+            self.luz.ajustar_intensidade(self.intensidade_anterior)
+        else:
+            self.luz.desligar()
+    
+    def get_description(self) -> str:
+        return f"Luz {self.luz.local}: {self.acao}"
+
+class ComandoTermostato(Command):
+    def __init__(self, termostato: Termostato, acao: str, temperatura: float = 22):
+        self.termostato = termostato
+        self.acao = acao  # "ajustar", "resfriar", "aquecer", "desligar"
+        self.temperatura = temperatura
+        self.temperatura_anterior = termostato.temperatura
+        self.modo_anterior = termostato.modo
+    
+    def execute(self) -> None:
+        if self.acao == "ajustar":
+            self.termostato.ajustar_temperatura(self.temperatura)
+        elif self.acao == "resfriar":
+            self.termostato.ligar_resfriamento()
+        elif self.acao == "aquecer":
+            self.termostato.ligar_aquecimento()
+        elif self.acao == "desligar":
+            self.termostato.desligar()
+    
+    def undo(self) -> None:
+        self.termostato.ajustar_temperatura(self.temperatura_anterior)
+        if self.modo_anterior == "resfriamento":
+            self.termostato.ligar_resfriamento()
+        elif self.modo_anterior == "aquecimento":
+            self.termostato.ligar_aquecimento()
+    
+    def get_description(self) -> str:
+        return f"Termostato: {self.acao} para {self.temperatura}°C"
+
+class ComandoCortina(Command):
+    def __init__(self, cortina: Cortina, acao: str, posicao: int = 100):
+        self.cortina = cortina
+        self.acao = acao  # "abrir", "fechar", "ajustar"
+        self.posicao = posicao
+        self.estado_anterior = cortina.estado
+    
+    def execute(self) -> None:
+        if self.acao == "abrir":
+            self.cortina.abrir()
+        elif self.acao == "fechar":
+            self.cortina.fechar()
+        elif self.acao == "ajustar":
+            self.cortina.ajustar_posicao(self.posicao)
+    
+    def undo(self) -> None:
+        if self.estado_anterior == "aberta":
+            self.cortina.abrir()
+        elif self.estado_anterior == "fechada":
+            self.cortina.fechar()
+    
+    def get_description(self) -> str:
+        return f"Cortina {self.cortina.local}: {self.acao}"
+
+class ComandoSeguranca(Command):
+    def __init__(self, seguranca: SistemaSeguranca, acao: str):
+        self.seguranca = seguranca
+        self.acao = acao  # "armar", "desarmar"
+        self.estado_anterior = seguranca.armado
+    
+    def execute(self) -> None:
+        if self.acao == "armar":
+            self.seguranca.armar()
+        elif self.acao == "desarmar":
+            self.seguranca.desarmar()
+    
+    def undo(self) -> None:
+        if self.estado_anterior:
+            self.seguranca.armar()
+        else:
+            self.seguranca.desarmar()
+    
+    def get_description(self) -> str:
+        return f"Segurança: {self.acao}"
+
+class ComandoSom(Command):
+    def __init__(self, som: SistemaSom, acao: str, faixa: str = "", volume: int = 50):
+        self.som = som
+        self.acao = acao  # "ligar", "desligar", "tocar", "pausar", "volume"
+        self.faixa = faixa
+        self.volume = volume
+        self.estado_anterior = som.playing
+        self.volume_anterior = som.volume
+        self.faixa_anterior = som.faixa_atual
+    
+    def execute(self) -> None:
+        if self.acao == "ligar":
+            self.som.ligar()
+        elif self.acao == "desligar":
+            self.som.desligar()
+        elif self.acao == "tocar":
+            self.som.tocar_musica(self.faixa)
+        elif self.acao == "pausar":
+            self.som.pausar()
+        elif self.acao == "volume":
+            self.som.ajustar_volume(self.volume)
+    
+    def undo(self) -> None:
+        if self.estado_anterior:
+            self.som.ligar()
+            self.som.ajustar_volume(self.volume_anterior)
+            if self.faixa_anterior:
+                self.som.tocar_musica(self.faixa_anterior)
+        else:
+            self.som.desligar()
+    
+    def get_description(self) -> str:
+        if self.acao == "tocar":
+            return f"Som: tocando '{self.faixa}'"
+        elif self.acao == "volume":
+            return f"Som: volume {self.volume}%"
+        else:
+            return f"Som: {self.acao}"
+
+# Macro Command - Executa múltiplos comandos
+class ComandoCena(Command):
+    def __init__(self, nome: str, comandos: List[Command]):
+        self.nome = nome
+        self.comandos = comandos
+        self.comandos_executados = []
+    
+    def execute(self) -> None:
+        print(f"🎭 EXECUTANDO CENA: {self.nome}")
+        self.comandos_executados = self.comandos.copy()
+        for comando in self.comandos:
+            comando.execute()
+    
+    def undo(self) -> None:
+        print(f"↩️  DESFAZENDO CENA: {self.nome}")
+        for comando in reversed(self.comandos_executados):
+            comando.undo()
+    
+    def get_description(self) -> str:
+        return f"Cena: {self.nome} ({len(self.comandos)} comandos)"
+
+# Invoker
+class ControladorCasa:
+    def __init__(self):
+        self.comandos_pendentes: List[Command] = []
+        self.historico: List[Command] = []
+        self.cenas_salvas: Dict[str, ComandoCena] = {}
+    
+    def adicionar_comando(self, comando: Command) -> None:
+        self.comandos_pendentes.append(comando)
+        print(f"📥 Comando adicionado: {comando.get_description()}")
+    
+    def executar_comandos(self) -> None:
+        print(f"\n🚀 EXECUTANDO {len(self.comandos_pendentes)} COMANDOS")
+        print("=" * 50)
+        
+        while self.comandos_pendentes:
+            comando = self.comandos_pendentes.pop(0)
+            comando.execute()
+            self.historico.append(comando)
+            print("")
+        
+        print("✅ Todos os comandos executados!")
+    
+    def executar_comando(self, comando: Command) -> None:
+        print(f"\n🎯 EXECUTANDO COMANDO: {comando.get_description()}")
+        print("-" * 40)
+        comando.execute()
+        self.historico.append(comando)
+    
+    def desfazer_ultimo(self) -> None:
+        if not self.historico:
+            print("❌ Nenhum comando para desfazer")
+            return
+        
+        comando = self.historico.pop()
+        print(f"\n↩️  DESFAZENDO: {comando.get_description()}")
+        print("-" * 40)
+        comando.undo()
+    
+    def salvar_cena(self, nome: str, comandos: List[Command]) -> None:
+        cena = ComandoCena(nome, comandos)
+        self.cenas_salvas[nome] = cena
+        print(f"💾 Cena salva: '{nome}' com {len(comandos)} comandos")
+    
+    def executar_cena(self, nome: str) -> None:
+        if nome in self.cenas_salvas:
+            cena = self.cenas_salvas[nome]
+            self.executar_comando(cena)
+        else:
+            print(f"❌ Cena '{nome}' não encontrada")
+    
+    def listar_cenas(self) -> None:
+        print(f"\n📋 CENAS SALVAS ({len(self.cenas_salvas)}):")
+        for nome, cena in self.cenas_salvas.items():
+            print(f"   🎭 {nome}: {len(cena.comandos)} comandos")
+
+# Client
+class SistemaSmartHome:
+    def demonstrar_command_pattern(self) -> None:
+        print("🏠 SISTEMA SMART HOME - COMMAND PATTERN")
+        print("=======================================")
+        print("🎯 Demonstrando Automação Residencial")
+        print("✨ Comandos Encapsulados + Controle Centralizado\n")
+        
+        # Criando os dispositivos (Receivers)
+        luz_sala = Luz("Sala")
+        luz_quarto = Luz("Quarto")
+        luz_cozinha = Luz("Cozinha")
+        termostato = Termostato()
+        cortina_sala = Cortina("Sala")
+        seguranca = SistemaSeguranca()
+        som = SistemaSom()
+        
+        # Criando o controlador (Invoker)
+        controlador = ControladorCasa()
+        
+        # Demonstração 1: Comandos individuais
+        print("1️⃣  DEMONSTRAÇÃO: COMANDOS INDIVIDUAIS")
+        print("-" * 40)
+        
+        controlador.executar_comando(ComandoLuz(luz_sala, "ligar"))
+        controlador.executar_comando(ComandoTermostato(termostato, "ajustar", 23.5))
+        controlador.executar_comando(ComandoCortina(cortina_sala, "abrir"))
+        controlador.executar_comando(ComandoSom(som, "tocar", "Royals - Lorde"))
+        
+        # Demonstração 2: Fila de comandos
+        print("\n2️⃣  DEMONSTRAÇÃO: FILA DE COMANDOS")
+        print("-" * 40)
+        
+        controlador.adicionar_comando(ComandoLuz(luz_quarto, "ligar"))
+        controlador.adicionar_comando(ComandoLuz(luz_cozinha, "ligar"))
+        controlador.adicionar_comando(ComandoSom(som, "volume", "", 75))
+        controlador.adicionar_comando(ComandoSeguranca(seguranca, "armar"))
+        
+        controlador.executar_comandos()
+        
+        # Demonstração 3: Undo
+        print("\n3️⃣  DEMONSTRAÇÃO: DESFAZER")
+        print("-" * 40)
+        controlador.desfazer_ultimo()
+        
+        # Demonstração 4: Cenas (Macro Commands)
+        print("\n4️⃣  DEMONSTRAÇÃO: CENAS AUTOMATIZADAS")
+        print("-" * 40)
+        
+        # Cena "Manhã"
+        cena_manha = [
+            ComandoLuz(luz_quarto, "ligar"),
+            ComandoCortina(cortina_sala, "abrir"),
+            ComandoTermostato(termostato, "ajustar", 22.0),
+            ComandoSom(som, "tocar", "Solar Power - Lorde"),
+            ComandoSom(som, "volume", "", 60)
+        ]
+        
+        # Cena "Noite"
+        cena_noite = [
+            ComandoLuz(luz_sala, "ajustar", 30),
+            ComandoLuz(luz_quarto, "ligar"),
+            ComandoLuz(luz_cozinha, "desligar"),
+            ComandoCortina(cortina_sala, "fechar"),
+            ComandoTermostato(termostato, "ajustar", 20.0),
+            ComandoSeguranca(seguranca, "armar"),
+            ComandoSom(som, "desligar")
+        ]
+        
+        controlador.salvar_cena("Manhã", cena_manha)
+        controlador.salvar_cena("Noite", cena_noite)
+        
+        # Executando uma cena
+        controlador.executar_cena("Noite")
+        
+        # Listando cenas
+        controlador.listar_cenas()
+        
+        print(f"\n📊 RESUMO DO SISTEMA:")
+        print(f"   • Dispositivos: 7 receptores especializados")
+        print(f"   • Comandos: 5 tipos + cenas macro")
+        print(f"   • Funcionalidades: Fila, Undo, Cenas")
+        print(f"   • Automação: Controle centralizado e flexível")
+        print(f"   • ✅ Command Pattern aplicado com sucesso!")
+
+# Exemplo de uso
+def main():
+    sistema = SistemaSmartHome()
+    sistema.demonstrar_command_pattern()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/comportamentais/command/ficticio.png" alt="Lorde Command UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Command no exemplo da jornada da Lorde:</p>
+            <pre class="uml-code">
+@startuml
+class EstudioGravacao {
+    + finalizarMixagem(titulo: string): void
+    + iniciarGravaçãoAlbum(titulo: string): void
+    + cancelarGravação(titulo: string): void
+}
+
+class EquipeTurnê {
+    + reservarTransporte(cidades: string[], datas: Date[]): void
+    + contratarEquipeTecnica(dias: number): void
+    + reservarHoteis(cidades: string[], datas: Date[]): void
+    + cancelarTransporte(cidades: string[]): void
+    + dispensarEquipeTecnica(): void
+    + cancelarHoteis(cidades: string[]): void
+}
+
+class EquipeMarketing {
+    + criarCampanha(titulo: string, data: Date): void
+    + agendarRedesSociais(titulo: string, data: Date): void
+    + promoverTurnê(cidades: string[], datas: Date[]): void
+    + prepararMaterialImprensa(tema: string): void
+    + coordenarLogistica(data: Date, veiculo: string): void
+    + agendarDivulgacao(veiculo: string, data: Date): void
+    + cancelarCampanha(titulo: string): void
+    + cancelarPromocaoTurnê(cidades: string[]): void
+}
+
+class Gravadora {
+    + distribuirParaPlataformas(titulo: string): void
+    + programarLancamento(titulo: string, data: Date): void
+    + cancelarLancamento(titulo: string): void
+}
+
+interface Command {
+    + execute(): void
+    + undo(): void
+    + getDescription(): string
+}
+
+class LancarSingleCommand {
+    - estudio: EstudioGravacao
+    - gravadora: Gravadora
+    - marketing: EquipeMarketing
+    - titulo: string
+    - dataLancamento: Date
+    + execute(): void
+    + undo(): void
+    + getDescription(): string
+}
+
+class GravarAlbumCommand {
+    - estudio: EstudioGravacao
+    - titulo: string
+    - dataInicio: Date
+    + execute(): void
+    + undo(): void
+    + getDescription(): string
+}
+
+class AgendarTurnêCommand {
+    - equipeTurnê: EquipeTurnê
+    - marketing: EquipeMarketing
+    - cidades: string[]
+    - datas: Date[]
+    + execute(): void
+    + undo(): void
+    + getDescription(): string
+}
+
+class ConcederEntrevistaCommand {
+    - marketing: EquipeMarketing
+    - veiculo: string
+    - data: Date
+    - tema: string
+    + execute(): void
+    + undo(): void
+    + getDescription(): string
+}
+
+class GerenciadorCarreira {
+    - comandos: Command[]
+    - historico: Command[]
+    - comandosExecutados: Command[]
+    + adicionarComando(comando: Command): void
+    + executarComandos(): void
+    + executarComando(comando: Command): void
+    + desfazerUltimoComando(): void
+    + listarComandosPendentes(): void
+    + listarComandosExecutados(): void
+}
+
+class SistemaCarreiraLorde {
+    + demonstrarCommandPattern(): void
+}
+
+Command <|.. LancarSingleCommand
+Command <|.. GravarAlbumCommand
+Command <|.. AgendarTurnêCommand
+Command <|.. ConcederEntrevistaCommand
+
+LancarSingleCommand --> EstudioGravacao
+LancarSingleCommand --> Gravadora
+LancarSingleCommand --> EquipeMarketing
+
+GravarAlbumCommand --> EstudioGravacao
+
+AgendarTurnêCommand --> EquipeTurnê
+AgendarTurnêCommand --> EquipeMarketing
+
+ConcederEntrevistaCommand --> EquipeMarketing
+
+GerenciadorCarreira --> Command
+SistemaCarreiraLorde --> GerenciadorCarreira
+
+note right of Command
+    Interface comum que define
+    execute(), undo() e
+    getDescription()
+end note
+
+note right of GerenciadorCarreira
+    Invoker que gerencia
+    execução, fila e
+    histórico de comandos
+end note
+
+note right of EstudioGravacao
+    Receiver especializado
+    em operações de
+    gravação musical
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como cada comando encapsula uma ação específica e delega para os receptores especializados.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/comportamentais/command/pratico.png" alt="Sistema Smart Home Command UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Command no exemplo prático do sistema de automação residencial:</p>
+            <pre class="uml-code">
+@startuml
+class Luz {
+    - local: string
+    - estado: bool
+    - intensidade: int
+    + ligar(): void
+    + desligar(): void
+    + ajustar_intensidade(intensidade: int): void
+}
+
+class Termostato {
+    - temperatura: float
+    - modo: string
+    + ajustar_temperatura(temperatura: float): void
+    + ligar_resfriamento(): void
+    + ligar_aquecimento(): void
+    + desligar(): void
+}
+
+class Cortina {
+    - local: string
+    - estado: string
+    + abrir(): void
+    + fechar(): void
+    + ajustar_posicao(porcentagem: int): void
+}
+
+class SistemaSeguranca {
+    - armado: bool
+    - sensores_ativos: bool
+    + armar(): void
+    + desarmar(): void
+    + ativar_sensores(): void
+    + desativar_sensores(): void
+}
+
+class SistemaSom {
+    - volume: int
+    - playing: bool
+    - faixa_atual: string
+    + ligar(): void
+    + desligar(): void
+    + ajustar_volume(volume: int): void
+    + tocar_musica(faixa: str): void
+    + pausar(): void
+}
+
+interface Command {
+    + execute(): void
+    + undo(): void
+    + get_description(): str
+}
+
+class ComandoLuz {
+    - luz: Luz
+    - acao: str
+    - intensidade: int
+    - estado_anterior: bool
+    - intensidade_anterior: int
+    + execute(): void
+    + undo(): void
+    + get_description(): str
+}
+
+class ComandoTermostato {
+    - termostato: Termostato
+    - acao: str
+    - temperatura: float
+    - temperatura_anterior: float
+    - modo_anterior: str
+    + execute(): void
+    + undo(): void
+    + get_description(): str
+}
+
+class ComandoCortina {
+    - cortina: Cortina
+    - acao: str
+    - posicao: int
+    - estado_anterior: str
+    + execute(): void
+    + undo(): void
+    + get_description(): str
+}
+
+class ComandoSeguranca {
+    - seguranca: SistemaSeguranca
+    - acao: str
+    - estado_anterior: bool
+    + execute(): void
+    + undo(): void
+    + get_description(): str
+}
+
+class ComandoSom {
+    - som: SistemaSom
+    - acao: str
+    - faixa: str
+    - volume: int
+    - estado_anterior: bool
+    - volume_anterior: int
+    - faixa_anterior: str
+    + execute(): void
+    + undo(): void
+    + get_description(): str
+}
+
+class ComandoCena {
+    - nome: str
+    - comandos: List[Command]
+    - comandos_executados: List[Command]
+    + execute(): void
+    + undo(): void
+    + get_description(): str
+}
+
+class ControladorCasa {
+    - comandos_pendentes: List[Command]
+    - historico: List[Command]
+    - cenas_salvas: Dict[str, ComandoCena]
+    + adicionar_comando(comando: Command): void
+    + executar_comandos(): void
+    + executar_comando(comando: Command): void
+    + desfazer_ultimo(): void
+    + salvar_cena(nome: str, comandos: List[Command]): void
+    + executar_cena(nome: str): void
+    + listar_cenas(): void
+}
+
+class SistemaSmartHome {
+    + demonstrar_command_pattern(): void
+}
+
+Command <|.. ComandoLuz
+Command <|.. ComandoTermostato
+Command <|.. ComandoCortina
+Command <|.. ComandoSeguranca
+Command <|.. ComandoSom
+Command <|.. ComandoCena
+
+ComandoLuz --> Luz
+ComandoTermostato --> Termostato
+ComandoCortina --> Cortina
+ComandoSeguranca --> SistemaSeguranca
+ComandoSom --> SistemaSom
+ComandoCena --> Command
+
+ControladorCasa --> Command
+SistemaSmartHome --> ControladorCasa
+
+note right of Command
+    Interface Python com
+    métodos execute(), undo()
+    e get_description()
+end note
+
+note right of ControladorCasa
+    Invoker que gerencia
+    fila, histórico e
+    cenas automatizadas
+end note
+
+note right of ComandoCena
+    Macro Command que
+    executa múltiplos
+    comandos em sequência
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite controle flexível sobre dispositivos domésticos com funcionalidades avançadas como cenas e desfazer.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://i.insider.com/611be983c040ad0018ceb249?width=700"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Command oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Desacoplamento:</strong> Separa quem invoca a operação de quem a executa</li>
+                <li><strong>Fila de Comandos:</strong> Permite agendar e executar comandos em sequência</li>
+                <li><strong>Operações de Undo/Redo:</strong> Facilita implementação de desfazer/refazer</li>
+                <li><strong>Comandos Complexos:</strong> Permite criar macros com múltiplos comandos</li>
+                <li><strong>Flexibilidade:</strong> Novos comandos podem ser adicionados sem modificar código existente</li>
+                <li><strong>Log e Auditoria:</strong> Fácil registrar histórico de operações</li>
+                <li><strong>Transações:</strong> Permite implementar operações atômicas</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://preview.redd.it/drop-your-lorde-memes-v0-9r6xspt2663d1.jpeg?auto=webp&s=660c5bedb9f3676cc1a79ebefd965fbed5c6e391"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Command também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Complexidade:</strong> Aumenta o número de classes no sistema</li>
+                <li><strong>Overhead:</strong> Pode adicionar complexidade desnecessária para operações simples</li>
+                <li><strong>Gerenciamento de Estado:</strong> Comandos podem precisar armazenar estado para undo</li>
+                <li><strong>Acoplamento Implícito:</strong> Comandos ainda conhecem os receptores</li>
+                <li><strong>Performance:</strong> Pode haver overhead na criação de muitos objetos command</li>
+                <li><strong>Dificuldade de Debug:</strong> Rastreamento de execução pode ser mais complexo</li>
+                <li><strong>Design Excessivo:</strong> Pode ser overkill para aplicações simples</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://pub-53d59440ab1844a49b8f207c97670e75.r2.dev/lorde_42778055b5.png"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Command é uma solução poderosa para transformar solicitações em objetos independentes, permitindo operações avançadas como filas, desfazer/refazer e macros.</p>
+            <p>Na nossa analogia da <strong>jornada da Lorde</strong>, o Command funciona como o <strong>sistema de gerenciamento de carreira</strong> - onde cada ação artística (lançar single, gravar álbum, agendar turnê) é encapsulada como um comando que pode ser executado, agendado, cancelado ou combinado com outros comandos para criar estratégias complexas.</p>
+            <p>Assim como Lorde orquestra cuidadosamente cada aspecto de sua carreira musical, mantendo controle sobre lançamentos, turnês e aparições públicas, o padrão Command nos permite criar sistemas que oferecem controle granular sobre operações, com a flexibilidade de desfazer ações, agendar execuções e criar operações em lote - tudo enquanto mantém um design desacoplado e extensível.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/command"
+                        target="_blank">Refactoring.Guru - Padrão Command</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-command/16751"
+                        target="_blank">DevMedia - Padrão Command</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/25/mao-na-massa-command/"
+                        target="_blank">Mão na Massa - Padrão Command</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Command" target="_blank">Wikipédia - Command (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/command-pattern/" target="_blank">GeeksforGeeks
+                        - Command Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/command" target="_blank">SourceMaking
+                        - Command Pattern</a></li>
+                <li>[7] <a href="https://en.wikipedia.org/wiki/Lorde" target="_blank">Wikipedia - Lorde Biography</a></li>
+                <li>[8] <a href="https://www.billboard.com/music/lorde/" target="_blank">Billboard - Lorde Career</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    
+</body>
+
+</html>
