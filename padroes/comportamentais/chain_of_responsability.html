@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Chain of Responsibility - A Jornada de Diana Ross</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Chain of Responsibility?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Handler, ConcreteHandler, Client</a></li>
+            <li><a href="#page5">Exemplo Fictício (Jornada de Diana Ross)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">CHAIN OF RESPONSIBILITY</h1>
+            <p class="cover-subtitle">A Jornada de Diana Ross - Encadeando Responsabilidades na Carreira Musical</p>
+
+            <img src="https://akamai.sscdn.co/tb/letras-blog/wp-content/uploads/2021/12/142e2af-dianaros-1024x683.jpg"
+                alt="Capa Chain of Responsibility - Diana Ross" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Chain of Responsibility?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://marginal.fm/images/icagenda/thumbs/themes/ic_large_w1920h1080q100_diana-ross-hair.jpg"
+                    alt="Chain of Responsibility Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Chain of Responsibility é um <strong>padrão de projeto comportamental</strong> que permite que você passe uma requisição por uma cadeia de handlers. Ao receber uma requisição, cada handler decide processar a requisição ou passá-la para o próximo handler na cadeia [1].</p>
+            <p>É como a <strong>jornada de Diana Ross</strong> - começando no The Supremes, passando por diferentes fases de sua carreira, onde cada etapa "processa" oportunidades e desafios específicos antes de passar para a próxima fase.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://vejario.abril.com.br/wp-content/uploads/2016/11/8256_recomenda-shows-abre.jpeg?crop=1&resize=1212,909"
+                    alt="Problema do Acoplamento" class="cover-image">
+            </div>
+            <p>O principal problema que o Chain of Responsibility resolve é o <strong>acoplamento rígido entre o remetente e o receptor</strong> de uma requisição, permitindo que múltiplos objetos tenham a chance de processar a requisição sem que o remetente precise conhecer qual objeto específico irá tratá-la [2].</p>
+            <p>Sem este padrão, o código teria que fazer verificações condicionais complexas para determinar qual objeto deve processar cada tipo de requisição - como determinar qual fase da carreira de Diana Ross deveria lidar com cada oportunidade artística.</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/comportamentais/chain/generico.png"
+                    alt="Chain of Responsibility UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Chain of Responsibility:</p>
+            <pre class="uml-code">
+@startuml
+class Client {
+    + submitRequest(request: Request): void
+}
+
+abstract class Handler {
+    - nextHandler: Handler
+    + setNext(handler: Handler): Handler
+    + handle(request: Request): void
+    # canHandle(request: Request): boolean
+    # doHandle(request: Request): void
+}
+
+class ConcreteHandlerA {
+    # canHandle(request: Request): boolean
+    # doHandle(request: Request): void
+}
+
+class ConcreteHandlerB {
+    # canHandle(request: Request): boolean
+    # doHandle(request: Request): void
+}
+
+class ConcreteHandlerC {
+    # canHandle(request: Request): boolean
+    # doHandle(request: Request): void
+}
+
+class Request {
+    - type: string
+    - data: any
+    + getType(): string
+    + getData(): any
+}
+
+Client --> Handler
+Handler <|-- ConcreteHandlerA
+Handler <|-- ConcreteHandlerB
+Handler <|-- ConcreteHandlerC
+Handler --> Handler: nextHandler
+Client --> Request
+
+note right of Handler
+    Define interface para handlers
+    e implementa encadeamento
+    automático entre eles
+end note
+
+note right of ConcreteHandlerA
+    Implementa lógica específica
+    para determinar se pode
+    processar a requisição
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Handler:</strong> Interface comum para todos os handlers concretos</li>
+                <li><strong>ConcreteHandler:</strong> Implementações específicas que processam certos tipos de requisições</li>
+                <li><strong>Client:</strong> Inicia a requisição para o primeiro handler da cadeia</li>
+                <li><strong>Request:</strong> Objeto que encapsula os dados da requisição</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Handler, ConcreteHandler, Client</h1>
+            <div class="img-placeholder-5">
+                <img src="https://dotnettrickscloud.blob.core.windows.net/article/design%20patterns/3720240914154759.webp"
+                    alt="Conceitos Chain of Responsibility" class="cover-image">
+            </div>
+            
+            <h3>Handler (Interface/Gerenciador)</h3>
+            <p><strong>Características:</strong> Define uma interface comum para todos os handlers concretos e mantém referência para o próximo handler</p>
+            <p><strong>Exemplo Diana Ross:</strong></p>
+            <ul>
+                <li>Interface comum para todas as fases da carreira</li>
+                <li>Define o método "processarOportunidade"</li>
+                <li>Mantém referência para a próxima fase</li>
+            </ul>
+
+            <h3>ConcreteHandler (Handler Concreto)</h3>
+            <p><strong>Características:</strong> Implementações específicas que processam certos tipos de requisições</p>
+            <p><strong>Exemplo Diana Ross:</strong></p>
+            <ul>
+                <li>The Supremes (fase inicial)</li>
+                <li>Transição para carreira solo</li>
+                <li>Sucesso internacional</li>
+                <li>Carreira no cinema</li>
+                <li>Legado e influência</li>
+            </ul>
+
+            <h3>Client (Cliente)</h3>
+            <p><strong>Características:</strong> Configura a cadeia e inicia as requisições</p>
+            <p><strong>Exemplo Diana Ross:</strong></p>
+            <ul>
+                <li>Sistema de gerenciamento de carreira</li>
+                <li>Oportunidades artísticas</li>
+                <li>Desafios profissionais</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> Cada handler decide se pode processar a requisição ou se deve passá-la adiante na cadeia.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (Jornada de Diana Ross)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://imgs.goldradio.com/images/661174?crop=16_9&width=660&relax=1&format=webp&signature=pW3J3Q06LAvzQgCPDu9yFX-3hmk="
+                    alt="Jornada Diana Ross" class="cover-image">
+            </div>
+            <p>Imagine a <strong>jornada artística de Diana Ross</strong> usando o padrão Chain of Responsibility para processar diferentes tipos de oportunidades:</p>
+
+            <h3>Cadeia de Handlers (Fases da Carreira):</h3>
+            <ul>
+                <li><strong>The Supremes (1960-1967):</strong> Processa oportunidades de grupo vocal, hits Motown</li>
+                <li><strong>Transição Solo (1968-1970):</strong> Processa primeiros projetos solo, estabelecimento de identidade</li>
+                <li><strong>Sucesso Internacional (1971-1979):</strong> Processa turnês mundiais, álbuns premiados</li>
+                <li><strong>Carreira no Cinema (1972-1978):</strong> Processa oportunidades de atuação, papéis no cinema</li>
+                <li><strong>Legado (1980-Presente):</strong> Processa reconhecimentos, influência cultural, mentorias</li>
+            </ul>
+
+            <h3>Tipos de Oportunidades (Requests):</h3>
+            <ul>
+                <li><strong>Contrato de Gravação:</strong> Processado pela fase apropriada</li>
+                <li><strong>Oportunidade de Turnê:</strong> Encaminhado através da cadeia</li>
+                <li><strong>Projeto de Cinema:</strong> Tratado pelo handler específico</li>
+                <li><strong>Reconhecimento:</strong> Processado pelo handler de legado</li>
+            </ul>
+
+            <p>O Chain of Responsibility permite que cada fase da carreira processe as oportunidades que são relevantes para ela.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbAf7NyRfqlUgMFcDQtu91lbn2UrvCddUrCVclJt34xKebF7f0STx6ie7XPbSt90ULmlkeBYaPFeF-wpHV0qG5Rro1ysh1a03NBa1_0BuSHWBfVlp98TKB4HB9Pv4p3iW3rKuiXf-ijBTn3YKr2x3OQ18Akrz0h-Ib-AjMMhwc1B2HqEKKgIqHk6Kp/s967/diana_ross.jpg"
+                    alt="Problema sem Chain of Responsibility" class="cover-image">
+            </div>
+            <p>Sem o Padrão Chain of Responsibility, o código teria verificações condicionais complexas e acopladas:</p>
+            <pre><code>
+// PROBLEMA: Código com múltiplas condições acopladas!
+class GerenciadorCarreira {
+    processarOportunidade(oportunidade: Oportunidade): void {
+        // VERIFICAÇÕES CONDICIONAIS COMPLEXAS E ACOPLADAS
+        if (oportunidade.tipo === "CONTRATO_GRAVACAO") {
+            if (oportunidade.ano >= 1960 && oportunidade.ano <= 1967) {
+                this.processarSupremes(oportunidade);
+            } else if (oportunidade.ano >= 1968 && oportunidade.ano <= 1970) {
+                this.processarTransicaoSolo(oportunidade);
+            } else if (oportunidade.ano >= 1971 && oportunidade.ano <= 1979) {
+                this.processarSucessoInternacional(oportunidade);
+            } else {
+                this.processarLegado(oportunidade);
+            }
+        } else if (oportunidade.tipo === "TURNE") {
+            if (oportunidade.continente === "EUROPA" || oportunidade.continente === "ASIA") {
+                this.processarSucessoInternacional(oportunidade);
+            } else {
+                this.processarTransicaoSolo(oportunidade);
+            }
+        } else if (oportunidade.tipo === "CINEMA") {
+            this.processarCarreiraCinema(oportunidade);
+        } else if (oportunidade.tipo === "RECONHECIMENTO") {
+            this.processarLegado(oportunidade);
+        } else {
+            console.log("Tipo de oportunidade não reconhecido:", oportunidade.tipo);
+        }
+    }
+    
+    private processarSupremes(oportunidade: Oportunidade): void {
+        console.log("🎤 Processando como The Supremes:", oportunidade.descricao);
+    }
+    
+    private processarTransicaoSolo(oportunidade: Oportunidade): void {
+        console.log("🌟 Processando transição para carreira solo:", oportunidade.descricao);
+    }
+    
+    private processarSucessoInternacional(oportunidade: Oportunidade): void {
+        console.log("🌍 Processando sucesso internacional:", oportunidade.descricao);
+    }
+    
+    private processarCarreiraCinema(oportunidade: Oportunidade): void {
+        console.log("🎬 Processando carreira no cinema:", oportunidade.descricao);
+    }
+    
+    private processarLegado(oportunidade: Oportunidade): void {
+        console.log("🏆 Processando legado:", oportunidade.descricao);
+    }
+}
+
+// PROBLEMAS IDENTIFICADOS:
+// 1. ALTO ACOPLAMENTO: Todas as decisões concentradas em um único método
+// 2. DIFÍCIL MANUTENÇÃO: Qualquer mudança exige modificar o método principal
+// 3. BAIXA EXTENSIBILIDADE: Adicionar nova fase requer modificar condições existentes
+// 4. VIOLAÇÃO DO OCP: Código não está aberto para extensão, fechado para modificação
+// 5. COMPLEXIDADE: Lógica condicional torna-se rapidamente complexa e difícil de entender
+
+// EXEMPLO DE USO PROBLEMÁTICO:
+const gerenciador = new GerenciadorCarreira();
+
+const oportunidades = [
+    { tipo: "CONTRATO_GRAVACAO", ano: 1964, descricao: "Where Did Our Love Go" },
+    { tipo: "TURNE", continente: "EUROPA", descricao: "Turnê européia" },
+    { tipo: "CINEMA", ano: 1972, descricao: "Lady Sings the Blues" },
+    { tipo: "RECONHECIMENTO", ano: 2012, descricao: "Grammy Lifetime Achievement" }
+];
+
+for (const oportunidade of oportunidades) {
+    gerenciador.processarOportunidade(oportunidade);
+}
+            </code></pre>
+            <p>Acoplamento rígido e complexidade condicional tornam o código difícil de manter e estender!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://ucarecdn.com/f2ea1a0b-b271-4186-8ec7-04973e57a61d/-/crop/1914x1300/2,0/-/resize/840x570/"
+                    alt="Chain of Responsibility Aplicado" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Chain of Responsibility, criamos uma cadeia flexível e desacoplada:</p>
+            <pre><code>
+// Request - Oportunidade artística
+class Oportunidade {
+    constructor(
+        public tipo: string,
+        public ano: number,
+        public descricao: string,
+        public continente?: string,
+        public generoMusical?: string
+    ) {}
+    
+    getTipo(): string {
+        return this.tipo;
+    }
+    
+    getAno(): number {
+        return this.ano;
+    }
+    
+    getDescricao(): string {
+        return this.descricao;
+    }
+}
+
+// Handler Interface
+abstract class FaseCarreira {
+    protected proximaFase: FaseCarreira | null = null;
+    
+    setProxima(fase: FaseCarreira): FaseCarreira {
+        this.proximaFase = fase;
+        return fase; // Permite encadeamento fluente
+    }
+    
+    processar(oportunidade: Oportunidade): void {
+        if (this.podeProcessar(oportunidade)) {
+            this.processarOportunidade(oportunidade);
+        } else if (this.proximaFase !== null) {
+            console.log(`↪️  ${this.constructor.name} não pode processar, passando para próxima fase...`);
+            this.proximaFase.processar(oportunidade);
+        } else {
+            console.log(`❌ Nenhuma fase pode processar: ${oportunidade.getDescricao()}`);
+        }
+    }
+    
+    protected abstract podeProcessar(oportunidade: Oportunidade): boolean;
+    protected abstract processarOportunidade(oportunidade: Oportunidade): void;
+}
+
+// Concrete Handlers - Fases específicas da carreira
+
+class FaseSupremes extends FaseCarreira {
+    protected podeProcessar(oportunidade: Oportunidade): boolean {
+        return oportunidade.getAno() >= 1960 && 
+               oportunidade.getAno() <= 1967 &&
+               (oportunidade.getTipo() === "CONTRATO_GRAVACAO" || 
+                oportunidade.getTipo() === "APRESENTACAO");
+    }
+    
+    protected processarOportunidade(oportunidade: Oportunidade): void {
+        console.log(`🎤 THE SUPREMES (1960-1967) processando: ${oportunidade.getDescricao()}`);
+        console.log(`   💫 Período dos maiores hits do grupo: "Baby Love", "Stop! In the Name of Love"`);
+    }
+}
+
+class FaseTransicaoSolo extends FaseCarreira {
+    protected podeProcessar(oportunidade: Oportunidade): boolean {
+        return oportunidade.getAno() >= 1968 && 
+               oportunidade.getAno() <= 1970 &&
+               (oportunidade.getTipo() === "CONTRATO_GRAVACAO" || 
+                oportunidade.getTipo() === "TURNE" ||
+                oportunidade.getTipo() === "PROJETO_SOLO");
+    }
+    
+    protected processarOportunidade(oportunidade: Oportunidade): void {
+        console.log(`🌟 TRANSIÇÃO SOLO (1968-1970) processando: ${oportunidade.getDescricao()}`);
+        console.log(`   🎭 Estabelecendo identidade artística independente do grupo`);
+    }
+}
+
+class FaseSucessoInternacional extends FaseCarreira {
+    protected podeProcessar(oportunidade: Oportunidade): boolean {
+        const turnesInternacionais = oportunidade.getTipo() === "TURNE" && 
+                                   (oportunidade.continente === "EUROPA" || 
+                                    oportunidade.continente === "ASIA");
+        
+        return (oportunidade.getAno() >= 1971 && oportunidade.getAno() <= 1979) &&
+               (oportunidade.getTipo() === "CONTRATO_GRAVACAO" || 
+                turnesInternacionais ||
+                oportunidade.getTipo() === "PREMIO");
+    }
+    
+    protected processarOportunidade(oportunidade: Oportunidade): void {
+        console.log(`🌍 SUCESSO INTERNACIONAL (1971-1979) processando: ${oportunidade.getDescricao()}`);
+        console.log(`   ✈️  Turnês mundiais e reconhecimento global`);
+    }
+}
+
+class FaseCarreiraCinema extends FaseCarreira {
+    protected podeProcessar(oportunidade: Oportunidade): boolean {
+        return oportunidade.getTipo() === "CINEMA" || 
+               oportunidade.getTipo() === "ATUACAO";
+    }
+    
+    protected processarOportunidade(oportunidade: Oportunidade): void {
+        console.log(`🎬 CARREIRA NO CINEMA processando: ${oportunidade.getDescricao()}`);
+        console.log(`   🏆 Indicada ao Oscar por "Lady Sings the Blues" (1972)`);
+    }
+}
+
+class FaseLegado extends FaseCarreira {
+    protected podeProcessar(oportunidade: Oportunidade): boolean {
+        return oportunidade.getTipo() === "RECONHECIMENTO" || 
+               oportunidade.getTipo() === "MENTORIA" ||
+               oportunidade.getTipo() === "INFLUENCIA" ||
+               oportunidade.getAno() >= 1980;
+    }
+    
+    protected processarOportunidade(oportunidade: Oportunidade): void {
+        console.log(`🏆 LEGADO (1980-Presente) processando: ${oportunidade.getDescricao()}`);
+        console.log(`   📚 Influência cultural e reconhecimento de carreira`);
+    }
+}
+
+// Client - Sistema de Gerenciamento de Carreira
+class SistemaCarreiraDianaRoss {
+    private cadeia: FaseCarreira;
+    
+    constructor() {
+        // Construindo a cadeia de responsabilidade
+        this.cadeia = new FaseSupremes();
+        this.cadeia
+            .setProxima(new FaseTransicaoSolo())
+            .setProxima(new FaseSucessoInternacional())
+            .setProxima(new FaseCarreiraCinema())
+            .setProxima(new FaseLegado());
+    }
+    
+    processarOportunidades(oportunidades: Oportunidade[]): void {
+        console.log("🎵 SISTEMA DE CARREIRA - DIANA ROSS 🎵");
+        console.log("=======================================");
+        
+        for (const oportunidade of oportunidades) {
+            console.log(`\n📨 Nova oportunidade: ${oportunidade.getDescricao()} (${oportunidade.getAno()})`);
+            console.log("-".repeat(50));
+            this.cadeia.processar(oportunidade);
+        }
+    }
+    
+    demonstrarEncadeamento(): void {
+        console.log("\n🔗 DEMONSTRAÇÃO DO ENCADEAMENTO:");
+        console.log("=================================");
+        
+        const oportunidadesTeste = [
+            new Oportunidade("CONTRATO_GRAVACAO", 1964, "Where Did Our Love Go - The Supremes"),
+            new Oportunidade("PROJETO_SOLO", 1969, "Ain't No Mountain High Enough - Primeiro single solo"),
+            new Oportunidade("TURNE", 1975, "Turnê européia", "EUROPA"),
+            new Oportunidade("CINEMA", 1972, "Lady Sings the Blues - Papel como Billie Holiday"),
+            new Oportunidade("RECONHECIMENTO", 2012, "Grammy Lifetime Achievement Award"),
+            new Oportunidade("APRESENTACAO", 1965, "The Ed Sullivan Show"),
+            new Oportunidade("PREMIO", 1974, "American Music Award"),
+            new Oportunidade("MENTORIA", 1999, "Programa de desenvolvimento de novos talentos"),
+            new Oportunidade("PROJETO_DESCONHECIDO", 1985, "Projeto experimental não categorizado")
+        ];
+        
+        this.processarOportunidades(oportunidadesTeste);
+    }
+}
+
+// Exemplo de uso
+const sistema = new SistemaCarreiraDianaRoss();
+sistema.demonstrarEncadeamento();
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Chain of Responsibility em um sistema de processamento de pedidos:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import Optional, List
+from dataclasses import dataclass
+from enum import Enum
+
+# Tipos de pedidos
+class TipoPedido(Enum):
+    VENDA = "venda"
+    DEVOLUCAO = "devolucao"
+    RECLAMACAO = "reclamacao"
+    CONSULTA = "consulta"
+    SUPORTE_TECNICO = "suporte_tecnico"
+
+# Request - Pedido do cliente
+@dataclass
+class Pedido:
+    tipo: TipoPedido
+    descricao: str
+    valor: float = 0.0
+    prioridade: str = "normal"
+    cliente_vip: bool = False
+    produto_especial: bool = False
+
+# Handler Interface
+class ProcessadorPedido(ABC):
+    def __init__(self):
+        self._proximo_processador: Optional[ProcessadorPedido] = None
+    
+    def set_proximo(self, processador: 'ProcessadorPedido') -> 'ProcessadorPedido':
+        self._proximo_processador = processador
+        return processador
+    
+    def processar(self, pedido: Pedido) -> bool:
+        if self.pode_processar(pedido):
+            return self.processar_pedido(pedido)
+        elif self._proximo_processador is not None:
+            print(f"   ↪️  {self.__class__.__name__} não pode processar, passando adiante...")
+            return self._proximo_processador.processar(pedido)
+        else:
+            print(f"   ❌ Nenhum processador pode tratar: {pedido.descricao}")
+            return False
+    
+    @abstractmethod
+    def pode_processar(self, pedido: Pedido) -> bool:
+        pass
+    
+    @abstractmethod
+    def processar_pedido(self, pedido: Pedido) -> bool:
+        pass
+
+# Concrete Handlers - Processadores específicos
+
+class ProcessadorVendas(ProcessadorPedido):
+    def pode_processar(self, pedido: Pedido) -> bool:
+        return pedido.tipo == TipoPedido.VENDA and pedido.valor <= 1000.0
+    
+    def processar_pedido(self, pedido: Pedido) -> bool:
+        print(f"   💰 PROCESSADOR DE VENDAS: Processando venda de R$ {pedido.valor:.2f}")
+        print(f"      📦 Produto: {pedido.descricao}")
+        
+        if pedido.cliente_vip:
+            print(f"      ⭐ Cliente VIP - Aplicando desconto especial")
+        
+        print(f"      ✅ Venda processada com sucesso!")
+        return True
+
+class ProcessadorVendasGrandes(ProcessadorPedido):
+    def pode_processar(self, pedido: Pedido) -> bool:
+        return pedido.tipo == TipoPedido.VENDA and pedido.valor > 1000.0
+    
+    def processar_pedido(self, pedido: Pedido) -> bool:
+        print(f"   🏢 PROCESSADOR DE VENDAS GRANDES: Processando venda corporativa")
+        print(f"      💼 Valor: R$ {pedido.valor:.2f}")
+        print(f"      📋 Descrição: {pedido.descricao}")
+        
+        if pedido.valor > 5000.0:
+            print(f"      🚚 Agendando entrega especial e instalação")
+        
+        print(f"      ✅ Venda corporativa processada!")
+        return True
+
+class ProcessadorDevolucoes(ProcessadorPedido):
+    def pode_processar(self, pedido: Pedido) -> bool:
+        return pedido.tipo == TipoPedido.DEVOLUCAO
+    
+    def processar_pedido(self, pedido: Pedido) -> bool:
+        print(f"   🔄 PROCESSADOR DE DEVOLUÇÕES: Processando devolução")
+        print(f"      📦 Produto: {pedido.descricao}")
+        
+        if pedido.cliente_vip:
+            print(f"      ⭐ Cliente VIP - Reembolso prioritário em 24h")
+        else:
+            print(f"      ⏳ Reembolso padrão em 5-7 dias úteis")
+        
+        print(f"      ✅ Devolução processada!")
+        return True
+
+class ProcessadorReclamacoes(ProcessadorPedido):
+    def pode_processar(self, pedido: Pedido) -> bool:
+        return pedido.tipo == TipoPedido.RECLAMACAO
+    
+    def processar_pedido(self, pedido: Pedido) -> bool:
+        print(f"   🗣️  PROCESSADOR DE RECLAMAÇÕES: Atendendo reclamação")
+        print(f"      📝 Assunto: {pedido.descricao}")
+        
+        if pedido.prioridade == "alta":
+            print(f"      🔴 PRIORIDADE ALTA - Escalando para supervisor")
+        else:
+            print(f"      📞 Entrando em contato com cliente em 48h")
+        
+        print(f"      ✅ Reclamação registrada e em processamento!")
+        return True
+
+class ProcessadorSuporteTecnico(ProcessadorPedido):
+    def pode_processar(self, pedido: Pedido) -> bool:
+        return pedido.tipo == TipoPedido.SUPORTE_TECNICO
+    
+    def processar_pedido(self, pedido: Pedido) -> bool:
+        print(f"   🔧 PROCESSADOR DE SUPORTE TÉCNICO: Iniciando suporte")
+        print(f"      🛠️  Problema: {pedido.descricao}")
+        
+        if pedido.produto_especial:
+            print(f"      🚨 PRODUTO ESPECIAL - Acionando equipe especializada")
+        else:
+            print(f"      📋 Criando ticket de suporte padrão")
+        
+        print(f"      ✅ Suporte técnico iniciado!")
+        return True
+
+class ProcessadorConsultas(ProcessadorPedido):
+    def pode_processar(self, pedido: Pedido) -> bool:
+        return pedido.tipo == TipoPedido.CONSULTA
+    
+    def processar_pedido(self, pedido: Pedido) -> bool:
+        print(f"   📋 PROCESSADOR DE CONSULTAS: Respondendo consulta")
+        print(f"      ❓ Consulta: {pedido.descricao}")
+        
+        if "urgente" in pedido.descricao.lower():
+            print(f"      ⚡ CONSULTA URGENTE - Resposta imediata")
+        else:
+            print(f"      📧 Respondendo por email em 24h")
+        
+        print(f"      ✅ Consulta respondida!")
+        return True
+
+# Sistema de Processamento de Pedidos
+class SistemaPedidos:
+    def __init__(self):
+        self.cadeia = self._construir_cadeia()
+    
+    def _construir_cadeia(self) -> ProcessadorPedido:
+        # Construindo a cadeia de responsabilidade
+        cadeia = ProcessadorVendas()
+        cadeia \
+            .set_proximo(ProcessadorVendasGrandes()) \
+            .set_proximo(ProcessadorDevolucoes()) \
+            .set_proximo(ProcessadorReclamacoes()) \
+            .set_proximo(ProcessadorSuporteTecnico()) \
+            .set_proximo(ProcessadorConsultas())
+        
+        return cadeia
+    
+    def processar_pedidos(self, pedidos: List[Pedido]) -> None:
+        print("🛒 SISTEMA DE PROCESSAMENTO DE PEDIDOS")
+        print("======================================")
+        
+        for i, pedido in enumerate(pedidos, 1):
+            print(f"\n📦 PEDIDO {i}: {pedido.tipo.value.upper()}")
+            print(f"   📄 {pedido.descricao}")
+            if pedido.valor > 0:
+                print(f"   💵 Valor: R$ {pedido.valor:.2f}")
+            
+            sucesso = self.cadeia.processar(pedido)
+            
+            if sucesso:
+                print(f"   🎯 Status: PROCESSADO COM SUCESSO")
+            else:
+                print(f"   💥 Status: FALHA NO PROCESSAMENTO")
+    
+    def demonstrar_cenarios(self) -> None:
+        print("\n🎭 DEMONSTRAÇÃO DE CENÁRIOS:")
+        print("============================")
+        
+        pedidos_exemplo = [
+            Pedido(TipoPedido.VENDA, "Notebook Dell Inspiron", 899.90, cliente_vip=True),
+            Pedido(TipoPedido.VENDA, "Servidor empresarial", 12500.00),
+            Pedido(TipoPedido.DEVOLUCAO, "Mouse sem fio com defeito", 89.90),
+            Pedido(TipoPedido.RECLAMACAO, "Atraso na entrega - URGENTE", prioridade="alta"),
+            Pedido(TipoPedido.SUPORTE_TECNICO, "Problema de conectividade na VPN", produto_especial=True),
+            Pedido(TipoPedido.CONSULTA, "Prazo de entrega para minha região"),
+            Pedido(TipoPedido.CONSULTA, "Consulta urgente sobre garantia extendida"),
+            Pedido(TipoPedido.VENDA, "Fone de ouvido Bluetooth", 199.90)
+        ]
+        
+        self.processar_pedidos(pedidos_exemplo)
+        
+        # Estatísticas
+        print(f"\n📊 RESUMO DO SISTEMA:")
+        print(f"   • Total de pedidos processados: {len(pedidos_exemplo)}")
+        print(f"   • Cadeia de processadores: 6 handlers especializados")
+        print(f"   • Flexibilidade: Novos processadores podem ser adicionados facilmente")
+
+# Exemplo de uso
+def main():
+    sistema = SistemaPedidos()
+    sistema.demonstrar_cenarios()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/comportamentais/chain/ficticio.png" alt="Diana Ross Chain of Responsibility UML"
+                    class="cover-image" style="scale:1.1;">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Chain of Responsibility no exemplo da jornada de Diana Ross:</p>
+            <pre class="uml-code">
+@startuml
+class Oportunidade {
+    - tipo: string
+    - ano: number
+    - descricao: string
+    - continente?: string
+    - generoMusical?: string
+    + getTipo(): string
+    + getAno(): number
+    + getDescricao(): string
+}
+
+abstract class FaseCarreira {
+    - proximaFase: FaseCarreira
+    + setProxima(fase: FaseCarreira): FaseCarreira
+    + processar(oportunidade: Oportunidade): void
+    # podeProcessar(oportunidade: Oportunidade): boolean
+    # processarOportunidade(oportunidade: Oportunidade): void
+}
+
+class FaseSupremes {
+    # podeProcessar(oportunidade: Oportunidade): boolean
+    # processarOportunidade(oportunidade: Oportunidade): void
+}
+
+class FaseTransicaoSolo {
+    # podeProcessar(oportunidade: Oportunidade): boolean
+    # processarOportunidade(oportunidade: Oportunidade): void
+}
+
+class FaseSucessoInternacional {
+    # podeProcessar(oportunidade: Oportunidade): boolean
+    # processarOportunidade(oportunidade: Oportunidade): void
+}
+
+class FaseCarreiraCinema {
+    # podeProcessar(oportunidade: Oportunidade): boolean
+    # processarOportunidade(oportunidade: Oportunidade): void
+}
+
+class FaseLegado {
+    # podeProcessar(oportunidade: Oportunidade): boolean
+    # processarOportunidade(oportunidade: Oportunidade): void
+}
+
+class SistemaCarreiraDianaRoss {
+    - cadeia: FaseCarreira
+    + processarOportunidades(oportunidades: Oportunidade[]): void
+    + demonstrarEncadeamento(): void
+}
+
+FaseCarreira <|-- FaseSupremes
+FaseCarreira <|-- FaseTransicaoSolo
+FaseCarreira <|-- FaseSucessoInternacional
+FaseCarreira <|-- FaseCarreiraCinema
+FaseCarreira <|-- FaseLegado
+
+FaseCarreira --> FaseCarreira: proximaFase
+SistemaCarreiraDianaRoss --> FaseCarreira
+SistemaCarreiraDianaRoss --> Oportunidade
+
+note right of FaseCarreira
+    Classe abstrata que define
+    a estrutura comum para todas
+    as fases da carreira
+end note
+
+note right of SistemaCarreiraDianaRoss
+    Client que configura a cadeia
+    e inicia o processamento
+    das oportunidades
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como cada fase da carreira decide se pode processar uma oportunidade ou passá-la para a próxima fase.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/comportamentais/chain/pratico.png" alt="Sistema Pedidos Chain of Responsibility UML"
+                    class="cover-image" style="scale:1.1">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Chain of Responsibility no exemplo prático do sistema de processamento de pedidos:</p>
+            <pre class="uml-code">
+@startuml
+class Pedido {
+    - tipo: TipoPedido
+    - descricao: string
+    - valor: float
+    - prioridade: string
+    - cliente_vip: bool
+    - produto_especial: bool
+}
+
+enum TipoPedido {
+    VENDA
+    DEVOLUCAO
+    RECLAMACAO
+    CONSULTA
+    SUPORTE_TECNICO
+}
+
+abstract class ProcessadorPedido {
+    - _proximo_processador: ProcessadorPedido
+    + set_proximo(processador: ProcessadorPedido): ProcessadorPedido
+    + processar(pedido: Pedido): bool
+    # pode_processar(pedido: Pedido): bool
+    # processar_pedido(pedido: Pedido): bool
+}
+
+class ProcessadorVendas {
+    # pode_processar(pedido: Pedido): bool
+    # processar_pedido(pedido: Pedido): bool
+}
+
+class ProcessadorVendasGrandes {
+    # pode_processar(pedido: Pedido): bool
+    # processar_pedido(pedido: Pedido): bool
+}
+
+class ProcessadorDevolucoes {
+    # pode_processar(pedido: Pedido): bool
+    # processar_pedido(pedido: Pedido): bool
+}
+
+class ProcessadorReclamacoes {
+    # pode_processar(pedido: Pedido): bool
+    # processar_pedido(pedido: Pedido): bool
+}
+
+class ProcessadorSuporteTecnico {
+    # pode_processar(pedido: Pedido): bool
+    # processar_pedido(pedido: Pedido): bool
+}
+
+class ProcessadorConsultas {
+    # pode_processar(pedido: Pedido): bool
+    # processar_pedido(pedido: Pedido): bool
+}
+
+class SistemaPedidos {
+    - cadeia: ProcessadorPedido
+    + processar_pedidos(pedidos: List[Pedido]): void
+    + demonstrar_cenarios(): void
+    - _construir_cadeia(): ProcessadorPedido
+}
+
+ProcessadorPedido <|-- ProcessadorVendas
+ProcessadorPedido <|-- ProcessadorVendasGrandes
+ProcessadorPedido <|-- ProcessadorDevolucoes
+ProcessadorPedido <|-- ProcessadorReclamacoes
+ProcessadorPedido <|-- ProcessadorSuporteTecnico
+ProcessadorPedido <|-- ProcessadorConsultas
+
+ProcessadorPedido --> ProcessadorPedido: _proximo_processador
+SistemaPedidos --> ProcessadorPedido
+SistemaPedidos --> Pedido
+Pedido --> TipoPedido
+
+note right of ProcessadorPedido
+    Classe abstrata que implementa
+    a lógica de encadeamento
+    automático entre processadores
+end note
+
+note right of SistemaPedidos
+    Client responsável por
+    configurar a cadeia e
+    orquestrar o processamento
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite que diferentes tipos de pedidos sejam processados pelos handlers mais apropriados de forma desacoplada.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://i.pinimg.com/736x/34/71/9c/34719c81e15109fe47eebf22ec5c2608.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Chain of Responsibility oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Baixo Acoplamento:</strong> O remetente não precisa conhecer qual handler processará a requisição</li>
+                <li><strong>Flexibilidade:</strong> Pode-se adicionar ou modificar handlers sem afetar o cliente</li>
+                <li><strong>Responsabilidade Única:</strong> Cada handler tem uma responsabilidade específica e bem definida</li>
+                <li><strong>Extensibilidade:</strong> Fácil adicionar novos handlers à cadeia</li>
+                <li><strong>Controle Dinâmico:</strong> A cadeia pode ser configurada em tempo de execução</li>
+                <li><strong>Processamento Ordenado:</strong> Permite processamento sequencial de requisições</li>
+                <li><strong>Reutilização:</strong> Handlers podem ser reutilizados em diferentes cadeias</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://www.grunge.com/img/gallery/the-tragic-real-life-story-of-diana-ross/she-was-deeply-impacted-by-the-assassination-of-martin-luther-king-jr-1674581476.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Chain of Responsibility também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Processamento Não Garantido:</strong> Requisição pode não ser processada por nenhum handler</li>
+                <li><strong>Overhead de Performance:</strong> Passagem pela cadeia pode ser menos eficiente que chamada direta</li>
+                <li><strong>Dificuldade de Debug:</strong> Pode ser difícil rastrear qual handler processou a requisição</li>
+                <li><strong>Configuração Complexa:</strong> Montar a cadeia corretamente pode ser trabalhoso</li>
+                <li><strong>Ordem Crítica:</strong> A ordem dos handlers na cadeia é importante e pode causar bugs</li>
+                <li><strong>Acoplamento Implícito:</strong> Handlers conhecem a existência de outros handlers na cadeia</li>
+                <li><strong>Uso Inadequado:</strong> Pode ser overkill para casos simples com poucas condições</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://i2-prod.mirror.co.uk/incoming/article32370314.ece/ALTERNATES/n615/0_Platinum-Party-at-the-Palace-London-UK-04-Jun-2022.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Chain of Responsibility é uma solução elegante para desacoplar o remetente de uma requisição de seus possíveis receptores, permitindo que múltiplos objetos tenham a oportunidade de processar a requisição de forma organizada e flexível.</p>
+            <p>Na nossa analogia da <strong>jornada de Diana Ross</strong>, o Chain of Responsibility funciona como a <strong>evolução natural de uma carreira artística</strong> - onde cada fase (The Supremes, transição solo, sucesso internacional, cinema, legado) processa as oportunidades que são relevantes para seu contexto específico, passando adiante o que não consegue tratar.</p>
+            <p>Assim como Diana Ross evoluiu gracefulmente através de diferentes fases de sua carreira, o padrão Chain of Responsibility nos permite criar sistemas que evoluem de forma flexível, onde novos handlers podem ser adicionados sem impactar o funcionamento existente, mantendo o princípio de responsabilidade única e baixo acoplamento.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/chain-of-responsibility"
+                        target="_blank">Refactoring.Guru - Padrão Chain of Responsibility</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-chain-of-responsibility/16789"
+                        target="_blank">DevMedia - Padrão Chain of Responsibility</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/25/mao-na-massa-chain-of-responsibility/"
+                        target="_blank">Mão na Massa - Padrão Chain of Responsibility</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Chain_of_Responsibility" target="_blank">Wikipédia - Chain of Responsibility (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/chain-responsibility-design-pattern/" target="_blank">GeeksforGeeks
+                        - Chain of Responsibility Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/chain_of_responsibility" target="_blank">SourceMaking
+                        - Chain of Responsibility Pattern</a></li>
+                <li>[7] <a href="https://en.wikipedia.org/wiki/Diana_Ross" target="_blank">Wikipedia - Diana Ross Biography</a></li>
+                <li>[8] <a href="https://en.wikipedia.org/wiki/The_Supremes" target="_blank">Wikipedia - The Supremes</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    
+</body>
+
+</html>
