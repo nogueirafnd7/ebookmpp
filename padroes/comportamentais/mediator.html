@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Padrão Mediator - Miley Cyrus e Suas Transformações</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styleorg.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" id="sidebarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../../direcionar/comportamentais.html" class="btn btn-purple">
+                <i class="bi bi-arrow-left me-2"></i>Voltar
+            </a>
+            <a class="navbar-brand" href="../../direcionar/comportamentais.html">Padrões Comportamentais</a>
+        </div>
+    </nav>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Sidebar/Sumário -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h5>Sumário</h5>
+        </div>
+        <ul class="sidebar-list">
+            <li><a href="#cover" class="active">Capa</a></li>
+            <li><a href="#page1">O que é o Padrão Mediator?</a></li>
+            <li><a href="#page2">O que ele resolve?</a></li>
+            <li><a href="#page3">Diagrama Genérico (UML)</a></li>
+            <li><a href="#page4">Conceitos: Mediator, Colleague</a></li>
+            <li><a href="#page5">Exemplo Fictício (Miley Cyrus e Sua Equipe)</a></li>
+            <li><a href="#page6">Sem o Padrão: O que Acontece?</a></li>
+            <li><a href="#page7">Com o Padrão Aplicado (Pseudo Linguagem)</a></li>
+            <li><a href="#page8">Exemplo Prático do Dia a Dia (Python)</a></li>
+            <li><a href="#page9">Diagrama do Projeto Fictício</a></li>
+            <li><a href="#page10">Diagrama do Projeto Prático</a></li>
+            <li><a href="#page11">Vantagens</a></li>
+            <li><a href="#page12">Desvantagens</a></li>
+            <li><a href="#page13">Conclusão</a></li>
+            <li><a href="#page14">Fontes Bibliográficas</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay para fechar o sidebar em mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <!-- Capa do E-book -->
+        <div class="ebook-page cover-page" id="cover">
+            <h1 class="cover-title">MEDIATOR</h1>
+            <p class="cover-subtitle">Miley Cyrus e Suas Transformações - O Mediador de Uma Carreira em Evolução</p>
+
+            <img src="https://akamai.sscdn.co/tb/letras-blog/wp-content/uploads/2021/12/74a53dc-Miley-Cyrus-1024x512.jpg"
+                alt="Capa Mediator - Miley Cyrus" class="cover-image" id="coverImage">
+
+            <div class="mt-4">
+                <button class="btn btn-light" id="startReading">
+                    <i class="bi bi-book"></i> Começar a Leitura
+                </button>
+            </div>
+        </div>
+
+        <!-- Conteúdo das Páginas -->
+        <div class="ebook-page" id="page1">
+            <h1>O que é o Padrão Mediator?</h1>
+            <div class="img-placeholder-2">
+                <img src="https://portalpopline.com.br/wp-content/uploads/2024/02/miley-cyrus-estreia-novo-single-doctor-jpg.webp"
+                    alt="Mediator Pattern" class="cover-image">
+            </div>
+            <p>O Padrão Mediator é um <strong>padrão de projeto comportamental</strong> que define um objeto que encapsula como um conjunto de objetos interage. Ele promove o acoplamento fraco ao evitar que os objetos se refiram uns aos outros explicitamente, permitindo que você varie suas interações independentemente [1].</p>
+            <p>É como o <strong>gerente da Miley Cyrus</strong> - em vez de cada membro da equipe (produtor, coreógrafo, estilista) se comunicar diretamente com todos os outros, eles se comunicam através do gerente, que coordena todas as interações e garante que a visão artística seja executada de forma coesa.</p>
+
+            <div class="page-navigation">
+                <a href="#cover" class="btn btn-outline-primary"><i class="bi bi-arrow-up"></i> Capa</a>
+                <a href="#page2" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page2">
+            <h1>O que ele resolve?</h1>
+            <div class="img-placeholder-3">
+                <img src="https://uploads.tenhomaisdiscosqueamigos.com/2025/05/tMvmlwUc-miley-cyrus-something-beautiful-disco-1004x768.webp"
+                    alt="Problema da Comunicação" class="cover-image">
+            </div>
+            <p>O principal problema que o Mediator resolve é a <strong>complexidade das interações entre múltiplos objetos</strong>. Quando muitos objetos se comunicam diretamente, o sistema se torna difícil de entender, manter e modificar [2].</p>
+            <p>Sem este padrão, cada membro da equipe da Miley Cyrus teria que conhecer e se comunicar diretamente com todos os outros, resultando em um emaranhado de dependências e comunicação caótica.</p>
+
+            <div class="page-navigation">
+                <a href="#page1" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page3" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page3">
+            <h1>Diagrama de Exemplo Genérico (UML)</h1>
+            <div class="img-placeholder-4">
+                <img src="../../assets/img/comportamentais/mediator/generico.png"
+                    alt="Mediator UML Genérico" class="cover-image">
+            </div>
+            <p>O diagrama de classes UML a seguir ilustra a estrutura fundamental do Padrão Mediator:</p>
+            <pre class="uml-code">
+@startuml
+class Client {
+    + executeOperations(): void
+}
+
+interface Mediator {
+    + notify(sender: Colleague, event: string): void
+}
+
+class ConcreteMediator {
+    - component1: Component1
+    - component2: Component2
+    - component3: Component3
+    + notify(sender: Colleague, event: string): void
+}
+
+class Colleague {
+    # mediator: Mediator
+    + Colleague(mediator: Mediator)
+    + setMediator(mediator: Mediator): void
+}
+
+class Component1 {
+    + doA(): void
+    + doB(): void
+}
+
+class Component2 {
+    + doC(): void
+    + doD(): void
+}
+
+class Component3 {
+    + doE(): void
+    + doF(): void
+}
+
+Client --> Mediator
+Client --> Colleague
+Mediator <|.. ConcreteMediator
+Colleague <|-- Component1
+Colleague <|-- Component2
+Colleague <|-- Component3
+ConcreteMediator --> Component1
+ConcreteMediator --> Component2
+ConcreteMediator --> Component3
+
+note right of Mediator
+    Interface que define o método
+    notify() para comunicação
+    entre os colleagues
+end note
+
+note right of ConcreteMediator
+    Implementação concreta que
+    coordena a interação entre
+    todos os components
+end note
+
+note right of Colleague
+    Classe base para todos os
+    componentes que conhecem
+    seu mediator
+end note
+@enduml
+            </pre>
+            <ul>
+                <li><strong>Mediator:</strong> Interface comum para mediadores</li>
+                <li><strong>ConcreteMediator:</strong> Implementação que coordena as interações</li>
+                <li><strong>Colleague:</strong> Classe base para componentes que se comunicam</li>
+                <li><strong>ConcreteColleague:</strong> Componentes específicos que interagem através do mediator</li>
+                <li><strong>Client:</strong> Configura o sistema com mediador e colleagues</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page2" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page4" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page4">
+            <h1>Conceitos: Mediator, Colleague</h1>
+            <div class="img-placeholder-5">
+                <img src="https://assets.alexandria.raywenderlich.com/books/des/images/1c7cfbc649cf1d65268ad944c5342dccf9eb084ad8b5caa4d3bfec00d0c412bc/original.png"
+                    alt="Conceitos Mediator" class="cover-image">
+            </div>
+            
+            <h3>Mediator (Mediador)</h3>
+            <p><strong>Características:</strong> Interface que define como os colleagues se comunicam</p>
+            <p><strong>Exemplo Miley Cyrus:</strong></p>
+            <ul>
+                <li>GerenteArtisticoMediator</li>
+                <li>CoordenadorTurnêMediator</li>
+                <li>DiretorCriativoMediator</li>
+            </ul>
+
+            <h3>ConcreteMediator (Mediador Concreto)</h3>
+            <p><strong>Características:</strong> Implementação que conhece e coordena todos os colleagues</p>
+            <p><strong>Exemplo Miley Cyrus:</strong></p>
+            <ul>
+                <li>GerenteMileyCyrus</li>
+                <li>Coordena todas as interações da equipe</li>
+                <li>Conhece todos os profissionais envolvidos</li>
+            </ul>
+
+            <h3>Colleague (Colega)</h3>
+            <p><strong>Características:</strong> Componentes que se comunicam através do mediator</p>
+            <p><strong>Exemplo Miley Cyrus:</strong></p>
+            <ul>
+                <li>ProdutorMusical</li>
+                <li>Coreografo</li>
+                <li>Estilista</li>
+                <li>DiretorVideo</li>
+                <li>RoadManager</li>
+            </ul>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> O Mediator simplifica a comunicação entre objetos complexos - perfeito para sistemas com muitas interações.
+            </div>
+
+            <div class="page-navigation">
+                <a href="#page3" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page5" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page5">
+            <h1>Exemplo Fictício (Miley Cyrus e Sua Equipe)</h1>
+            <div class="img-placeholder-6">
+                <img src="https://www.rollingstone.com/wp-content/uploads/2020/11/Miley-Cyrus-Plastic-Hearts.jpg"
+                    alt="Miley Cyrus Equipe" class="cover-image">
+            </div>
+            <p>Imagine a <strong>Miley Cyrus e sua equipe artística</strong> usando o padrão Mediator para coordenar todas as interações:</p>
+
+            <h3>Mediador Central:</h3>
+            <ul>
+                <li><strong>Gerente Miley Cyrus:</strong> Coordena toda a comunicação da equipe</li>
+                <li><strong>Conhece todos os profissionais:</strong> Sabe quem faz o quê e quando</li>
+                <li><strong>Centraliza decisões:</strong> Garante que todas as partes estejam alinhadas</li>
+            </ul>
+
+            <h3>Colleagues Especializados:</h3>
+            <ul>
+                <li><strong>Produtor Musical:</strong> Desenvolve arranjos e produção</li>
+                <li><strong>Coreógrafo:</strong> Cria sequências de dança</li>
+                <li><strong>Estilista:</strong> Desenvolve figurinos e visual</li>
+                <li><strong>Diretor de Vídeo:</strong> Planeja conceitos visuais</li>
+                <li><strong>Road Manager:</strong> Cuida da logística de turnê</li>
+            </ul>
+
+            <p>O Mediator permite que cada profissional faça seu trabalho sem precisar conhecer os detalhes dos outros, apenas comunicando-se através do gerente.</p>
+
+            <div class="page-navigation">
+                <a href="#page4" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page6" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page6">
+            <h1>Sem o Padrão: O que Acontece?</h1>
+            <div class="img-placeholder-7">
+                <img src="https://www.rollingstone.com/wp-content/uploads/2023/03/miley-AlbumLEADIMAGE_PC_JonnieChambers.jpg?w=1581&h=1054&crop=1"
+                    alt="Problema sem Mediator" class="cover-image">
+            </div>
+            <p>Sem o Padrão Mediator, a comunicação entre os objetos se torna um emaranhado complexo:</p>
+            <pre><code>
+// PROBLEMA: Comunicação direta entre todos os objetos!
+class ProdutorMusical {
+    private coreografo: Coreografo;
+    private estilista: Estilista;
+    private diretorVideo: DiretorVideo;
+    
+    produzirMusica(): void {
+        console.log("🎵 Produtor criando música...");
+        // Precisa coordenar com todos diretamente
+        this.coreografo.notificarProducaoMusical();
+        this.estilista.notificarProducaoMusical();
+        this.diretorVideo.notificarProducaoMusical();
+    }
+}
+
+class Coreografo {
+    private produtor: ProdutorMusical;
+    private estilista: Estilista;
+    private diretorVideo: DiretorVideo;
+    
+    criarCoreografia(): void {
+        console.log("💃 Coreógrafo criando dança...");
+        // Precisa coordenar com todos diretamente
+        this.produtor.notificarCoreografia();
+        this.estilista.notificarCoreografia();
+        this.diretorVideo.notificarCoreografia();
+    }
+}
+
+class Estilista {
+    private produtor: ProdutorMusical;
+    private coreografo: Coreografo;
+    private diretorVideo: DiretorVideo;
+    
+    desenvolverFigurino(): void {
+        console.log("👗 Estilista criando visual...");
+        // Precisa coordenar com todos diretamente
+        this.produtor.notificarFigurino();
+        this.coreografo.notificarFigurino();
+        this.diretorVideo.notificarFigurino();
+    }
+}
+
+class DiretorVideo {
+    private produtor: ProdutorMusical;
+    private coreografo: Coreografo;
+    private estilista: Estilista;
+    
+    planejarVideo(): void {
+        console.log("🎬 Diretor planejando vídeo...");
+        // Precisa coordenar com todos diretamente
+        this.produtor.notificarVideo();
+        this.coreografo.notificarVideo();
+        this.estilista.notificarVideo();
+    }
+}
+
+// PROBLEMAS IDENTIFICADOS:
+// 1. ALTO ACOPLAMENTO: Cada classe conhece todas as outras
+// 2. DIFÍCIL MANUTENÇÃO: Mudanças afetam múltiplas classes
+// 3. COMPLEXIDADE: Rede complexa de dependências
+// 4. DIFÍCIL EXTENSÃO: Novo profissional exige modificar todas as classes
+// 5. COMUNICAÇÃO CAÓTICA: Sem coordenação central
+// 6. DIFICULDADE DE TESTE: Múltiplas dependências para mockar
+
+// EXEMPLO DE USO PROBLEMÁTICO:
+console.log("❌ SISTEMA SEM MEDIATOR PATTERN");
+console.log("=" .repeat(50));
+
+const produtor = new ProdutorMusical();
+const coreografo = new Coreografo();
+const estilista = new Estilista();
+const diretor = new DiretorVideo();
+
+// Configurar todas as dependências manualmente
+produtor.coreografo = coreografo;
+produtor.estilista = estilista;
+produtor.diretorVideo = diretor;
+
+coreografo.produtor = produtor;
+coreografo.estilista = estilista;
+coreografo.diretorVideo = diretor;
+
+estilista.produtor = produtor;
+estilista.coreografo = coreografo;
+estilista.diretorVideo = diretor;
+
+diretor.produtor = produtor;
+diretor.coreografo = coreografo;
+diretor.estilista = estilista;
+
+// Processamento problemático - comunicação caótica
+console.log("\n🎭 INICIANDO PRODUÇÃO ARTÍSTICA");
+console.log("-".repeat(40));
+produtor.produzirMusica();
+console.log("");
+coreografo.criarCoreografia();
+console.log("");
+estilista.desenvolverFigurino();
+console.log("");
+diretor.planejarVideo();
+            </code></pre>
+            <p>Comunicação direta entre todos os objetos cria um sistema complexo e difícil de manter!</p>
+
+            <div class="page-navigation">
+                <a href="#page5" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page7" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page7">
+            <h1>Com o Padrão Aplicado (Pseudo Linguagem)</h1>
+            <div class="img-placeholder-8">
+                <img src="https://www.hdwallpapers.in/download/miley_cyrus_new_photoshoot-wide.jpg"
+                    alt="Mediator Aplicado" class="cover-image">
+            </div>
+            <p>Aplicando o Padrão Mediator, centralizamos a comunicação e simplificamos as interações:</p>
+            <pre><code>
+// MEDIATOR INTERFACE
+interface GerenteArtisticoMediator {
+    notify(sender: Colleague, event: string, data?: any): void;
+    adicionarColleague(colleague: Colleague): void;
+}
+
+// COLLEAGUE BASE CLASS
+abstract class Colleague {
+    protected mediator: GerenteArtisticoMediator;
+    protected nome: string;
+    protected especialidade: string;
+
+    constructor(mediator: GerenteArtisticoMediator, nome: string, especialidade: string) {
+        this.mediator = mediator;
+        this.nome = nome;
+        this.especialidade = especialidade;
+        this.mediator.adicionarColleague(this);
+    }
+
+    abstract executarTarefa(): void;
+    abstract receberNotificacao(event: string, data?: any): void;
+
+    getNome(): string {
+        return this.nome;
+    }
+
+    getEspecialidade(): string {
+        return this.especialidade;
+    }
+}
+
+// CONCRETE MEDIATOR - Gerente da Miley Cyrus
+class GerenteMileyCyrus implements GerenteArtisticoMediator {
+    private colleagues: Map<string, Colleague> = new Map();
+    private log: string[] = [];
+
+    notify(sender: Colleague, event: string, data?: any): void {
+        console.log(`\n📢 MEDIATOR: ${sender.getNome()} enviou evento '${event}'`);
+        this.log.push(`${new Date().toISOString()} - ${sender.getNome()} - ${event}`);
+        
+        // Coordenar a resposta baseada no evento e no remetente
+        switch (event) {
+            case 'MUSICA_PRODUZIDA':
+                this.coordenarProducaoMusical(data);
+                break;
+            case 'COREografia_CRIADA':
+                this.coordenarCoreografia(data);
+                break;
+            case 'FIGURINO_DESENVOLVIDO':
+                this.coordenarFigurino(data);
+                break;
+            case 'VIDEO_PLANEJADO':
+                this.coordenarVideo(data);
+                break;
+            case 'TURNE_AGENDADA':
+                this.coordenarTurne(data);
+                break;
+            default:
+                console.log(`   ⚠️  Evento desconhecido: ${event}`);
+        }
+    }
+
+    adicionarColleague(colleague: Colleague): void {
+        this.colleagues.set(colleague.getNome(), colleague);
+        console.log(`   ✅ ${colleague.getNome()} (${colleague.getEspecialidade()}) adicionado ao sistema`);
+    }
+
+    private coordenarProducaoMusical(data: any): void {
+        console.log("   🎵 Coordenando produção musical...");
+        const coreografo = this.colleagues.get('Coreógrafo Principal');
+        const estilista = this.colleagues.get('Estilista Chefe');
+        const diretor = this.colleagues.get('Diretor Criativo');
+
+        if (coreografo) coreografo.receberNotificacao('MUSICA_PRONTA', data);
+        if (estilista) estilista.receberNotificacao('MUSICA_PRONTA', data);
+        if (diretor) diretor.receberNotificacao('MUSICA_PRONTA', data);
+    }
+
+    private coordenarCoreografia(data: any): void {
+        console.log("   💃 Coordenando coreografia...");
+        const estilista = this.colleagues.get('Estilista Chefe');
+        const diretor = this.colleagues.get('Diretor Criativo');
+
+        if (estilista) estilista.receberNotificacao('COREografia_PRONTA', data);
+        if (diretor) diretor.receberNotificacao('COREografia_PRONTA', data);
+    }
+
+    private coordenarFigurino(data: any): void {
+        console.log("   👗 Coordenando figurino...");
+        const coreografo = this.colleagues.get('Coreógrafo Principal');
+        const diretor = this.colleagues.get('Diretor Criativo');
+
+        if (coreografo) coreografo.receberNotificacao('FIGURINO_PRONTO', data);
+        if (diretor) diretor.receberNotificacao('FIGURINO_PRONTO', data);
+    }
+
+    private coordenarVideo(data: any): void {
+        console.log("   🎬 Coordenando vídeo...");
+        const produtor = this.colleagues.get('Produtor Musical');
+        const coreografo = this.colleagues.get('Coreógrafo Principal');
+        const estilista = this.colleagues.get('Estilista Chefe');
+
+        if (produtor) produtor.receberNotificacao('VIDEO_PRONTO', data);
+        if (coreografo) coreografo.receberNotificacao('VIDEO_PRONTO', data);
+        if (estilista) estilista.receberNotificacao('VIDEO_PRONTO', data);
+    }
+
+    private coordenarTurne(data: any): void {
+        console.log("   🚌 Coordenando turnê...");
+        // Notificar todos os colleagues sobre a turnê
+        this.colleagues.forEach(colleague => {
+            colleague.receberNotificacao('TURNE_AGENDADA', data);
+        });
+    }
+
+    getLog(): string[] {
+        return this.log;
+    }
+
+    getResumo(): void {
+        console.log("\n📊 RESUMO DO SISTEMA MEDIATOR:");
+        console.log("   • Colleagues registrados: " + this.colleagues.size);
+        console.log("   • Eventos processados: " + this.log.length);
+        console.log("   • Comunicação centralizada: ✅");
+        console.log("   • Acoplamento reduzido: ✅");
+    }
+}
+
+// CONCRETE COLLEAGUES - Profissionais especializados
+
+class ProdutorMusical extends Colleague {
+    private musicasProduzidas: string[] = [];
+
+    constructor(mediator: GerenteArtisticoMediator) {
+        super(mediator, 'Produtor Musical', 'Produção Musical e Arranjos');
+    }
+
+    executarTarefa(): void {
+        console.log(`\n🎵 ${this.nome} executando tarefa...`);
+        console.log("   🎹 Desenvolvendo sintetizadores e batidas");
+        console.log("   🎶 Criando arranjos complexos");
+        console.log("   🔊 Mixando e masterizando");
+        
+        const musica = `Música ${this.musicasProduzidas.length + 1} - ${new Date().toISOString()}`;
+        this.musicasProduzidas.push(musica);
+        
+        // Notificar o mediator em vez de outros colleagues diretamente
+        this.mediator.notify(this, 'MUSICA_PRODUZIDA', {
+            musica: musica,
+            detalhes: 'Produção completa com elementos rock e pop'
+        });
+    }
+
+    receberNotificacao(event: string, data: any): void {
+        switch (event) {
+            case 'VIDEO_PRONTO':
+                console.log(`   🎵 ${this.nome}: Recebido vídeo pronto - ${data.video}`);
+                break;
+            case 'TURNE_AGENDADA':
+                console.log(`   🎵 ${this.nome}: Preparando equipamento para turnê em ${data.local}`);
+                break;
+        }
+    }
+
+    getMusicasProduzidas(): string[] {
+        return this.musicasProduzidas;
+    }
+}
+
+class Coreografo extends Colleague {
+    private coreografiasCriadas: string[] = [];
+
+    constructor(mediator: GerenteArtisticoMediator) {
+        super(mediator, 'Coreógrafo Principal', 'Coreografia e Movimento');
+    }
+
+    executarTarefa(): void {
+        console.log(`\n💃 ${this.nome} executando tarefa...`);
+        console.log("   🕺 Desenvolvendo sequências de dança");
+        console.log("   👯‍♂️ Criando formações em grupo");
+        console.log("   🎭 Ensaiando movimentos expressivos");
+        
+        const coreografia = `Coreografia ${this.coreografiasCriadas.length + 1}`;
+        this.coreografiasCriadas.push(coreografia);
+        
+        this.mediator.notify(this, 'COREografia_CRIADA', {
+            coreografia: coreografia,
+            estilo: 'Rock contemporâneo com elementos urbanos'
+        });
+    }
+
+    receberNotificacao(event: string, data: any): void {
+        switch (event) {
+            case 'MUSICA_PRONTA':
+                console.log(`   💃 ${this.nome}: Recebida música - criando coreografia para '${data.musica}'`);
+                break;
+            case 'FIGURINO_PRONTO':
+                console.log(`   💃 ${this.nome}: Ajustando coreografia para figurino '${data.figurino}'`);
+                break;
+            case 'VIDEO_PRONTO':
+                console.log(`   💃 ${this.nome}: Coreografia sincronizada com vídeo '${data.video}'`);
+                break;
+            case 'TURNE_AGENDADA':
+                console.log(`   💃 ${this.nome}: Preparando coreografias para turnê em ${data.local}`);
+                break;
+        }
+    }
+
+    getCoreografiasCriadas(): string[] {
+        return this.coreografiasCriadas;
+    }
+}
+
+class Estilista extends Colleague {
+    private figurinosCriados: string[] = [];
+
+    constructor(mediator: GerenteArtisticoMediator) {
+        super(mediator, 'Estilista Chefe', 'Figurino e Visual');
+    }
+
+    executarTarefa(): void {
+        console.log(`\n👗 ${this.nome} executando tarefa...`);
+        console.log("   🧵 Desenhando e costurando figurinos");
+        console.log("   🎨 Selecionando cores e tecidos");
+        console.log("   💎 Criando acessórios personalizados");
+        
+        const figurino = `Figurino ${this.figurinosCriados.length + 1}`;
+        this.figurinosCriados.push(figurino);
+        
+        this.mediator.notify(this, 'FIGURINO_DESENVOLVIDO', {
+            figurino: figurino,
+            estilo: 'Rock glam com elementos andróginos'
+        });
+    }
+
+    receberNotificacao(event: string, data: any): void {
+        switch (event) {
+            case 'MUSICA_PRONTA':
+                console.log(`   👗 ${this.nome}: Criando visual para música '${data.musica}'`);
+                break;
+            case 'COREografia_PRONTA':
+                console.log(`   👗 ${this.nome}: Ajustando figurino para coreografia '${data.coreografia}'`);
+                break;
+            case 'VIDEO_PRONTO':
+                console.log(`   👗 ${this.nome}: Visual compatível com vídeo '${data.video}'`);
+                break;
+            case 'TURNE_AGENDADA':
+                console.log(`   👗 ${this.nome}: Preparando figurinos para turnê em ${data.local}`);
+                break;
+        }
+    }
+
+    getFigurinosCriados(): string[] {
+        return this.figurinosCriados;
+    }
+}
+
+class DiretorCriativo extends Colleague {
+    private videosPlanejados: string[] = [];
+
+    constructor(mediator: GerenteArtisticoMediator) {
+        super(mediator, 'Diretor Criativo', 'Direção e Conceito Visual');
+    }
+
+    executarTarefa(): void {
+        console.log(`\n🎬 ${this.nome} executando tarefa...`);
+        console.log("   📝 Desenvolvendo conceito e roteiro");
+        console.log("   🎥 Planejando tomadas e ângulos");
+        console.log("   🎨 Direcionando direção de arte");
+        
+        const video = `Vídeo ${this.videosPlanejados.length + 1}`;
+        this.videosPlanejados.push(video);
+        
+        this.mediator.notify(this, 'VIDEO_PLANEJADO', {
+            video: video,
+            conceito: 'Narrativa visual de transformação e empoderamento'
+        });
+    }
+
+    receberNotificacao(event: string, data: any): void {
+        switch (event) {
+            case 'MUSICA_PRONTA':
+                console.log(`   🎬 ${this.nome}: Desenvolvendo conceito para música '${data.musica}'`);
+                break;
+            case 'COREografia_PRONTA':
+                console.log(`   🎬 ${this.nome}: Integrando coreografia '${data.coreografia}' no vídeo`);
+                break;
+            case 'FIGURINO_PRONTO':
+                console.log(`   🎬 ${this.nome}: Utilizando figurino '${data.figurino}' nas cenas`);
+                break;
+            case 'TURNE_AGENDADA':
+                console.log(`   🎬 ${this.nome}: Planejando conteúdo visual para turnê em ${data.local}`);
+                break;
+        }
+    }
+
+    getVideosPlanejados(): string[] {
+        return this.videosPlanejados;
+    }
+}
+
+class RoadManager extends Colleague {
+    private turnesAgendadas: string[] = [];
+
+    constructor(mediator: GerenteArtisticoMediator) {
+        super(mediator, 'Road Manager', 'Logística e Produção de Turnê');
+    }
+
+    executarTarefa(): void {
+        console.log(`\n🚌 ${this.nome} executando tarefa...`);
+        console.log("   📅 Agendando datas e locais");
+        console.log("   🎪 Coordenando produção local");
+        console.log("   🏨 Organizando hospedagem e transporte");
+        
+        const turne = `Turnê ${this.turnesAgendadas.length + 1} - ${new Date().getFullYear()}`;
+        this.turnesAgendadas.push(turne);
+        
+        this.mediator.notify(this, 'TURNE_AGENDADA', {
+            turne: turne,
+            local: 'América do Norte e Europa',
+            datas: 'Primavera 2024'
+        });
+    }
+
+    receberNotificacao(event: string, data: any): void {
+        // Road Manager geralmente inicia eventos, mas pode receber notificações também
+        switch (event) {
+            case 'MUSICA_PRONTA':
+                console.log(`   🚌 ${this.nome}: Nova música disponível para setlist`);
+                break;
+            case 'FIGURINO_PRONTO':
+                console.log(`   🚌 ${this.nome}: Figurino pronto para transporte`);
+                break;
+        }
+    }
+
+    getTurnesAgendadas(): string[] {
+        return this.turnesAgendadas;
+    }
+}
+
+// CLIENT - Sistema de Gerenciamento
+class SistemaMileyCyrus {
+    private mediator: GerenteMileyCyrus;
+    private colleagues: Colleague[];
+
+    constructor() {
+        this.mediator = new GerenteMileyCyrus();
+        this.colleagues = [
+            new ProdutorMusical(this.mediator),
+            new Coreografo(this.mediator),
+            new Estilista(this.mediator),
+            new DiretorCriativo(this.mediator),
+            new RoadManager(this.mediator)
+        ];
+    }
+
+    demonstrarMediatorPattern(): void {
+        console.log("🎤 SISTEMA MILEY CYRUS - MEDIATOR PATTERN 🎤");
+        console.log("============================================");
+        console.log("🎯 Demonstrando Comunicação Centralizada");
+        console.log("✨ Mediador Coordenando Colleagues Especializados\n");
+        
+        // Demonstração 1: Cada colleague executa sua tarefa
+        console.log("1️⃣  DEMONSTRAÇÃO: EXECUÇÃO COORDENADA");
+        console.log("=" .repeat(50));
+        
+        for (const colleague of this.colleagues) {
+            colleague.executarTarefa();
+        }
+        
+        // Demonstração 2: Resumo do sistema
+        console.log("\n2️⃣  DEMONSTRAÇÃO: RESUMO DO SISTEMA");
+        console.log("=" .repeat(50));
+        this.mediator.getResumo();
+        
+        // Demonstração 3: Log de eventos
+        console.log("\n3️⃣  DEMONSTRAÇÃO: LOG DE EVENTOS");
+        console.log("=" .repeat(50));
+        const log = this.mediator.getLog();
+        console.log("   Últimos 5 eventos:");
+        log.slice(-5).forEach((evento, index) => {
+            console.log(`   ${index + 1}. ${evento}`);
+        });
+        
+        console.log("\n📊 RESUMO DO SISTEMA:");
+        console.log("   • Colleagues: 5 profissionais especializados");
+        console.log("   • Mediador: 1 coordenador central");
+        console.log("   • Eventos: Sistema de notificação unificado");
+        console.log("   • Acoplamento: Reduzido significativamente");
+        console.log("   • ✅ SRP e LoD aplicados com sucesso!");
+    }
+}
+
+// Exemplo de uso
+const sistema = new SistemaMileyCyrus();
+sistema.demonstrarMediatorPattern();
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page6" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page8" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page8">
+            <h1>Exemplo Prático do Dia a Dia (Python)</h1>
+            <div class="img-placeholder-9">
+                <img src="https://e1.pxfuel.com/desktop-wallpaper/246/863/desktop-wallpaper-python-logo-python.jpg" alt="Python Example"
+                    class="cover-image">
+            </div>
+            <p>Um exemplo prático do Padrão Mediator em um sistema de chat empresarial:</p>
+            <pre><code>
+from abc import ABC, abstractmethod
+from typing import List, Dict, Any
+from datetime import datetime
+from enum import Enum
+
+class TipoMensagem(Enum):
+    TEXTO = "texto"
+    ARQUIVO = "arquivo"
+    COMANDO = "comando"
+    SISTEMA = "sistema"
+
+class Usuario(ABC):
+    def __init__(self, nome: str, departamento: str):
+        self.nome = nome
+        self.departamento = departamento
+        self.mediator = None
+    
+    def set_mediator(self, mediator: 'ChatMediator'):
+        self.mediator = mediator
+    
+    @abstractmethod
+    def receber_mensagem(self, mensagem: Dict[str, Any]):
+        pass
+    
+    @abstractmethod
+    def enviar_mensagem(self, conteudo: str, tipo: TipoMensagem = TipoMensagem.TEXTO):
+        pass
+
+class ChatMediator(ABC):
+    @abstractmethod
+    def enviar_mensagem(self, remetente: Usuario, conteudo: str, tipo: TipoMensagem):
+        pass
+    
+    @abstractmethod
+    def adicionar_usuario(self, usuario: Usuario):
+        pass
+    
+    @abstractmethod
+    def criar_grupo(self, nome: str, usuarios: List[Usuario]):
+        pass
+
+class SistemaChatEmpresarial(ChatMediator):
+    def __init__(self, nome_empresa: str):
+        self.nome_empresa = nome_empresa
+        self.usuarios: Dict[str, Usuario] = {}
+        self.grupos: Dict[str, List[Usuario]] = {}
+        self.historico: List[Dict[str, Any]] = []
+        self.online_users = set()
+    
+    def adicionar_usuario(self, usuario: Usuario):
+        self.usuarios[usuario.nome] = usuario
+        usuario.set_mediator(self)
+        print(f"✅ {usuario.nome} ({usuario.departamento}) adicionado ao chat")
+    
+    def criar_grupo(self, nome: str, usuarios: List[Usuario]):
+        self.grupos[nome] = usuarios
+        print(f"👥 Grupo '{nome}' criado com {len(usuarios)} usuários")
+    
+    def enviar_mensagem(self, remetente: Usuario, conteudo: str, tipo: TipoMensagem = TipoMensagem.TEXTO):
+        mensagem = {
+            'remetente': remetente.nome,
+            'conteudo': conteudo,
+            'tipo': tipo,
+            'timestamp': datetime.now(),
+            'departamento': remetente.departamento
+        }
+        
+        self.historico.append(mensagem)
+        
+        print(f"\n📨 MEDIATOR: Mensagem de {remetente.nome}")
+        print(f"   📝 Conteúdo: {conteudo}")
+        print(f"   🏷️  Tipo: {tipo.value}")
+        
+        # Lógica de roteamento baseada no tipo de mensagem e departamento
+        if tipo == TipoMensagem.COMANDO:
+            self._processar_comando(remetente, conteudo)
+        elif tipo == TipoMensagem.SISTEMA:
+            self._broadcast_sistema(mensagem)
+        else:
+            self._rotear_mensagem(remetente, mensagem)
+    
+    def _processar_comando(self, remetente: Usuario, comando: str):
+        comando = comando.lower().strip()
+        
+        if comando == "/online":
+            online = ", ".join(self.online_users)
+            resposta = f"👤 Usuários online: {online if online else 'Nenhum'}"
+            remetente.receber_mensagem({
+                'remetente': 'Sistema',
+                'conteudo': resposta,
+                'tipo': TipoMensagem.SISTEMA,
+                'timestamp': datetime.now()
+            })
+        
+        elif comando == "/historico":
+            total = len(self.historico)
+            resposta = f"📊 Total de mensagens: {total}"
+            remetente.receber_mensagem({
+                'remetente': 'Sistema',
+                'conteudo': resposta,
+                'tipo': TipoMensagem.SISTEMA,
+                'timestamp': datetime.now()
+            })
+        
+        elif comando.startswith("/grupo "):
+            grupo_nome = comando[7:]
+            if grupo_nome in self.grupos:
+                membros = [user.nome for user in self.grupos[grupo_nome]]
+                resposta = f"👥 Membros do grupo '{grupo_nome}': {', '.join(membros)}"
+                remetente.receber_mensagem({
+                    'remetente': 'Sistema',
+                    'conteudo': resposta,
+                    'tipo': TipoMensagem.SISTEMA,
+                    'timestamp': datetime.now()
+                })
+        
+        else:
+            remetente.receber_mensagem({
+                'remetente': 'Sistema',
+                'conteudo': f"❌ Comando desconhecido: {comando}",
+                'tipo': TipoMensagem.SISTEMA,
+                'timestamp': datetime.now()
+            })
+    
+    def _broadcast_sistema(self, mensagem: Dict[str, Any]):
+        print("   📢 Broadcast para todos os usuários")
+        for usuario in self.usuarios.values():
+            usuario.receber_mensagem(mensagem)
+    
+    def _rotear_mensagem(self, remetente: Usuario, mensagem: Dict[str, Any]):
+        # Roteamento inteligente baseado em departamento e conteúdo
+        conteudo = mensagem['conteudo'].lower()
+        
+        if any(palavra in conteudo for palavra in ['bug', 'erro', 'problema']):
+            self._enviar_para_ti(mensagem)
+        elif any(palavra in conteudo for palavra in ['venda', 'cliente', 'contrato']):
+            self._enviar_para_vendas(mensagem)
+        elif any(palavra in conteudo for palavra in ['design', 'interface', 'ux']):
+            self._enviar_para_design(mensagem)
+        else:
+            self._enviar_para_departamento(remetente.departamento, mensagem)
+    
+    def _enviar_para_ti(self, mensagem: Dict[str, Any]):
+        print("   🖥️  Roteando para departamento de TI")
+        for usuario in self.usuarios.values():
+            if usuario.departamento == "TI":
+                usuario.receber_mensagem(mensagem)
+    
+    def _enviar_para_vendas(self, mensagem: Dict[str, Any]):
+        print("   💼 Roteando para departamento de Vendas")
+        for usuario in self.usuarios.values():
+            if usuario.departamento == "Vendas":
+                usuario.receber_mensagem(mensagem)
+    
+    def _enviar_para_design(self, mensagem: Dict[str, Any]):
+        print("   🎨 Roteando para departamento de Design")
+        for usuario in self.usuarios.values():
+            if usuario.departamento == "Design":
+                usuario.receber_mensagem(mensagem)
+    
+    def _enviar_para_departamento(self, departamento: str, mensagem: Dict[str, Any]):
+        print(f"   🏢 Roteando para departamento {departamento}")
+        for usuario in self.usuarios.values():
+            if usuario.departamento == departamento:
+                usuario.receber_mensagem(mensagem)
+    
+    def conectar_usuario(self, usuario: Usuario):
+        self.online_users.add(usuario.nome)
+        print(f"🟢 {usuario.nome} conectado")
+    
+    def desconectar_usuario(self, usuario: Usuario):
+        self.online_users.discard(usuario.nome)
+        print(f"🔴 {usuario.nome} desconectado")
+
+class Desenvolvedor(Usuario):
+    def __init__(self, nome: str, linguagens: List[str]):
+        super().__init__(nome, "TI")
+        self.linguagens = linguagens
+        self.tarefas = []
+    
+    def receber_mensagem(self, mensagem: Dict[str, Any]):
+        print(f"   💻 {self.nome} (Dev) recebeu: '{mensagem['conteudo']}' de {mensagem['remetente']}")
+        
+        # Lógica específica do desenvolvedor
+        if 'bug' in mensagem['conteudo'].lower():
+            self.tarefas.append(f"Corrigir bug relatado por {mensagem['remetente']}")
+            print(f"     🐛 Nova tarefa adicionada: Corrigir bug")
+    
+    def enviar_mensagem(self, conteudo: str, tipo: TipoMensagem = TipoMensagem.TEXTO):
+        if self.mediator:
+            self.mediator.enviar_mensagem(self, conteudo, tipo)
+    
+    def get_tarefas(self):
+        return self.tarefas
+
+class Vendedor(Usuario):
+    def __init__(self, nome: str, regiao: str):
+        super().__init__(nome, "Vendas")
+        self.regiao = regiao
+        self.leads = []
+    
+    def receber_mensagem(self, mensagem: Dict[str, Any]):
+        print(f"   💼 {self.nome} (Vendas) recebeu: '{mensagem['conteudo']}' de {mensagem['remetente']}")
+        
+        # Lógica específica do vendedor
+        if any(palavra in mensagem['conteudo'].lower() for palavra in ['cliente', 'venda', 'contrato']):
+            self.leads.append(f"Lead de {mensagem['remetente']}")
+            print(f"     📈 Novo lead adicionado")
+    
+    def enviar_mensagem(self, conteudo: str, tipo: TipoMensagem = TipoMensagem.TEXTO):
+        if self.mediator:
+            self.mediator.enviar_mensagem(self, conteudo, tipo)
+    
+    def get_leads(self):
+        return self.leads
+
+class Designer(Usuario):
+    def __init__(self, nome: str, especialidade: str):
+        super().__init__(nome, "Design")
+        self.especialidade = especialidade
+        self.projetos = []
+    
+    def receber_mensagem(self, mensagem: Dict[str, Any]):
+        print(f"   🎨 {self.nome} (Design) recebeu: '{mensagem['conteudo']}' de {mensagem['remetente']}")
+        
+        # Lógica específica do designer
+        if any(palavra in mensagem['conteudo'].lower() for palavra in ['design', 'interface', 'ux']):
+            self.projetos.append(f"Projeto solicitado por {mensagem['remetente']}")
+            print(f"     🎯 Novo projeto adicionado")
+    
+    def enviar_mensagem(self, conteudo: str, tipo: TipoMensagem = TipoMensagem.TEXTO):
+        if self.mediator:
+            self.mediator.enviar_mensagem(self, conteudo, tipo)
+    
+    def get_projetos(self):
+        return self.projetos
+
+class Gerente(Usuario):
+    def __init__(self, nome: str, area: str):
+        super().__init__(nome, "Gestão")
+        self.area = area
+        self.decisoes = []
+    
+    def receber_mensagem(self, mensagem: Dict[str, Any]):
+        print(f"   👔 {self.nome} (Gestão) recebeu: '{mensagem['conteudo']}' de {mensagem['remetente']}")
+        
+        # Lógica específica do gerente
+        if any(palavra in mensagem['conteudo'].lower() for palavra in ['aprovar', 'decisão', 'orçamento']):
+            self.decisoes.append(f"Decisão solicitada por {mensagem['remetente']}")
+            print(f"     📋 Nova decisão pendente")
+    
+    def enviar_mensagem(self, conteudo: str, tipo: TipoMensagem = TipoMensagem.TEXTO):
+        if self.mediator:
+            self.mediator.enviar_mensagem(self, conteudo, tipo)
+    
+    def get_decisoes(self):
+        return self.decisoes
+
+# Sistema de Demonstração
+class SistemaChatDemo:
+    def __init__(self):
+        self.mediator = SistemaChatEmpresarial("TechCorp Inc.")
+        self.usuarios = []
+    
+    def setup_sistema(self):
+        # Criar usuários de diferentes departamentos
+        dev1 = Desenvolvedor("Alice Silva", ["Python", "JavaScript"])
+        dev2 = Desenvolvedor("Bob Santos", ["Java", "C++"])
+        vendedor1 = Vendedor("Carlos Lima", "Sudeste")
+        vendedor2 = Vendedor("Diana Costa", "Sul")
+        designer1 = Designer("Eva Mendes", "UI/UX")
+        designer2 = Designer("Frank Oliveira", "Product Design")
+        gerente1 = Gerente("Gloria Ramos", "TI")
+        gerente2 = Gerente("Hugo Almeida", "Vendas")
+        
+        self.usuarios = [dev1, dev2, vendedor1, vendedor2, designer1, designer2, gerente1, gerente2]
+        
+        # Adicionar usuários ao mediator
+        for usuario in self.usuarios:
+            self.mediator.adicionar_usuario(usuario)
+            self.mediator.conectar_usuario(usuario)
+        
+        # Criar grupos
+        self.mediator.criar_grupo("TI", [dev1, dev2, gerente1])
+        self.mediator.criar_grupo("Vendas", [vendedor1, vendedor2, gerente2])
+        self.mediator.criar_grupo("Design", [designer1, designer2])
+    
+    def demonstrar_mediator_pattern(self):
+        print("\n💬 SISTEMA DE CHAT EMPRESARIAL - MEDIATOR PATTERN")
+        print("================================================")
+        print("🎯 Demonstrando Comunicação Centralizada")
+        print("✨ Mediador Roteando Mensagens Inteligentemente\n")
+        
+        # Demonstração 1: Mensagens com roteamento automático
+        print("1️⃣  DEMONSTRAÇÃO: ROTEAMENTO INTELIGENTE")
+        print("=" .repeat(50))
+        
+        self.usuarios[0].enviar_mensagem("Encontrei um bug crítico no sistema de pagamentos")
+        print("")
+        self.usuarios[2].enviar_mensagem("Novo cliente corporativo interessado em nossos serviços")
+        print("")
+        self.usuarios[4].enviar_mensagem("Preciso de feedback no design da nova interface")
+        print("")
+        self.usuarios[6].enviar_mensagem("Relatório mensal de performance pronto para análise")
+        print("")
+        
+        # Demonstração 2: Comandos do sistema
+        print("\n2️⃣  DEMONSTRAÇÃO: COMANDOS DO SISTEMA")
+        print("=" .repeat(50))
+        
+        self.usuarios[0].enviar_mensagem("/online", TipoMensagem.COMANDO)
+        print("")
+        self.usuarios[0].enviar_mensagem("/historico", TipoMensagem.COMANDO)
+        print("")
+        self.usuarios[0].enviar_mensagem("/grupo TI", TipoMensagem.COMANDO)
+        print("")
+        
+        # Demonstração 3: Resumo do sistema
+        print("\n3️⃣  DEMONSTRAÇÃO: RESUMO DO SISTEMA")
+        print("=" .repeat(50))
+        
+        print("📊 ESTATÍSTICAS DO CHAT:")
+        print(f"   • Usuários registrados: {len(self.usuarios)}")
+        print(f"   • Grupos criados: {len(self.mediator.grupos)}")
+        print(f"   • Mensagens trocadas: {len(self.mediator.historico)}")
+        print(f"   • Usuários online: {len(self.mediator.online_users)}")
+        
+        print("\n🎯 TAREFAS CRIADAS AUTOMATICAMENTE:")
+        for usuario in self.usuarios:
+            if hasattr(usuario, 'get_tarefas') and usuario.get_tarefas():
+                print(f"   • {usuario.nome}: {len(usuario.get_tarefas())} tarefas")
+            if hasattr(usuario, 'get_leads') and usuario.get_leads():
+                print(f"   • {usuario.nome}: {len(usuario.get_leads())} leads")
+            if hasattr(usuario, 'get_projetos') and usuario.get_projetos():
+                print(f"   • {usuario.nome}: {len(usuario.get_projetos())} projetos")
+            if hasattr(usuario, 'get_decisoes') and usuario.get_decisoes():
+                print(f"   • {usuario.nome}: {len(usuario.get_decisoes())} decisões")
+        
+        print(f"\n✅ MEDIATOR PATTERN APLICADO COM SUCESSO!")
+        print("   • Comunicação centralizada")
+        print("   • Roteamento inteligente")
+        print("   • Acoplamento reduzido")
+        print("   • Extensibilidade garantida")
+
+# Exemplo de uso
+def main():
+    sistema = SistemaChatDemo()
+    sistema.setup_sistema()
+    sistema.demonstrar_mediator_pattern()
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+
+            <div class="page-navigation">
+                <a href="#page7" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page9" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page9">
+            <h1>Diagrama do Projeto Fictício</h1>
+            <div class="img-placeholder-10">
+                <img src="../../assets/img/comportamentais/mediator/ficticio.png" alt="Miley Cyrus Mediator UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML detalha a aplicação do Padrão Mediator no exemplo da Miley Cyrus e sua equipe:</p>
+            <pre class="uml-code">
+@startuml
+interface GerenteArtisticoMediator {
+    + notify(sender: Colleague, event: string, data?: any): void
+    + adicionarColleague(colleague: Colleague): void
+}
+
+abstract class Colleague {
+    # mediator: GerenteArtisticoMediator
+    # nome: string
+    # especialidade: string
+    + Colleague(mediator: GerenteArtisticoMediator, nome: string, especialidade: string)
+    + executarTarefa(): void
+    + receberNotificacao(event: string, data?: any): void
+    + getNome(): string
+    + getEspecialidade(): string
+}
+
+class GerenteMileyCyrus {
+    - colleagues: Map<string, Colleague>
+    - log: string[]
+    + notify(sender: Colleague, event: string, data?: any): void
+    + adicionarColleague(colleague: Colleague): void
+    + getLog(): string[]
+    + getResumo(): void
+}
+
+class ProdutorMusical {
+    - musicasProduzidas: string[]
+    + executarTarefa(): void
+    + receberNotificacao(event: string, data?: any): void
+    + getMusicasProduzidas(): string[]
+}
+
+class Coreografo {
+    - coreografiasCriadas: string[]
+    + executarTarefa(): void
+    + receberNotificacao(event: string, data?: any): void
+    + getCoreografiasCriadas(): string[]
+}
+
+class Estilista {
+    - figurinosCriados: string[]
+    + executarTarefa(): void
+    + receberNotificacao(event: string, data?: any): void
+    + getFigurinosCriados(): string[]
+}
+
+class DiretorCriativo {
+    - videosPlanejados: string[]
+    + executarTarefa(): void
+    + receberNotificacao(event: string, data?: any): void
+    + getVideosPlanejados(): string[]
+}
+
+class RoadManager {
+    - turnesAgendadas: string[]
+    + executarTarefa(): void
+    + receberNotificacao(event: string, data?: any): void
+    + getTurnesAgendadas(): string[]
+}
+
+class SistemaMileyCyrus {
+    - mediator: GerenteMileyCyrus
+    - colleagues: Colleague[]
+    + demonstrarMediatorPattern(): void
+}
+
+GerenteArtisticoMediator <|.. GerenteMileyCyrus
+Colleague <|-- ProdutorMusical
+Colleague <|-- Coreografo
+Colleague <|-- Estilista
+Colleague <|-- DiretorCriativo
+Colleague <|-- RoadManager
+
+GerenteMileyCyrus --> Colleague
+SistemaMileyCyrus --> GerenteArtisticoMediator
+SistemaMileyCyrus --> Colleague
+
+note right of GerenteArtisticoMediator
+    Interface que define como os
+    colleagues se comunicam
+    através do mediator
+end note
+
+note right of Colleague
+    Classe base para todos os
+    profissionais que conhecem
+    apenas o mediator
+end note
+
+note right of GerenteMileyCyrus
+    Mediador concreto que coordena
+    todas as interações entre
+    os colleagues
+end note
+
+note right of ProdutorMusical
+    Colleague concreto especializado
+    em produção musical que se
+    comunica apenas via mediator
+end note
+@enduml
+            </pre>
+            <p>O diagrama mostra como o mediador central coordena todas as comunicações entre os profissionais especializados.</p>
+
+            <div class="page-navigation">
+                <a href="#page8" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page10" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page10">
+            <h1>Diagrama do Projeto Prático</h1>
+            <div class="img-placeholder-11">
+                <img src="../../assets/img/comportamentais/mediator/pratico.png" alt="Sistema Chat Mediator UML"
+                    class="cover-image">
+            </div>
+            <p>Este diagrama UML mostra a aplicação do Padrão Mediator no exemplo prático do sistema de chat empresarial:</p>
+            <pre class="uml-code">
+@startuml
+class Usuario {
+    - nome: string
+    - departamento: string
+    - mediator: ChatMediator
+    + set_mediator(mediator: ChatMediator): void
+    + receber_mensagem(mensagem: Dict[str, Any]): void
+    + enviar_mensagem(conteudo: str, tipo: TipoMensagem): void
+}
+
+class ChatMediator {
+    + enviar_mensagem(remetente: Usuario, conteudo: str, tipo: TipoMensagem): void
+    + adicionar_usuario(usuario: Usuario): void
+    + criar_grupo(nome: str, usuarios: List[Usuario]): void
+}
+
+class SistemaChatEmpresarial {
+    - nome_empresa: string
+    - usuarios: Dict[str, Usuario]
+    - grupos: Dict[str, List[Usuario]]
+    - historico: List[Dict[str, Any]]
+    - online_users: Set[str]
+    + enviar_mensagem(remetente: Usuario, conteudo: str, tipo: TipoMensagem): void
+    + adicionar_usuario(usuario: Usuario): void
+    + criar_grupo(nome: str, usuarios: List[Usuario]): void
+    + conectar_usuario(usuario: Usuario): void
+    + desconectar_usuario(usuario: Usuario): void
+}
+
+class Desenvolvedor {
+    - linguagens: List[str]
+    - tarefas: List[str]
+    + receber_mensagem(mensagem: Dict[str, Any]): void
+    + get_tarefas(): List[str]
+}
+
+class Vendedor {
+    - regiao: string
+    - leads: List[str]
+    + receber_mensagem(mensagem: Dict[str, Any]): void
+    + get_leads(): List[str]
+}
+
+class Designer {
+    - especialidade: string
+    - projetos: List[str]
+    + receber_mensagem(mensagem: Dict[str, Any]): void
+    + get_projetos(): List[str]
+}
+
+class Gerente {
+    - area: string
+    - decisoes: List[str]
+    + receber_mensagem(mensagem: Dict[str, Any]): void
+    + get_decisoes(): List[str]
+}
+
+class SistemaChatDemo {
+    - mediator: SistemaChatEmpresarial
+    - usuarios: List[Usuario]
+    + setup_sistema(): void
+    + demonstrar_mediator_pattern(): void
+}
+
+ChatMediator <|-- SistemaChatEmpresarial
+Usuario <|-- Desenvolvedor
+Usuario <|-- Vendedor
+Usuario <|-- Designer
+Usuario <|-- Gerente
+
+SistemaChatEmpresarial --> Usuario
+SistemaChatDemo --> SistemaChatEmpresarial
+SistemaChatDemo --> Usuario
+
+note right of ChatMediator
+    Interface que define a comunicação
+    entre usuários do sistema
+    de chat
+end note
+
+note right of Usuario
+    Classe base para todos os
+    usuários do sistema que
+    conhecem apenas o mediator
+end note
+
+note right of SistemaChatEmpresarial
+    Mediador concreto que implementa
+    roteamento inteligente e
+    gerencia grupos
+end note
+
+note right of Desenvolvedor
+    Usuário concreto especializado
+    em desenvolvimento com
+    lógica específica para bugs
+end note
+@enduml
+            </pre>
+            <p>Esta estrutura permite que diferentes tipos de usuários se comuniquem de forma eficiente através de um mediador central inteligente.</p>
+
+            <div class="page-navigation">
+                <a href="#page9" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page11" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page11">
+            <h1>Vantagens</h1>
+            <div class="img-placeholder-12">
+                <img src="https://api.time.com/wp-content/uploads/2014/04/481787945.jpg"
+                    alt="Advantages" class="cover-image">
+            </div>
+            <p>O Padrão Mediator oferece várias vantagens significativas:</p>
+            <ul>
+                <li><strong>Redução de Acoplamento:</strong> Objetos não se comunicam diretamente</li>
+                <li><strong>Centralização do Controle:</strong> Toda a lógica de comunicação em um lugar</li>
+                <li><strong>Simplificação da Comunicação:</strong> Substitui relacionamentos muitos-para-muitos por um-para-muitos</li>
+                <li><strong>Reúso de Componentes:</strong> Components podem ser reutilizados mais facilmente</li>
+                <li><strong>Flexibilidade:</strong> Fácil adicionar novos colleagues sem afetar os existentes</li>
+                <li><strong>Manutenção:</strong> Mais fácil entender e modificar o sistema</li>
+                <li><strong>Single Responsibility:</strong> Cada colleague tem uma responsabilidade específica</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page10" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page12" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page12">
+            <h1>Desvantagens</h1>
+            <div class="img-placeholder-13">
+                <img src="https://a.abcnews.com/images/Entertainment/HT_miley_cyrus_wrecking_ball_video_jef_130909_16x9_608.jpg"
+                    alt="Disadvantages" class="cover-image">
+            </div>
+            <p>O Padrão Mediator também apresenta algumas desvantagens:</p>
+            <ul>
+                <li><strong>Ponto Único de Falha:</strong> O mediator pode se tornar um gargalo</li>
+                <li><strong>Complexidade do Mediador:</strong> O mediator pode se tornar muito complexo</li>
+                <li><strong>God Object:</strong> Risco do mediator se tornar um "objeto deus" que sabe demais</li>
+                <li><strong>Dificuldade de Teste:</strong> Testar o mediator pode ser complexo</li>
+                <li><strong>Overhead de Comunicação:</strong> Todas as comunicações passam pelo mediator</li>
+                <li><strong>Dificuldade de Debug:</strong> Pode ser difícil rastrear problemas de comunicação</li>
+                <li><strong>Performance:</strong> Pode introduzir latência em sistemas de alta performance</li>
+            </ul>
+
+            <div class="page-navigation">
+                <a href="#page11" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page13" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page13">
+            <h1>Conclusão</h1>
+            <div class="img-placeholder-14">
+                <img src="https://rollingstone.com.br/wp-content/uploads/miley_cyrus_na_kiss_fm_foto_john_phillipsgetty_images.jpg"
+                    alt="Conclusion" class="cover-image">
+            </div>
+            <p>O Padrão Mediator é uma solução poderosa para gerenciar comunicações complexas entre múltiplos objetos, promovendo o baixo acoplamento e a manutenibilidade do sistema.</p>
+            <p>Na nossa analogia da <strong>Miley Cyrus e sua equipe artística</strong>, o Mediator funciona como o <strong>gerente que coordena todas as interações</strong> - onde cada profissional especializado (produtor, coreógrafo, estilista, diretor) pode focar em sua expertise sem precisar conhecer os detalhes dos outros, comunicando-se apenas através do gerente central.</p>
+            <p>Assim como Miley Cyrus evoluiu através de diferentes fases artísticas (Hannah Montana, Bangerz, Younger Now, Plastic Hearts) mantendo uma equipe coesa que se adapta a cada transformação, o padrão Mediator nos permite criar sistemas onde objetos podem evoluir independentemente enquanto mantêm uma comunicação eficiente através de um coordenador central, promovendo a flexibilidade e a escalabilidade de forma organizada e controlada.</p>
+
+            <div class="page-navigation">
+                <a href="#page12" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#page14" class="btn btn-primary">Próximo <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="ebook-page" id="page14">
+            <h1>Fontes Bibliográficas</h1>
+            <p>As informações contidas neste e-book foram compiladas a partir das seguintes fontes:</p>
+            <ul class="reference-list">
+                <li>[1] <a href="https://refactoring.guru/pt-br/design-patterns/mediator"
+                        target="_blank">Refactoring.Guru - Padrão Mediator</a></li>
+                <li>[2] <a href="https://www.devmedia.com.br/padrao-de-projeto-mediator/16799"
+                        target="_blank">DevMedia - Padrão Mediator</a></li>
+                <li>[3] <a href="https://brizeno.wordpress.com/2011/11/25/mao-na-massa-mediator/"
+                        target="_blank">Mão na Massa - Padrão Mediator</a></li>
+                <li>[4] <a href="https://pt.wikipedia.org/wiki/Mediator" target="_blank">Wikipédia - Mediator (padrão de projeto)</a></li>
+                <li>[5] <a href="https://www.geeksforgeeks.org/mediator-design-pattern/" target="_blank">GeeksforGeeks
+                        - Mediator Design Pattern</a></li>
+                <li>[6] <a href="https://sourcemaking.com/design_patterns/mediator" target="_blank">SourceMaking
+                        - Mediator Pattern</a></li>
+                <li>[7] <a href="https://en.wikipedia.org/wiki/Miley_Cyrus" target="_blank">Wikipedia - Miley Cyrus Biography</a></li>
+                <li>[8] <a href="https://www.billboard.com/music/miley-cyrus/" target="_blank">Billboard - Miley Cyrus Career</a></li>
+            </ul>
+            <p><i>Nota: As referências foram adaptadas para o contexto deste e-book.</i></p>
+
+            <div class="page-navigation">
+                <a href="#page13" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Anterior</a>
+                <a href="#cover" class="btn btn-primary"><i class="bi bi-house"></i> Início</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script>
+        // Script para controle do sidebar no mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarLinks = document.querySelectorAll('.sidebar-list a');
+
+            // Função para abrir o sidebar
+            function openSidebar() {
+                sidebar.classList.add('show');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Função para fechar o sidebar
+            function closeSidebar() {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Abrir sidebar ao clicar no botão hamburguer
+            sidebarToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                openSidebar();
+            });
+
+            // Fechar sidebar ao clicar no overlay
+            overlay.addEventListener('click', function () {
+                closeSidebar();
+            });
+
+            // Fechar sidebar ao clicar em um link (mobile)
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 991) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Fechar sidebar ao pressionar a tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+            });
+
+            // Fechar sidebar ao redimensionar a janela para desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+    <!-- Bootstrap JS e Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    
+</body>
+
+</html>
